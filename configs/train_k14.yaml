@@ -1,0 +1,41 @@
+# All training hyperparameters are inferred; this is not the original recipe.
+seed: 1234
+threads: 4
+device: auto
+output: runs/k14
+model:
+  scale: 2
+  controller_width: 32
+  refine_width: 116
+  refine_blocks: 8
+  normalization: true
+  refinement: true
+data:
+  manifest: data/train/manifest.jsonl
+  samples_per_scene: 16
+  options:
+    native_size: 64
+    scale: 2
+    frames: 14
+    max_shift: 2.0
+    blur_sigma: [0.2, 1.2]
+    exposure_ev: [-5.0, 0.0]
+    color_gain: [1.0, 2.5]
+    shot_noise: [0.00001, 0.004]
+    read_noise: [0.0001, 0.003]
+    quantization_bits: 14
+    clip_sensor: true
+    augment: true
+train:
+  stage: joint
+  steps: 100000
+  batch_size: 2
+  lr: 0.0002
+  min_lr: 0.000002
+  weight_decay: 0.0
+  validate_every: 1000
+  crop_border: 12
+  chroma_weight: 0.1
+  gradient_weight: 0.05
+  learned_weight: 0.1
+  clip_grad: 1.0

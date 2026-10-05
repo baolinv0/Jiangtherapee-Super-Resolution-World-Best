@@ -1,0 +1,154 @@
+{
+  "scope": "held-out synthetic proxy, not official JSR/BurstSR benchmark",
+  "alignment": "estimated",
+  "split": "test",
+  "count": 1,
+  "checkpoint_sha256": "fda0f05db25b84e1855b1113b6a264b85194cfd4fe4b4dc8dd2f11282a90b6f5",
+  "manifest_sha256": "5c44d42d9879f7801727941b716648d47c2105739d3a17bb82d9f79b3e4f8a84",
+  "crop_border_hr": 4,
+  "data_range": 1.0,
+  "gain_fit": false,
+  "options": {
+    "native_size": 16,
+    "scale": 2,
+    "frames": 4,
+    "max_shift": 1.5,
+    "blur_sigma": [
+      0.2,
+      0.8
+    ],
+    "exposure_ev": [
+      -2.0,
+      0.0
+    ],
+    "color_gain": [
+      1.0,
+      2.0
+    ],
+    "shot_noise": [
+      0.0001,
+      0.002
+    ],
+    "read_noise": [
+      0.0001,
+      0.001
+    ],
+    "quantization_bits": 14,
+    "clip_sensor": true,
+    "augment": true
+  },
+  "mean_per_image_metrics": {
+    "single_bilinear": {
+      "psnr_linear_db": 40.77814378315769,
+      "rmse_linear": 0.009143086127890922,
+      "chroma_rmse": 0.013195298260268586,
+      "shadow_rmse": null,
+      "mean_bias": -0.0003025154798740038
+    },
+    "legacy": {
+      "psnr_linear_db": 36.863659966662084,
+      "rmse_linear": 0.014348846896900613,
+      "chroma_rmse": 0.020600759489956714,
+      "shadow_rmse": null,
+      "mean_bias": -0.0029929566274707517
+    },
+    "learned": {
+      "psnr_linear_db": 36.58118822799722,
+      "rmse_linear": 0.014823152908343908,
+      "chroma_rmse": 0.021400729470027385,
+      "shadow_rmse": null,
+      "mean_bias": -0.0033846742999567477
+    },
+    "jsr_repro": {
+      "psnr_linear_db": 36.643874675875956,
+      "rmse_linear": 0.014716558671594536,
+      "chroma_rmse": 0.02135908710214575,
+      "shadow_rmse": null,
+      "mean_bias": -0.0030243619802166467
+    }
+  },
+  "samples": [
+    {
+      "index": 0,
+      "metadata": {
+        "black_level": 0.0,
+        "blur_sigma_hr": 0.262232506275177,
+        "cfa": "RGGB",
+        "clip_sensor": true,
+        "color_gains": [
+          1.8873412609100342,
+          1.0,
+          1.5296716690063477
+        ],
+        "crop_xy": [
+          71,
+          70
+        ],
+        "exposure_ev": -0.7198611497879028,
+        "motion": "oracle_translation",
+        "out_of_range_fraction_before_clipping": 0.0,
+        "protocol": "inferred-synthetic-v1",
+        "quantization_bits": 14,
+        "read_std": 0.0005882483005523681,
+        "sample_seed": 6494871316029906999,
+        "scale_native": 2,
+        "scene_id": "scene_0003.npy",
+        "shifts_xy_native": [
+          [
+            0.0,
+            0.0
+          ],
+          [
+            1.2228587865829468,
+            0.21279752254486084
+          ],
+          [
+            0.44787293672561646,
+            1.313532829284668
+          ],
+          [
+            0.14563000202178955,
+            -0.7709546685218811
+          ]
+        ],
+        "shot_coefficient": 0.0014116370201110841,
+        "source_resized": false,
+        "source_sha256": "ad3a38c1a803ea44d584d128f7b63773f43f93e6ff55e8103f75ed02bd577a56",
+        "split": "test",
+        "white_level": 1.0
+      },
+      "methods": {
+        "single_bilinear": {
+          "psnr_linear_db": 40.77814378315769,
+          "rmse_linear": 0.009143086127890922,
+          "chroma_rmse": 0.013195298260268586,
+          "shadow_rmse": null,
+          "mean_bias": -0.0003025154798740038
+        },
+        "legacy": {
+          "psnr_linear_db": 36.863659966662084,
+          "rmse_linear": 0.014348846896900613,
+          "chroma_rmse": 0.020600759489956714,
+          "shadow_rmse": null,
+          "mean_bias": -0.0029929566274707517
+        },
+        "learned": {
+          "psnr_linear_db": 36.58118822799722,
+          "rmse_linear": 0.014823152908343908,
+          "chroma_rmse": 0.021400729470027385,
+          "shadow_rmse": null,
+          "mean_bias": -0.0033846742999567477
+        },
+        "jsr_repro": {
+          "psnr_linear_db": 36.643874675875956,
+          "rmse_linear": 0.014716558671594536,
+          "chroma_rmse": 0.02135908710214575,
+          "shadow_rmse": null,
+          "mean_bias": -0.0030243619802166467
+        }
+      },
+      "seconds_model": 0.04018070036545396,
+      "alignment_rmse_native": 2.0054733753204346
+    }
+  ]
+}

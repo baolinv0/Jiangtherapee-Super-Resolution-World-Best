@@ -1,5 +1,15 @@
 # Jiangtherapee Super Resolution
 
+> **本 fork 的独立工程复现 / Independent engineering reproduction**
+>
+> 新增可训练 PyTorch 模块、公开数据代理RAW构造、训练/恢复训练、测试/推理、配置与验证脚本。可确认的公开网络与推断补全的Tap/训练流程有明确区分；不宣称恢复未公开训练配方、达到原论文指标或复现完整手机HDR。
+>
+> **入口：[复现说明与运行命令](docs/REPRODUCTION.md) · [数据协议](docs/DATA.md) · [来源审计](docs/SOURCES.md) · [实际验证结果](docs/VALIDATION.md)**
+>
+> `python -m pip install -e ".[test]"` → `python -m pytest -q` → `python -m jsr_repro.validate --output runs/verification`
+>
+> 审计基线：`6ab0f5b`。下文保留原作者README；其中“尚无算法源码”的旧说明与现有Core目录不一致。原公开模块/权重保留，新工程实现位于`reproduction/`。知乎JSR原文尚未取得可核验全文，不将未经核实的转述当作实现依据。
+
 JSR 将 RAW 连拍重建为高分辨率线性 RGB，面向高动态摄影，重点约束暗部亮度、颜色响应与周期伪影。4 至 14 帧连拍均可获得良好的重建效果，拍摄时候为防止对焦抖动影响效果建议AF-S来连拍，或者MF后连续单张拍摄。更高帧数暂不被支持。
 
 JSR reconstructs RAW bursts into high-resolution linear RGB for high dynamic range photography, with explicit control of shadow brightness, color response, and periodic artifacts. Bursts of 4 to 14 frames can all yield good reconstruction results. When shooting, to prevent focus jitter from affecting the results, it is recommended to use AF-S for burst shooting, or switch to MF and take consecutive single shots. Bursts longer than 14 frames are not currently supported.

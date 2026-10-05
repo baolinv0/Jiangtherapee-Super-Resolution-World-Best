@@ -1,0 +1,18 @@
+{
+  "scope": "formal architecture, one procedural K14/native16 optimizer step; execution evidence only",
+  "parameters": 4156267,
+  "controller_parameters": 1990660,
+  "refinenet_parameters": 2165607,
+  "controller_width": 32,
+  "refine_width": 116,
+  "refine_blocks": 8,
+  "frames": 14,
+  "native_size": 16,
+  "loss": 0.004034628625959158,
+  "finite_loss": true,
+  "finite_gradients": true,
+  "all_layers_nonzero_gradient": true,
+  "gradient_norm_before_clip": 0.11367090791463852,
+  "finite_parameters_after_step": true,
+  "seconds": 2.296272700186819
+}
