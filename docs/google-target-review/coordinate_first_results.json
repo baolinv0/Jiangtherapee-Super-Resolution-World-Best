@@ -1,0 +1,92 @@
+{
+  "scope": "discrete bilinear-field reference; not continuous physical truth",
+  "stationary_motion": {
+    "shifts_native": [
+      [
+        0.0,
+        0.0
+      ],
+      [
+        0.25,
+        0.0
+      ],
+      [
+        0.5,
+        0.0
+      ]
+    ],
+    "coordinate_vs_direct_max": 0.0,
+    "zero_shift_vs_current_max": 5.364418029785156e-07,
+    "current_amplitude_ratios": [
+      0.9999995231628418,
+      0.7499988079071045,
+      0.9999998807907104
+    ]
+  },
+  "shared_native_footprint": {
+    "native_aligned_dense_max": 0.0,
+    "dense_direct_zero_query_max": 0.0,
+    "native_footprint_vs_half_width_dense_max": 0.012161612510681152,
+    "dense_shape": [
+      1,
+      3,
+      64,
+      64
+    ],
+    "native_shape": [
+      1,
+      3,
+      32,
+      32
+    ]
+  },
+  "sensor_fixed_fields": {
+    "linear_ramp_motion_error": 2.1979212760925293e-07,
+    "moving_already_mixed_field_error": 0.0019306130707263947,
+    "weight_change_if_wrongly_moved_max": 0.04313778877258301,
+    "correct_weight_change_between_frames": 0.0
+  },
+  "four_pupil_nodes": {
+    "nodes": 4,
+    "wavelengths_nm": [
+      450,
+      550,
+      650
+    ],
+    "srf_integral_commutation_max": 1.7881393432617188e-07,
+    "zero_motion_discrete_mixing_policy_difference_max": 9.40561294555664e-05,
+    "nonzero_motion_vs_current_max": [
+      0.010891914367675781,
+      0.009362280368804932
+    ]
+  },
+  "area_convergence": {
+    "q4_vs_q64_max": 0.0014933347702026367,
+    "q16_vs_q64_max": 8.785724639892578e-05
+  },
+  "full_spectral_k7": {
+    "wavelength_count": 61,
+    "field_nodes": 4,
+    "frames": 7,
+    "camera_response": "Canon 5DMarkII",
+    "native_camera_rgb_shape": [
+      7,
+      3,
+      16,
+      16
+    ],
+    "dense_post_pixel_target_shape": [
+      1,
+      3,
+      32,
+      32
+    ],
+    "reference_native_vs_aligned_dense_max": 0.0,
+    "finite_nonnegative": true,
+    "bank_convolutions_per_burst": 244,
+    "source_warps_per_burst": 0,
+    "project_after_convolution_rgb_cache_max_error": 1.7881393432617188e-07,
+    "full_spectral_cache_values": 3060736,
+    "projected_camera_cache_values": 150528
+  }
+}

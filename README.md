@@ -15,6 +15,8 @@
 > **完整光谱数据构造：[61 波段数据链、公开资产与标定接口](docs/SPECTRAL_DATA.md)**。新实验使用 `spectral-camera-v3`，默认 GT 为参考帧同光学、同原生像元面积积分后的 2× 密集 camera RGB（`post_pixel`）；显式保留 `post_optics` / `pre_optics` 消融与旧 v2 行为。[目标定义、Google 2019 依据与迁移](docs/GOOGLE_TARGET.md)区分论文事实与工程选择，不声称复现 Google 算法或其 GT。400–700 nm 光谱、28 台相机相对响应、波长/视场 PSF、PTC/暗场与通道饱和链路保留；默认 PTC 与像差仍是假设。验证：`python -m jsr_repro.validate_spectral --output runs/spectral-v3-verification`。等曝光控制见 `configs/google_equal_exposure_smoke.yaml`；原包围曝光配置属于 HDR 扩展。 当前接入七帧 Transformer；v1 Controller/RefineNet 仍使用旧合成数据。
 >
 > **2026-10-05 数据构造改进方案：[公开资源、物理模型与验收标准](docs/TRAINING_DATA_IMPLEMENTATION_PROPOSAL.md) · [第一阶段实施计划](docs/superpowers/plans/2026-10-05-spectral-jsr-phase1.md)**。推荐实测标定作基准、公开噪声参数和物理 PSF 扩展覆盖范围；第一阶段规划等曝光 JSR 光谱接入、观测饱和掩码、透光率校正、masked fallback、版本化输出与缺色评估。此项更新交付方案和来源记录，计划中的代码、实测资产及完整训练仍待实施。
+
+> **新目标 review：[审查结论与作者用途相容的方案](docs/GOOGLE_TARGET_REVIEW.md) · [一次坐标求积参考与数值验收](docs/google-target-review/REFERENCE.md)**。保留 `post_pixel` 主任务；61 波段/四视场节点/K7 参考已运行，但正式生成器仍需运动重采样、PSF 支持、饱和可靠度与整组缺色验证。本轮 110 项测试及两套 8 步 CPU smoke 通过，未证明实拍质量收益或完整作者训练配方。
 >
 > 审计基线：`6ab0f5b`。下文保留原作者README；其中“尚无算法源码”的旧说明与现有Core目录不一致。原公开模块/权重保留，新工程实现位于`reproduction/`。Transformer依据用户提供的2026-10-03知乎讲稿全文；没有独立取得该知乎网页或原Transformer训练配方，不将机制对应写成原权重/画质复现。
 

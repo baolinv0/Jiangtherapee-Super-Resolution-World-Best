@@ -1,10 +1,10 @@
 # JSR 训练数据构造：公开资源与可实施方案
 
-调研及方案更新日期：2026-10-05（Asia/Shanghai）。审查分支：`reproduce/jsr-pytorch-engineering`，提交 `0e764de8bb026b1e08da3655d8d741e299018108`。
+调研及方案更新日期：2026-10-05（Asia/Shanghai）。审查分支：`reproduce/jsr-pytorch-engineering`。原调研基线为历史提交 `0e764de8bb026b1e08da3655d8d741e299018108`；本轮目标审查基线为 `0bc29f14dd0e4be8a05cfc5787719203fe43d900`。
 
 **建议采用“实测标定作基准，公开参数与物理模型扩展覆盖范围”的方案。** 现有分支已提供可运行的光谱—光学—传感器骨架，可以继续使用。需要补齐的是资产的物理对应关系、真实标定、原版 JSR 训练入口，以及证明部分通道饱和恢复的评估。公开资源足以支持一个有来源、可验证的独立实现；本次没有取得作者的原始 PTC/镜头库，不能据此声称复现了其全部训练分布。
 
-本文区分已核验的公开事实与建议实施的工作。以下采集数量、采样网格、阈值和阶段安排均为工程建议；没有执行代码改造、真实拍摄或完整训练。本次更新将方案、来源记录及第一阶段实施计划纳入仓库；下述产品代码改造、真实采集和完整训练仍为待执行事项。
+本文区分已核验的公开事实与建议实施的工作。原调研只更新文档；此后代码已增加 `spectral-camera-v3` 的三阶段目标，默认 `post_pixel`，见 [GOOGLE_TARGET.md](GOOGLE_TARGET.md) 和[本轮审查](GOOGLE_TARGET_REVIEW.md)。本次同步这项独立工程选择，并保留历史 v2 语义。以下采集数量、采样网格、阈值和 v1 接入安排仍为工程建议；真实拍摄、完整训练及未落实的代码改造均待执行。作者实际 GT 的物理阶段没有因此得到确定。
 
 ## 1. 对作者描述的逐项落实
 
@@ -53,7 +53,7 @@ PMN 固定提交 `d207d3eb62e3a5106861992c0562054adf9a9c70` 的 [process.py](htt
 
 ### 3.1 光谱与源图像
 
-主训练源可继续采用当前快速基函数，但优先加入线性 HDR/高质量线性 RGB，减少 JPEG 既有锐化、去噪、局部色调映射被当作干净真值的影响。原始源图的光学模糊仍在；“GT 不通过新模拟 PSF”不意味着已经获得真实无模糊场景。
+主训练源可继续采用当前快速基函数，但优先加入线性 HDR/高质量线性 RGB，减少 JPEG 既有锐化、去噪、局部色调映射被当作干净真值的影响。原始源图的光学模糊仍在；仅 `pre_optics` 消融的 GT 排除新模拟 PSF，也不意味着已经获得真实无模糊场景。
 
 加入 NTIRE/ARAD 等实测高光谱子集，用于约束光谱分布和留出测试。读取真实波长轴后重采样到当前 61 波段；插值增加数值采样点，不增加真实测量的信息。分清输入是反射率还是辐亮度：反射率需要指定照明，已包含照明的辐亮度不能再乘 D65。RGB 先验及高光谱场景都应记录照明/曝光尺度。若扩展到 400–700 nm 之外，需要同时扩展基函数、响应、PSF 和积分轴，不能只补零后宣称扩展完成。
 
@@ -95,7 +95,9 @@ PSF 库至少保存波长/光谱带宽、物理采样、视场、光圈、焦点
 
 `线性场景/光谱 → 帧运动映射 → 各波长视场 PSF → 光谱响应及一次像元积分 → RGGB → 透光率/曝光形成期望电子数 → Poisson → 满阱 → 读出噪声 → DN/量化/ADC → 观测掩码`。
 
-空间均匀的线性光谱响应与像元积分可交换；条件不满足时必须按真实传感器空间响应实施。GT 取参考曝光下、附加光学退化之前的清晰相机 RGB，允许大于参考白，不能再次使用带光学退化/剪裁的输入作为 GT。
+空间均匀的线性光谱响应与像元积分可交换；条件不满足时必须按真实传感器空间响应实施。GT 按现有 `spectral-camera-v3` 的 `target_stage` 解释：默认 `post_pixel`，取参考帧同一光谱 PSF/SRF 作用后、保留原生像元 footprint 的密集 2× 采样；`post_optics` 排除像元面积响应，`pre_optics` 才排除新增光学退化。三者均在参考曝光的 camera RGB 中，允许大于参考白，不含 CFA、观测透光率、噪声或剪裁。f-stop/PSF/pitch/fill 改变时 GT 全部不变的断言只适用于 `pre_optics`；`post_optics` 可随光学变化但不随 fill 变化，默认 `post_pixel` 可同时随光学和 fill 变化。三阶段分别训练评估，不能合并成一个“清晰 GT”任务。
+
+当前阶段切换沿用历史 v2 的观测 RNG namespace；在其余选项、资产和观测算子相同的条件下，共享 RAW 以作目标消融。**待做：** 评估 coordinate-first 前向计算，避免低分辨率场景先 bilinear warp 再积分产生额外平滑；同时检查视场 PSF 固定在传感器坐标的语义，不能假定运动和空间变化光学可交换。应做场景网格、FFT/瞳孔、面积求积及视场插值的数值收敛，并记录 PSF 归一化前的有限支持能量损失。未来改变这些观测算子时应新增独立 `forward_model` 身份；目标阶段与前向模型分开记录，不承诺新旧 RAW 逐值相同。这些改造尚未实施。
 
 当前响应按每通道 D65 白归一化，再独立使用 transmission，因此额外透光率有明确位置。如果改用绝对 QE、含 CFA 透过率的响应，需重新定义归一化，避免重复计入同一透过率。光圈改变 PSF 形状不自动改变曝光：物理通量模式需要加入 T-stop、曝光时间、像元面积等；沿用当前每 ISO 白电平归一化模式也可以，但不能把它报告成固定光子通量的 ISO 扫描。
 
@@ -108,7 +110,7 @@ PSF 库至少保存波长/光谱带宽、物理采样、视场、光圈、焦点
 
 ## 4. 接入当前 JSR 的必要调整
 
-这些是实施建议，尚未修改代码。保持 151→36 Controller、六通道 RefineNet 拓扑可行；但只替换 Dataset 不能满足任务。
+本节是尚未实施的 v1 JSR 接入建议；现有 Transformer 的 camera-v3 目标定义已实现，不能据此声称 v1 adapter 也已完成。保持 151→36 Controller、六通道 RefineNet 拓扑可行；但只替换 Dataset 不能满足任务。
 
 | 位置 | 建议 | 原因 |
 | --- | --- | --- |
@@ -142,6 +144,8 @@ v1 未填写 protocol 时仍应选择原 `inferred-synthetic-v1`，Transformer �
 
 C/D 组的支持判定要在配准后的共同评价区域进行，并覆盖模型依赖域。同色观测可能通过邻域平滑、融合 taps 或网络上下文到达输出；存在这些支持时，改善不能直接归因于跨通道恢复。建议先用整个输入及上下文都缺失某 CFA 颜色的受控案例验证，再扩展局部饱和的自然场景。
 
+核心验收须包含**等曝光、部分颜色在整组输入及上下文中都缺失、其余颜色有观测支持**的受控样本，单列 C/D 组缺色误差和未缺失通道损伤。现有低增益等曝光 smoke 主要检查目标，bracket 的高光 RMSE 也不能替代这项验收。**待做：** 当前满阱后加读噪声，再按观测 DN 阈值判饱和，负读噪声可能把实际 clipped 样本移到阈值下；需标定仅依赖观测噪声/相机信息的 guardband 或 softmask，报告不同 ISO 下漏判与误拒率。clean `signal_saturation` 只能用于离线诊断，不得作为部署 mask；新规则应版本化，不改写历史 capture mask。
+
 首先做接口验证：改变 masked 值不得改变 accepted statistics/fallback；透光率校正保留有效 HDR 值；零支持处理明确；固定 masks/geometry 后的输入增益测试保持预期比例关系。再验证物理资产：用留出 ISO/照明水平/视场/波长检查 PTC/PSF，测试单色质心、均匀场、delta PSF 和一次积分。
 
 完成足够训练后，C/D 组至少对比：透光率校正后的 masked merge、旧数据 recipe 的模型、新 recipe 的模型，以及无光谱/无饱和扩增的消融。判断数据扩增本身的收益，必须另设相同拓扑、相同 output policy 的消融，避免把取消截断带来的可表示范围扩大误归因于光谱建模；旧 checkpoint 原行为另列为对照。各方法共享相机 RGB 单位、mask 和评估域，不额外对每个模型拟合增益。报告缺失颜色 RMSE、R−G/B−G 色差、未饱和通道受损、边缘/光晕，以及不同 ISO、镜头、亮度区间的结果；不能只用全图 PSNR 稀释缺色区域误差。
@@ -165,14 +169,15 @@ C/D 组的支持判定要在配准后的共同评价区域进行，并覆盖模�
 
 第一阶段只交付现有假设资产下的数据—模型—档案闭环，真实 PTC、PMN 导入、实测高光谱及镜头库分别进入后续资产阶段。
 
-- 新数据协议名为 `spectral-jsr-v3`：RGGB、scale=2、K4/7/14、偶数 native_size≥16、等曝光；旧数据协议和 Transformer 默认不变。
+- `spectral-jsr-v3` 是先前建议的、尚未实现的 **v1 architecture adapter family**，不是现有相机数据协议名。它应消费 `spectral-camera-v3` 数据，默认显式 `target_stage: post_pixel`；其余阶段是分别训练评估的独立消融。待扩展 v1 recipe 至 RGGB、scale=2、K4/7/14、偶数 native_size≥16、等曝光；现有 camera-v3 生成器仍为 K7，旧数据协议和 Transformer 默认不变。
 - 新 `prepare_v1_inputs` 只消费 batched 观测 RAW、曝光、透光率及 valid/saturation，按 CFA 校正，输出 RAW 与 validity；clean signal/GT 不参与模型条件。档案保存 unbatched 数据，推理显式补 batch 维。
 - `JSRModel.forward` 在既有参数之后增加 keyword-only validity；Controller/RefineNet 权重布局不变。缺省 `legacy-clipped-v1`，新 recipe 显式选择 `linear-unclipped-v1`，不把新行为写成原权重复现。
-- 新档案名为 `jsr-burst-v2`，pipeline 身份 schema 为 `jsr-pipeline-identity-v1`；绑定协议、output policy、目标空间、光谱/profile/PSF/dark bank 的内容身份及 recipe。新 checkpoint 使用 format_version=2；旧 format_version=1 保留原加载行为。档案保留原始 `observed_dn`，核对 RAW 归一化及观测饱和 mask；不从 float32 归一化 RAW 逆算 DN 来保证无量化时的精确阈值。旧 capture 继续使用原 DN 运算顺序。
+- 待新增 v1 档案名为 `jsr-burst-v2`，pipeline 身份 schema 为 `jsr-pipeline-identity-v1`；分别绑定相机数据 protocol、adapter_family、target_stage/目标空间、output policy、独立 forward_model、光谱/profile/PSF/dark bank 的内容身份及 recipe。新 v1 checkpoint 使用 format_version=2；旧 format_version=1 保留原加载行为。档案保留原始 `observed_dn`，核对 RAW 归一化及观测饱和 mask；不从 float32 归一化 RAW 逆算 DN 来保证无量化时的精确阈值。旧 capture 继续使用原 DN 运算顺序。
 - Profile 哈希保留原 canonical JSON，tensor 校验先转换为相同 float32；recipe 身份排除 split、seed/epoch/index、采样次数等迭代字段，保留成像/噪声分布、K、单位及资产身份。旧 checkpoint 的跨 recipe 对照只能作为显式 model-only 离线实验，不能绕过正式推理的身份检查。
 - 首期 K4/7/14 分别使用明确的 recipe 训练/评估；新协议不能靠 `--frames` 静默跨越训练 recipe 的 K。参数布局相同不说明校准/数据身份或泛 K 恢复能力相同。
 - 第一阶段训练用 joint/refine、learned_weight=0，仅监督最终 RGB；controller-only 及缺色融合辅助 loss 不在首期支持范围。新评估用 oracle，推理用 provided shifts；未适配掩码的 estimated/robust 对齐对新协议明确拒绝，旧路径保留。
 - 8-step smoke 验收执行、数据/推理一致和 resume；质量状态保持 `not_established`，直到有留出 C/D 组及相同 output policy 的公平消融证据。
+- coordinate-first 前向模型、网格/求积/PSF 支持收敛以及噪声后满阱的观测 guardband/softmask 均 pending；阶段切换保留相同观测 RNG，前向算子改版则另记身份并重新验证，不以 RAW parity 阻止有依据的数值修正。
 
 ## 7. 第一阶段计划与可复查资料
 

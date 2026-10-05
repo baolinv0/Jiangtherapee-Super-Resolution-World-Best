@@ -101,3 +101,5 @@ python -m jsr_repro.evaluate_transformer --checkpoint runs/google-equal-exposure
 场景只在原生 2× 网格离散，亚像素运动和求积依赖 bilinear 插值；这会引入额外平滑并限制可模拟频带，不能当作连续物理真值。有限 PSF 支持、FFT 采样、4×4 求积和四节点视场插值均为数值近似；强像差、边缘、高频靶及更高精度需求应做网格、支持和求积收敛研究。RGB 提升谱仍有不可辨识性，源图像可能已有光学与 ISP 痕迹；PTC、镜头像差和参数联合分布仍含假设。
 
 当前范围只有静态场景的帧间平移，不含动态物体、曝光轨迹、rolling shutter 或完整真实相机标定。该修改定义并验证一个更明确的合成重建任务，不证明其为 Google 的理论上限，也不代表已完成自然图像训练或真实 RAW 画质验证。
+
+对提交 `0bc29f1` 的独立复核、量化反例及一次坐标求积参考见 [GOOGLE_TARGET_REVIEW.md](GOOGLE_TARGET_REVIEW.md)。正式训练前需补运动重采样/PSF 支持收敛、观测饱和可靠度，以及等曝光整组缺色的专门验收；该 review 未切换生产生成器。

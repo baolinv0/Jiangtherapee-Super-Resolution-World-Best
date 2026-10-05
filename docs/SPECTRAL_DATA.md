@@ -134,6 +134,8 @@ NPZ 包含 `kernels[nodes,61,2r+1,2r+1]`、`field_xy[nodes,2]`、`wavelengths_nm
 
 v3 检查阶段对应的 GT 变化、同 RAW 三阶段消融、固定原生面积、观测因素不进入 GT、旧 v2 恢复和跨阶段拒绝；运行命令、反例及设计见 [GOOGLE_TARGET.md](GOOGLE_TARGET.md)，新增证据单列记录，历史 JSON 不改写。
 
+后续 [独立 review 与可运行参考](GOOGLE_TARGET_REVIEW.md) 量化了运动重采样、有限 PSF 支持和读噪声后饱和漏判的限制，并给出等曝光整组缺色的验收方案。参考算子尚未接入正式生成器。
+
 尚缺作者原始图像清单、RGB→谱算法、全部相机 PTC/暗场、实测/设计镜头 PSF、各参数联合分布与原始训练。默认只含静态场景帧间平移，没有曝光期间运动积分、动态物体、rolling shutter、lens shading、完整 sensor crosstalk 或反 ISP。场景仅在原生 2× 网格离散，亚像素运动和积分依赖 bilinear 插值，不是连续光学真值。有限 FFT/PSF 支持会截掉衍射尾部后重新归一化，四节点视场近似和固定求积也有误差；需按目标空间分辨率加密、扩大支持并做收敛评估。后续取得真实资产可通过上述接口替换，不需要重写数据链。
 
 

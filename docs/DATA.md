@@ -2,7 +2,7 @@
 
 新七帧 Transformer 光谱实验使用 [spectral-camera-v3 构造](SPECTRAL_DATA.md)：默认 GT 保留参考光学与原生像元面积响应（`post_pixel`），另有两个目标阶段消融；旧 v2 固定保留 `pre_optics`。61 波段、公开相机曲线、PTC/暗场与包围曝光链路保留，并新增等曝光控制配置；[目标定义与迁移](GOOGLE_TARGET.md)包含坐标、运行命令和验证依据。v1 Controller/RefineNet 的训练和评估仍直接使用旧合成数据，不能把 Transformer 的接入状态归到 v1。
 
-调研后的改进路线见 [训练数据实现方案](TRAINING_DATA_IMPLEMENTATION_PROPOSAL.md) 和 [第一阶段实施计划](superpowers/plans/2026-10-05-spectral-jsr-phase1.md)。拟新增 `spectral-jsr-v3` 等曝光协议，保留已有数据协议与模型默认行为；目前该面向 v1 的新协议尚未实现，与已实现的七帧 Transformer `spectral-camera-v3` 不同。旧数据协议名 `inferred-synthetic-v1` 与 checkpoint 的 implementation 名 `inferred-jsr-v1` 分别标识数据和模型，不能混为一谈。
+调研后的改进路线见 [训练数据实现方案](TRAINING_DATA_IMPLEMENTATION_PROPOSAL.md)、[第一阶段实施计划](superpowers/plans/2026-10-05-spectral-jsr-phase1.md) 和 [新目标 review](GOOGLE_TARGET_REVIEW.md)。拟新增面向 v1 的 `spectral-jsr-v3` adapter family，复用已有 `spectral-camera-v3` 的明确目标合同，扩展等曝光/K 的接口并保留已有数据协议与模型默认行为；该 adapter 尚未实现，不能视为新相机数据协议或已完成的 v1 接入。旧数据协议名 `inferred-synthetic-v1` 与 checkpoint 的 implementation 名 `inferred-jsr-v1` 分别标识数据和模型，不能混为一谈。
 
 本文下面的合成链/未模拟范围仅适用于原`inferred-jsr-v1`。新七帧数据链的PTC/暗场接口、ISO档案、三波段PSF、像元积分、包围曝光与信号饱和见[TRANSFORMER.md](TRANSFORMER.md)。两者均为代理数据，作者原训练集未恢复。
 
