@@ -2,6 +2,8 @@
 
 本文记录公开v9.8模块及推断Tap的`inferred-jsr-v1`路径。新增的七帧多曝光`speech-inspired-transformer-v1`是独立入口，见[讲稿机制与Transformer说明](TRANSFORMER.md)，checkpoint不可互换。
 
+2026-10-05 更新了[训练数据构造方案](TRAINING_DATA_IMPLEMENTATION_PROPOSAL.md)与[等曝光 JSR 光谱接入实施计划](superpowers/plans/2026-10-05-spectral-jsr-phase1.md)。它们记录待实施的掩码/透光率适配、masked fallback、输出策略及资产身份检查；本文的现有命令、默认配置和权重行为仍按当前实现解释。
+
 审计日期：2026-10-05（Asia/Shanghai）。作者仓库与本 fork 的审计基线均为 [`6ab0f5bf76d2ccfbf7e21798cc575232ef9b272b`](https://github.com/y-g-jiang/Jiangtherapee-Super-Resolution-World-Best/tree/6ab0f5bf76d2ccfbf7e21798cc575232ef9b272b)。
 
 **这里交付可训练、可测试的工程实现，不宣称恢复了未公开的原训练过程，也不宣称达到原作者画质或世界最好。** 可确认的网络模块移植到 PyTorch；缺失的采样、统计、融合和训练环节采用明确命名的独立方案。原有 `Core-Only-Source-Code/` 与权重不修改。

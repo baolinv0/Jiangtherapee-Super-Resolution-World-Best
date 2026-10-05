@@ -1,8 +1,14 @@
 # JSR 光谱—光学—传感器数据构造
 
-协议：`spectral-camera-v2`。这是按用户提供的知乎讲稿与流程图实现的、可运行的独立数据方案：RGB→61 波段假设光谱→波长/视场相关光学→像元积分→相机响应→七帧 RAW。训练、评测、导出和标定入口均已接通。**流程层面已经实现；作者原始光谱算法、镜头/PTC 库、图像集合与采样分布没有恢复，不能称为原训练集的数值复现。**
+协议：`spectral-camera-v2`。这是按用户提供的知乎讲稿与流程图实现的、可运行的独立数据方案：RGB→61 波段假设光谱→波长/视场相关光学→像元积分→相机响应→七帧 RAW。七帧 Transformer 的训练、评测、导出和标定入口已接通；v1 Controller/RefineNet 的训练、验证及推理尚未接入这套校准数据适配。**独立流程已实现；作者原始光谱算法、镜头/PTC 库、图像集合与采样分布没有恢复，不能称为原训练集的数值复现。**
 
-原 `inferred-jsr-v1` 和三波段 `speech-camera-proxy-v1` 保留用于旧实验；新数据实验应显式选择本协议。不要把旧模型的模糊 GT 与本协议的清晰 GT 混用。七帧网络仍是[讲稿启发的独立 Transformer](TRANSFORMER.md)，没有改变为作者未公开权重。
+## 调研后的改进方案（待实施）
+
+详见 [训练数据实现方案与来源](TRAINING_DATA_IMPLEMENTATION_PROPOSAL.md) 和 [第一阶段实施计划](superpowers/plans/2026-10-05-spectral-jsr-phase1.md)。推荐将同机身实测标定与抽象域扩增分别登记。PMN 的 Sony A7S II ISO100–800 参数可作为有来源的 donor 噪声参考；DeepLens 的审计后专利处方可生成离线 PSF；实测高光谱场景用于验证 RGB 光谱先验。这些资源不构成已测量的完整相机/定焦镜头库。
+
+第一阶段拟新增 `spectral-jsr-v3`（scale2、K4/7/14、等曝光），同步适配训练、训练内验证、评估、档案导出和推理，修正 masked fallback，版本化选择输出组装，并检查校准/资产身份。现有 `spectral-camera-v2` 和旧 checkpoint 默认行为保留。验收重点是整组 burst 及依赖域都缺失某颜色时的最终 RGB 恢复；不能以仍有短曝光同色观测或只统计 GT>1 的指标替代。这些代码调整和专门训练尚未执行。
+
+原 `inferred-synthetic-v1` 数据（用于 `inferred-jsr-v1` 模型）和三波段 `speech-camera-proxy-v1` 保留用于旧实验；新的七帧 Transformer 光谱数据实验应显式选择本协议。不要把旧模型的模糊 GT 与本协议的清晰 GT 混用。七帧网络仍是[讲稿启发的独立 Transformer](TRANSFORMER.md)，没有改变为作者未公开权重。
 
 ## 与作者描述逐项对应
 
@@ -99,11 +105,11 @@ NPZ 包含 `kernels[nodes,61,2r+1,2r+1]`、`field_xy[nodes,2]`、`wavelengths_nm
 
 示例 sampling_um=2 要求 pitch_um 固定为 4（HR/native 倍率 2）。设置 `psf_library`，固定匹配的 f-number、pitch、field_center、field_extent 和 psf_radius。单节点用于 extent=0；四节点必须按左上、右上、左下、右下与配置逐值匹配。代码拒绝尺寸/单位不符或已包含像元积分的核，不静默重采样。真实机身—镜头组合应同时固定 camera_id、PTC 和对应光学库。
 
-## 与 RAW-Domain Degradation Models 的关系
+## 相关引用的核验与积分边界
 
-[Mosleh 等，RAW-Domain Degradation Models for Realistic Smartphone Super-Resolution](https://arxiv.org/html/2603.12493v1) 使用标定的有效空间/RGB 退化核和 ISO/CFA 噪声模型，面向单帧 RAW→RGB 超分；其有效核吸收了传感器积分等退化。这里根据 JSR 讲稿显式建 61 波段、七帧、包围曝光和通道饱和，默认光学来自参数模型。
+此前版本引用 [RAW-Domain Degradation Models for Realistic Smartphone Super-Resolution](https://arxiv.org/html/2603.12493v1)。本次调研未能独立取得该全文及实现，不把其具体方法作为已核验的实施依据。已核验的光学实现、实测核方法和来源范围见 [光学调研](training-data-research/optics/notes.md)。
 
-二者共同点是尽量在 RAW 域模拟成像、区分相机噪声和图像目标。该论文不能补出作者 JSR 的光谱或 PTC 文件。也不能把其有效核直接当本接口的纯光学核后再做一次像元积分。本工程没有声称复现该论文或比其校准方案更真实；真实域有效性需要相机实拍验证。
+[Delbracio 的作者说明](https://github.com/mdelbra/psf-estim)明确指出其估计的相机模糊包含传感器及抗混叠滤镜等效应。这样的有效相机核不能直接当本接口的纯光学核后重复做像元积分。纯光学核与有效相机核应使用各自清晰的协议，并在相同测量域内验证；这些资料不能补出作者 JSR 的原始光谱或 PTC 文件。
 
 ## 公开资产、出处与许可
 

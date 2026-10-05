@@ -1,0 +1,42 @@
+[
+  {
+    "name": "pmn_main_process",
+    "url": "https://raw.githubusercontent.com/megvii-research/PMN/main/data_process/process.py",
+    "status": 200,
+    "size": 44747,
+    "local_cache_name": "sensor/assets/pmn_main_process.txt"
+  },
+  {
+    "name": "pmn_main_BLE",
+    "url": "https://raw.githubusercontent.com/megvii-research/PMN/main/resources/darkshading_BLE.pkl",
+    "status": 200,
+    "size": 1318,
+    "local_cache_name": "sensor/assets/pmn_main_BLE.pkl"
+  },
+  {
+    "name": "noiseflow_train_inst",
+    "url": "https://raw.githubusercontent.com/BorealisAI/noise_flow/master/sidd/train_inst.csv",
+    "status": 200,
+    "size": 286,
+    "local_cache_name": "sensor/assets/noiseflow_train_inst.txt"
+  },
+  {
+    "name": "noiseflow_test_inst",
+    "url": "https://raw.githubusercontent.com/BorealisAI/noise_flow/master/sidd/test_inst.csv",
+    "status": 200,
+    "size": 102,
+    "local_cache_name": "sensor/assets/noiseflow_test_inst.txt"
+  },
+  {
+    "name": "sidd_official_readme_guess",
+    "url": "https://raw.githubusercontent.com/AbdoKamel/SIDD/master/README.md",
+    "error": "HTTP Error 404: Not Found"
+  },
+  {
+    "name": "pmn_main_noise_params_get",
+    "url": "https://raw.githubusercontent.com/megvii-research/PMN/main/data_process/process.py",
+    "status": 200,
+    "size": 44747,
+    "local_cache_name": "sensor/assets/pmn_main_noise_params_get.txt"
+  }
+]

@@ -1,6 +1,8 @@
 # 数据构造与协议
 
-新实验推荐 [spectral-camera-v2 完整构造](SPECTRAL_DATA.md)：61 波段、公开相机曲线、衍射/像差、像元积分、PTC/暗场、七帧包围曝光和清晰 GT；包含外部标定格式与运行命令。下面是保留的早期协议记录，不能据此推断新链路仍缺少这些环节。
+现有七帧 Transformer 数据实验可使用 [spectral-camera-v2 构造](SPECTRAL_DATA.md)：61 波段、公开相机曲线、衍射/像差、像元积分、PTC/暗场、七帧包围曝光和清晰 GT；包含外部标定格式与运行命令。v1 Controller/RefineNet 的训练和评估仍直接使用旧合成数据，不能把 Transformer 的接入状态归到 v1。
+
+调研后的改进路线见 [训练数据实现方案](TRAINING_DATA_IMPLEMENTATION_PROPOSAL.md) 和 [第一阶段实施计划](superpowers/plans/2026-10-05-spectral-jsr-phase1.md)。拟新增 `spectral-jsr-v3` 等曝光协议，保留已有数据协议与模型默认行为；目前该新协议尚未实现。旧数据协议名 `inferred-synthetic-v1` 与 checkpoint 的 implementation 名 `inferred-jsr-v1` 分别标识数据和模型，不能混为一谈。
 
 本文下面的合成链/未模拟范围仅适用于原`inferred-jsr-v1`。新七帧数据链的PTC/暗场接口、ISO档案、三波段PSF、像元积分、包围曝光与信号饱和见[TRANSFORMER.md](TRANSFORMER.md)。两者均为代理数据，作者原训练集未恢复。
 

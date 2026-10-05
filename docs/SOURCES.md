@@ -56,6 +56,14 @@ Sources:
 
 ## Proposed engineering defaults — explicitly inferred
 
+The 2026-10-05 follow-up investigation is published in [the training-data proposal](TRAINING_DATA_IMPLEMENTATION_PROPOSAL.md), with [the phase-one execution plan](superpowers/plans/2026-10-05-spectral-jsr-phase1.md). It updates the recommendations below without claiming that the planned changes or new measured assets have already been implemented.
+
+- The user provided a direct JSR training-data attribution URL: [Zhihu article 2088805454843585359](https://zhuanlan.zhihu.com/p/2088805454843585359), author 姜尧耕（渔樵耕牍）. This resolves the earlier URL-discovery limitation; the original asset library and article page were not independently authenticated in this follow-up.
+- [PMN's pinned Sony A7S II coefficients](https://raw.githubusercontent.com/megvii-research/PMN/d207d3eb62e3a5106861992c0562054adf9a9c70/data_process/process.py) include ISO100/200/400/800. They are released donor fitted parameters, not a recovered full-frame PTC library. Their gain convention is DN/e, the inverse of this repository's e/DN. Full-well and CFA transmission remain unestablished. [Sensor evidence](training-data-research/sensor/notes.md).
+- [DeepLens](https://github.com/vccimaging/DeepLens) supplies physical simulation and public patent-example prescriptions; production-lens measurement, full-frame field coverage, aperture and dispersion require validation. [Optical evidence](training-data-research/optics/notes.md).
+- [MST++](https://github.com/caiyuanhao1998/MST-plus-plus) provides primary-source paired spectral/RGB dataset links; the external archives were not downloaded. RGB spectral predictions and wavelength interpolation remain priors, not newly measured spectral information.
+- GitHub project documentation, selected code and small parameter assets were retrieved. Several official PDFs, PhotonsToPhotos charts and external dataset domains returned proxy CONNECT403. Code licenses and third-party dataset/asset rights must be recorded separately; no TLS checks were disabled.
+
 1. Start with licensed local HR RGB, preferably the public Zurich training split. Document conversion to a linear proxy. Inverse sRGB alone does not undo unknown tone mapping, denoising, sharpening or camera colors; do not call it measured camera RAW. Also allow already linear RGB.
 2. Synthesize reference-space linear GT, subpixel motion, optical/pixel integration blur, RGGB and shot/read noise. Record seed, source hash, CFA phase, black/white levels, motion sign/units, sampling ratio and every degradation parameter. Ranges are our choices.
 3. Begin with static scenes and known translations to isolate backend reconstruction. Call this oracle geometry. Estimated alignment is a separate condition. Treat affine motion, LCA, clipping and moving objects as explicit stress conditions.

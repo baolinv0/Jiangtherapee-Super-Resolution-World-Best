@@ -1,0 +1,62 @@
+{
+  "retrieved_utc_date": "2026-10-05",
+  "repository_commit": "88a35ec4764bb3042cdf35fd41d444e0d5d7679e",
+  "sources": [
+    {
+      "url": "https://raw.githubusercontent.com/ansys/lib-zemax-programming/88a35ec4764bb3042cdf35fd41d444e0d5d7679e/README.md",
+      "status": 200,
+      "bytes": 2559,
+      "local": "pinned_README.md",
+      "sha256": "80dfa983b45c91ffadcc66384514d2041ea342a84e78bf0c49bd0a6af7ebacb8"
+    },
+    {
+      "url": "https://raw.githubusercontent.com/ansys/lib-zemax-programming/88a35ec4764bb3042cdf35fd41d444e0d5d7679e/LICENSE",
+      "status": 200,
+      "bytes": 1091,
+      "local": "pinned_LICENSE",
+      "sha256": "a8dcdae809c25815dff445f136a599dcba922adcfb81d56365071a61cfe9c328"
+    },
+    {
+      "url": "https://raw.githubusercontent.com/ansys/lib-zemax-programming/88a35ec4764bb3042cdf35fd41d444e0d5d7679e/examples/python/PythonStandalone_01_new_file_and_quickfocus.py",
+      "status": 200,
+      "bytes": 9528,
+      "local": "pinned_examples_python_PythonStandalone_01_new_file_and_quickfocus.py",
+      "sha256": "80881ffad0326815da45e4e28bfd59d1d248edf55379324b565cb49264bd8ac8"
+    },
+    {
+      "url": "https://raw.githubusercontent.com/ansys/lib-zemax-programming/88a35ec4764bb3042cdf35fd41d444e0d5d7679e/examples/python/PythonStandalone_04_pull_data_from_FFTMTF.py",
+      "status": 200,
+      "bytes": 10563,
+      "local": "pinned_examples_python_PythonStandalone_04_pull_data_from_FFTMTF.py",
+      "sha256": "d1bc43eac9e2e073f2f94ccbd5ac646d31662b5d969b5549d3e2a8daa79c42bf"
+    },
+    {
+      "url": "https://raw.githubusercontent.com/ansys/lib-zemax-programming/88a35ec4764bb3042cdf35fd41d444e0d5d7679e/examples/python/PythonStandalone_12_SEQ_SystemExplorer.py",
+      "status": 200,
+      "bytes": 9770,
+      "local": "pinned_examples_python_PythonStandalone_12_SEQ_SystemExplorer.py",
+      "sha256": "c409bb3daded99010cc9cf1bcbf53f0a0fadf79a781729f282c1d4561cb911cf"
+    },
+    {
+      "url": "https://raw.githubusercontent.com/ansys/lib-zemax-programming/88a35ec4764bb3042cdf35fd41d444e0d5d7679e/examples/python/PythonStandalone_15_Seq_Optimization.py",
+      "status": 200,
+      "bytes": 15989,
+      "local": "pinned_examples_python_PythonStandalone_15_Seq_Optimization.py",
+      "sha256": "f63317ef4ab7e75021be02414d818cc19cda739ba584e4d209137c4d6902d069"
+    },
+    {
+      "url": "https://raw.githubusercontent.com/ansys/lib-zemax-programming/88a35ec4764bb3042cdf35fd41d444e0d5d7679e/examples/python/PythonStandalone_22_seq_spot_diagram.py",
+      "status": 200,
+      "bytes": 13376,
+      "local": "pinned_examples_python_PythonStandalone_22_seq_spot_diagram.py",
+      "sha256": "b2637d74a2cb43916a0753cdae4d6e5c2520ef7f98fa3c68cb38c64f302b8c17"
+    },
+    {
+      "url": "https://raw.githubusercontent.com/ansys/lib-zemax-programming/88a35ec4764bb3042cdf35fd41d444e0d5d7679e/examples/c_sharp/SampleExtension1.cs",
+      "status": 200,
+      "bytes": 15285,
+      "local": "pinned_examples_c_sharp_SampleExtension1.cs",
+      "sha256": "d2c2c97056cdc4dd816e55d100e19fc8fe7cb52466afe8d8c2c8264883daa503"
+    }
+  ]
+}

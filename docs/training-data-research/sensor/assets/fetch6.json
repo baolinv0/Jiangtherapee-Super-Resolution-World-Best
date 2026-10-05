@@ -1,0 +1,52 @@
+[
+  {
+    "name": "pmn_darkshading_lowISO_k_npy",
+    "url": "https://raw.githubusercontent.com/megvii-research/PMN/TPAMI/resources/SonyA7S2/darkshading_lowISO_k.npy",
+    "error": "HTTP Error 404: Not Found"
+  },
+  {
+    "name": "pmn_darkshading_lowISO_b_npy",
+    "url": "https://raw.githubusercontent.com/megvii-research/PMN/TPAMI/resources/SonyA7S2/darkshading_lowISO_b.npy",
+    "error": "HTTP Error 404: Not Found"
+  },
+  {
+    "name": "pmn_darkshading_highISO_k_npy",
+    "url": "https://raw.githubusercontent.com/megvii-research/PMN/TPAMI/resources/SonyA7S2/darkshading_highISO_k.npy",
+    "error": "HTTP Error 404: Not Found"
+  },
+  {
+    "name": "pmn_BLE_t_pkl",
+    "url": "https://raw.githubusercontent.com/megvii-research/PMN/TPAMI/resources/SonyA7S2/BLE_t.pkl",
+    "status": 200,
+    "size": 47317,
+    "local_cache_name": "sensor/assets/pmn_BLE_t_pkl.pkl"
+  },
+  {
+    "name": "pmn_main_resources",
+    "url": "https://github.com/megvii-research/PMN/tree/main/resources",
+    "status": 200,
+    "size": 234011,
+    "local_cache_name": "sensor/assets/pmn_main_resources.txt"
+  },
+  {
+    "name": "pmn_IMX686_iso100",
+    "url": "https://raw.githubusercontent.com/megvii-research/PMN/TPAMI/resources/IMX686/noiseparam-iso-100.h5",
+    "status": 200,
+    "size": 46592,
+    "local_cache_name": "sensor/assets/pmn_IMX686_iso100.h5"
+  },
+  {
+    "name": "pmn_IMX686_iso6400",
+    "url": "https://raw.githubusercontent.com/megvii-research/PMN/TPAMI/resources/IMX686/noiseparam-iso-6400.h5",
+    "status": 200,
+    "size": 54272,
+    "local_cache_name": "sensor/assets/pmn_IMX686_iso6400.h5"
+  },
+  {
+    "name": "pmn_IMX686_BLE",
+    "url": "https://raw.githubusercontent.com/megvii-research/PMN/TPAMI/resources/IMX686/BLE_t.pkl",
+    "status": 200,
+    "size": 219,
+    "local_cache_name": "sensor/assets/pmn_IMX686_BLE.pkl"
+  }
+]

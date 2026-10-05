@@ -12,7 +12,9 @@
 >
 > Transformer验证：`python -m jsr_repro.validate_transformer --output runs/transformer-verification`。
 >
-> **完整光谱数据构造：[61 波段数据链、公开资产与标定接口](docs/SPECTRAL_DATA.md)**。`spectral-camera-v2` 接通 400–700 nm 光谱、28 台相机相对响应、波长/视场 PSF、像元积分、PTC/暗场与通道饱和，GT 在新增光学模糊之前生成。默认 PTC 与像差仍为明确标注的假设，支持用户实测资产替换。验证：`python -m jsr_repro.validate_spectral --output runs/spectral-verification`。
+> **现有光谱数据构造：[61 波段数据链、公开资产与标定接口](docs/SPECTRAL_DATA.md)**。`spectral-camera-v2` 接通 400–700 nm 光谱、28 台相机相对响应、波长/视场 PSF、像元积分、PTC/暗场与通道饱和，目前用于七帧 Transformer；v1 Controller/RefineNet 训练仍使用旧合成数据。GT 在新增光学模糊之前生成。默认 PTC 与像差为明确标注的假设，不代表完整实测相机/定焦镜头库。验证：`python -m jsr_repro.validate_spectral --output runs/spectral-verification`。
+>
+> **2026-10-05 数据构造改进方案：[公开资源、物理模型与验收标准](docs/TRAINING_DATA_IMPLEMENTATION_PROPOSAL.md) · [第一阶段实施计划](docs/superpowers/plans/2026-10-05-spectral-jsr-phase1.md)**。推荐实测标定作基准、公开噪声参数和物理 PSF 扩展覆盖范围；第一阶段规划等曝光 JSR 光谱接入、观测饱和掩码、透光率校正、masked fallback、版本化输出与缺色评估。此项更新交付方案和来源记录，计划中的代码、实测资产及完整训练仍待实施。
 >
 > 审计基线：`6ab0f5b`。下文保留原作者README；其中“尚无算法源码”的旧说明与现有Core目录不一致。原公开模块/权重保留，新工程实现位于`reproduction/`。Transformer依据用户提供的2026-10-03知乎讲稿全文；没有独立取得该知乎网页或原Transformer训练配方，不将机制对应写成原权重/画质复现。
 

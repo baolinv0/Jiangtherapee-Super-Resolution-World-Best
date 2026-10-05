@@ -1,0 +1,70 @@
+[
+  {
+    "name": "pmn_sonya7s2_resource_tree",
+    "url": "https://github.com/megvii-research/PMN/tree/TPAMI/resources/SonyA7S2",
+    "status": 200,
+    "size": 235810,
+    "local_cache_name": "sensor/assets/pmn_sonya7s2_resource_tree.txt"
+  },
+  {
+    "name": "pmn_sonya7s2_old_resource_tree",
+    "url": "https://github.com/megvii-research/PMN/tree/TPAMI/resources/SonyA7S2_old",
+    "status": 200,
+    "size": 225228,
+    "local_cache_name": "sensor/assets/pmn_sonya7s2_old_resource_tree.txt"
+  },
+  {
+    "name": "pmn_imx686_resource_tree",
+    "url": "https://github.com/megvii-research/PMN/tree/TPAMI/resources/IMX686",
+    "status": 200,
+    "size": 232812,
+    "local_cache_name": "sensor/assets/pmn_imx686_resource_tree.txt"
+  },
+  {
+    "name": "pmn_real_dataset",
+    "url": "https://raw.githubusercontent.com/megvii-research/PMN/TPAMI/data_process/real_datasets.py",
+    "status": 200,
+    "size": 30070,
+    "local_cache_name": "sensor/assets/pmn_real_dataset.txt"
+  },
+  {
+    "name": "pmn_noise_estimation",
+    "url": "https://raw.githubusercontent.com/megvii-research/PMN/TPAMI/noise_estimation.py",
+    "status": 200,
+    "size": 22199,
+    "local_cache_name": "sensor/assets/pmn_noise_estimation.txt"
+  },
+  {
+    "name": "pmn_project",
+    "url": "https://fenghansen.github.io/publication/PMN/",
+    "error": "<urlopen error Tunnel connection failed: 403 Forbidden>"
+  },
+  {
+    "name": "noiseflow_siddutils",
+    "url": "https://raw.githubusercontent.com/BorealisAI/noise_flow/master/sidd/sidd_utils.py",
+    "status": 200,
+    "size": 58222,
+    "local_cache_name": "sensor/assets/noiseflow_siddutils.txt"
+  },
+  {
+    "name": "noiseflow_rawutils",
+    "url": "https://raw.githubusercontent.com/BorealisAI/noise_flow/master/sidd/raw_utils.py",
+    "status": 200,
+    "size": 6202,
+    "local_cache_name": "sensor/assets/noiseflow_rawutils.txt"
+  },
+  {
+    "name": "noiseflow_image_loader",
+    "url": "https://raw.githubusercontent.com/BorealisAI/noise_flow/master/sidd/ImageLoader.py",
+    "status": 200,
+    "size": 2913,
+    "local_cache_name": "sensor/assets/noiseflow_image_loader.txt"
+  },
+  {
+    "name": "noiseflow_ckpt_tree",
+    "url": "https://github.com/BorealisAI/noise_flow/tree/master/models/NoiseFlow/ckpt",
+    "status": 200,
+    "size": 230525,
+    "local_cache_name": "sensor/assets/noiseflow_ckpt_tree.txt"
+  }
+]

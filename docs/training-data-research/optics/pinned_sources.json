@@ -1,0 +1,37 @@
+[
+  {
+    "name": "deeplens_psf_pinned",
+    "url": "https://raw.githubusercontent.com/vccimaging/DeepLens/821498bc48415a14fec142276c967db1ac2fbcec/deeplens/geolens_pkg/psf_compute.py",
+    "status": 200,
+    "bytes": 32096,
+    "sha256": "bd981a2b26ac48b4837675d994f108e8ed7d47604cc97439d18724c1095fe4b8"
+  },
+  {
+    "name": "deeplens_config_pinned",
+    "url": "https://raw.githubusercontent.com/vccimaging/DeepLens/821498bc48415a14fec142276c967db1ac2fbcec/deeplens/config.py",
+    "status": 200,
+    "bytes": 2181,
+    "sha256": "23c6a1202dd981c57374ec4fd05bc17d45dabef2e05cb0a296c5de556eb8719e"
+  },
+  {
+    "name": "deeplens_ef35_pinned",
+    "url": "https://raw.githubusercontent.com/vccimaging/DeepLens/821498bc48415a14fec142276c967db1ac2fbcec/datasets/lenses/camera/ef35mm_f2.0.json",
+    "status": 200,
+    "bytes": 4294,
+    "sha256": "ecd6ed4979821130d24d0d95cd69b29789b16459ca5d54e3acc3dce6ebce5ac3"
+  },
+  {
+    "name": "diffoptics_readme_pinned",
+    "url": "https://raw.githubusercontent.com/vccimaging/DiffOptics/f62dc49aa45c5ea3f8165634622392fbe44e6448/README.md",
+    "status": 200,
+    "bytes": 9005,
+    "sha256": "b28c9b8d2e40d2ab0d72f5bbd23771edd26c9f255fdcc72097cdd553d290394a"
+  },
+  {
+    "name": "diffoptics_nikon_pinned",
+    "url": "https://raw.githubusercontent.com/vccimaging/DiffOptics/f62dc49aa45c5ea3f8165634622392fbe44e6448/examples/lenses/Zemax_samples/Nikon-z35-f1.8-JPA2019090949-example2.txt",
+    "status": 200,
+    "bytes": 803,
+    "sha256": "e454b4392e57b34e0c3c57c88debd4ad3ab05ced9abefa40707a724fcf91b94e"
+  }
+]
