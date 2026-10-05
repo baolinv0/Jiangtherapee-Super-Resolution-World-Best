@@ -22,6 +22,7 @@ jobs:
       - run: pip install -e '.[test]'
       - run: python -m pytest -q
       - run: python -m jsr_repro.validate --output runs/ci
+      - run: python -m jsr_repro.validate_transformer --output runs/ci-transformer
       - uses: actions/upload-artifact@v4
         if: always()
         with:
@@ -31,3 +32,8 @@ jobs:
             runs/ci/*.png
             runs/ci/training/*.json
             runs/ci/training/*.jsonl
+            runs/ci-transformer/*.json
+            runs/ci-transformer/*.png
+            runs/ci-transformer/training/*.json
+            runs/ci-transformer/training/*.jsonl
+            runs/ci-transformer/inference/*.json

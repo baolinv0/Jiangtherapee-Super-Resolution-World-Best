@@ -1,5 +1,7 @@
 # 实际执行的验证
 
+本文记录最初`inferred-jsr-v1`的23项测试和32步smoke；“未实现多曝光”等条目仅对应该路径。七帧Transformer新增16步验证、物理数据/标定测试及独立审核，见[TRANSFORMER.md](TRANSFORMER.md)、[新证据](transformer-validation/)和[任务实施报告](tasks/zhihu-transformer/IMPLEMENTATION_REPORT.md)。目前已取得用户提供的知乎讲稿全文，未独立取得网页URL。
+
 日期：2026-10-05（Asia/Shanghai）。这是工程验证记录，**不是原论文指标复现或任何SOTA排名**。
 
 ## 执行环境与结果

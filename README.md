@@ -6,9 +6,13 @@
 >
 > **入口：[复现说明与运行命令](docs/REPRODUCTION.md) · [数据协议](docs/DATA.md) · [来源审计](docs/SOURCES.md) · [实际验证结果](docs/VALIDATION.md)**
 >
+> **新增七帧包围曝光 Transformer：[讲稿机制、数据/模型及运行方法](docs/TRANSFORMER.md)**。空间/跨帧注意力、末端7→4→2→1配对、共享相位上采样、PTC/暗场接口、物理PSF及真实信号饱和训练已补齐。其公式/解析相机参数为明确标注的独立推断，与公开v9.8模块/权重分开。
+>
 > `python -m pip install -e ".[test]"` → `python -m pytest -q` → `python -m jsr_repro.validate --output runs/verification`
 >
-> 审计基线：`6ab0f5b`。下文保留原作者README；其中“尚无算法源码”的旧说明与现有Core目录不一致。原公开模块/权重保留，新工程实现位于`reproduction/`。知乎JSR原文尚未取得可核验全文，不将未经核实的转述当作实现依据。
+> Transformer验证：`python -m jsr_repro.validate_transformer --output runs/transformer-verification`。
+>
+> 审计基线：`6ab0f5b`。下文保留原作者README；其中“尚无算法源码”的旧说明与现有Core目录不一致。原公开模块/权重保留，新工程实现位于`reproduction/`。Transformer依据用户提供的2026-10-03知乎讲稿全文；没有独立取得该知乎网页或原Transformer训练配方，不将机制对应写成原权重/画质复现。
 
 JSR 将 RAW 连拍重建为高分辨率线性 RGB，面向高动态摄影，重点约束暗部亮度、颜色响应与周期伪影。4 至 14 帧连拍均可获得良好的重建效果，拍摄时候为防止对焦抖动影响效果建议AF-S来连拍，或者MF后连续单张拍摄。更高帧数暂不被支持。
 

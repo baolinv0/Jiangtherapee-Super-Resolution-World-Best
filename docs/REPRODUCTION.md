@@ -1,5 +1,7 @@
 # JSR 独立工程复现
 
+本文记录公开v9.8模块及推断Tap的`inferred-jsr-v1`路径。新增的七帧多曝光`speech-inspired-transformer-v1`是独立入口，见[讲稿机制与Transformer说明](TRANSFORMER.md)，checkpoint不可互换。
+
 审计日期：2026-10-05（Asia/Shanghai）。作者仓库与本 fork 的审计基线均为 [`6ab0f5bf76d2ccfbf7e21798cc575232ef9b272b`](https://github.com/y-g-jiang/Jiangtherapee-Super-Resolution-World-Best/tree/6ab0f5bf76d2ccfbf7e21798cc575232ef9b272b)。
 
 **这里交付可训练、可测试的工程实现，不宣称恢复了未公开的原训练过程，也不宣称达到原作者画质或世界最好。** 可确认的网络模块移植到 PyTorch；缺失的采样、统计、融合和训练环节采用明确命名的独立方案。原有 `Core-Only-Source-Code/` 与权重不修改。

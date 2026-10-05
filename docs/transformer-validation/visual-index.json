@@ -1,0 +1,12 @@
+{
+  "files": [
+    {
+      "path": "comparison.png",
+      "description": "Synthetic fixture. RAW mosaic shown as gray; GT/merge/model/amplitude use fixed radiance_white4, sensor/masks white1. sRGB diagnostic encoding, no fitted gains."
+    },
+    {
+      "path": "inference/preview.png",
+      "description": "RGB output diagnostic at fixed radiance_white4"
+    }
+  ]
+}

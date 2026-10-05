@@ -22,6 +22,8 @@ Fork: <https://github.com/baolinv0/Jiangtherapee-Super-Resolution-World-Best>
 
 ## GitHub and Zhihu attribution
 
+- Subsequent evidence: the user supplied the complete speech “SR相机手持超分辨率16bitraw合成讲稿”, attributed to 姜尧耕, edited2026-10-03. This supports author-statement attribution as supplied text, not independent retrieval/authentication of a Zhihu page. The earlier search limitation below remains a URL discovery limitation. [Speech conformance and new implementation](TRANSFORMER.md) distinguish the seven-frame Transformer description from publicv9.8 Controller/RefineNet. Rechecking upstream main on2026-10-05 still returned6ab0f5b; no original Transformer training/calibration library was established.
+
 - Inspected GitHub issues list and opened [issue 1](https://github.com/y-g-jiang/Jiangtherapee-Super-Resolution-World-Best/issues/1). No training recipe was established from them.
 - [Author homepage](https://y-g-jiang.github.io/) identifies the public name 姜尧耕; it is a primary author site, not Zhihu.
 - Searched `site:zhihu.com` / `site:zhuanlan.zhihu.com` with Jiangtherapee, JSR, 姜尧耕 and 渔樵耕牍. No verifiable JSR-specific Zhihu URL and full article were retrieved. Homepage HTML yielded no direct Zhihu URL. This is a discovery/access limitation, not proof that such statements do not exist.

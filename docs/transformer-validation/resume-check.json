@@ -1,0 +1,9 @@
+{
+  "continuous_steps": 4,
+  "split_steps": [
+    2,
+    2
+  ],
+  "state_dict_bitwise_equal": true,
+  "schedule_equal": true
+}

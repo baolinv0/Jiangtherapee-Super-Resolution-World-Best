@@ -1,0 +1,38 @@
+# Proposed settings; not the author's training recipe. Full training not run.
+seed: 1234
+threads: 2
+device: cuda
+output: runs/transformer-k7
+model:
+  width: 32
+  heads: 4
+  window: 4
+  frames: 7
+  scale: 2
+data:
+  manifest: data/train/manifest.jsonl
+  profile: null  # analytic default; replace with independently fitted profile JSON
+  options:
+    native_size: 64
+    frames: 7
+    scale: 2
+    max_shift: 2.0
+    scene_gain: [0.125, 8.0]
+    bracket_interval_ev: [0.0, 1.0]
+    iso: [100, 200, 400, 800]
+    f_number: [2.0, 8.0]
+    pitch_um: [3.0, 5.76]
+    fill_factor: [0.9, 1.0]
+    psf_radius: 16
+    augment: true
+    noise: true
+    quantize: true
+train:
+  steps: 100000
+  batch_size: 1
+  lr: 0.0002
+  weight_decay: 0.0001
+  validate_every: 1000
+  crop_border: 8
+  clip_grad: 1.0
+  highlight_weight: 0.2

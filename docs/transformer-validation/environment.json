@@ -1,0 +1,9 @@
+{
+  "torch": "2.14.1+cpu",
+  "device": "cpu",
+  "data_identity": {
+    "manifest_sha256": "5c44d42d9879f7801727941b716648d47c2105739d3a17bb82d9f79b3e4f8a84",
+    "profile_sha256": "55ac12938d7f1a4b7e00f937606a14cc3e1bfa6da4f16864c9f0f4fbc2e99a1a"
+  },
+  "deterministic": true
+}

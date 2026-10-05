@@ -1,0 +1,89 @@
+{
+  "zero_max_abs": 0.0,
+  "conditional_gain": [
+    {
+      "gain": 0.125,
+      "relative_rmse": 0.0
+    },
+    {
+      "gain": 0.5,
+      "relative_rmse": 0.0
+    },
+    {
+      "gain": 2.0,
+      "relative_rmse": 0.0
+    }
+  ],
+  "trace": {
+    "embedding": [
+      1,
+      7,
+      8,
+      8,
+      8
+    ],
+    "encoder0": [
+      1,
+      7,
+      8,
+      8,
+      8
+    ],
+    "encoder1": [
+      1,
+      7,
+      8,
+      4,
+      4
+    ],
+    "encoder2": [
+      1,
+      7,
+      8,
+      2,
+      2
+    ],
+    "decoder0": [
+      1,
+      7,
+      8,
+      4,
+      4
+    ],
+    "decoder1": [
+      1,
+      7,
+      8,
+      8,
+      8
+    ],
+    "late_pair0": [
+      1,
+      4,
+      8,
+      8,
+      8
+    ],
+    "late_pair1": [
+      1,
+      2,
+      8,
+      8,
+      8
+    ],
+    "late_pair2": [
+      1,
+      1,
+      8,
+      8,
+      8
+    ],
+    "shared_phase_latent": [
+      1,
+      8,
+      32,
+      32
+    ]
+  },
+  "gain_conditions": "same geometry/exposure/masks; RAW scaled, noise covariance scaled squared; no capture/clipping transition"
+}

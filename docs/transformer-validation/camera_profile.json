@@ -1,0 +1,43 @@
+{
+  "schema": "jsr-camera-v1",
+  "name": "analytic-full-frame-proxy",
+  "provenance": {
+    "kind": "analytic_inferred",
+    "note": "Not the author's PTC library or a measured camera."
+  },
+  "channel_transmission": [
+    0.7,
+    1.0,
+    0.55
+  ],
+  "iso": {
+    "100": {
+      "gain_e_per_dn": 4.0,
+      "read_noise_e": 3.0,
+      "black_dn": 512.0,
+      "white_dn": 16383.0,
+      "full_well_e": 60000.0
+    },
+    "200": {
+      "gain_e_per_dn": 2.0,
+      "read_noise_e": 3.0,
+      "black_dn": 512.0,
+      "white_dn": 16383.0,
+      "full_well_e": 60000.0
+    },
+    "400": {
+      "gain_e_per_dn": 1.0,
+      "read_noise_e": 3.0,
+      "black_dn": 512.0,
+      "white_dn": 16383.0,
+      "full_well_e": 60000.0
+    },
+    "800": {
+      "gain_e_per_dn": 0.5,
+      "read_noise_e": 3.0,
+      "black_dn": 512.0,
+      "white_dn": 16383.0,
+      "full_well_e": 60000.0
+    }
+  }
+}
