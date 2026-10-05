@@ -7,7 +7,7 @@ import json
 import torch
 
 from .alignment import estimate_translations
-from .bracket_data import BracketBurstDataset
+from .bracket_data import make_burst_dataset
 from .calibration import load_profile, profile_identity
 from .data import verify_manifest
 from .metrics import crop_pair, image_metrics
@@ -42,7 +42,9 @@ def evaluate(checkpoint,manifest,output,alignment="oracle",device="cpu",limit=No
         raise ValueError("evaluation calibration differs from checkpoint")
     if alignment not in ("oracle","estimated"):
         raise ValueError("alignment must be oracle or estimated")
-    dataset = BracketBurstDataset(manifest,split,cfg["data"]["options"],cfg.get("seed",1234)+2,cfg["data"].get("profile"))
+    dataset = make_burst_dataset(manifest,split,cfg["data"]["options"],cfg.get("seed",1234)+2,cfg["data"].get("profile"))
+    if getattr(dataset,'identity',None) != state['data_identity'].get('construction'):
+        raise ValueError('evaluation spectral/optical/noise assets differ from checkpoint')
     border = cfg["train"].get("crop_border",4)
     records = []
     for i in range(min(len(dataset),limit) if limit is not None else len(dataset)):
@@ -64,7 +66,8 @@ def evaluate(checkpoint,manifest,output,alignment="oracle",device="cpu",limit=No
         for key in records[0]["methods"][name]:
             vals = [row["methods"][name][key] for row in records if row["methods"][name][key] is not None]
             summary[name][key] = sum(vals)/len(vals) if vals else None
-    report = {"implementation":state["implementation"],"scope":"held-out synthetic RGB camera proxy, NOT official JSR/BurstSR score",
+    report = {"implementation":state["implementation"],"scope":"held-out synthetic data, NOT official JSR/BurstSR score",
+              "data_protocol":cfg['data']['options'].get('protocol','speech-camera-proxy-v1'),
               "count":len(records),"split":split,"alignment":alignment,"data_range":1.,"gain_fit":False,"crop_border_hr":border,
               "checkpoint_sha256":sha256(checkpoint),"manifest_sha256":sha256(manifest),"mean_per_image_metrics":summary,"samples":records}
     save_json(output,report)

@@ -138,3 +138,14 @@ def save_burst(path, sample):
     fields = ("raw", "shifts", "exposure", "transmission", "variance", "saturation", "valid", "black_invalid")
     metadata = sample["metadata"] if isinstance(sample["metadata"], str) else json.dumps(sample["metadata"], sort_keys=True)
     np.savez_compressed(path, **{key: sample[key].cpu().numpy() for key in fields}, metadata=np.asarray(metadata))
+
+
+def make_burst_dataset(manifest, split, options, seed=1234, profile=None):
+    """Select a versioned data protocol; old checkpoints retain their recipe."""
+    protocol = options.get('protocol', 'speech-camera-proxy-v1')
+    if protocol == 'spectral-camera-v2':
+        from .spectral_data import SpectralBurstDataset
+        return SpectralBurstDataset(manifest, split, options, seed, profile)
+    if protocol == 'speech-camera-proxy-v1':
+        return BracketBurstDataset(manifest, split, options, seed, profile)
+    raise ValueError(f'unknown data protocol: {protocol}')

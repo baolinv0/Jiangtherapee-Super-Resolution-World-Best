@@ -8,7 +8,7 @@ from pathlib import Path
 
 import torch
 
-from .bracket_data import BracketBurstDataset
+from .bracket_data import make_burst_dataset
 from .calibration import profile_identity
 from .data import verify_manifest
 from .metrics import image_metrics, reconstruction_loss
@@ -62,9 +62,11 @@ def run_training(config,resume=None,stop_after=None):
     if steps<1 or every<1 or border<0 or 2*border>=int(data["options"].get("native_size",16))*2:
         raise ValueError("invalid steps/validation interval/crop")
     verify_manifest(data["manifest"])
-    train = BracketBurstDataset(data["manifest"],"train",data["options"],int(cfg.get("seed",1234)),data.get("profile"))
-    val = BracketBurstDataset(data["manifest"],"val",data["options"],int(cfg.get("seed",1234))+1,data.get("profile"))
+    train = make_burst_dataset(data["manifest"],"train",data["options"],int(cfg.get("seed",1234)),data.get("profile"))
+    val = make_burst_dataset(data["manifest"],"val",data["options"],int(cfg.get("seed",1234))+1,data.get("profile"))
     identity = {"manifest_sha256":sha256(data["manifest"]),"profile_sha256":profile_identity(train.profile)}
+    if hasattr(train, 'identity'):
+        identity['construction'] = train.identity
     model = SpeechTransformer(**cfg["model"]).to(device)
     optimizer = torch.optim.AdamW(model.parameters(),lr=float(settings.get("lr",.0002)),weight_decay=float(settings.get("weight_decay",0)))
     scheduler = torch.optim.lr_scheduler.CosineAnnealingLR(optimizer,T_max=steps)

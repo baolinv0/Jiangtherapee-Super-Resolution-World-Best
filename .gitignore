@@ -5,5 +5,6 @@ __pycache__/
 .venv/
 data/
 runs/
+build/
 *.pt
 *.pth

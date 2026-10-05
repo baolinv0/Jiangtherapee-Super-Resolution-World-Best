@@ -12,6 +12,8 @@
 >
 > Transformer验证：`python -m jsr_repro.validate_transformer --output runs/transformer-verification`。
 >
+> **完整光谱数据构造：[61 波段数据链、公开资产与标定接口](docs/SPECTRAL_DATA.md)**。`spectral-camera-v2` 接通 400–700 nm 光谱、28 台相机相对响应、波长/视场 PSF、像元积分、PTC/暗场与通道饱和，GT 在新增光学模糊之前生成。默认 PTC 与像差仍为明确标注的假设，支持用户实测资产替换。验证：`python -m jsr_repro.validate_spectral --output runs/spectral-verification`。
+>
 > 审计基线：`6ab0f5b`。下文保留原作者README；其中“尚无算法源码”的旧说明与现有Core目录不一致。原公开模块/权重保留，新工程实现位于`reproduction/`。Transformer依据用户提供的2026-10-03知乎讲稿全文；没有独立取得该知乎网页或原Transformer训练配方，不将机制对应写成原权重/画质复现。
 
 JSR 将 RAW 连拍重建为高分辨率线性 RGB，面向高动态摄影，重点约束暗部亮度、颜色响应与周期伪影。4 至 14 帧连拍均可获得良好的重建效果，拍摄时候为防止对焦抖动影响效果建议AF-S来连拍，或者MF后连续单张拍摄。更高帧数暂不被支持。

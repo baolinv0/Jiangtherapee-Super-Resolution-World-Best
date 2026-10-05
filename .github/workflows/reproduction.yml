@@ -23,6 +23,7 @@ jobs:
       - run: python -m pytest -q
       - run: python -m jsr_repro.validate --output runs/ci
       - run: python -m jsr_repro.validate_transformer --output runs/ci-transformer
+      - run: python -m jsr_repro.validate_spectral --output runs/ci-spectral
       - uses: actions/upload-artifact@v4
         if: always()
         with:
@@ -37,3 +38,8 @@ jobs:
             runs/ci-transformer/training/*.json
             runs/ci-transformer/training/*.jsonl
             runs/ci-transformer/inference/*.json
+            runs/ci-spectral/*.json
+            runs/ci-spectral/*.png
+            runs/ci-spectral/training/*.json
+            runs/ci-spectral/training/*.jsonl
+            runs/ci-spectral/inference/*.json

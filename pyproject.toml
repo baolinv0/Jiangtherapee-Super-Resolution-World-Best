@@ -16,6 +16,9 @@ raw = ["rawpy>=0.21,<0.27"]
 [tool.setuptools.packages.find]
 where = ["reproduction"]
 
+[tool.setuptools.package-data]
+jsr_repro = ["spectral_assets/*.json", "spectral_assets/*.txt"]
+
 [tool.pytest.ini_options]
 testpaths = ["tests"]
 pythonpath = ["reproduction"]

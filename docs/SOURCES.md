@@ -1,5 +1,9 @@
 # JSR public evidence audit
 
+## Spectral construction extension
+
+The later `spectral-camera-v2` implements the user-supplied speech/diagram's construction stages. See [source-by-source attribution, licenses, assumptions and RAW-domain paper comparison](SPECTRAL_DATA.md). Bundled assets include the Mallett–Yuksel primary basis through Colour v0.4.6, Jiang et al. WACV 2013 relative camera sensitivities, and official CIE XYZ/D65 tables. Original URLs and content hashes are retained in `reproduction/jsr_repro/spectral_assets/source_manifest.json`. These public substitutes do not establish the original JSR spectral algorithm, measured PTC library or prime-lens PSFs.
+
 Audit date: 2026-10-05 (Asia/Shanghai). Upstream and fork snapshot verified through GitHub: `6ab0f5bf76d2ccfbf7e21798cc575232ef9b272b`. This audits public sources; it does not independently reproduce reported quality.
 
 ## Evidence and limits

@@ -55,6 +55,12 @@ def fit_profile(csv_path, output, dark=None, black_dn=512., white_dn=16383., ful
     slope is DN/e, inverse slope is e/DN. Intercept includes quantization;
     subtract 1/12 DN² before converting read noise. Input is NOT independently
     verified measured data. Optional dark stack [T,H,W] is raw DN, one ISO only.
+    When supplied, its temporal variance fixes the intercept (with a 1/12 DN²
+    floor for the assumed uniform quantizer), avoiding an unreliable
+    extrapolated intercept from bright, shot-noise-dominated flats. Three
+    feasible weighted least-squares updates estimate a positive slope. Weights
+    are inverse squared predicted variance, assuming equal sample counts per
+    PTC row. The unconstrained line remains available as a quality diagnostic.
     """
     with Path(csv_path).open(newline="", encoding="utf-8") as stream:
         rows = list(csv.DictReader(stream))
@@ -85,17 +91,44 @@ def fit_profile(csv_path, output, dark=None, black_dn=512., white_dn=16383., ful
         array = np.asarray(values, dtype=np.float64)
         if len(values) < 3 or np.ptp(array[:, 0]) <= 0:
             raise ValueError("PTC requires at least three distinct illumination samples per ISO")
-        slope, intercept = np.polyfit(array[:, 0], array[:, 1], 1)
-        if slope <= 0 or intercept < 0:
-            raise ValueError("PTC fit must have positive slope and nonnegative intercept; select its linear unsaturated interval")
+        unconstrained_slope, unconstrained_intercept = np.polyfit(array[:, 0], array[:, 1], 1)
+        if dark_stats is None:
+            slope, intercept = unconstrained_slope, unconstrained_intercept
+            if slope <= 0 or intercept < 0:
+                raise ValueError("PTC fit must have positive slope and nonnegative intercept; select its linear unsaturated interval")
+            method = "unconstrained_linear_fit"
+        else:
+            intercept = max(dark_stats["temporal_variance_dn2"], 1 / 12)
+            x, y = array[:, 0], array[:, 1]
+            slope = np.dot(x, y - intercept) / np.dot(x, x)
+            for _ in range(3):
+                if not np.isfinite(slope) or slope <= 0:
+                    raise ValueError("dark-constrained PTC needs a positive slope; check matched dark/flat units and unsaturated interval")
+                predicted = slope * x + intercept
+                weight = 1 / predicted ** 2
+                slope = np.dot(weight * x, y - intercept) / np.dot(weight * x, x)
+            if not np.isfinite(slope) or slope <= 0:
+                raise ValueError("dark-constrained PTC needs a positive slope; check matched dark/flat units and unsaturated interval")
+            method = "dark_fixed_intercept_feasible_wls"
         gain = 1 / slope
-        read_var = dark_stats["temporal_variance_dn2"] if dark_stats else intercept
+        read_var = intercept
         profile["iso"][iso] = {"gain_e_per_dn": float(gain), "read_noise_e": float(np.sqrt(max(0, read_var - 1 / 12)) * gain),
                                "black_dn": dark_stats["black_dn"] if dark_stats else float(black_dn),
                                "white_dn": float(white_dn), "full_well_e": float(full_well_e)}
         residual = array[:, 1] - (slope * array[:, 0] + intercept)
-        profile["fit_diagnostics"][iso] = {"samples": len(values), "slope_dn_per_e": float(slope),
-                                           "intercept_dn2": float(intercept), "rmse_dn2": float(np.sqrt(np.mean(residual ** 2)))}
+        profile["fit_diagnostics"][iso] = {
+            "samples": len(values), "method": method, "slope_dn_per_e": float(slope),
+            "intercept_dn2": float(intercept), "rmse_dn2": float(np.sqrt(np.mean(residual ** 2))),
+            "relative_rmse": float(np.sqrt(np.mean((residual / np.maximum(slope * array[:, 0] + intercept, 1e-12)) ** 2))),
+            "unconstrained_slope_dn_per_e": float(unconstrained_slope),
+            "unconstrained_intercept_dn2": float(unconstrained_intercept),
+            "quantization_variance_dn2": 1 / 12,
+        }
+        if dark_stats is not None:
+            profile["fit_diagnostics"][iso].update(
+                intercept_source="measured temporal dark variance with uniform-quantizer floor",
+                quantization_floor_applied=dark_stats["temporal_variance_dn2"] < 1 / 12,
+                weighting_assumption="equal variance-estimate degrees of freedom across PTC levels")
     if dark_stats:
         profile["provenance"]["dark"] = dark_stats
     validate_profile(profile)

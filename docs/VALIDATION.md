@@ -1,5 +1,7 @@
 # 实际执行的验证
 
+最新光谱数据链验证见 [SPECTRAL_DATA.md](SPECTRAL_DATA.md) 与 [机器可读记录/预览](spectral-validation/)。全部 **63 项测试通过**；已执行完整链路 8 步训练、oracle/estimated 评测、NPZ→TIFF 和 GT 光学不变性检查。7 个光谱资产从固定来源重建后逐字节一致，wheel 已构建并核验资产与许可打包。下文保留早期协议记录，不是新数据链的当前范围。
+
 本文记录最初`inferred-jsr-v1`的23项测试和32步smoke；“未实现多曝光”等条目仅对应该路径。七帧Transformer新增16步验证、物理数据/标定测试及独立审核，见[TRANSFORMER.md](TRANSFORMER.md)、[新证据](transformer-validation/)和[任务实施报告](tasks/zhihu-transformer/IMPLEMENTATION_REPORT.md)。目前已取得用户提供的知乎讲稿全文，未独立取得网页URL。
 
 日期：2026-10-05（Asia/Shanghai）。这是工程验证记录，**不是原论文指标复现或任何SOTA排名**。

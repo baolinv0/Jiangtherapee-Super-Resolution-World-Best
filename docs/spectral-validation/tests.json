@@ -1,0 +1,12 @@
+{
+  "name": "pytest",
+  "errors": "0",
+  "failures": "0",
+  "skipped": "0",
+  "tests": "63",
+  "time": "55.178",
+  "timestamp": "2026-10-05T13:44:49.251996+08:00",
+  "hostname": "xingxx",
+  "command": "python -m pytest tests -q -p no:cacheprovider --basetemp ../pytest-spectral-final-01 --junitxml=../spectral-tests.xml",
+  "independent_review": "physical_components: no remaining material findings after PTC fitting, custom calibration propagation, source hash and bank-unit fixes"
+}

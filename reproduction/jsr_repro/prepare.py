@@ -50,6 +50,8 @@ def build_manifest(source, output, encoding="srgb", seed=1234, group_by="file", 
         raise ValueError("provide --source or --procedural")
     source = Path(source).resolve()
     suffixes = {".png", ".jpg", ".jpeg", ".tif", ".tiff", ".npy"}
+    if encoding == 'spectral_radiance':
+        suffixes = {'.npz'}
     paths = sorted(p for p in source.rglob("*") if p.suffix.lower() in suffixes and p.is_file())
     entries, seen = [], set()
     for path in paths:
@@ -97,7 +99,7 @@ def main():
     p = argparse.ArgumentParser(description=__doc__)
     p.add_argument("--source", type=Path)
     p.add_argument("--output", type=Path, required=True)
-    p.add_argument("--encoding", choices=["srgb", "linear"], default="srgb")
+    p.add_argument("--encoding", choices=["srgb", "linear", "spectral_radiance"], default="srgb")
     p.add_argument("--group-by", choices=["file", "parent"], default="file", help="Use parent for multiple views/exposures of one scene")
     p.add_argument("--procedural", type=int, default=0, metavar="N")
     p.add_argument("--seed", type=int, default=1234)
