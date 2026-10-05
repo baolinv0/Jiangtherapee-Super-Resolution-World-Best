@@ -66,3 +66,6 @@ Sources:
 8. Keep downloads optional and link original terms; do not redistribute datasets without checking licenses. Real BurstSR needs official spatial/color alignment metrics.
 
 Suggested README wording: “This is an independent engineering reproduction of the public JSR core and described principles. The original complete training recipe and paper are not available in the audited snapshot; our synthetic data generation, losses and schedule are documented assumptions. Included smoke tests establish execution and numerical properties, not the original paper's quality or a state-of-the-art ranking.”
+
+
+Review revisions add optional robust dense alignment, shared v1 LCA, explicit temporal capture ranks, spherical spectral OPD and reproducible diagnostics. See [conventions, provenance, conformance and evidence](REVIEW_REVISION.md) for the independent definitions, default compatibility and real RAW NOT_RUN protocol.

@@ -1,0 +1,9 @@
+{
+  "tier": "C",
+  "status": "NOT_RUN",
+  "missing": [
+    "missing\\S5M2-independent-long.RW2",
+    "RAW burst list"
+  ],
+  "nine_stop_claim": false
+}

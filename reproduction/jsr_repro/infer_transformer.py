@@ -66,13 +66,16 @@ def read_burst(path,device,max_native_pixels=65536):
         if any(key not in archive for key in FIELDS) or "metadata" not in archive:
             raise ValueError("calibrated archive requires all Transformer fields and JSON metadata")
         arrays={key:np.asarray(archive[key],np.float32) for key in FIELDS}
+        if "capture_order" in archive:
+            arrays["capture_order"]=np.asarray(archive["capture_order"])
         metadata=json.loads(str(archive["metadata"].item()))
     raw=arrays["raw"]
     if raw.ndim!=4 or raw.shape[0:2]!=(7,1) or max_native_pixels<1 or raw.shape[-2]*raw.shape[-1]>max_native_pixels:
         raise ValueError("archive needs K7,1,H,W within max-native-pixels; use an even CFA crop")
     if metadata.get("cfa")!="RGGB" or metadata.get("scale_native")!=2 or not re.fullmatch("[0-9a-f]{64}",str(metadata.get("profile_sha256",""))) or metadata.get("profile_provenance",{}).get("kind") not in ("analytic_inferred","fitted_input"):
         raise ValueError("archive metadata needs RGGB, scale2, profile_sha256 and profile_provenance")
-    sample={key:torch.from_numpy(arrays[key])[None].to(device) for key in FIELDS}
+    sample={key:torch.from_numpy(arrays[key])[None].to(device) for key in arrays}
+    metadata["capture_order_provenance"]="explicit ranks" if "capture_order" in arrays else "missing: legacy storage order"
     validate_inputs(sample)
     return sample,metadata
 
@@ -86,13 +89,16 @@ def infer(checkpoint,burst,output,alignment="estimated",device="cpu",max_native_
     sample,metadata=read_burst(burst,device,max_native_pixels)
     if alignment=="estimated":
         sample["shifts"]=estimated_shifts(sample)
+    elif alignment=="robust":
+        from .geometry import estimate_geometry
+        sample["geometry"]=estimate_geometry(sample["raw"])
     elif alignment!="provided":
         raise ValueError("alignment must be estimated or provided")
     result=model(sample,trace=True)
     rgb=result["rgb"][0].permute(1,2,0).cpu().numpy()
     export=export_linear(output,rgb,radiance_white)
     report={"implementation":state["implementation"],"checkpoint_sha256":sha256(checkpoint),"burst_sha256":sha256(burst),
-            "alignment":alignment,"shifts_xy_native":sample["shifts"][0].cpu().tolist(),"input_profile_sha256":metadata["profile_sha256"],
+            "geometry_reports":sample["geometry"].reports if "geometry" in sample else None,"capture_order_mode":model.capture_order_mode,"capture_order_ranks":sample["capture_order"].cpu().tolist() if "capture_order" in sample else None,"capture_order_provenance":metadata["capture_order_provenance"],"alignment":alignment,"shifts_xy_native":sample["shifts"][0].cpu().tolist(),"input_profile_sha256":metadata["profile_sha256"],
             "training_profile_sha256":state["data_identity"]["profile_sha256"],"calibration_domain_match":metadata["profile_sha256"]==state["data_identity"]["profile_sha256"],
             "trace":result["trace"],"output_shape_hwc":list(rgb.shape),"encoding":export,
             "all_saturated_or_invalid_packed_fraction":result["all_saturated_or_invalid_packed"].mean().item()}
@@ -104,7 +110,7 @@ def main():
     p=argparse.ArgumentParser(description=__doc__)
     for name in ("checkpoint","burst","output"):
         p.add_argument("--"+name,required=True)
-    p.add_argument("--alignment",choices=["estimated","provided"],default="estimated")
+    p.add_argument("--alignment",choices=["estimated","provided","robust"],default="estimated")
     p.add_argument("--device",default="cpu")
     p.add_argument("--max-native-pixels",type=int,default=65536)
     p.add_argument("--radiance-white",type=float,default=8.)

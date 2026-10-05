@@ -124,3 +124,6 @@ NPZ 包含 `kernels[nodes,61,2r+1,2r+1]`、`field_xy[nodes,2]`、`wavelengths_nm
 8 步 procedural test：oracle 条件下 corrected merge 16.858 dB，Transformer 16.854 dB；估计对齐时分别 16.749、16.745 dB。峰值固定 1，GT 可超过 1，没有每图拟合增益。这些结果只验证链路，短训网络未超过融合基线，不能当作作者画质或自然图像基准。
 
 尚缺作者原始图像清单、RGB→谱算法、全部相机 PTC/暗场、实测/设计镜头 PSF、各参数联合分布与原始训练。默认只含静态场景帧间平移，没有曝光期间运动积分、动态物体、rolling shutter、lens shading、完整 sensor crosstalk 或反 ISP。有限 FFT/PSF 支持会截掉衍射尾部后重新归一化，四节点视场近似和固定求积也有误差；需按目标空间分辨率加密、扩大支持并做收敛评估。后续取得真实资产可通过上述接口替换，不需要重写数据链。
+
+
+Review revisions add optional robust dense alignment, shared v1 LCA, explicit temporal capture ranks, spherical spectral OPD and reproducible diagnostics. See [conventions, provenance, conformance and evidence](REVIEW_REVISION.md) for the independent definitions, default compatibility and real RAW NOT_RUN protocol.

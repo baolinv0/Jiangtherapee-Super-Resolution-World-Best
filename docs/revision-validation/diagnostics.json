@@ -1,0 +1,937 @@
+{
+  "optical_asset_identity": {
+    "basis.json": "b7fb40806dc43524234546dbb6dcc6a17074429028b59fc288232b905febdaea",
+    "cameras.json": "fa8027f4a9d2dd77cb8ce7f1f8eaf6eca2739d3ad367e04ef2c8a201b51c0992"
+  },
+  "coverage_definition": "fraction of 48 color/phase bins with smoothed count/14 > 1e-5, excluding 8 native border",
+  "alignment": {
+    "reports": [
+      [
+        {
+          "status": "reference",
+          "degree": -1
+        },
+        {
+          "status": "estimated",
+          "reason": "polynomial",
+          "degree": 4,
+          "controls": 300,
+          "confidence": 1.0,
+          "cross_frame_mean_px": 0.028009023988173187,
+          "requested_degree": 4,
+          "degree_fallback": false,
+          "homography": [
+            [
+              0.9919059387876379,
+              0.0004896361847612689,
+              1.4078096931220552
+            ],
+            [
+              -0.0029985645771970597,
+              0.9940057856742751,
+              -0.3397767541681082
+            ],
+            [
+              -4.6534853317046443e-05,
+              -2.424686213030179e-05,
+              1.0
+            ]
+          ],
+          "residual_rms_px": 0.041516066990999904,
+          "inverse_max_error_px": 4.263256414560601e-14
+        },
+        {
+          "status": "estimated",
+          "reason": "polynomial",
+          "degree": 4,
+          "controls": 300,
+          "confidence": 1.0,
+          "cross_frame_mean_px": 0.0,
+          "requested_degree": 4,
+          "degree_fallback": false,
+          "homography": [
+            [
+              0.9999999999999998,
+              1.2650073286900527e-18,
+              0.0
+            ],
+            [
+              2.9443752301185685e-17,
+              1.0000000000000007,
+              -3.6920883578564403e-14
+            ],
+            [
+              4.948851804745844e-19,
+              1.8300704864979145e-20,
+              1.0
+            ]
+          ],
+          "residual_rms_px": 1.9933834638867424e-14,
+          "inverse_max_error_px": 7.105427357601002e-15
+        }
+      ]
+    ],
+    "forward_rmse_native": 0.013916372321546078,
+    "oracle_used_by_estimator": false,
+    "flat_reports": [
+      [
+        {
+          "status": "reference",
+          "degree": -1
+        },
+        {
+          "status": "fallback",
+          "reason": "insufficient reliable texture",
+          "degree": -1,
+          "controls": 0,
+          "confidence": 0.0
+        },
+        {
+          "status": "fallback",
+          "reason": "insufficient reliable texture",
+          "degree": -1,
+          "controls": 0,
+          "confidence": 0.0
+        }
+      ]
+    ]
+  },
+  "tier_A": "RUN",
+  "checkpoint": "random seed214; no trained quality claim",
+  "DN_white": 16383,
+  "uint16_storage_max": 65535,
+  "fixture_definition": "INFERRED independent geometry and DN list",
+  "DN_values": [
+    0,
+    1,
+    2,
+    3,
+    4,
+    6,
+    8,
+    12,
+    16,
+    24,
+    32,
+    48,
+    64,
+    96,
+    128,
+    192,
+    256,
+    384,
+    512,
+    768,
+    1024,
+    1536,
+    2048,
+    4096,
+    8192,
+    10240,
+    12288,
+    14336,
+    16383
+  ],
+  "ring_geometry": "fixed center (31.5,31.5); disk r<=9, annulus 12<=r<=21 at swept DN; gap white16383, exterior black; masks disk r<=6, annulus 15<=r<=18; border8",
+  "plateau_sample_counts": {
+    "disk": 112,
+    "annulus": 304
+  },
+  "response_definition": "unweighted affine fit of 29 RGB plateau means in DN; identity RMSE to input DN; dark subset DN<=512; same combined physical mask every case",
+  "integration": "16 midpoint samples per native pixel",
+  "channel_observation_offsets_native": [
+    -0.5,
+    0,
+    0.5
+  ],
+  "border_native": 8,
+  "metrics": [
+    {
+      "fixture": "rings",
+      "method": "initial_legacy",
+      "rmse": 0.07730557769536972,
+      "cross_axis_residual_rms": 0.08061016350984573,
+      "checkerboard_residual_projection": 7.910402999300459e-09,
+      "false_chroma_rms": 0.04232868552207947,
+      "true_chroma_projection": null
+    },
+    {
+      "fixture": "rings",
+      "method": "legacy",
+      "rmse": 0.07234933227300644,
+      "cross_axis_residual_rms": 0.07780755311250687,
+      "checkerboard_residual_projection": 7.1636701015620474e-09,
+      "false_chroma_rms": 0.025245198979973793,
+      "true_chroma_projection": null
+    },
+    {
+      "fixture": "rings",
+      "method": "learned",
+      "rmse": 0.10239233821630478,
+      "cross_axis_residual_rms": 0.09575386345386505,
+      "checkerboard_residual_projection": 5.182676332537994e-08,
+      "false_chroma_rms": 0.017870040610432625,
+      "true_chroma_projection": null
+    },
+    {
+      "fixture": "rings",
+      "method": "rgb",
+      "rmse": 0.10250939428806305,
+      "cross_axis_residual_rms": 0.09581822901964188,
+      "checkerboard_residual_projection": 5.714781536880764e-07,
+      "false_chroma_rms": 0.017789801582694054,
+      "true_chroma_projection": null
+    },
+    {
+      "fixture": "rings",
+      "method": "LCA_corrected",
+      "rmse": 0.07234933227300644,
+      "cross_axis_residual_rms": 0.07780755311250687,
+      "checkerboard_residual_projection": 7.1636701015620474e-09,
+      "false_chroma_rms": 0.025245198979973793,
+      "true_chroma_projection": null
+    },
+    {
+      "fixture": "rings",
+      "method": "transformer_baseline",
+      "rmse": 0.05524091422557831,
+      "cross_axis_residual_rms": 0.029635798186063766,
+      "checkerboard_residual_projection": 7.892403397491421e-11,
+      "false_chroma_rms": 0.04956828057765961,
+      "true_chroma_projection": null
+    },
+    {
+      "fixture": "rings",
+      "method": "transformer_rgb",
+      "rmse": 0.05524618178606033,
+      "cross_axis_residual_rms": 0.029636943712830544,
+      "checkerboard_residual_projection": 4.497150075621903e-05,
+      "false_chroma_rms": 0.0495728924870491,
+      "true_chroma_projection": null
+    },
+    {
+      "fixture": "stripe_x",
+      "method": "initial_legacy",
+      "rmse": 0.025889968499541283,
+      "cross_axis_residual_rms": 7.378921145573258e-05,
+      "checkerboard_residual_projection": 9.247456134175991e-09,
+      "false_chroma_rms": 0.02031811885535717,
+      "true_chroma_projection": null
+    },
+    {
+      "fixture": "stripe_x",
+      "method": "legacy",
+      "rmse": 0.02015995793044567,
+      "cross_axis_residual_rms": 7.378921145573258e-05,
+      "checkerboard_residual_projection": 9.247456134175991e-09,
+      "false_chroma_rms": 0.0041262805461883545,
+      "true_chroma_projection": null
+    },
+    {
+      "fixture": "stripe_x",
+      "method": "learned",
+      "rmse": 0.0421389564871788,
+      "cross_axis_residual_rms": 7.409453974105418e-05,
+      "checkerboard_residual_projection": 9.114076160443574e-10,
+      "false_chroma_rms": 0.00394342141225934,
+      "true_chroma_projection": null
+    },
+    {
+      "fixture": "stripe_x",
+      "method": "rgb",
+      "rmse": 0.0422312431037426,
+      "cross_axis_residual_rms": 7.401095353998244e-05,
+      "checkerboard_residual_projection": 1.7492614023950637e-09,
+      "false_chroma_rms": 0.0042755394242703915,
+      "true_chroma_projection": null
+    },
+    {
+      "fixture": "stripe_x",
+      "method": "LCA_corrected",
+      "rmse": 0.02015995793044567,
+      "cross_axis_residual_rms": 7.378921145573258e-05,
+      "checkerboard_residual_projection": 9.247456134175991e-09,
+      "false_chroma_rms": 0.0041262805461883545,
+      "true_chroma_projection": null
+    },
+    {
+      "fixture": "stripe_x",
+      "method": "transformer_baseline",
+      "rmse": 0.021972395479679108,
+      "cross_axis_residual_rms": 1.4775090484420161e-08,
+      "checkerboard_residual_projection": 7.610814756198181e-10,
+      "false_chroma_rms": 0.022518349811434746,
+      "true_chroma_projection": null
+    },
+    {
+      "fixture": "stripe_x",
+      "method": "transformer_rgb",
+      "rmse": 0.02197388745844364,
+      "cross_axis_residual_rms": 0.00022730573255103081,
+      "checkerboard_residual_projection": 6.205528188729659e-05,
+      "false_chroma_rms": 0.022519700229167938,
+      "true_chroma_projection": null
+    },
+    {
+      "fixture": "stripe_y",
+      "method": "initial_legacy",
+      "rmse": 0.017581786960363388,
+      "cross_axis_residual_rms": 7.378925511147827e-05,
+      "checkerboard_residual_projection": 9.334759631940415e-09,
+      "false_chroma_rms": 0.0027580345049500465,
+      "true_chroma_projection": null
+    },
+    {
+      "fixture": "stripe_y",
+      "method": "legacy",
+      "rmse": 0.01758178323507309,
+      "cross_axis_residual_rms": 7.378924783552065e-05,
+      "checkerboard_residual_projection": 7.617408037674522e-09,
+      "false_chroma_rms": 0.0027580338064581156,
+      "true_chroma_projection": null
+    },
+    {
+      "fixture": "stripe_y",
+      "method": "learned",
+      "rmse": 0.026900961995124817,
+      "cross_axis_residual_rms": 5.3574676712742075e-06,
+      "checkerboard_residual_projection": 2.9732205586441296e-09,
+      "false_chroma_rms": 0.0010708346962928772,
+      "true_chroma_projection": null
+    },
+    {
+      "fixture": "stripe_y",
+      "method": "rgb",
+      "rmse": 0.026958448812365532,
+      "cross_axis_residual_rms": 5.351124855224043e-06,
+      "checkerboard_residual_projection": 3.480201682393158e-09,
+      "false_chroma_rms": 0.0016212569316849113,
+      "true_chroma_projection": null
+    },
+    {
+      "fixture": "stripe_y",
+      "method": "LCA_corrected",
+      "rmse": 0.01758178323507309,
+      "cross_axis_residual_rms": 7.378924783552065e-05,
+      "checkerboard_residual_projection": 7.617408037674522e-09,
+      "false_chroma_rms": 0.0027580338064581156,
+      "true_chroma_projection": null
+    },
+    {
+      "fixture": "stripe_y",
+      "method": "transformer_baseline",
+      "rmse": 0.010744640603661537,
+      "cross_axis_residual_rms": 1.398235927041469e-08,
+      "checkerboard_residual_projection": 6.680040964823775e-10,
+      "false_chroma_rms": 0.00606308551505208,
+      "true_chroma_projection": null
+    },
+    {
+      "fixture": "stripe_y",
+      "method": "transformer_rgb",
+      "rmse": 0.010747446678578854,
+      "cross_axis_residual_rms": 0.00020293820125516504,
+      "checkerboard_residual_projection": 6.17088662693277e-05,
+      "false_chroma_rms": 0.0060674953274428844,
+      "true_chroma_projection": null
+    },
+    {
+      "fixture": "chroma_x",
+      "method": "initial_legacy",
+      "rmse": 0.023862797766923904,
+      "cross_axis_residual_rms": 5.374124967261196e-08,
+      "checkerboard_residual_projection": 2.5915923629327153e-08,
+      "false_chroma_rms": 0.02922583930194378,
+      "true_chroma_projection": 0.6901809573173523
+    },
+    {
+      "fixture": "chroma_x",
+      "method": "legacy",
+      "rmse": 0.01748046651482582,
+      "cross_axis_residual_rms": 5.385589574302685e-08,
+      "checkerboard_residual_projection": 2.5872502362744854e-08,
+      "false_chroma_rms": 0.021409111097455025,
+      "true_chroma_projection": 0.6901809573173523
+    },
+    {
+      "fixture": "chroma_x",
+      "method": "learned",
+      "rmse": 0.0347839817404747,
+      "cross_axis_residual_rms": 7.227796595543623e-05,
+      "checkerboard_residual_projection": 1.7312503652888722e-09,
+      "false_chroma_rms": 0.042601507157087326,
+      "true_chroma_projection": 0.41211795806884766
+    },
+    {
+      "fixture": "chroma_x",
+      "method": "rgb",
+      "rmse": 0.03486078977584839,
+      "cross_axis_residual_rms": 7.216751691885293e-05,
+      "checkerboard_residual_projection": 2.55360221856904e-09,
+      "false_chroma_rms": 0.04270857572555542,
+      "true_chroma_projection": 0.41063305735588074
+    },
+    {
+      "fixture": "chroma_x",
+      "method": "LCA_corrected",
+      "rmse": 0.01748046651482582,
+      "cross_axis_residual_rms": 5.385589574302685e-08,
+      "checkerboard_residual_projection": 2.5872502362744854e-08,
+      "false_chroma_rms": 0.021409111097455025,
+      "true_chroma_projection": 0.6901809573173523
+    },
+    {
+      "fixture": "chroma_x",
+      "method": "transformer_baseline",
+      "rmse": 0.02127140387892723,
+      "cross_axis_residual_rms": 1.4908511758449094e-08,
+      "checkerboard_residual_projection": 2.2253525688853415e-09,
+      "false_chroma_rms": 0.026052044704556465,
+      "true_chroma_projection": 0.7885806560516357
+    },
+    {
+      "fixture": "chroma_x",
+      "method": "transformer_rgb",
+      "rmse": 0.021271614357829094,
+      "cross_axis_residual_rms": 0.0002234514831798151,
+      "checkerboard_residual_projection": 6.184710946399719e-05,
+      "false_chroma_rms": 0.026052244007587433,
+      "true_chroma_projection": 0.7885715365409851
+    },
+    {
+      "fixture": "chroma_y",
+      "method": "initial_legacy",
+      "rmse": 0.014431287534534931,
+      "cross_axis_residual_rms": 6.136372121545719e-08,
+      "checkerboard_residual_projection": 2.6652450912934e-08,
+      "false_chroma_rms": 0.01767464354634285,
+      "true_chroma_projection": 0.7470463514328003
+    },
+    {
+      "fixture": "chroma_y",
+      "method": "legacy",
+      "rmse": 0.014431285671889782,
+      "cross_axis_residual_rms": 5.1619135632563484e-08,
+      "checkerboard_residual_projection": 2.5809567816281742e-08,
+      "false_chroma_rms": 0.01767464354634285,
+      "true_chroma_projection": 0.7470463514328003
+    },
+    {
+      "fixture": "chroma_y",
+      "method": "learned",
+      "rmse": 0.0220241267234087,
+      "cross_axis_residual_rms": 2.5682137305693686e-08,
+      "checkerboard_residual_projection": 1.138699579072977e-09,
+      "false_chroma_rms": 0.026973936706781387,
+      "true_chroma_projection": 0.6095201969146729
+    },
+    {
+      "fixture": "chroma_y",
+      "method": "rgb",
+      "rmse": 0.022149885073304176,
+      "cross_axis_residual_rms": 3.466684361796979e-08,
+      "checkerboard_residual_projection": 7.686284941854638e-10,
+      "false_chroma_rms": 0.02714521810412407,
+      "true_chroma_projection": 0.6074488759040833
+    },
+    {
+      "fixture": "chroma_y",
+      "method": "LCA_corrected",
+      "rmse": 0.014431285671889782,
+      "cross_axis_residual_rms": 5.1619135632563484e-08,
+      "checkerboard_residual_projection": 2.5809567816281742e-08,
+      "false_chroma_rms": 0.01767464354634285,
+      "true_chroma_projection": 0.7470463514328003
+    },
+    {
+      "fixture": "chroma_y",
+      "method": "transformer_baseline",
+      "rmse": 0.00922680925577879,
+      "cross_axis_residual_rms": 1.3712470270377253e-08,
+      "checkerboard_residual_projection": 2.2174440061917267e-09,
+      "false_chroma_rms": 0.011300488375127316,
+      "true_chroma_projection": 0.8535534143447876
+    },
+    {
+      "fixture": "chroma_y",
+      "method": "transformer_rgb",
+      "rmse": 0.00922856293618679,
+      "cross_axis_residual_rms": 0.00019894653814844787,
+      "checkerboard_residual_projection": 6.189577834447846e-05,
+      "false_chroma_rms": 0.0113027049228549,
+      "true_chroma_projection": 0.8535460829734802
+    }
+  ],
+  "k_curve": [
+    {
+      "K": 2,
+      "coverage_fraction": 0.125,
+      "legacy_rmse": 0.028951965272426605,
+      "final_rmse": 0.04450381547212601
+    },
+    {
+      "K": 3,
+      "coverage_fraction": 0.1875,
+      "legacy_rmse": 0.02950870990753174,
+      "final_rmse": 0.044884420931339264
+    },
+    {
+      "K": 4,
+      "coverage_fraction": 0.25,
+      "legacy_rmse": 0.029756221920251846,
+      "final_rmse": 0.045055095106363297
+    },
+    {
+      "K": 5,
+      "coverage_fraction": 0.25,
+      "legacy_rmse": 0.029754547402262688,
+      "final_rmse": 0.04505427926778793
+    },
+    {
+      "K": 6,
+      "coverage_fraction": 0.3125,
+      "legacy_rmse": 0.030062908306717873,
+      "final_rmse": 0.045260950922966
+    },
+    {
+      "K": 7,
+      "coverage_fraction": 0.375,
+      "legacy_rmse": 0.030296240001916885,
+      "final_rmse": 0.04541558399796486
+    },
+    {
+      "K": 8,
+      "coverage_fraction": 0.4375,
+      "legacy_rmse": 0.030471203848719597,
+      "final_rmse": 0.04553347826004028
+    },
+    {
+      "K": 9,
+      "coverage_fraction": 0.5,
+      "legacy_rmse": 0.030544020235538483,
+      "final_rmse": 0.04558201879262924
+    },
+    {
+      "K": 10,
+      "coverage_fraction": 0.5625,
+      "legacy_rmse": 0.03065548837184906,
+      "final_rmse": 0.045655809342861176
+    },
+    {
+      "K": 11,
+      "coverage_fraction": 0.5625,
+      "legacy_rmse": 0.03070089779794216,
+      "final_rmse": 0.04568597301840782
+    },
+    {
+      "K": 12,
+      "coverage_fraction": 0.625,
+      "legacy_rmse": 0.030662018805742264,
+      "final_rmse": 0.04566269740462303
+    },
+    {
+      "K": 13,
+      "coverage_fraction": 0.625,
+      "legacy_rmse": 0.03074135072529316,
+      "final_rmse": 0.0457153283059597
+    },
+    {
+      "K": 14,
+      "coverage_fraction": 0.6875,
+      "legacy_rmse": 0.030556531623005867,
+      "final_rmse": 0.04559355601668358
+    }
+  ],
+  "optical": [
+    {
+      "condition": "defocus",
+      "coefficient_nm": 100,
+      "wavelengths": 61,
+      "min": 3.4261393011547625e-05,
+      "sum_range": [
+        0.9999998807907104,
+        1.0000001192092896
+      ],
+      "center_range": [
+        0.13100332021713257,
+        0.2666334807872772
+      ],
+      "camera_response_id": "Canon 1DMarkIII",
+      "clear_target_units": "relative D65-normalized camera RGB, linear white1",
+      "reconstruction_metrics": {
+        "legacy": {
+          "rmse": 0.05171538516879082,
+          "cross_axis_residual_rms": 0.000348898145603016,
+          "checkerboard_residual_projection": 1.0131923744438609e-08,
+          "false_chroma_rms": 0.01308390311896801,
+          "true_chroma_projection": null
+        },
+        "learned": {
+          "rmse": 0.0645642802119255,
+          "cross_axis_residual_rms": 7.615334470756352e-05,
+          "checkerboard_residual_projection": 1.8986765493167468e-09,
+          "false_chroma_rms": 0.0016674596117809415,
+          "true_chroma_projection": null
+        },
+        "rgb": {
+          "rmse": 0.06460534781217575,
+          "cross_axis_residual_rms": 7.644150173291564e-05,
+          "checkerboard_residual_projection": 2.203706550574225e-09,
+          "false_chroma_rms": 0.002143876627087593,
+          "true_chroma_projection": null
+        }
+      }
+    },
+    {
+      "condition": "coma",
+      "coefficient_nm": 100,
+      "wavelengths": 61,
+      "min": 2.4228702386608347e-05,
+      "sum_range": [
+        0.9999997615814209,
+        1.000000238418579
+      ],
+      "center_range": [
+        0.5389459729194641,
+        0.701301097869873
+      ],
+      "camera_response_id": "Canon 1DMarkIII",
+      "clear_target_units": "relative D65-normalized camera RGB, linear white1",
+      "reconstruction_metrics": {
+        "legacy": {
+          "rmse": 0.0494963712990284,
+          "cross_axis_residual_rms": 0.00042410389869473875,
+          "checkerboard_residual_projection": 1.1204936534170429e-08,
+          "false_chroma_rms": 0.016083762049674988,
+          "true_chroma_projection": null
+        },
+        "learned": {
+          "rmse": 0.06479983031749725,
+          "cross_axis_residual_rms": 9.423998562851921e-05,
+          "checkerboard_residual_projection": 2.512162478041091e-09,
+          "false_chroma_rms": 0.0019692506175488234,
+          "true_chroma_projection": null
+        },
+        "rgb": {
+          "rmse": 0.06485012173652649,
+          "cross_axis_residual_rms": 9.459756984142587e-05,
+          "checkerboard_residual_projection": 2.7573479055575945e-09,
+          "false_chroma_rms": 0.002401231322437525,
+          "true_chroma_projection": null
+        }
+      }
+    },
+    {
+      "condition": "astigmatism",
+      "coefficient_nm": 100,
+      "wavelengths": 61,
+      "min": 3.675503467093222e-05,
+      "sum_range": [
+        0.9999998211860657,
+        1.000000238418579
+      ],
+      "center_range": [
+        0.5483739376068115,
+        0.7661386132240295
+      ],
+      "camera_response_id": "Canon 1DMarkIII",
+      "clear_target_units": "relative D65-normalized camera RGB, linear white1",
+      "reconstruction_metrics": {
+        "legacy": {
+          "rmse": 0.04912850633263588,
+          "cross_axis_residual_rms": 0.0004356684221420437,
+          "checkerboard_residual_projection": 9.140888934666691e-09,
+          "false_chroma_rms": 0.01643654890358448,
+          "true_chroma_projection": null
+        },
+        "learned": {
+          "rmse": 0.06477374583482742,
+          "cross_axis_residual_rms": 9.556050645187497e-05,
+          "checkerboard_residual_projection": 1.7757312287258742e-09,
+          "false_chroma_rms": 0.0020911311730742455,
+          "true_chroma_projection": null
+        },
+        "rgb": {
+          "rmse": 0.06482459604740143,
+          "cross_axis_residual_rms": 9.59212557063438e-05,
+          "checkerboard_residual_projection": 1.8541370661040446e-09,
+          "false_chroma_rms": 0.0025067771784961224,
+          "true_chroma_projection": null
+        }
+      }
+    },
+    {
+      "condition": "spherical",
+      "coefficient_nm": 100,
+      "wavelengths": 61,
+      "min": 4.7343062760774046e-05,
+      "sum_range": [
+        0.9999997019767761,
+        1.0000001192092896
+      ],
+      "center_range": [
+        0.48975521326065063,
+        0.5587949156761169
+      ],
+      "camera_response_id": "Canon 1DMarkIII",
+      "clear_target_units": "relative D65-normalized camera RGB, linear white1",
+      "reconstruction_metrics": {
+        "legacy": {
+          "rmse": 0.05050306022167206,
+          "cross_axis_residual_rms": 0.0003902892640326172,
+          "checkerboard_residual_projection": 1.19032419476639e-08,
+          "false_chroma_rms": 0.01457186508923769,
+          "true_chroma_projection": null
+        },
+        "learned": {
+          "rmse": 0.06465800106525421,
+          "cross_axis_residual_rms": 8.495744987158105e-05,
+          "checkerboard_residual_projection": 1.968761820236864e-09,
+          "false_chroma_rms": 0.0018594794673845172,
+          "true_chroma_projection": null
+        },
+        "rgb": {
+          "rmse": 0.06470349431037903,
+          "cross_axis_residual_rms": 8.527680620318279e-05,
+          "checkerboard_residual_projection": 3.3152827150217945e-09,
+          "false_chroma_rms": 0.002305123256519437,
+          "true_chroma_projection": null
+        }
+      }
+    }
+  ],
+  "stepped_response": {
+    "initial_legacy": {
+      "slope": 0.9999255265085941,
+      "intercept_dn": 0.7414754636390091,
+      "affine_response_residual_rmse_dn": 0.0003740356486041034,
+      "identity_response_rmse_dn": 0.6559057314875097,
+      "dark_max_dn": 512,
+      "dark_cases": 19,
+      "dark_identity_response_rmse_dn": 0.7345377642524417,
+      "dark_affine_response_residual_rmse_dn": 9.842982822403067e-06
+    },
+    "legacy": {
+      "slope": 0.9999255262813161,
+      "intercept_dn": 0.7414868670512708,
+      "affine_response_residual_rmse_dn": 0.0003755131665185818,
+      "identity_response_rmse_dn": 0.6559154653606661,
+      "dark_max_dn": 512,
+      "dark_cases": 19,
+      "dark_identity_response_rmse_dn": 0.7345382345381812,
+      "dark_affine_response_residual_rmse_dn": 1.7808065195862143e-05
+    },
+    "rgb": {
+      "slope": 0.9949395472993081,
+      "intercept_dn": 39.756882380923635,
+      "affine_response_residual_rmse_dn": 1.01596156404112,
+      "identity_response_rmse_dn": 36.04378777434461,
+      "dark_max_dn": 512,
+      "dark_cases": 19,
+      "dark_identity_response_rmse_dn": 39.47143448836373,
+      "dark_affine_response_residual_rmse_dn": 1.2029572270372466
+    }
+  },
+  "tier_B": {
+    "tier": "B",
+    "status": "RUN",
+    "source_sha256": "eff282282de3337575e15c9d1a8f43c625c7023bf7fe965617a8c637891b01fc",
+    "provenance": "Locally installed Windows flower photograph; source is OS wallpaper img9.jpg, author/capture parameters unverified. No original photograph redistributed. Assume sRGB decoding; this is a natural-scene computational fixture, not measured RAW/HDR.",
+    "units": "linear display RGB after inverse sRGB, white1; hypothetical spectral lift; not measured physical radiance",
+    "encoding": "srgb",
+    "checkpoint": "random seed214",
+    "construction": {
+      "protocol": "spectral-camera-v2",
+      "sample_seed": 214,
+      "spectral_input": false,
+      "asset_identity": {
+        "basis.json": "b7fb40806dc43524234546dbb6dcc6a17074429028b59fc288232b905febdaea",
+        "cameras.json": "fa8027f4a9d2dd77cb8ce7f1f8eaf6eca2739d3ad367e04ef2c8a201b51c0992"
+      },
+      "camera_response_id": "Nikon D700",
+      "profile_sha256": "55ac12938d7f1a4b7e00f937606a14cc3e1bfa6da4f16864c9f0f4fbc2e99a1a",
+      "profile_provenance": {
+        "kind": "analytic_inferred",
+        "note": "Not the author's PTC library or a measured camera."
+      },
+      "spectral_curve_provenance": "published_measured_relative_response",
+      "target_space": "D65-normalized camera RGB, reference exposure, before added optics",
+      "spectral_prior": "Mallett2019 public primary basis; cropped 400..700nm",
+      "wavelengths_nm": [
+        400.0,
+        405.0,
+        410.0,
+        415.0,
+        420.0,
+        425.0,
+        430.0,
+        435.0,
+        440.0,
+        445.0,
+        450.0,
+        455.0,
+        460.0,
+        465.0,
+        470.0,
+        475.0,
+        480.0,
+        485.0,
+        490.0,
+        495.0,
+        500.0,
+        505.0,
+        510.0,
+        515.0,
+        520.0,
+        525.0,
+        530.0,
+        535.0,
+        540.0,
+        545.0,
+        550.0,
+        555.0,
+        560.0,
+        565.0,
+        570.0,
+        575.0,
+        580.0,
+        585.0,
+        590.0,
+        595.0,
+        600.0,
+        605.0,
+        610.0,
+        615.0,
+        620.0,
+        625.0,
+        630.0,
+        635.0,
+        640.0,
+        645.0,
+        650.0,
+        655.0,
+        660.0,
+        665.0,
+        670.0,
+        675.0,
+        680.0,
+        685.0,
+        690.0,
+        695.0,
+        700.0
+      ],
+      "scene_gain": 0.12938370152738551,
+      "crop_xy": [
+        2313,
+        974
+      ],
+      "source_resized": false,
+      "replicated_boundary_context": false,
+      "iso": 200,
+      "camera": {
+        "gain_e_per_dn": 2.0,
+        "read_noise_e": 3.0,
+        "black_dn": 512.0,
+        "white_dn": 16383.0,
+        "full_well_e": 60000.0
+      },
+      "interval_ev": 0.21071171760559082,
+      "exposure_ratios": [
+        1.0,
+        0.6452208161354065,
+        0.7466875314712524,
+        0.8641108274459839,
+        1.1572589874267578,
+        1.3392482995986938,
+        1.5498570203781128
+      ],
+      "channel_transmission": [
+        0.699999988079071,
+        1.0,
+        0.550000011920929
+      ],
+      "f_number": 7.742573022842407,
+      "pitch_um": 4.178910505771637,
+      "fill_factor": 0.9230844080448151,
+      "psf": "assumed circular-pupil scalar diffraction with parametric OPD; not measured prime-lens library",
+      "exposure_convention": "reference-white-normalized per ISO; not fixed absolute photons across ISO",
+      "electrons_per_reference_unit": 31742.0,
+      "aberrations_nm": {
+        "defocus": 1.855783462524414,
+        "astigmatism": 15.68238615989685,
+        "coma": 56.98722839355469
+      },
+      "lca_native": 0.17482802271842957,
+      "field_center": [
+        -0.02637302875518799,
+        -0.28569096326828003
+      ],
+      "field_extent": 0.1,
+      "field_extent_region": "half-width of full simulated support including scene margin",
+      "psf_radius_hr": 12,
+      "pupil_samples": 64,
+      "fft_size": 256,
+      "signal_saturation_fraction": 0.0,
+      "observed_saturation_fraction": 0.0,
+      "target_above_reference_white_fraction": 0.0,
+      "noise_prior": "observed plug-in variance; no clean signal or true saturation fed to model",
+      "cfa": "RGGB",
+      "scale_native": 2,
+      "shifts_xy_native": [
+        [
+          0.0,
+          0.0
+        ],
+        [
+          -1.562743902206421,
+          -1.6997931003570557
+        ],
+        [
+          -0.28261685371398926,
+          -1.5349798202514648
+        ],
+        [
+          1.5455389022827148,
+          0.10308146476745605
+        ],
+        [
+          -1.8355686664581299,
+          1.4978814125061035
+        ],
+        [
+          -1.7519340515136719,
+          -1.7757506370544434
+        ],
+        [
+          -0.0973672866821289,
+          0.35050415992736816
+        ]
+      ]
+    },
+    "metrics": {
+      "baseline": {
+        "psnr_linear_db": 78.83823113199144,
+        "rmse_linear": 0.0001143111103898093,
+        "chroma_rmse": 0.00019494143641004332,
+        "shadow_rmse": null,
+        "mean_bias": 1.1723885243689572e-07
+      },
+      "rgb": {
+        "psnr_linear_db": 78.48934173993199,
+        "rmse_linear": 0.00011899615069650269,
+        "chroma_rmse": 0.0002031105274733651,
+        "shadow_rmse": null,
+        "mean_bias": -6.370522357799389e-06
+      }
+    }
+  },
+  "tier_C": {
+    "status": "NOT_RUN",
+    "missing": [
+      "S5M2 RAW burst",
+      "independent long-exposure RAW",
+      "measured exposure/ISO/transmission metadata"
+    ],
+    "nine_stop_claim": false
+  }
+}

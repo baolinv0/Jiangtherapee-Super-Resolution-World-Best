@@ -104,9 +104,10 @@ class JSRModel(nn.Module):
     Returns rgb/legacy/learned [B,3,scale*H,scale*W]. No hidden RAW clipping.
     Defaults match the released module widths; the front end remains inferred.
     """
-    def __init__(self, scale: int = 2, controller_width: int = 32, refine_width: int = 116, refine_blocks: int = 8, normalization: bool = True, refinement: bool = True):
+    def __init__(self, scale: int = 2, controller_width: int = 32, refine_width: int = 116, refine_blocks: int = 8, normalization: bool = True, refinement: bool = True, lca_offsets_native=None):
         super().__init__()
         self.scale, self.normalization, self.refinement = scale, normalization, refinement
+        self.lca_offsets_native = lca_offsets_native
         self.controller = Controller(controller_width)
         self.refinenet = RefineNet(refine_width, refine_blocks)
         # An explicit identity affine is an engineering choice; original
@@ -127,8 +128,8 @@ class JSRModel(nn.Module):
             self.feature_mean.copy_(mean)
             self.feature_std.copy_(std)
 
-    def forward(self, raw: Tensor, shifts: Tensor) -> dict[str, Tensor]:
-        evidence = phase_splat(raw, shifts, self.scale)
+    def forward(self, raw: Tensor, shifts: Tensor, geometry=None, diagnostics=False) -> dict[str, Tensor]:
+        evidence = phase_splat(raw, shifts, self.scale, geometry)
         legacy = evidence["legacy"]
         feature = finish_feature(evidence["phase"], legacy)
         if self.normalization:
@@ -137,6 +138,13 @@ class JSRModel(nn.Module):
             amplitude = local_amplitude(legacy)
         logits = self.controller((feature - self.feature_mean) / self.feature_std)
         learned = controlled_fusion(logits, evidence["sum"], evidence["count"], legacy)
+        controller_amplitude = amplitude
+        initial_legacy = legacy
+        pre_lca_learned = learned
+        from .geometry import correct_lca
+        learned = correct_lca(learned, self.lca_offsets_native, self.scale)
+        legacy = correct_lca(legacy, self.lca_offsets_native, self.scale)
+        amplitude = local_amplitude(legacy)
         if self.refinement:
             pair = torch.cat([learned, legacy], 1)
             # Published ordering is first RGB as the residual reconstruction
@@ -147,4 +155,7 @@ class JSRModel(nn.Module):
             rgb = torch.where(amplitude > 0, rgb, torch.zeros_like(rgb))
         else:
             rgb = learned
-        return {"rgb": rgb, "legacy": legacy, "learned": learned}
+        result = {"rgb": rgb, "legacy": legacy, "learned": learned}
+        if diagnostics:
+            result.update(initial_legacy=initial_legacy, pre_lca_learned=pre_lca_learned, controller_amplitude=controller_amplitude, refine_amplitude=amplitude)
+        return result

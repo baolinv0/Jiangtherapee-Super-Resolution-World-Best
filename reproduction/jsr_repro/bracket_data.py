@@ -129,6 +129,8 @@ class BracketBurstDataset(Dataset):
         sample_seed = int.from_bytes(hashlib.sha256(token).digest()[:8], "little") % (2 ** 63 - 1)
         sample = synthesize_bracket(load_rgb(row["resolved_path"], row["encoding"]), self.options,
                                     torch.Generator().manual_seed(sample_seed), self.profile)
+        if self.options.get("capture_order") is not None:
+            sample["capture_order"] = torch.as_tensor(self.options["capture_order"])
         sample["metadata"].update(source_sha256=row["sha256"], scene_id=row["scene_id"], split=row["split"], sample_seed=sample_seed)
         sample["metadata"] = json.dumps(sample["metadata"], sort_keys=True)
         return sample
@@ -136,6 +138,7 @@ class BracketBurstDataset(Dataset):
 
 def save_burst(path, sample):
     fields = ("raw", "shifts", "exposure", "transmission", "variance", "saturation", "valid", "black_invalid")
+    fields = (*fields, *(("capture_order",) if "capture_order" in sample else ()))
     metadata = sample["metadata"] if isinstance(sample["metadata"], str) else json.dumps(sample["metadata"], sort_keys=True)
     np.savez_compressed(path, **{key: sample[key].cpu().numpy() for key in fields}, metadata=np.asarray(metadata))
 

@@ -24,6 +24,10 @@ def validate_inputs(sample):
     if raw.ndim != 5 or raw.shape[1:3] != (7, 1) or min(raw.shape[-2:]) < 16 or any(d % 2 for d in raw.shape[-2:]):
         raise ValueError("Transformer RAW must be[B,7,1,H,W], even dimensions>=16")
     b = raw.shape[0]
+    if 'capture_order' in sample:
+        ranks=sample['capture_order']
+        if ranks.shape!=(b,7) or not torch.isfinite(ranks).all() or not torch.equal(ranks.sort(1).values,torch.arange(7,device=ranks.device).expand(b,-1).to(ranks)):
+            raise ValueError('capture_order must be a permutation of temporal ranks 0..6')
     if sample["shifts"].shape != (b, 7, 2) or sample["exposure"].shape != (b, 7) or sample["transmission"].shape != (b, 3):
         raise ValueError("metadata shapes: shifts[B,7,2], exposure[B,7], transmission[B,3]")
     for key in FIELDS:
@@ -39,7 +43,7 @@ def validate_inputs(sample):
             raise ValueError(f"{key} must be in[0,1]")
 
 
-def align_planes(raw, variance, saturation, valid, black, shifts):
+def align_planes(raw, variance, saturation, valid, black, shifts, geometry=None):
     """Inverse translation dx/2, squared bilinear coefficients for variance.
 
     CFA phase cancels between same-color source/reference packed planes.
@@ -48,8 +52,17 @@ def align_planes(raw, variance, saturation, valid, black, shifts):
     """
     n, k, c, h, w = raw.shape
     yy, xx = torch.meshgrid(torch.arange(h, device=raw.device, dtype=raw.dtype), torch.arange(w, device=raw.device, dtype=raw.dtype), indexing="ij")
-    x = xx[None, None] - shifts[..., 0, None, None] / 2
-    y = yy[None, None] - shifts[..., 1, None, None] / 2
+    sx,sy = (shifts[...,0],shifts[...,1]) if shifts.ndim==5 else (shifts[...,0,None,None],shifts[...,1,None,None])
+    x = xx[None,None] - sx / 2
+    y = yy[None,None] - sy / 2
+    if geometry is not None:
+        results=[]
+        for channel,(cx,cy) in enumerate(((0,0),(1,0),(0,1),(1,1))):
+            native=geometry.inverse[:,:,cy::2,cx::2]
+            # Recursive one-channel sampler receives dense displacement in packed units.
+            displacement=torch.stack((2*(xx[None,None]-(native[...,0]-cx)/2),2*(yy[None,None]-(native[...,1]-cy)/2)),-1)
+            results.append(align_planes(*(v[:,:,channel:channel+1] for v in (raw,variance,saturation,valid,black)), displacement))
+        return tuple(torch.cat([r[i] for r in results],2) for i in range(5))
     x0, y0 = x.floor(), y.floor()
     wx, wy = x - x0, y - y0
     out, var = torch.zeros_like(raw), torch.zeros_like(variance)
@@ -153,10 +166,13 @@ class PairReduce(nn.Module):
 
 
 class SpeechTransformer(nn.Module):
-    def __init__(self, width=16, heads=2, window=4, scale=2, frames=7):
+    def __init__(self, width=16, heads=2, window=4, scale=2, frames=7, capture_order_mode="legacy-storage-v1"):
         super().__init__()
         if frames != 7 or scale != 2 or width < 4 or heads < 1 or width%heads or not 2<=window<=8:
             raise ValueError("model requires K7, scale2, width>=4 divisible by heads, window2..8")
+        if capture_order_mode not in ('legacy-storage-v1','explicit-ranks-v1'):
+            raise ValueError('unknown capture order semantics')
+        self.capture_order_mode = capture_order_mode
         self.embed = nn.Conv2d(21,width,3,padding=1)
         self.enc = nn.ModuleList([ExchangeBlock(width,heads,window) for _ in range(3)])
         self.down = nn.ModuleList([nn.Conv2d(width,width,3,stride=2,padding=1) for _ in range(2)])
@@ -172,9 +188,12 @@ class SpeechTransformer(nn.Module):
 
     def forward(self, sample, trace=False):
         validate_inputs(sample)
+        if "geometry" in sample:
+            from .geometry import validate_geometry
+            validate_geometry(sample["geometry"], sample["raw"])
         raw = pack(sample["raw"])
         b,k,c,h,w = raw.shape
-        values = align_planes(raw, pack(sample["variance"]), pack(sample["saturation"]), pack(sample["valid"]), pack(sample["black_invalid"]), sample["shifts"])
+        values = align_planes(raw, pack(sample["variance"]), pack(sample["saturation"]), pack(sample["valid"]), pack(sample["black_invalid"]), sample["shifts"], sample.get("geometry"))
         observed,var,sat,valid,black = values
         transmission = sample["transmission"][:,[0,1,1,2]][:,None,:,None,None]
         exposure = sample["exposure"][:,:,None,None,None]
@@ -188,6 +207,11 @@ class SpeechTransformer(nn.Module):
         divisor = torch.where(amplitude>0,amplitude,torch.ones_like(amplitude))[:,None]
         ev = torch.log2(exposure).expand(b,k,1,h,w)
         feature = torch.cat((radiance/divisor,variance/divisor.square(),sat,valid,black,ev),2)
+        if self.capture_order_mode == 'explicit-ranks-v1':
+            if 'capture_order' not in sample:
+                raise ValueError('explicit-ranks-v1 requires capture_order metadata')
+            order=sample['capture_order'].argsort(1)
+            feature=feature.gather(1,order[:,:,None,None,None].expand_as(feature))
         x = self.embed(feature.reshape(b*k,21,h,w)).reshape(b,k,-1,h,w)
         shapes = {"embedding": list(x.shape)}
         skips = []

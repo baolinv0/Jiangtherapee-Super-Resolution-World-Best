@@ -119,3 +119,6 @@ NPZ必需上述8个数值字段及JSON metadata（RGGB、scale2、profile SHA256
 ![程序生成场景与相同编码的诊断预览](transformer-validation/comparison.png)
 
 仍需作者完整Transformer定义、原训练场景/划分、“全光谱”算法、真实PTC/暗场/光学库、完整日程与实验输入，才能升级为严格原方法数值复现。正式自然图像训练、真实相机及移动物体测试、RGB色彩校正、完整配准、GPU速度和公平外部baseline都尚未执行。
+
+
+Review revisions add optional robust dense alignment, shared v1 LCA, explicit temporal capture ranks, spherical spectral OPD and reproducible diagnostics. See [conventions, provenance, conformance and evidence](REVIEW_REVISION.md) for the independent definitions, default compatibility and real RAW NOT_RUN protocol.

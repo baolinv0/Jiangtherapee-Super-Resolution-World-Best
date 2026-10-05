@@ -96,7 +96,7 @@ def _ratio(numerator: Tensor, denominator: Tensor, fallback: Tensor | float = 0.
     return torch.where(positive, numerator / torch.where(positive, denominator, torch.ones_like(denominator)), torch.as_tensor(fallback, dtype=numerator.dtype, device=numerator.device))
 
 
-def phase_splat(raw: Tensor, shifts: Tensor, scale: int = 2) -> dict[str, Tensor]:
+def phase_splat(raw: Tensor, shifts: Tensor, scale: int = 2, geometry=None, validity: Tensor | None = None) -> dict[str, Tensor]:
     """Independent 16-phase count/mean/RMS reconstruction statistics.
 
     Input raw is black-subtracted RGGB [B,K,1,H,W]. (dx,dy) means a
@@ -111,6 +111,8 @@ def phase_splat(raw: Tensor, shifts: Tensor, scale: int = 2) -> dict[str, Tensor
     """
     if raw.ndim != 5 or raw.shape[2] != 1 or not raw.is_floating_point():
         raise ValueError("raw must be floating [B,K,1,H,W]")
+    if validity is not None and (validity.shape != raw.shape or not torch.isfinite(validity).all() or ((validity != 0) & (validity != 1)).any()):
+        raise ValueError("validity must be a finite binary mask matching RAW")
     batch, frames, _, height, width = raw.shape
     if height < 2 or width < 2 or height % 2 or width % 2:
         raise ValueError("RGGB height and width must be even and at least 2")
@@ -124,6 +126,9 @@ def phase_splat(raw: Tensor, shifts: Tensor, scale: int = 2) -> dict[str, Tensor
         raise ValueError("RAW and shifts must be finite")
     if not torch.allclose(shifts[:, 0], torch.zeros_like(shifts[:, 0]), atol=1e-7, rtol=0):
         raise ValueError("frame zero must define the reference with shift (0,0)")
+    if geometry is not None:
+        from .geometry import validate_geometry
+        validate_geometry(geometry, raw)
     out_h, out_w = height * scale, width * scale
     yy, xx = torch.meshgrid(torch.arange(height, device=raw.device), torch.arange(width, device=raw.device), indexing="ij")
     color = torch.where((yy % 2 == 0) & (xx % 2 == 0), 0, torch.where((yy % 2 == 1) & (xx % 2 == 1), 2, 1)).reshape(-1)
@@ -133,8 +138,11 @@ def phase_splat(raw: Tensor, shifts: Tensor, scale: int = 2) -> dict[str, Tensor
         total = torch.zeros_like(count)
         second = torch.zeros_like(count)
         for k in range(frames):
-            native_x = xx.to(raw.dtype).reshape(-1) + shifts[b, k, 0]
-            native_y = yy.to(raw.dtype).reshape(-1) + shifts[b, k, 1]
+            if geometry is None:
+                native_x = xx.to(raw.dtype).reshape(-1) + shifts[b, k, 0]
+                native_y = yy.to(raw.dtype).reshape(-1) + shifts[b, k, 1]
+            else:
+                native_x, native_y = geometry.forward[b, k].reshape(-1, 2).unbind(-1)
             phase = (native_y.remainder(1) * 4).floor().long().clamp(0, 3) * 4 + (native_x.remainder(1) * 4).floor().long().clamp(0, 3)
             px, py = (native_x + 0.5) * scale - 0.5, (native_y + 0.5) * scale - 0.5
             x0, y0 = px.floor(), py.floor()
@@ -144,6 +152,8 @@ def phase_splat(raw: Tensor, shifts: Tensor, scale: int = 2) -> dict[str, Tensor
                 weight = (1 - (px - x.to(px.dtype)).abs()) * (1 - (py - y.to(py.dtype)).abs())
                 valid = (x >= 0) & (x < out_w) & (y >= 0) & (y < out_h)
                 weight = weight * valid.to(weight.dtype)
+                if validity is not None:
+                    weight = weight * validity[b, k, 0].reshape(-1).to(weight)
                 index = ((color * 16 + phase) * out_h + y.clamp(0, out_h - 1)) * out_w + x.clamp(0, out_w - 1)
                 count.scatter_add_(0, index, weight)
                 total.scatter_add_(0, index, weight * value)

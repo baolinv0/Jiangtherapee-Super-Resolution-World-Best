@@ -317,3 +317,6 @@ JSR：面向高动态与伪影抑制的局部强度尺度等变 RAW Burst 超分
 The full paper will be provided in this repository, including the algorithm, assumptions, experimental protocols, ablations, and complete results.
 
 <!-- PAPER_LINK: 论文上传后，在此加入实际 PDF 或项目论文页面的相对链接；正式书目信息确定后再加入 BibTeX。 -->
+
+
+Review revisions add optional robust dense alignment, shared v1 LCA, explicit temporal capture ranks, spherical spectral OPD and reproducible diagnostics. See [conventions, provenance, conformance and evidence](docs/REVIEW_REVISION.md) for the independent definitions, default compatibility and real RAW NOT_RUN protocol.

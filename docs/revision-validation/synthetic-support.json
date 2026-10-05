@@ -1,0 +1,118 @@
+{
+  "tier": "SYNTHETIC PROTOCOL REGRESSION ONLY; NOT REAL TIER C",
+  "status": "RUN",
+  "missing": [],
+  "nine_stop_claim": false,
+  "file_hashes": {
+    "C:\\Users\\Lenovo\\Documents\\Codex\\2026-10-05\\referenced-chatgpt-conversation-this-is-an\\work\\jsr\\runs\\review-revision\\repair-full\\test_saturated_short_valid_lon0\\s0.RW2": "7b49fec6e4560301f56423eefd318a953018b35854286086fb0dd35506637875",
+    "C:\\Users\\Lenovo\\Documents\\Codex\\2026-10-05\\referenced-chatgpt-conversation-this-is-an\\work\\jsr\\runs\\review-revision\\repair-full\\test_saturated_short_valid_lon0\\s1.RW2": "13c94c2ddce11ad701b20f519a58efd359ed35760a555c3bb0789c42babfcaa8",
+    "C:\\Users\\Lenovo\\Documents\\Codex\\2026-10-05\\referenced-chatgpt-conversation-this-is-an\\work\\jsr\\runs\\review-revision\\repair-full\\test_saturated_short_valid_lon0\\long.RW2": "dfb8613414c1fd46d0a95a11461200031a5753f3108750284fa3184d3b55501b"
+  },
+  "exposure_ratio": 2.0,
+  "metadata": {
+    "camera_identity": "SYNTHETIC decoder stub only",
+    "cfa": "RGGB",
+    "black_dn": 512,
+    "white_dn": 16383,
+    "iso": 100,
+    "exposure_seconds": [
+      0.001,
+      0.001
+    ],
+    "transmission": [
+      1,
+      1,
+      1
+    ],
+    "independent_long_reference": true,
+    "reference_exposure_seconds": 0.002,
+    "reference_iso": 100,
+    "reference_transmission": [
+      0.01,
+      0.01,
+      0.01
+    ],
+    "color_units": "linear camera RGB, reference-short exposure units"
+  },
+  "registration": [
+    [
+      {
+        "status": "reference",
+        "degree": -1
+      },
+      {
+        "status": "estimated",
+        "reason": "polynomial",
+        "degree": 4,
+        "controls": 63,
+        "confidence": 0.7325581395348837,
+        "cross_frame_mean_px": null,
+        "requested_degree": 4,
+        "degree_fallback": false,
+        "homography": [
+          [
+            1.0065057838339873,
+            -0.00030947597331946124,
+            -0.10642021960261305
+          ],
+          [
+            0.006533233333323705,
+            1.0025089455330745,
+            -0.3095220800103007
+          ],
+          [
+            0.00011014468385909893,
+            -9.706533255168651e-05,
+            1.0
+          ]
+        ],
+        "residual_rms_px": 0.27906297827273785,
+        "inverse_max_error_px": 1.464821375527116e-14
+      }
+    ]
+  ],
+  "burst_alignment": [
+    [
+      {
+        "status": "reference",
+        "degree": -1
+      },
+      {
+        "status": "estimated",
+        "reason": "polynomial",
+        "degree": 4,
+        "controls": 86,
+        "confidence": 1.0,
+        "cross_frame_mean_px": null,
+        "requested_degree": 4,
+        "degree_fallback": false,
+        "homography": [
+          [
+            1.0,
+            -4.1362965213625097e-17,
+            1.3474050783815568e-16
+          ],
+          [
+            4.70760467668702e-17,
+            0.9999999999999998,
+            4.9953643638161974e-15
+          ],
+          [
+            1.9171332347836076e-18,
+            -1.9103021599479017e-18,
+            1.0
+          ]
+        ],
+        "residual_rms_px": 3.2344808618138617e-15,
+        "inverse_max_error_px": 3.972054645195637e-15
+      }
+    ]
+  ],
+  "valid_fraction": 0.04976851865649223,
+  "short_adc_invalid_fraction": 0.513427734375,
+  "support_policy": "positive accepted short counts; all short and registered long contributors valid in pre-exposure ADC units",
+  "rmse_camera_radiance": 0.009349729865789413,
+  "method": "independent corrected merge; no fitted gain; static scene only",
+  "border_native": 8,
+  "mixed_exposure_case": "second short exposure doubled; empty conservative joint support rejected with ValueError"
+}

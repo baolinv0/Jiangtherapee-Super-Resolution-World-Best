@@ -108,6 +108,8 @@ def synthesize_spectral(source,options,seed,profile=None,assets=None):
     extent = float(options.get('field_extent',.1))
     aberrations = {name:_uniform(optics_rng,*_range(options,name+'_nm',default,-500.,500.))
                    for name,default in [('defocus',[-20.,20.]),('astigmatism',[0.,60.]),('coma',[0.,80.])]}
+    if 'spherical_nm' in options:
+        aberrations['spherical'] = _uniform(optics_rng,*_range(options,'spherical_nm',[0.,0.],-500.,500.))
     lca = _uniform(optics_rng,*_range(options,'lca_native',[0.,.5],0.,2.))
     pupil_samples,fft_size = int(options.get('pupil_samples',64)),int(options.get('fft_size',256))
     psf_provenance = 'assumed circular-pupil scalar diffraction with parametric OPD; not measured prime-lens library'
@@ -207,6 +209,8 @@ class SpectralBurstDataset(Dataset):
         source = (load_spectral_scene(row['resolved_path'],self.assets.wavelengths)
                   if row['encoding']=='spectral_radiance' else load_rgb(row['resolved_path'],row['encoding']))
         result = synthesize_spectral(source,self.options,seed,self.profile,self.assets)
+        if self.options.get('capture_order') is not None:
+            result['capture_order'] = torch.as_tensor(self.options['capture_order'])
         result['metadata'].update(source_sha256=row['sha256'],scene_id=row['scene_id'],split=row['split'])
         result['metadata'] = json.dumps(result['metadata'],sort_keys=True)
         return result

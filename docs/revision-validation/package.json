@@ -1,0 +1,26 @@
+{
+  "schema": "jsr-review-revision-evidence-v1",
+  "baseline": "07b0a2506af9da0ce856c51c1fec344a2013eb4a",
+  "tier_A": "RUN mathematical fixtures + procedural spectral preservation",
+  "tier_B": "RUN local natural photograph, inverse-sRGB display-linear RGB, hypothetical spectrum; no measured HDR claim",
+  "tier_C": "NOT_RUN missing S5M2 RAW/reference/measurement metadata",
+  "tests": 79,
+  "artifact_sha256": {
+    "README.md": "395a6be445ed069b0d3c4df1ae1ceaba5c49e4770098d240815d3af665df7cac",
+    "diagnostics.json": "039be2fb3f083fe7d68b845634e6e5312bdfbf960a9ba6e40abd4b474295ee2f",
+    "fixtures.png": "5f3de737d99dafd7416d57a250982f159a281c1dfe6ecbe79d90a9010662f1d4",
+    "k_curve.csv": "335c03fdb3f7a6f6578f206193511ad543e53c37c75df276f93c30741f481dcb",
+    "k_curve.png": "a1d6bc9b6ba886b41e255e81772a948b623474589a82ddc2ce1b7f4cb4ce0dc9",
+    "metrics.csv": "5ee8e4db379cdddb14883c3d6f76d06e55a0df08322d06600c457495b8932e3a",
+    "natural_status.json": "bb222d3bc37f7db55c5b5d498c430351a1d8b1d7657e137feb000e02d3da752b",
+    "public-core.json": "faae85e4a57c11386203fa330bc1c264c73238700719826752ad98072e5f3cd3",
+    "real_status.json": "d5ef3d191fbab5d3def47c2c9b91aa9e94c16fc9f4eab322df6b26b467e16aa1",
+    "spectral-preservation.json": "168fdb141753ff0a490549f4eb95e1ee7cf350b42d6e28b72988db90ad419a33",
+    "stepped_response.csv": "fe8729a33f8fe703983a98653ac3243341326bc02763d8bf84cb9ce9ba86961a",
+    "stepped_response.png": "3d1ae10661019d793e5bfbc21eb3bb4a1a0d631b0db67030adfde604b4fd2031",
+    "synthetic-support.json": "24bce578286d1e6162260096b6e93a8d7966a11951592db1b797e428528aa4f9",
+    "tests.txt": "5e300f1fa32dda12b6e1539960d8faac84021448ea8c6612db8ff6853be70a86"
+  },
+  "repair": "single focused cycle: fixed geometry radiometry and joint ADC-valid support",
+  "final_review": "PASS_TO_NEXT_STAGE; UUIDs in ../tasks/review-revision/AGENT_RUNS.json"
+}

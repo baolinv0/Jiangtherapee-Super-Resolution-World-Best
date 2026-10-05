@@ -119,3 +119,6 @@ python scripts/compare_public_core.py --output runs/public-core-parity.json
 要升级成原方法的完整数值复现，仍需作者原始Tap生产/消费者、配准/LCA、训练集与校准集、完整损失/日程、原实验输入与评测脚本。现有工程将这些缺口集中在明确模块中，便于替换。后续应在独立真实scene与相机上正式训练、对照DBSR/BurstM等原实现；不能凭当前小样本结果裁定作者宣称。
 
 本fork没有为上游源码或权重推定新的许可；原有第三方声明保留。使用公开数据请遵守各数据源条款。
+
+
+Review revisions add optional robust dense alignment, shared v1 LCA, explicit temporal capture ranks, spherical spectral OPD and reproducible diagnostics. See [conventions, provenance, conformance and evidence](REVIEW_REVISION.md) for the independent definitions, default compatibility and real RAW NOT_RUN protocol.

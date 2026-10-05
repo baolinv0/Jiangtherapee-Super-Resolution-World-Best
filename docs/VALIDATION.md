@@ -59,3 +59,6 @@ Windows、Python3.11.15、PyTorch2.14.1+cpu、NumPy2.4.6、OpenCV4.14.0。独立
 - 未取得可核验的知乎JSR原文，不能将该部分列为已验证来源。
 
 这份PR的完成标准是可审阅的工程补全与诚实的证据边界；不是声称所有研究缺口已被解决。
+
+
+Review revisions add optional robust dense alignment, shared v1 LCA, explicit temporal capture ranks, spherical spectral OPD and reproducible diagnostics. See [conventions, provenance, conformance and evidence](REVIEW_REVISION.md) for the independent definitions, default compatibility and real RAW NOT_RUN protocol.

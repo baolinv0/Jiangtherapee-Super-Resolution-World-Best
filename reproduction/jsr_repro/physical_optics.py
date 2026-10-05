@@ -32,6 +32,7 @@ def spectral_psfs(wavelengths_nm, f_number, pitch_um, scale=2, radius=12,
     Field coordinates are normalized image coordinates. ``defocus``,
     ``astigmatism`` and ``coma`` are coefficients of the unnormalized Zernike
     forms 2*rho²-1, rho²*cos(2*theta), and (3*rho³-2*rho)*cos(theta).
+    ``spherical`` uses 6*rho^4-6*rho^2+1, independent of field radius.
     Defocus is multiplied by (1+field_radius²), astigmatism by field_radius²,
     and coma by field_radius; the last two are oriented along the field angle.
     This analytic field law is an assumption, not a measured lens prescription.
@@ -47,10 +48,10 @@ def spectral_psfs(wavelengths_nm, f_number, pitch_um, scale=2, radius=12,
         raise ValueError("f_number, pitch_um, scale must be positive and radius a positive integer")
     if pupil_samples < 16 or pupil_samples % 2 or fft_size < 2 * pupil_samples or fft_size % 2:
         raise ValueError("use an even pupil_samples>=16 and even fft_size>=2*pupil_samples")
-    coefficients = {"defocus": 0., "astigmatism": 0., "coma": 0.}
+    coefficients = {"defocus": 0., "astigmatism": 0., "coma": 0., "spherical": 0.}
     for key, value in (aberrations_nm or {}).items():
         if key not in coefficients or not math.isfinite(float(value)):
-            raise ValueError("aberrations_nm supports finite defocus, astigmatism, coma coefficients in nm")
+            raise ValueError("aberrations_nm supports finite defocus, astigmatism, coma, spherical coefficients in nm")
         coefficients[key] = float(value)
     axis = (torch.arange(pupil_samples, dtype=torch.float32) + .5) * 2 / pupil_samples - 1
     yy, xx = torch.meshgrid(axis, axis, indexing="ij")
@@ -63,6 +64,8 @@ def spectral_psfs(wavelengths_nm, f_number, pitch_um, scale=2, radius=12,
     opd = coefficients["defocus"] * (1 + field_r ** 2) * (2 * rho2 - 1)
     opd += coefficients["astigmatism"] * field_r ** 2 * (radial_x.square() - radial_y.square())
     opd += coefficients["coma"] * field_r * (3 * rho2 - 2) * radial_x
+    # Unnormalized primary spherical Zernike: nm * (6 rho^4 - 6 rho^2 + 1).
+    opd += coefficients["spherical"] * (6 * rho2.square() - 6 * rho2 + 1)
     pupil = (rho2 <= 1)[None] * torch.exp(2j * math.pi * opd[None] / waves[:, None, None])
     padding = (fft_size - pupil_samples) // 2
     pupil = F.pad(pupil, (padding,) * 4)

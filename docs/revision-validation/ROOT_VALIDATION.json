@@ -1,0 +1,57 @@
+{
+  "status": "passed",
+  "tests": {
+    "tests": "79",
+    "failures": "0",
+    "errors": "0",
+    "skipped": "0",
+    "time": "37.351"
+  },
+  "command": "python -m pytest -q -p no:cacheprovider --basetemp ../pytest-revision-root-02 --junitxml=../revision-tests-final.xml",
+  "spectral_assets_unchanged": 7,
+  "spectral_asset_sha256": {
+    "basis.json": "b7fb40806dc43524234546dbb6dcc6a17074429028b59fc288232b905febdaea",
+    "cameras.json": "fa8027f4a9d2dd77cb8ce7f1f8eaf6eca2739d3ad367e04ef2c8a201b51c0992",
+    "camspec-LICENSE.txt": "e66c269d4819aaab34b49ef5220c4ddab6756f21bb5180761a4eb8561f2b7bbd",
+    "cie_d65_metadata.json": "71994379b81c65db111f652e747a00b599b5456c2a8242e9a0d6f379f560a14e",
+    "cie_xyz_metadata.json": "03abcaecf4e63d77045ef57c4514b52c8bb1a46dd18e1f93a50044a0f4f481c8",
+    "colour-LICENSE.txt": "cd9efcd4b6ac5218189d90ffc25f9766f8411e62c5526c452145e1cc8b19baf7",
+    "source_manifest.json": "96758a96882c68661740ff3173b00a901ac81d88580e5e8639cd52e4c514d035"
+  },
+  "compact_artifacts_verified": 14,
+  "review": "PASS_TO_NEXT_STAGE",
+  "review_sha256": "994bb61352eee01d642d03c379a8190f737b1fa94621cbf59333a9ccc819707d",
+  "root_exports": {
+    "shadow_0_127": {
+      "source": "stepped_response.csv",
+      "fixture": "Independent fixed geometry; author coordinates unknown",
+      "source_sha256": "fe8729a33f8fe703983a98653ac3243341326bc02763d8bf84cb9ce9ba86961a",
+      "plot_library": "Matplotlib 3.11.2",
+      "dn_white": 16383,
+      "dark_max_dn": 127,
+      "dark_cases": 14,
+      "models": {
+        "Initial legacy": {
+          "slope": 0.9999255305566029,
+          "intercept_dn": 0.7414717896503206,
+          "affine_response_residual_rmse_dn": 1.3514852383025084e-06,
+          "identity_response_rmse_dn": 0.7397937494056144
+        },
+        "Corrected legacy": {
+          "slope": 0.9999254991184301,
+          "intercept_dn": 0.7414720522199559,
+          "affine_response_residual_rmse_dn": 9.188137764356363e-07,
+          "identity_response_rmse_dn": 0.739793304771462
+        },
+        "Random v1 final": {
+          "slope": 0.9629762908165773,
+          "intercept_dn": 40.957846411998396,
+          "affine_response_residual_rmse_dn": 0.870679910022994,
+          "identity_response_rmse_dn": 40.1445594470363
+        }
+      }
+    }
+  },
+  "real_S5M2": "NOT_RUN; no nine-stop claim",
+  "note": "Root changed review/publication records, evidence index status, Git byte-preservation attributes and separate postprocessing exports after read-only review; implementation and measured CSVs remain unchanged."
+}

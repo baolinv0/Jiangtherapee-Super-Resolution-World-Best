@@ -18,7 +18,7 @@ from .utils import device_from, load_config, save_json, seed_all, sha256
 
 
 def batch_sample(sample, device):
-    return {key:sample[key][None].to(device) for key in FIELDS}
+    return {key:sample[key][None].to(device) for key in (*FIELDS, *(("capture_order",) if "capture_order" in sample else ()))}
 
 
 def load_checkpoint(path, device="cpu"):
