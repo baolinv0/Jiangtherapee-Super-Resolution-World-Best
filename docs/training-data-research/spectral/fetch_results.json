@@ -1,0 +1,45 @@
+[
+  {
+    "name": "mstpp_master",
+    "url": "https://raw.githubusercontent.com/caiyuanhao1998/MST-plus-plus/master/README.md",
+    "final_url": "https://raw.githubusercontent.com/caiyuanhao1998/MST-plus-plus/master/README.md",
+    "status": 200,
+    "bytes": 22163
+  },
+  {
+    "name": "mstpp_api",
+    "url": "https://api.github.com/repos/caiyuanhao1998/MST-plus-plus",
+    "error": "<urlopen error Tunnel connection failed: 403 Forbidden>"
+  },
+  {
+    "name": "colour_mallett",
+    "url": "https://raw.githubusercontent.com/colour-science/colour/v0.4.6/colour/recovery/mallett2019.py",
+    "final_url": "https://raw.githubusercontent.com/colour-science/colour/v0.4.6/colour/recovery/mallett2019.py",
+    "status": 200,
+    "bytes": 16192
+  },
+  {
+    "name": "colour_basis",
+    "url": "https://raw.githubusercontent.com/colour-science/colour/v0.4.6/colour/recovery/datasets/mallett2019.py",
+    "final_url": "https://raw.githubusercontent.com/colour-science/colour/v0.4.6/colour/recovery/datasets/mallett2019.py",
+    "status": 200,
+    "bytes": 7719
+  },
+  {
+    "name": "colour_smits",
+    "url": "https://raw.githubusercontent.com/colour-science/colour/v0.4.6/colour/recovery/meng2015.py",
+    "final_url": "https://raw.githubusercontent.com/colour-science/colour/v0.4.6/colour/recovery/meng2015.py",
+    "status": 200,
+    "bytes": 8085
+  },
+  {
+    "name": "rawsr_repo",
+    "url": "https://raw.githubusercontent.com/ahmedmosleh/RAW-SR/main/README.md",
+    "error": "HTTP Error 404: Not Found"
+  },
+  {
+    "name": "arxiv_rawsr",
+    "url": "https://arxiv.org/html/2603.12493v1",
+    "error": "<urlopen error Tunnel connection failed: 403 Forbidden>"
+  }
+]

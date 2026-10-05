@@ -1,0 +1,8 @@
+# Direct package versions used for the recorded CPU validation (2026-10-05).
+# Install a platform-appropriate PyTorch build first if CUDA is desired.
+torch==2.14.1
+numpy==2.4.6
+Pillow==12.3.0
+PyYAML==6.0.3
+pytest==9.1.1
+opencv-python-headless==4.14.0.94

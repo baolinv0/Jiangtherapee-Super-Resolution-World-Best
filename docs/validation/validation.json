@@ -1,0 +1,73 @@
+{
+  "status": "passed",
+  "scope": "CPU engineering smoke; no full dataset training or original-quality claim",
+  "training": {
+    "steps_completed": 32,
+    "wall_seconds": 5.116525399964303,
+    "best_val_psnr": 50.80127649727853,
+    "checkpoint": "runs/validation-final/training/last.pt (local, not committed)",
+    "scope": "engineering validation only; no original JSR quality claim"
+  },
+  "oracle": {
+    "single_bilinear": {
+      "psnr_linear_db": 40.77814378315769,
+      "rmse_linear": 0.009143086127890922,
+      "chroma_rmse": 0.013195298260268586,
+      "shadow_rmse": null,
+      "mean_bias": -0.0003025154798740038
+    },
+    "legacy": {
+      "psnr_linear_db": 44.72213093994607,
+      "rmse_linear": 0.005806219540142542,
+      "chroma_rmse": 0.00842974837415607,
+      "shadow_rmse": null,
+      "mean_bias": -0.00099979511341425
+    },
+    "learned": {
+      "psnr_linear_db": 43.560802091740285,
+      "rmse_linear": 0.00663681780392924,
+      "chroma_rmse": 0.00939639238720976,
+      "shadow_rmse": null,
+      "mean_bias": -0.0012269926955923438
+    },
+    "jsr_repro": {
+      "psnr_linear_db": 43.70674272525768,
+      "rmse_linear": 0.006526237339833211,
+      "chroma_rmse": 0.009363868696264778,
+      "shadow_rmse": null,
+      "mean_bias": -0.0008642065243933488
+    }
+  },
+  "estimated": {
+    "single_bilinear": {
+      "psnr_linear_db": 40.77814378315769,
+      "rmse_linear": 0.009143086127890922,
+      "chroma_rmse": 0.013195298260268586,
+      "shadow_rmse": null,
+      "mean_bias": -0.0003025154798740038
+    },
+    "legacy": {
+      "psnr_linear_db": 36.863659966662084,
+      "rmse_linear": 0.014348846896900613,
+      "chroma_rmse": 0.020600759489956714,
+      "shadow_rmse": null,
+      "mean_bias": -0.0029929566274707517
+    },
+    "learned": {
+      "psnr_linear_db": 36.58118822799722,
+      "rmse_linear": 0.014823152908343908,
+      "chroma_rmse": 0.021400729470027385,
+      "shadow_rmse": null,
+      "mean_bias": -0.0033846742999567477
+    },
+    "jsr_repro": {
+      "psnr_linear_db": 36.643874675875956,
+      "rmse_linear": 0.014716558671594536,
+      "chroma_rmse": 0.02135908710214575,
+      "shadow_rmse": null,
+      "mean_bias": -0.0030243619802166467
+    }
+  },
+  "zero_max_abs": 0.0,
+  "gain_max_relative_rmse": 0.0
+}

@@ -1,0 +1,43 @@
+F                                                                        [100%]
+=================================== FAILURES ===================================
+____ test_full_spectral_field_target_matches_independent_native_area_oracle ____
+
+assets = <jsr_repro.spectral.SpectralAssets object at 0x7efe2acea2d0>
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x7efdfae4a870>
+
+    def test_full_spectral_field_target_matches_independent_native_area_oracle(assets, monkeypatch):
+        """Catch omitted/doubled/shrunken aperture on the actual frame-zero field.
+
+        At fill=1, four midpoint samples per axis at ±.25 and ±.75 HR
+        units with bilinear interpolation equal the discrete [.25,.5,.25]
+        kernel at dense integer centers. This oracle does not call the production
+        integration helper or replace the real spectral/field-dependent optics.
+        """
+        source = torch.rand((61, 72, 72), generator=torch.Generator().manual_seed(811))
+        projected_fields = []
+        project = assets.camera_rgb
+
+        def record_projection(spectrum, camera_id):
+            rgb = project(spectrum, camera_id)
+            projected_fields.append(rgb.clone())
+            return rgb
+
+        monkeypatch.setattr(assets, 'camera_rgb', record_projection)
+        sample = spectral_data.synthesize_spectral(source, options(
+            field_extent=.2, fill_factor=[1., 1.], target_stage='post_pixel'), 341, assets=assets)
+        reference = projected_fields[0]
+        one_axis = torch.tensor([.25, .5, .25], dtype=reference.dtype)
+        kernel = (one_axis[:, None] * one_axis[None, :]).expand(3, 1, 3, 3)
+        integrated = torch.nn.functional.conv2d(reference[None], kernel, padding=1, groups=3)[0]
+        expected = integrated[:, 16:48, 16:48]
+>       torch.testing.assert_close(sample['target'], expected, atol=3e-7, rtol=1e-5)
+E       AssertionError: Tensor-likes are not close!
+E
+E       Mismatched elements: 3068 / 3072 (99.9%)
+E       Greatest absolute difference: 0.002874959260225296 at index (2, 25, 14) (up to 3e-07 allowed)
+E       Greatest relative difference: 0.06161917746067047 at index (2, 20, 28) (up to 1e-05 allowed)
+
+tests/test_google_target.py:114: AssertionError
+=========================== short test summary info ============================
+FAILED tests/test_google_target.py::test_full_spectral_field_target_matches_independent_native_area_oracle
+1 failed in 2.40s

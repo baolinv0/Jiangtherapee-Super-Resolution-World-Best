@@ -1,0 +1,149 @@
+{
+  "implementation": "speech-inspired-transformer-v1",
+  "scope": "held-out synthetic RGB camera proxy, NOT official JSR/BurstSR score",
+  "count": 1,
+  "split": "test",
+  "alignment": "estimated",
+  "data_range": 1.0,
+  "gain_fit": false,
+  "crop_border_hr": 4,
+  "checkpoint_sha256": "30e97e61cd3be804c6f6346acd4b2cfba0c53efb6cdc909fead6d6c314306145",
+  "manifest_sha256": "5c44d42d9879f7801727941b716648d47c2105739d3a17bb82d9f79b3e4f8a84",
+  "mean_per_image_metrics": {
+    "corrected_merge": {
+      "psnr_linear_db": 11.777423984524784,
+      "rmse_linear": 0.2577085342097461,
+      "chroma_rmse": 0.36777163253241385,
+      "shadow_rmse": null,
+      "mean_bias": -0.043592416750336135,
+      "highlight_rmse": 0.3085007060530982,
+      "highlight_fraction": 0.6429398148148148
+    },
+    "speech_transformer": {
+      "psnr_linear_db": 11.78767047927909,
+      "rmse_linear": 0.2574047020934348,
+      "chroma_rmse": 0.36759410173311824,
+      "shadow_rmse": null,
+      "mean_bias": -0.04223489864832825,
+      "highlight_rmse": 0.30789614518334496,
+      "highlight_fraction": 0.6429398148148148
+    }
+  },
+  "samples": [
+    {
+      "index": 0,
+      "metadata": {
+        "area_quadrature": 4,
+        "black_excursion_fraction": 0.0,
+        "camera": {
+          "black_dn": 512.0,
+          "full_well_e": 60000.0,
+          "gain_e_per_dn": 2.0,
+          "read_noise_e": 3.0,
+          "white_dn": 16383.0
+        },
+        "cfa": "RGGB",
+        "channel_transmission": [
+          0.699999988079071,
+          1.0,
+          0.550000011920929
+        ],
+        "crop_xy": [
+          31,
+          12
+        ],
+        "dark_offset_subtracted": true,
+        "exposure_ratios": [
+          1.0,
+          0.3508278429508209,
+          0.49742698669433594,
+          0.7052850127220154,
+          1.4178664684295654,
+          2.010345220565796,
+          2.850400924682617
+        ],
+        "f_number": 4.369884729385376,
+        "fill_factor": 0.9977250099182129,
+        "interval_ev": 0.5037216603755951,
+        "iso": 200,
+        "pitch_um": 5.145895485877991,
+        "profile_provenance": {
+          "kind": "analytic_inferred",
+          "note": "Not the author's PTC library or a measured camera."
+        },
+        "profile_sha256": "55ac12938d7f1a4b7e00f937606a14cc3e1bfa6da4f16864c9f0f4fbc2e99a1a",
+        "protocol": "speech-camera-proxy-v1",
+        "psf": "truncated normalized Airy, circular ideal aperture; no measured aberrations",
+        "psf_radius_hr": 12,
+        "quantized_dn": true,
+        "radiance_white": 1.0,
+        "sample_seed": 3879237146433415627,
+        "scale_native": 2,
+        "scene_gain": 3.4927566051483154,
+        "scene_id": "scene_0003.npy",
+        "shifts_xy_native": [
+          [
+            0.0,
+            0.0
+          ],
+          [
+            -0.5086004734039307,
+            -0.5900405645370483
+          ],
+          [
+            0.2667372226715088,
+            -0.4154996871948242
+          ],
+          [
+            -0.37405574321746826,
+            -0.7590216398239136
+          ],
+          [
+            -0.27423179149627686,
+            -0.7105773687362671
+          ],
+          [
+            -0.5531884431838989,
+            -0.09997880458831787
+          ],
+          [
+            0.9067733287811279,
+            -0.29484546184539795
+          ]
+        ],
+        "signal_saturation_fraction": 0.4397321343421936,
+        "source_resized": false,
+        "source_sha256": "ad3a38c1a803ea44d584d128f7b63773f43f93e6ff55e8103f75ed02bd577a56",
+        "split": "test",
+        "target_above_reference_white_fraction": 0.6536458134651184,
+        "wavelength_nm_rgb": [
+          650,
+          550,
+          450
+        ]
+      },
+      "alignment_rmse_native": 1.5278549194335938,
+      "all_saturated_or_invalid_packed_fraction": 0.125,
+      "methods": {
+        "corrected_merge": {
+          "psnr_linear_db": 11.777423984524784,
+          "rmse_linear": 0.2577085342097461,
+          "chroma_rmse": 0.36777163253241385,
+          "shadow_rmse": null,
+          "mean_bias": -0.043592416750336135,
+          "highlight_rmse": 0.3085007060530982,
+          "highlight_fraction": 0.6429398148148148
+        },
+        "speech_transformer": {
+          "psnr_linear_db": 11.78767047927909,
+          "rmse_linear": 0.2574047020934348,
+          "chroma_rmse": 0.36759410173311824,
+          "shadow_rmse": null,
+          "mean_bias": -0.04223489864832825,
+          "highlight_rmse": 0.30789614518334496,
+          "highlight_fraction": 0.6429398148148148
+        }
+      }
+    }
+  ]
+}

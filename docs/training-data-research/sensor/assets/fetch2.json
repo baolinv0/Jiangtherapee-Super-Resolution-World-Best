@@ -1,0 +1,73 @@
+[
+  {
+    "name": "noiseflow_github",
+    "url": "https://github.com/BorealisAI/noise_flow",
+    "status": 200,
+    "size": 298380,
+    "local_cache_name": "sensor/assets/noiseflow_github.txt"
+  },
+  {
+    "name": "noiseflow_params",
+    "url": "https://raw.githubusercontent.com/BorealisAI/noise_flow/master/NoiseFlow.py",
+    "error": "HTTP Error 404: Not Found"
+  },
+  {
+    "name": "noiseflow_utils",
+    "url": "https://raw.githubusercontent.com/BorealisAI/noise_flow/master/utils.py",
+    "error": "HTTP Error 404: Not Found"
+  },
+  {
+    "name": "noiseflow_sampling",
+    "url": "https://raw.githubusercontent.com/BorealisAI/noise_flow/master/sample_noise_flow.py",
+    "status": 200,
+    "size": 4390,
+    "local_cache_name": "sensor/assets/noiseflow_sampling.txt"
+  },
+  {
+    "name": "noiseflow_sidd",
+    "url": "https://raw.githubusercontent.com/BorealisAI/noise_flow/master/sidd_utils.py",
+    "error": "HTTP Error 404: Not Found"
+  },
+  {
+    "name": "noiseflow_license",
+    "url": "https://raw.githubusercontent.com/BorealisAI/noise_flow/master/LICENSE",
+    "status": 200,
+    "size": 20850,
+    "local_cache_name": "sensor/assets/noiseflow_license.txt"
+  },
+  {
+    "name": "pmn_github",
+    "url": "https://github.com/megvii-research/PMN/tree/TPAMI",
+    "status": 200,
+    "size": 387399,
+    "local_cache_name": "sensor/assets/pmn_github.txt"
+  },
+  {
+    "name": "pmn_process",
+    "url": "https://raw.githubusercontent.com/megvii-research/PMN/TPAMI/data_process/process.py",
+    "status": 200,
+    "size": 47038,
+    "local_cache_name": "sensor/assets/pmn_process.txt"
+  },
+  {
+    "name": "pmn_license",
+    "url": "https://raw.githubusercontent.com/megvii-research/PMN/TPAMI/LICENSE",
+    "status": 200,
+    "size": 10271,
+    "local_cache_name": "sensor/assets/pmn_license.txt"
+  },
+  {
+    "name": "sid_readme",
+    "url": "https://raw.githubusercontent.com/cchen156/Learning-to-See-in-the-Dark/master/README.md",
+    "status": 200,
+    "size": 5610,
+    "local_cache_name": "sensor/assets/sid_readme.txt"
+  },
+  {
+    "name": "sfrn_readme",
+    "url": "https://raw.githubusercontent.com/zhangyi-3/noise-synthesis/main/README.md",
+    "status": 200,
+    "size": 4320,
+    "local_cache_name": "sensor/assets/sfrn_readme.txt"
+  }
+]

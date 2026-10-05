@@ -1,0 +1,273 @@
+{
+  "seed": 1189,
+  "native_size": 128,
+  "frames": 7,
+  "transmission": [
+    0.5,
+    1.0,
+    0.25
+  ],
+  "scope": "Synthetic calibrated-observation mask diagnostic, not real sensor validation",
+  "candidates": [
+    {
+      "iso": 100,
+      "regime": "full-well-first",
+      "quantize": false,
+      "camera": {
+        "gain_e_per_dn": 4.0,
+        "read_noise_e": 3.0,
+        "black_dn": 512.0,
+        "white_dn": 16383.0,
+        "full_well_e": 60000.0
+      },
+      "green_truth_saturation_fraction": 1.0,
+      "base_green_observed_saturation_fraction": 0.4969133734703064,
+      "green_observed_dn_min": 15508.943359375,
+      "green_observed_dn_max": 15515.04296875,
+      "masks": [
+        {
+          "read_sigma_multiple": 0.0,
+          "observed_dn_threshold": 15512.0,
+          "green_observed_saturated_fraction": 0.4969133734703064,
+          "true_clipped_green_reaccepted_fraction": 0.5030866265296936,
+          "any_green_support_remains_in_complete_input": true,
+          "conditional_FW_Gaussian_prediction": 0.5
+        },
+        {
+          "read_sigma_multiple": 2.0,
+          "observed_dn_threshold": 15510.5,
+          "green_observed_saturated_fraction": 0.9773995280265808,
+          "true_clipped_green_reaccepted_fraction": 0.0226004458963871,
+          "any_green_support_remains_in_complete_input": true,
+          "conditional_FW_Gaussian_prediction": 0.9772498680518208
+        },
+        {
+          "read_sigma_multiple": 3.0,
+          "observed_dn_threshold": 15509.75,
+          "green_observed_saturated_fraction": 0.9986048936843872,
+          "true_clipped_green_reaccepted_fraction": 0.0013950893189758062,
+          "any_green_support_remains_in_complete_input": true,
+          "conditional_FW_Gaussian_prediction": 0.9986501019683699
+        },
+        {
+          "read_sigma_multiple": 4.0,
+          "observed_dn_threshold": 15509.0,
+          "green_observed_saturated_fraction": 0.9999825358390808,
+          "true_clipped_green_reaccepted_fraction": 1.743861685099546e-05,
+          "any_green_support_remains_in_complete_input": true,
+          "conditional_FW_Gaussian_prediction": 0.9999683287581669
+        },
+        {
+          "read_sigma_multiple": 5.0,
+          "observed_dn_threshold": 15508.25,
+          "green_observed_saturated_fraction": 1.0,
+          "true_clipped_green_reaccepted_fraction": 0.0,
+          "any_green_support_remains_in_complete_input": false,
+          "conditional_FW_Gaussian_prediction": 0.9999997133484282
+        }
+      ]
+    },
+    {
+      "iso": 100,
+      "regime": "full-well-first",
+      "quantize": true,
+      "camera": {
+        "gain_e_per_dn": 4.0,
+        "read_noise_e": 3.0,
+        "black_dn": 512.0,
+        "white_dn": 16383.0,
+        "full_well_e": 60000.0
+      },
+      "green_truth_saturation_fraction": 1.0,
+      "base_green_observed_saturation_fraction": 0.7444196343421936,
+      "green_observed_dn_min": 15509.0,
+      "green_observed_dn_max": 15515.0,
+      "masks": [
+        {
+          "read_sigma_multiple": 0.0,
+          "observed_dn_threshold": 15511.5,
+          "green_observed_saturated_fraction": 0.7444196343421936,
+          "true_clipped_green_reaccepted_fraction": 0.2555803656578064,
+          "any_green_support_remains_in_complete_input": true,
+          "conditional_FW_Gaussian_prediction": 0.7475074624530771
+        },
+        {
+          "read_sigma_multiple": 2.0,
+          "observed_dn_threshold": 15510.0,
+          "green_observed_saturated_fraction": 0.9996512532234192,
+          "true_clipped_green_reaccepted_fraction": 0.00034877232974395156,
+          "any_green_support_remains_in_complete_input": true,
+          "conditional_FW_Gaussian_prediction": 0.9995709396668031
+        },
+        {
+          "read_sigma_multiple": 3.0,
+          "observed_dn_threshold": 15509.25,
+          "green_observed_saturated_fraction": 0.9996512532234192,
+          "true_clipped_green_reaccepted_fraction": 0.00034877232974395156,
+          "any_green_support_remains_in_complete_input": true,
+          "conditional_FW_Gaussian_prediction": 0.9995709396668031
+        },
+        {
+          "read_sigma_multiple": 4.0,
+          "observed_dn_threshold": 15508.5,
+          "green_observed_saturated_fraction": 1.0,
+          "true_clipped_green_reaccepted_fraction": 0.0,
+          "any_green_support_remains_in_complete_input": false,
+          "conditional_FW_Gaussian_prediction": 0.9999984693732635
+        },
+        {
+          "read_sigma_multiple": 5.0,
+          "observed_dn_threshold": 15507.75,
+          "green_observed_saturated_fraction": 1.0,
+          "true_clipped_green_reaccepted_fraction": 0.0,
+          "any_green_support_remains_in_complete_input": false,
+          "conditional_FW_Gaussian_prediction": 0.9999999990134123
+        }
+      ]
+    },
+    {
+      "iso": 200,
+      "regime": "ADC-first",
+      "quantize": false,
+      "camera": {
+        "gain_e_per_dn": 2.0,
+        "read_noise_e": 3.0,
+        "black_dn": 512.0,
+        "white_dn": 16383.0,
+        "full_well_e": 60000.0
+      },
+      "green_truth_saturation_fraction": 1.0,
+      "base_green_observed_saturation_fraction": 1.0,
+      "green_observed_dn_min": 16383.0,
+      "green_observed_dn_max": 16383.0,
+      "masks": [
+        {
+          "read_sigma_multiple": 0.0,
+          "observed_dn_threshold": 16383.0,
+          "green_observed_saturated_fraction": 1.0,
+          "true_clipped_green_reaccepted_fraction": 0.0,
+          "any_green_support_remains_in_complete_input": false,
+          "conditional_FW_Gaussian_prediction": null
+        },
+        {
+          "read_sigma_multiple": 2.0,
+          "observed_dn_threshold": 16380.0,
+          "green_observed_saturated_fraction": 1.0,
+          "true_clipped_green_reaccepted_fraction": 0.0,
+          "any_green_support_remains_in_complete_input": false,
+          "conditional_FW_Gaussian_prediction": null
+        },
+        {
+          "read_sigma_multiple": 3.0,
+          "observed_dn_threshold": 16378.5,
+          "green_observed_saturated_fraction": 1.0,
+          "true_clipped_green_reaccepted_fraction": 0.0,
+          "any_green_support_remains_in_complete_input": false,
+          "conditional_FW_Gaussian_prediction": null
+        },
+        {
+          "read_sigma_multiple": 4.0,
+          "observed_dn_threshold": 16377.0,
+          "green_observed_saturated_fraction": 1.0,
+          "true_clipped_green_reaccepted_fraction": 0.0,
+          "any_green_support_remains_in_complete_input": false,
+          "conditional_FW_Gaussian_prediction": null
+        },
+        {
+          "read_sigma_multiple": 5.0,
+          "observed_dn_threshold": 16375.5,
+          "green_observed_saturated_fraction": 1.0,
+          "true_clipped_green_reaccepted_fraction": 0.0,
+          "any_green_support_remains_in_complete_input": false,
+          "conditional_FW_Gaussian_prediction": null
+        }
+      ]
+    },
+    {
+      "iso": 200,
+      "regime": "ADC-first",
+      "quantize": true,
+      "camera": {
+        "gain_e_per_dn": 2.0,
+        "read_noise_e": 3.0,
+        "black_dn": 512.0,
+        "white_dn": 16383.0,
+        "full_well_e": 60000.0
+      },
+      "green_truth_saturation_fraction": 1.0,
+      "base_green_observed_saturation_fraction": 1.0,
+      "green_observed_dn_min": 16383.0,
+      "green_observed_dn_max": 16383.0,
+      "masks": [
+        {
+          "read_sigma_multiple": 0.0,
+          "observed_dn_threshold": 16382.5,
+          "green_observed_saturated_fraction": 1.0,
+          "true_clipped_green_reaccepted_fraction": 0.0,
+          "any_green_support_remains_in_complete_input": false,
+          "conditional_FW_Gaussian_prediction": null
+        },
+        {
+          "read_sigma_multiple": 2.0,
+          "observed_dn_threshold": 16379.5,
+          "green_observed_saturated_fraction": 1.0,
+          "true_clipped_green_reaccepted_fraction": 0.0,
+          "any_green_support_remains_in_complete_input": false,
+          "conditional_FW_Gaussian_prediction": null
+        },
+        {
+          "read_sigma_multiple": 3.0,
+          "observed_dn_threshold": 16378.0,
+          "green_observed_saturated_fraction": 1.0,
+          "true_clipped_green_reaccepted_fraction": 0.0,
+          "any_green_support_remains_in_complete_input": false,
+          "conditional_FW_Gaussian_prediction": null
+        },
+        {
+          "read_sigma_multiple": 4.0,
+          "observed_dn_threshold": 16376.5,
+          "green_observed_saturated_fraction": 1.0,
+          "true_clipped_green_reaccepted_fraction": 0.0,
+          "any_green_support_remains_in_complete_input": false,
+          "conditional_FW_Gaussian_prediction": null
+        },
+        {
+          "read_sigma_multiple": 5.0,
+          "observed_dn_threshold": 16375.0,
+          "green_observed_saturated_fraction": 1.0,
+          "true_clipped_green_reaccepted_fraction": 0.0,
+          "any_green_support_remains_in_complete_input": false,
+          "conditional_FW_Gaussian_prediction": null
+        }
+      ]
+    }
+  ],
+  "near_ceiling_unsaturated_controls": [
+    {
+      "clean_signal_below_ceiling_read_sigma": 2.0,
+      "read_sigma_guard_0_rejected_fraction": 0.09124000370502472,
+      "read_sigma_guard_3_rejected_fraction": 0.9095399975776672,
+      "read_sigma_guard_5_rejected_fraction": 0.999970018863678
+    },
+    {
+      "clean_signal_below_ceiling_read_sigma": 4.0,
+      "read_sigma_guard_0_rejected_fraction": 0.00039999998989515007,
+      "read_sigma_guard_3_rejected_fraction": 0.2528400123119354,
+      "read_sigma_guard_5_rejected_fraction": 0.9777299761772156
+    },
+    {
+      "clean_signal_below_ceiling_read_sigma": 8.0,
+      "read_sigma_guard_0_rejected_fraction": 0.0,
+      "read_sigma_guard_3_rejected_fraction": 0.0,
+      "read_sigma_guard_5_rejected_fraction": 0.022995000705122948
+    }
+  ],
+  "downstream_original_baseline": {
+    "native_size": 32,
+    "green_truth_saturated_fraction": 1.0,
+    "all_saturated_or_invalid_packed_fraction": 0.072265625,
+    "packed_green_positions_with_any_observed_valid_frame_fraction": 0.85546875,
+    "baseline_green_mean": 0.9450643658638,
+    "target_green": 1.4
+  }
+}

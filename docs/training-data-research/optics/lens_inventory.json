@@ -1,0 +1,225 @@
+[
+  {
+    "name": "ef100mm_f2.8",
+    "url": "https://raw.githubusercontent.com/vccimaging/DeepLens/main/datasets/lenses/camera/ef100mm_f2.8.json",
+    "status": 200,
+    "info": "JP 1991-141313 Example 1 (Canon EF100mm f2.8 Macro)",
+    "foclen_mm": 100.03337780917897,
+    "fnum": 2.920501708255921,
+    "sensor_size": [
+      30.547012947258853,
+      30.547012947258853
+    ],
+    "surfaces": 20,
+    "materials": [
+      "1.51633/64.1",
+      "1.60311/60.7",
+      "1.69895/30.1",
+      "1.76200/40.1",
+      "1.78590/44.2",
+      "1.80518/25.4",
+      "1.80610/40.9",
+      "air"
+    ]
+  },
+  {
+    "name": "ef40mm_f2.8",
+    "url": "https://raw.githubusercontent.com/vccimaging/DeepLens/main/datasets/lenses/camera/ef40mm_f2.8.json",
+    "status": 200,
+    "info": null,
+    "foclen_mm": 39.53853478898897,
+    "fnum": 3.233449383315725,
+    "sensor_size": [
+      30.547012947258853,
+      30.547012947258853
+    ],
+    "surfaces": 11,
+    "materials": [
+      "1.53172/48.8",
+      "1.58313/59.4",
+      "1.69680/55.5",
+      "1.69895/30.1",
+      "1.83481/42.7",
+      "air"
+    ]
+  },
+  {
+    "name": "ef50mm_f1.8",
+    "url": "https://raw.githubusercontent.com/vccimaging/DeepLens/main/datasets/lenses/camera/ef50mm_f1.8.json",
+    "status": 200,
+    "info": "JP 1987-087922 Example 1 (Canon EF50mm f1.8)",
+    "foclen_mm": 50.520361337010705,
+    "fnum": 1.7867431649971506,
+    "sensor_size": [
+      30.547012947258853,
+      30.547012947258853
+    ],
+    "surfaces": 12,
+    "materials": [
+      "1.6280/57.0",
+      "1.6727/25.6",
+      "1.6990/30.1",
+      "1.70154/41.2",
+      "1.7200/55.2",
+      "1.7995/42.2",
+      "air"
+    ]
+  },
+  {
+    "name": "ef85mm_f1.8",
+    "url": "https://raw.githubusercontent.com/vccimaging/DeepLens/main/datasets/lenses/camera/ef85mm_f1.8.json",
+    "status": 200,
+    "info": "JP 1993-157964 Example 1 (Canon EF85mm f1.8 USM)",
+    "foclen_mm": 83.87447467479473,
+    "fnum": 1.6915526808585557,
+    "sensor_size": [
+      30.547012947258853,
+      30.547012947258853
+    ],
+    "surfaces": 17,
+    "materials": [
+      "1.51633/64.2",
+      "1.65160/58.5",
+      "1.71300/53.8",
+      "1.71736/29.5",
+      "1.77250/49.6",
+      "1.80518/25.4",
+      "1.80610/41.0",
+      "air"
+    ]
+  },
+  {
+    "name": "rf16mm_f2.8",
+    "url": "https://raw.githubusercontent.com/vccimaging/DeepLens/main/datasets/lenses/camera/rf16mm_f2.8.json",
+    "status": 200,
+    "info": "JP 2022-085382 Example 3 (Canon RF16mm F2.8 STM). The original patent can not cover full-frame sensor.",
+    "foclen_mm": 13.053262435784244,
+    "fnum": 2.3126179178264614,
+    "sensor_size": [
+      30.547012947258853,
+      30.547012947258853
+    ],
+    "surfaces": 17,
+    "materials": [
+      "1.48749/70.2",
+      "1.53110/55.9",
+      "1.59282/68.6",
+      "1.60311/60.6",
+      "1.62299/58.2",
+      "1.68893/31.1",
+      "1.83481/42.7",
+      "1.90366/31.3",
+      "air"
+    ]
+  },
+  {
+    "name": "rf24mm_f1.8",
+    "url": "https://raw.githubusercontent.com/vccimaging/DeepLens/main/datasets/lenses/camera/rf24mm_f1.8.json",
+    "status": 200,
+    "info": "US 2022/0019061 Example 3 (Canon RF24mm F1.8 Macro IS STM)",
+    "foclen_mm": 39.53853478898897,
+    "fnum": 5.242542902817878,
+    "sensor_size": [
+      30.547012947258853,
+      30.547012947258853
+    ],
+    "surfaces": 21,
+    "materials": [
+      "1.49700/81.5",
+      "1.51633/64.1",
+      "1.51742/52.4",
+      "1.53110/55.9",
+      "1.67790/55.3",
+      "1.72825/28.5",
+      "1.72916/54.7",
+      "1.85478/24.8",
+      "1.90043/37.4",
+      "1.91082/35.3",
+      "air"
+    ]
+  },
+  {
+    "name": "rf35mm_f1.8",
+    "url": "https://raw.githubusercontent.com/vccimaging/DeepLens/main/datasets/lenses/camera/rf35mm_f1.8.json",
+    "status": 200,
+    "info": "US 2019/0113711 Example 1 (Canon RF35mm F1.8 MACRO IS STM)",
+    "foclen_mm": 36.0089,
+    "fnum": 1.88492,
+    "sensor_size": null,
+    "surfaces": 21,
+    "materials": [
+      "1.51742/52.4",
+      "1.58313/59.4",
+      "1.5927/35.3",
+      "1.6968/55.5",
+      "1.8081/22.8",
+      "1.85478/24.8",
+      "1.883/40.8",
+      "1.90043/37.4",
+      "2.001/29.1",
+      "air"
+    ]
+  },
+  {
+    "name": "rf50mm_f1.8",
+    "url": "https://raw.githubusercontent.com/vccimaging/DeepLens/main/datasets/lenses/camera/rf50mm_f1.8.json",
+    "status": 200,
+    "info": "US 2021/0263286 Example 1 (Canon RF50mm F1.8 STM)",
+    "foclen_mm": 49.565,
+    "fnum": 1.8387,
+    "sensor_size": null,
+    "surfaces": 12,
+    "materials": [
+      "1.53110/55.9",
+      "1.67270/32.1",
+      "1.7340/51.5",
+      "1.79952/42.2",
+      "1.80518/25.4",
+      "1.83481/42.7",
+      "air"
+    ]
+  },
+  {
+    "name": "sigma70mm_f2.8",
+    "url": "https://raw.githubusercontent.com/vccimaging/DeepLens/main/datasets/lenses/camera/sigma70mm_f2.8.json",
+    "status": 200,
+    "info": "JP 2008-020656 Example 1 (Sigma Macro 70mm F2.8 EX DG)",
+    "foclen_mm": 69.168,
+    "fnum": 2.912,
+    "sensor_size": null,
+    "surfaces": 20,
+    "materials": [
+      "1.49700/81.6",
+      "1.54072/47.2",
+      "1.56045/71.6",
+      "1.58144/40.9",
+      "1.60342/38.0",
+      "1.64000/60.2",
+      "1.69680/55.5",
+      "1.77250/49.6",
+      "1.83481/42.7",
+      "air"
+    ]
+  },
+  {
+    "name": "yongnuo_50mm_f1.8",
+    "url": "https://raw.githubusercontent.com/vccimaging/DeepLens/main/datasets/lenses/camera/yongnuo_50mm_f1.8.json",
+    "status": 200,
+    "info": null,
+    "foclen_mm": 48.90925059746878,
+    "fnum": 1.7575576898499428,
+    "sensor_size": [
+      30.547012947258853,
+      30.547012947258853
+    ],
+    "surfaces": 12,
+    "materials": [
+      "1.67271/32.25",
+      "1.68854/59.43",
+      "1.68893/31.18",
+      "1.7433/49.4",
+      "1.8061/40.61",
+      "air"
+    ]
+  }
+]

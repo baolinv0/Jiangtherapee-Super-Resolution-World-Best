@@ -1,5 +1,25 @@
 # Jiangtherapee Super Resolution
 
+> **本 fork 的独立工程复现 / Independent engineering reproduction**
+>
+> 新增可训练 PyTorch 模块、公开数据代理RAW构造、训练/恢复训练、测试/推理、配置与验证脚本。可确认的公开网络与推断补全的Tap/训练流程有明确区分；不宣称恢复未公开训练配方、达到原论文指标或复现完整手机HDR。
+>
+> **入口：[复现说明与运行命令](docs/REPRODUCTION.md) · [数据协议](docs/DATA.md) · [来源审计](docs/SOURCES.md) · [实际验证结果](docs/VALIDATION.md)**
+>
+> **新增七帧包围曝光 Transformer：[讲稿机制、数据/模型及运行方法](docs/TRANSFORMER.md)**。空间/跨帧注意力、末端7→4→2→1配对、共享相位上采样、PTC/暗场接口、物理PSF及真实信号饱和训练已补齐。其公式/解析相机参数为明确标注的独立推断，与公开v9.8模块/权重分开。
+>
+> `python -m pip install -e ".[test]"` → `python -m pytest -q` → `python -m jsr_repro.validate --output runs/verification`
+>
+> Transformer验证：`python -m jsr_repro.validate_transformer --output runs/transformer-verification`。
+>
+> **完整光谱数据构造：[61 波段数据链、公开资产与标定接口](docs/SPECTRAL_DATA.md)**。新实验使用 `spectral-camera-v3`，默认 GT 为参考帧同光学、同原生像元面积积分后的 2× 密集 camera RGB（`post_pixel`）；显式保留 `post_optics` / `pre_optics` 消融与旧 v2 行为。[目标定义、Google 2019 依据与迁移](docs/GOOGLE_TARGET.md)区分论文事实与工程选择，不声称复现 Google 算法或其 GT。400–700 nm 光谱、28 台相机相对响应、波长/视场 PSF、PTC/暗场与通道饱和链路保留；默认 PTC 与像差仍是假设。验证：`python -m jsr_repro.validate_spectral --output runs/spectral-v3-verification`。等曝光控制见 `configs/google_equal_exposure_smoke.yaml`；原包围曝光配置属于 HDR 扩展。 当前接入七帧 Transformer；v1 Controller/RefineNet 仍使用旧合成数据。
+>
+> **2026-10-05 数据构造改进方案：[公开资源、物理模型与验收标准](docs/TRAINING_DATA_IMPLEMENTATION_PROPOSAL.md) · [第一阶段实施计划](docs/superpowers/plans/2026-10-05-spectral-jsr-phase1.md)**。推荐实测标定作基准、公开噪声参数和物理 PSF 扩展覆盖范围；第一阶段规划等曝光 JSR 光谱接入、观测饱和掩码、透光率校正、masked fallback、版本化输出与缺色评估。此项更新交付方案和来源记录，计划中的代码、实测资产及完整训练仍待实施。
+
+> **新目标 review：[审查结论与作者用途相容的方案](docs/GOOGLE_TARGET_REVIEW.md) · [一次坐标求积参考与数值验收](docs/google-target-review/REFERENCE.md)**。保留 `post_pixel` 主任务；61 波段/四视场节点/K7 参考已运行，但正式生成器仍需运动重采样、PSF 支持、饱和可靠度与整组缺色验证。本轮 110 项测试及两套 8 步 CPU smoke 通过，未证明实拍质量收益或完整作者训练配方。
+>
+> 审计基线：`6ab0f5b`。下文保留原作者README；其中“尚无算法源码”的旧说明与现有Core目录不一致。原公开模块/权重保留，新工程实现位于`reproduction/`。Transformer依据用户提供的2026-10-03知乎讲稿全文；没有独立取得该知乎网页或原Transformer训练配方，不将机制对应写成原权重/画质复现。
+
 JSR 将 RAW 连拍重建为高分辨率线性 RGB，面向高动态摄影，重点约束暗部亮度、颜色响应与周期伪影。4 至 14 帧连拍均可获得良好的重建效果，拍摄时候为防止对焦抖动影响效果建议AF-S来连拍，或者MF后连续单张拍摄。更高帧数暂不被支持。
 
 JSR reconstructs RAW bursts into high-resolution linear RGB for high dynamic range photography, with explicit control of shadow brightness, color response, and periodic artifacts. Bursts of 4 to 14 frames can all yield good reconstruction results. When shooting, to prevent focus jitter from affecting the results, it is recommended to use AF-S for burst shooting, or switch to MF and take consecutive single shots. Bursts longer than 14 frames are not currently supported.
@@ -301,3 +321,6 @@ JSR：面向高动态与伪影抑制的局部强度尺度等变 RAW Burst 超分
 The full paper will be provided in this repository, including the algorithm, assumptions, experimental protocols, ablations, and complete results.
 
 <!-- PAPER_LINK: 论文上传后，在此加入实际 PDF 或项目论文页面的相对链接；正式书目信息确定后再加入 BibTeX。 -->
+
+
+Review revisions add optional robust dense alignment, shared v1 LCA, explicit temporal capture ranks, spherical spectral OPD and reproducible diagnostics. See [conventions, provenance, conformance and evidence](docs/REVIEW_REVISION.md) for the independent definitions, default compatibility and real RAW NOT_RUN protocol.

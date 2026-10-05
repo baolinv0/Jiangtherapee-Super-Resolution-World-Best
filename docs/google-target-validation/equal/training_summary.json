@@ -1,0 +1,8 @@
+{
+  "implementation": "speech-inspired-transformer-v1",
+  "steps_completed": 8,
+  "wall_seconds": 6.456550470000366,
+  "best_val_psnr": 56.63225039861395,
+  "checkpoint": "last.pt",
+  "scope": "synthetic engineering smoke; not author quality or benchmark"
+}

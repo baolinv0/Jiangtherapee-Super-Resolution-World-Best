@@ -1,0 +1,10 @@
+{
+  "native_size": 32,
+  "width": 32,
+  "heads": 4,
+  "frames": 7,
+  "parameters": 307299,
+  "all_parameter_gradients_finite_nonzero": true,
+  "one_optimizer_step": true,
+  "loss": 0.000939167570322752
+}

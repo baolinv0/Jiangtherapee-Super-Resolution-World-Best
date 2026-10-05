@@ -1,0 +1,84 @@
+[
+  {
+    "name": "noiseflow_cam_iso_nlf",
+    "url": "https://raw.githubusercontent.com/BorealisAI/noise_flow/master/cam_iso_nlf.txt",
+    "status": 200,
+    "size": 425,
+    "local_cache_name": "sensor/assets/noiseflow_cam_iso_nlf.txt"
+  },
+  {
+    "name": "noiseflow_cam_iso_nlf_all",
+    "url": "https://raw.githubusercontent.com/BorealisAI/noise_flow/master/cam_iso_nlf_all.txt",
+    "status": 200,
+    "size": 614,
+    "local_cache_name": "sensor/assets/noiseflow_cam_iso_nlf_all.txt"
+  },
+  {
+    "name": "noiseflow_sidd_tree",
+    "url": "https://github.com/BorealisAI/noise_flow/tree/master/sidd",
+    "status": 200,
+    "size": 255864,
+    "local_cache_name": "sensor/assets/noiseflow_sidd_tree.txt"
+  },
+  {
+    "name": "noiseflow_model_tree",
+    "url": "https://github.com/BorealisAI/noise_flow/tree/master/models/NoiseFlow",
+    "status": 200,
+    "size": 225962,
+    "local_cache_name": "sensor/assets/noiseflow_model_tree.txt"
+  },
+  {
+    "name": "noiseflow_train",
+    "url": "https://raw.githubusercontent.com/BorealisAI/noise_flow/master/train_noise_flow.py",
+    "status": 200,
+    "size": 22262,
+    "local_cache_name": "sensor/assets/noiseflow_train.txt"
+  },
+  {
+    "name": "noiseflow_job",
+    "url": "https://raw.githubusercontent.com/BorealisAI/noise_flow/master/job_noise_flow.sh",
+    "status": 200,
+    "size": 3745,
+    "local_cache_name": "sensor/assets/noiseflow_job.txt"
+  },
+  {
+    "name": "pmn_tpami_readme",
+    "url": "https://raw.githubusercontent.com/megvii-research/PMN/TPAMI/README.md",
+    "status": 200,
+    "size": 12838,
+    "local_cache_name": "sensor/assets/pmn_tpami_readme.txt"
+  },
+  {
+    "name": "pmn_resources_tree",
+    "url": "https://github.com/megvii-research/PMN/tree/TPAMI/resources",
+    "status": 200,
+    "size": 227844,
+    "local_cache_name": "sensor/assets/pmn_resources_tree.txt"
+  },
+  {
+    "name": "sfrn_synthesize",
+    "url": "https://raw.githubusercontent.com/zhangyi-3/noise-synthesis/main/synthesize.py",
+    "status": 200,
+    "size": 2691,
+    "local_cache_name": "sensor/assets/sfrn_synthesize.txt"
+  },
+  {
+    "name": "sfrn_license",
+    "url": "https://raw.githubusercontent.com/zhangyi-3/noise-synthesis/main/LICENSE",
+    "status": 200,
+    "size": 1065,
+    "local_cache_name": "sensor/assets/sfrn_license.txt"
+  },
+  {
+    "name": "noiseflow_paper",
+    "url": "https://arxiv.org/pdf/1908.08453",
+    "error": "<urlopen error Tunnel connection failed: 403 Forbidden>"
+  },
+  {
+    "name": "sidd_simplepipeline",
+    "url": "https://raw.githubusercontent.com/AbdoKamel/simple-camera-pipeline/master/README.md",
+    "status": 200,
+    "size": 1716,
+    "local_cache_name": "sensor/assets/sidd_simplepipeline.txt"
+  }
+]

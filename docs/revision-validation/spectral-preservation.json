@@ -1,0 +1,118 @@
+{
+  "protocol": "spectral-camera-v2",
+  "wavelength_count": 61,
+  "bundled_camera_shapes": 28,
+  "asset_identity": {
+    "basis.json": "b7fb40806dc43524234546dbb6dcc6a17074429028b59fc288232b905febdaea",
+    "cameras.json": "fa8027f4a9d2dd77cb8ce7f1f8eaf6eca2739d3ad367e04ef2c8a201b51c0992"
+  },
+  "spectral_roundtrip": {
+    "method": "Mallett2019-truncated-400-700",
+    "max_abs_linear_srgb": 0.0032785534858703613,
+    "rmse_linear_srgb": 0.0014542345888912678,
+    "note": "Truncation/quadrature introduces error; spectra are an assumed metamer, not recovered ground truth."
+  },
+  "gt_optical_interventions": {
+    "f_number": {
+      "gt_max_abs": 0.0,
+      "raw_mean_abs_change": 0.002089144429191947
+    },
+    "pitch_um": {
+      "gt_max_abs": 0.0,
+      "raw_mean_abs_change": 0.003411749145016074
+    },
+    "fill_factor": {
+      "gt_max_abs": 0.0,
+      "raw_mean_abs_change": 0.0008453693008050323
+    },
+    "psf_radius": {
+      "gt_max_abs": 0.0,
+      "raw_mean_abs_change": 0.0019230807665735483
+    },
+    "field_center": {
+      "gt_max_abs": 0.0,
+      "raw_mean_abs_change": 0.002805683994665742
+    }
+  },
+  "explicit_endpoint_coverage": [
+    {
+      "iso": 100,
+      "camera_response_id": "Canon 5DMarkII",
+      "f_number": 2.0,
+      "pitch_um": 3.0,
+      "signal_saturation_fraction": 0.6428571343421936
+    },
+    {
+      "iso": 200,
+      "camera_response_id": "Nikon D3X",
+      "f_number": 8.0,
+      "pitch_um": 3.0,
+      "signal_saturation_fraction": 0.6428571343421936
+    },
+    {
+      "iso": 400,
+      "camera_response_id": "Nikon D3",
+      "f_number": 2.0,
+      "pitch_um": 5.76,
+      "signal_saturation_fraction": 0.6428571343421936
+    },
+    {
+      "iso": 800,
+      "camera_response_id": "Nikon D700",
+      "f_number": 8.0,
+      "pitch_um": 5.76,
+      "signal_saturation_fraction": 0.6428571343421936
+    }
+  ],
+  "evaluation": {
+    "oracle": {
+      "corrected_merge": {
+        "psnr_linear_db": 16.85804513062936,
+        "rmse_linear": 0.14358125447735046,
+        "chroma_rmse": 0.1273469154305883,
+        "shadow_rmse": null,
+        "mean_bias": -0.01020020491409081,
+        "highlight_rmse": 0.15749480700807272,
+        "highlight_fraction": 0.5763888888888888
+      },
+      "speech_transformer": {
+        "psnr_linear_db": 16.854268522392466,
+        "rmse_linear": 0.14364369690670137,
+        "chroma_rmse": 0.12775078720899238,
+        "shadow_rmse": null,
+        "mean_bias": -0.009849352727609652,
+        "highlight_rmse": 0.1575845718055749,
+        "highlight_fraction": 0.5763888888888888
+      }
+    },
+    "estimated": {
+      "corrected_merge": {
+        "psnr_linear_db": 16.748932848497354,
+        "rmse_linear": 0.14539630090490663,
+        "chroma_rmse": 0.1308245313371793,
+        "shadow_rmse": null,
+        "mean_bias": -0.01708120024866528,
+        "highlight_rmse": 0.16106775963308553,
+        "highlight_fraction": 0.5763888888888888
+      },
+      "speech_transformer": {
+        "psnr_linear_db": 16.745455830040864,
+        "rmse_linear": 0.14545451564662393,
+        "chroma_rmse": 0.13123227891721298,
+        "shadow_rmse": null,
+        "mean_bias": -0.016730039725425066,
+        "highlight_rmse": 0.16116663166621167,
+        "highlight_fraction": 0.5763888888888888
+      }
+    }
+  },
+  "scope": "Procedural fixtures and short CPU optimization only. Default PTC and optical aberrations are assumptions; camera spectral shapes are public measurements. No original-author quality claim.",
+  "training": {
+    "implementation": "speech-inspired-transformer-v1",
+    "steps_completed": 8,
+    "wall_seconds": 7.364713000133634,
+    "best_val_psnr": 22.649995719648565,
+    "checkpoint": "last.pt",
+    "scope": "synthetic engineering smoke; not author quality or benchmark"
+  }
+}

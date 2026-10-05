@@ -1,0 +1,5 @@
+# Preserve byte identities of bundled data and upstream license/metadata files.
+reproduction/jsr_repro/spectral_assets/* -text whitespace=-blank-at-eol,-blank-at-eof
+# Keep numerical evidence and review records byte-identical across Git platforms.
+docs/revision-validation/* -text whitespace=-blank-at-eol,-blank-at-eof
+docs/tasks/review-revision/* -text whitespace=-blank-at-eol,-blank-at-eof

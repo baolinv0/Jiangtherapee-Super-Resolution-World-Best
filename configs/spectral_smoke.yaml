@@ -1,0 +1,49 @@
+# v3 reconstruction target; bracketed saturation is an independent HDR extension.
+seed: 1234
+threads: 2
+device: cpu
+output: runs/spectral-smoke
+model:
+  width: 8
+  heads: 2
+  window: 4
+  frames: 7
+  scale: 2
+data:
+  manifest: data/smoke/manifest.jsonl
+  profile: null  # Explicit analytic PTC; public CMF curves are a separate asset.
+  options:
+    protocol: spectral-camera-v3
+    target_stage: post_pixel
+    native_size: 16
+    frames: 7
+    scale: 2
+    max_shift: 1.0
+    scene_gain: [1.0, 6.0]
+    bracket_interval_ev: [0.3, 1.0]
+    camera_ids: [Canon 5DMarkII, Nikon D3X, Nikon D3, Nikon D700]
+    iso: [100, 200, 400, 800]
+    f_number: [2.0, 8.0]
+    pitch_um: [3.0, 5.76]
+    fill_factor: [0.9, 1.0]
+    defocus_nm: [-20.0, 20.0]
+    astigmatism_nm: [0.0, 60.0]
+    coma_nm: [0.0, 80.0]
+    lca_native: [0.0, 0.5]
+    field_extent: 0.1
+    psf_radius: 8
+    scene_margin_hr: 16
+    pupil_samples: 32
+    fft_size: 128
+    augment: true
+    noise: true
+    quantize: true
+train:
+  steps: 8
+  batch_size: 1
+  lr: 0.0003
+  weight_decay: 0.0
+  validate_every: 4
+  crop_border: 4
+  clip_grad: 1.0
+  highlight_weight: 0.2

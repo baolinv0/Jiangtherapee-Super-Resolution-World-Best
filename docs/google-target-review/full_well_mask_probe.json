@@ -1,0 +1,20 @@
+[
+  {
+    "iso": 100,
+    "true_green_saturation_fraction": 1.0,
+    "observed_green_saturation_fraction": 0.7510462999343872,
+    "clipped_green_reaccepted_fraction": 0.2489536851644516,
+    "read_noise_e": 3.0,
+    "gain_e_per_dn": 4.0,
+    "full_well_e": 60000.0
+  },
+  {
+    "iso": 200,
+    "true_green_saturation_fraction": 1.0,
+    "observed_green_saturation_fraction": 1.0,
+    "clipped_green_reaccepted_fraction": 0.0,
+    "read_noise_e": 3.0,
+    "gain_e_per_dn": 2.0,
+    "full_well_e": 60000.0
+  }
+]

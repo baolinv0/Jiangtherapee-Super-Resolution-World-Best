@@ -1,0 +1,134 @@
+{
+  "equal": {
+    "target_min": 1.3999994993209839,
+    "target_max": 1.4000000953674316,
+    "exposure": [
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0
+    ],
+    "true_signal_saturation_fraction": 0.5,
+    "support": {
+      "R": {
+        "per_frame_valid_fraction": [
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0
+        ],
+        "no_support_anywhere_in_burst": false
+      },
+      "G1": {
+        "per_frame_valid_fraction": [
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        "no_support_anywhere_in_burst": true
+      },
+      "G2": {
+        "per_frame_valid_fraction": [
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        "no_support_anywhere_in_burst": true
+      },
+      "B": {
+        "per_frame_valid_fraction": [
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0
+        ],
+        "no_support_anywhere_in_burst": false
+      }
+    },
+    "merged_green_mean": 1.0,
+    "all_saturated_or_invalid_packed_fraction": 0.5
+  },
+  "bracketed": {
+    "target_min": 1.3999994993209839,
+    "target_max": 1.4000000953674316,
+    "exposure": [
+      1.0,
+      0.125,
+      0.25,
+      0.5,
+      2.0,
+      4.0,
+      8.0
+    ],
+    "true_signal_saturation_fraction": 0.4642857015132904,
+    "support": {
+      "R": {
+        "per_frame_valid_fraction": [
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        "no_support_anywhere_in_burst": false
+      },
+      "G1": {
+        "per_frame_valid_fraction": [
+          0.0,
+          1.0,
+          1.0,
+          1.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        "no_support_anywhere_in_burst": false
+      },
+      "G2": {
+        "per_frame_valid_fraction": [
+          0.0,
+          1.0,
+          1.0,
+          1.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        "no_support_anywhere_in_burst": false
+      },
+      "B": {
+        "per_frame_valid_fraction": [
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          0.0,
+          0.0
+        ],
+        "no_support_anywhere_in_burst": false
+      }
+    },
+    "merged_green_mean": 1.3999996185302734,
+    "all_saturated_or_invalid_packed_fraction": 0.0
+  }
+}

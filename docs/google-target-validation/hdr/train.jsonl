@@ -1,0 +1,8 @@
+{"step": 1, "epoch": 0, "cursor": 0, "loss": 0.04260677099227905, "grad_norm": 0.10914985090494156, "lr": 0.000288581929876693, "signal_saturation_fraction": 0.2728794515132904}
+{"step": 2, "epoch": 0, "cursor": 1, "loss": 0.009163983166217804, "grad_norm": 0.010396097786724567, "lr": 0.0002560660171779821, "signal_saturation_fraction": 0.1595982164144516}
+{"step": 3, "epoch": 0, "cursor": 2, "loss": 0.013845608569681644, "grad_norm": 0.029077520594000816, "lr": 0.00020740251485476348, "signal_saturation_fraction": 0.0066964286379516125}
+{"step": 4, "epoch": 0, "cursor": 3, "loss": 0.15212848782539368, "grad_norm": 0.2590891122817993, "lr": 0.00015, "signal_saturation_fraction": 0.6752232313156128, "val_psnr_linear_db": 31.89007403727986}
+{"step": 5, "epoch": 0, "cursor": 4, "loss": 0.03093579411506653, "grad_norm": 0.1142054945230484, "lr": 9.259748514523653e-05, "signal_saturation_fraction": 0.4397321343421936}
+{"step": 6, "epoch": 0, "cursor": 5, "loss": 0.05846073105931282, "grad_norm": 0.2861303985118866, "lr": 4.3933982822017876e-05, "signal_saturation_fraction": 0.4988839328289032}
+{"step": 7, "epoch": 0, "cursor": 6, "loss": 0.01605873554944992, "grad_norm": 0.05289345979690552, "lr": 1.1418070123306989e-05, "signal_saturation_fraction": 0.2075892835855484}
+{"step": 8, "epoch": 0, "cursor": 7, "loss": 0.09602349996566772, "grad_norm": 0.12149916589260101, "lr": 0.0, "signal_saturation_fraction": 0.6261160969734192, "val_psnr_linear_db": 31.890210864745253}

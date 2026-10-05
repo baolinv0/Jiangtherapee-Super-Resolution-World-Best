@@ -1,0 +1,137 @@
+{
+  "reviewed_commit": "0bc29f14dd0e4be8a05cfc5787719203fe43d900",
+  "date": "2026-10-05",
+  "environment": {
+    "torch": "2.14.1+cpu",
+    "numpy": "2.4.6",
+    "pytest": "9.1.1",
+    "device": "cpu"
+  },
+  "tests": {
+    "result": "110 passed",
+    "wall_seconds": 15.36
+  },
+  "scope": "Procedural fixtures and eight-step CPU optimization only; not natural-image quality or author-recipe replication",
+  "runs": {
+    "equal-0bc29f1": {
+      "config": "configs/google_equal_exposure_smoke.yaml",
+      "training": {
+        "implementation": "speech-inspired-transformer-v1",
+        "steps_completed": 8,
+        "wall_seconds": 2.5455687700014096,
+        "best_val_psnr": 51.22322425763568,
+        "checkpoint": "last.pt",
+        "scope": "synthetic engineering smoke; not author quality or benchmark"
+      },
+      "evaluation": {
+        "oracle": {
+          "corrected_merge": {
+            "psnr_linear_db": 48.46703805356003,
+            "rmse_linear": 0.0037726637343429878,
+            "chroma_rmse": 0.0029858190897180093,
+            "shadow_rmse": null,
+            "mean_bias": -0.0001723265784137227,
+            "highlight_rmse": null,
+            "highlight_fraction": 0.0
+          },
+          "speech_transformer": {
+            "psnr_linear_db": 48.4603290331068,
+            "rmse_linear": 0.003775578882571622,
+            "chroma_rmse": 0.0029854249530615,
+            "shadow_rmse": null,
+            "mean_bias": -0.00018616470171966485,
+            "highlight_rmse": null,
+            "highlight_fraction": 0.0
+          }
+        },
+        "estimated": {
+          "corrected_merge": {
+            "psnr_linear_db": 48.545191900882394,
+            "rmse_linear": 0.003738870343493631,
+            "chroma_rmse": 0.0030565916593070534,
+            "shadow_rmse": null,
+            "mean_bias": -0.00029910097752387327,
+            "highlight_rmse": null,
+            "highlight_fraction": 0.0
+          },
+          "speech_transformer": {
+            "psnr_linear_db": 48.53499641559586,
+            "rmse_linear": 0.003743261601071883,
+            "chroma_rmse": 0.0030601469495443686,
+            "shadow_rmse": null,
+            "mean_bias": -0.0003129535169271683,
+            "highlight_rmse": null,
+            "highlight_fraction": 0.0
+          }
+        }
+      },
+      "exported_sample_metadata": {
+        "protocol": "spectral-camera-v3",
+        "target_stage": "post_pixel",
+        "signal_saturation_fraction": 0.0,
+        "observed_saturation_fraction": 0.0,
+        "target_above_reference_white_fraction": 0.0
+      }
+    },
+    "hdr-0bc29f1": {
+      "config": "configs/spectral_smoke.yaml",
+      "training": {
+        "implementation": "speech-inspired-transformer-v1",
+        "steps_completed": 8,
+        "wall_seconds": 2.3520758300001035,
+        "best_val_psnr": 27.289784749897382,
+        "checkpoint": "last.pt",
+        "scope": "synthetic engineering smoke; not author quality or benchmark"
+      },
+      "evaluation": {
+        "oracle": {
+          "corrected_merge": {
+            "psnr_linear_db": 21.624987610603533,
+            "rmse_linear": 0.08293743874834664,
+            "chroma_rmse": 0.09675056684001307,
+            "shadow_rmse": null,
+            "mean_bias": -0.009583259242828246,
+            "highlight_rmse": 0.09764285551190159,
+            "highlight_fraction": 0.5717592592592593
+          },
+          "speech_transformer": {
+            "psnr_linear_db": 21.616313491324163,
+            "rmse_linear": 0.083020305167701,
+            "chroma_rmse": 0.09724217299712619,
+            "shadow_rmse": null,
+            "mean_bias": -0.009210148446813778,
+            "highlight_rmse": 0.09775799703140867,
+            "highlight_fraction": 0.5717592592592593
+          }
+        },
+        "estimated": {
+          "corrected_merge": {
+            "psnr_linear_db": 21.161692511106263,
+            "rmse_linear": 0.08748132946498263,
+            "chroma_rmse": 0.10286101290349355,
+            "shadow_rmse": null,
+            "mean_bias": -0.016464227948475768,
+            "highlight_rmse": 0.10314282487082696,
+            "highlight_fraction": 0.5717592592592593
+          },
+          "speech_transformer": {
+            "psnr_linear_db": 21.15452298050665,
+            "rmse_linear": 0.08755356835109183,
+            "chroma_rmse": 0.10333991988032315,
+            "shadow_rmse": null,
+            "mean_bias": -0.01609155456363051,
+            "highlight_rmse": 0.10326556438713964,
+            "highlight_fraction": 0.5717592592592593
+          }
+        }
+      },
+      "exported_sample_metadata": {
+        "protocol": "spectral-camera-v3",
+        "target_stage": "post_pixel",
+        "signal_saturation_fraction": 0.4012276828289032,
+        "observed_saturation_fraction": 0.4012276828289032,
+        "target_above_reference_white_fraction": 0.4977213442325592
+      }
+    }
+  }
+}

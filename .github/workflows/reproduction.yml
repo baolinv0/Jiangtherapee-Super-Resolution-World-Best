@@ -1,0 +1,51 @@
+name: Reproduction CPU validation
+on:
+  pull_request:
+    paths: ['reproduction/**', 'tests/**', 'configs/**', 'scripts/**', 'pyproject.toml', '.github/workflows/reproduction.yml']
+  push:
+    branches: ['reproduce/**']
+    paths: ['reproduction/**', 'tests/**', 'configs/**', 'scripts/**', 'pyproject.toml', '.github/workflows/reproduction.yml']
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  cpu:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+          cache: pip
+      - run: pip install torch --index-url https://download.pytorch.org/whl/cpu
+      - run: pip install -e '.[test]'
+      - run: python -m pytest -q
+      - run: python -m jsr_repro.validate --output runs/ci
+      - run: python -m jsr_repro.validate_transformer --output runs/ci-transformer
+      - run: python -m jsr_repro.validate_spectral --output runs/ci-spectral
+      - run: python -m jsr_repro.validate_spectral --config configs/google_equal_exposure_smoke.yaml --output runs/ci-google-equal
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: reproduction-validation
+          path: |
+            runs/ci/*.json
+            runs/ci/*.png
+            runs/ci/training/*.json
+            runs/ci/training/*.jsonl
+            runs/ci-transformer/*.json
+            runs/ci-transformer/*.png
+            runs/ci-transformer/training/*.json
+            runs/ci-transformer/training/*.jsonl
+            runs/ci-transformer/inference/*.json
+            runs/ci-spectral/*.json
+            runs/ci-spectral/*.png
+            runs/ci-spectral/training/*.json
+            runs/ci-spectral/training/*.jsonl
+            runs/ci-spectral/inference/*.json
+            runs/ci-google-equal/*.json
+            runs/ci-google-equal/*.png
+            runs/ci-google-equal/training/*.json
+            runs/ci-google-equal/training/*.jsonl
+            runs/ci-google-equal/inference/*.json

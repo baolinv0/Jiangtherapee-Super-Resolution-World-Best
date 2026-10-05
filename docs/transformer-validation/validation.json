@@ -1,0 +1,68 @@
+{
+  "status": "passed",
+  "implementation": "speech-inspired-transformer-v1",
+  "scope": "CPU engineering smoke; no paper-quality, real-camera or SOTA evidence",
+  "training": {
+    "implementation": "speech-inspired-transformer-v1",
+    "steps_completed": 16,
+    "wall_seconds": 1.6817022999748588,
+    "best_val_psnr": 20.39910170472382,
+    "checkpoint": "last.pt",
+    "scope": "synthetic engineering smoke; not author quality or benchmark"
+  },
+  "oracle": {
+    "corrected_merge": {
+      "psnr_linear_db": 16.6222112676625,
+      "rmse_linear": 0.14753308933662806,
+      "chroma_rmse": 0.18448670972713158,
+      "shadow_rmse": null,
+      "mean_bias": -0.008677836266104822,
+      "highlight_rmse": 0.17297090495598094,
+      "highlight_fraction": 0.6429398148148148
+    },
+    "speech_transformer": {
+      "psnr_linear_db": 16.634981591657862,
+      "rmse_linear": 0.1473163399752616,
+      "chroma_rmse": 0.18424919698186223,
+      "shadow_rmse": null,
+      "mean_bias": -0.007263973803707847,
+      "highlight_rmse": 0.1724543830114923,
+      "highlight_fraction": 0.6429398148148148
+    }
+  },
+  "estimated": {
+    "corrected_merge": {
+      "psnr_linear_db": 11.777423984524784,
+      "rmse_linear": 0.2577085342097461,
+      "chroma_rmse": 0.36777163253241385,
+      "shadow_rmse": null,
+      "mean_bias": -0.043592416750336135,
+      "highlight_rmse": 0.3085007060530982,
+      "highlight_fraction": 0.6429398148148148
+    },
+    "speech_transformer": {
+      "psnr_linear_db": 11.78767047927909,
+      "rmse_linear": 0.2574047020934348,
+      "chroma_rmse": 0.36759410173311824,
+      "shadow_rmse": null,
+      "mean_bias": -0.04223489864832825,
+      "highlight_rmse": 0.30789614518334496,
+      "highlight_fraction": 0.6429398148148148
+    }
+  },
+  "zero_max_abs": 0.0,
+  "gain_max_relative_rmse": 0.0,
+  "resume_bitwise_equal": true,
+  "ptc_gain_max_abs_error": 4.440892098500626e-16,
+  "test_signal_saturation_fraction": 0.4397321343421936,
+  "test_gt_above_white_fraction": 0.6536458134651184,
+  "storage": {
+    "radiance_white": 4.0,
+    "decode_formula": "linear_radiance = uint16 / 65535 * radiance_white",
+    "clipped_fraction": 0.0,
+    "tiff": "linear_rgb16.tiff",
+    "linear_float": "linear_rgb.npy",
+    "preview": "sRGB diagnostic at radiance_white, no camera color/WB correction",
+    "precision": "16-bit storage is not proof of 16 effective image bits"
+  }
+}

@@ -1,0 +1,12 @@
+{
+  "all_assets_byte_identical": true,
+  "sha256": {
+    "basis.json": "b7fb40806dc43524234546dbb6dcc6a17074429028b59fc288232b905febdaea",
+    "cameras.json": "fa8027f4a9d2dd77cb8ce7f1f8eaf6eca2739d3ad367e04ef2c8a201b51c0992",
+    "camspec-LICENSE.txt": "e66c269d4819aaab34b49ef5220c4ddab6756f21bb5180761a4eb8561f2b7bbd",
+    "cie_d65_metadata.json": "71994379b81c65db111f652e747a00b599b5456c2a8242e9a0d6f379f560a14e",
+    "cie_xyz_metadata.json": "03abcaecf4e63d77045ef57c4514b52c8bb1a46dd18e1f93a50044a0f4f481c8",
+    "colour-LICENSE.txt": "cd9efcd4b6ac5218189d90ffc25f9766f8411e62c5526c452145e1cc8b19baf7",
+    "source_manifest.json": "96758a96882c68661740ff3173b00a901ac81d88580e5e8639cd52e4c514d035"
+  }
+}

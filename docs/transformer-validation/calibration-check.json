@@ -1,0 +1,30 @@
+{
+  "input": "generated synthetic PTC, not measured",
+  "gain_max_abs_error_e_per_dn": 4.440892098500626e-16,
+  "diagnostics": {
+    "100": {
+      "samples": 4,
+      "slope_dn_per_e": 0.25,
+      "intercept_dn2": 0.6458333333333555,
+      "rmse_dn2": 2.1793200057578177e-14
+    },
+    "200": {
+      "samples": 4,
+      "slope_dn_per_e": 0.4999999999999999,
+      "intercept_dn2": 2.3333333333334316,
+      "rmse_dn2": 6.415206421104483e-14
+    },
+    "400": {
+      "samples": 4,
+      "slope_dn_per_e": 1.0,
+      "intercept_dn2": 9.08333333333341,
+      "rmse_dn2": 8.10921975650084e-14
+    },
+    "800": {
+      "samples": 4,
+      "slope_dn_per_e": 2.0,
+      "intercept_dn2": 36.08333333333363,
+      "rmse_dn2": 3.805385902239229e-13
+    }
+  }
+}

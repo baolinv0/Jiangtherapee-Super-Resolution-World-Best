@@ -1,0 +1,38 @@
+[
+  {
+    "name": "mstpp_train_dataset",
+    "url": "https://raw.githubusercontent.com/caiyuanhao1998/MST-plus-plus/master/train_code/hsi_dataset.py",
+    "final_url": "https://raw.githubusercontent.com/caiyuanhao1998/MST-plus-plus/master/train_code/hsi_dataset.py",
+    "status": 200,
+    "bytes": 5289
+  },
+  {
+    "name": "unprocessing_code",
+    "url": "https://raw.githubusercontent.com/google-research/google-research/master/unprocessing/unprocess.py",
+    "final_url": "https://raw.githubusercontent.com/google-research/google-research/master/unprocessing/unprocess.py",
+    "status": 200,
+    "bytes": 5889
+  },
+  {
+    "name": "cave_mst_readme",
+    "url": "https://raw.githubusercontent.com/caiyuanhao1998/MST/main/README.md",
+    "final_url": "https://raw.githubusercontent.com/caiyuanhao1998/MST/main/README.md",
+    "status": 200,
+    "bytes": 39988
+  },
+  {
+    "name": "cave_official",
+    "url": "https://www.cs.columbia.edu/CAVE/databases/multispectral/",
+    "error": "<urlopen error Tunnel connection failed: 403 Forbidden>"
+  },
+  {
+    "name": "harvard_official",
+    "url": "https://vision.seas.harvard.edu/hyperspec/",
+    "error": "<urlopen error Tunnel connection failed: 403 Forbidden>"
+  },
+  {
+    "name": "ntire_competition",
+    "url": "https://codalab.lisn.upsaclay.fr/competitions/721",
+    "error": "<urlopen error Tunnel connection failed: 403 Forbidden>"
+  }
+]

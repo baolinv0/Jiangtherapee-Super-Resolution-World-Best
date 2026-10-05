@@ -1,0 +1,125 @@
+{
+  "implementation": "speech-inspired-transformer-v1",
+  "checkpoint_sha256": "30e97e61cd3be804c6f6346acd4b2cfba0c53efb6cdc909fead6d6c314306145",
+  "burst_sha256": "f41391a0d4aefd9b96e4250d840427d7c41a01ab3fe9670ac7c842896235f330",
+  "alignment": "provided",
+  "shifts_xy_native": [
+    [
+      0.0,
+      0.0
+    ],
+    [
+      -0.5086004734039307,
+      -0.5900405645370483
+    ],
+    [
+      0.2667372226715088,
+      -0.4154996871948242
+    ],
+    [
+      -0.37405574321746826,
+      -0.7590216398239136
+    ],
+    [
+      -0.27423179149627686,
+      -0.7105773687362671
+    ],
+    [
+      -0.5531884431838989,
+      -0.09997880458831787
+    ],
+    [
+      0.9067733287811279,
+      -0.29484546184539795
+    ]
+  ],
+  "input_profile_sha256": "55ac12938d7f1a4b7e00f937606a14cc3e1bfa6da4f16864c9f0f4fbc2e99a1a",
+  "training_profile_sha256": "55ac12938d7f1a4b7e00f937606a14cc3e1bfa6da4f16864c9f0f4fbc2e99a1a",
+  "calibration_domain_match": true,
+  "trace": {
+    "embedding": [
+      1,
+      7,
+      8,
+      8,
+      8
+    ],
+    "encoder0": [
+      1,
+      7,
+      8,
+      8,
+      8
+    ],
+    "encoder1": [
+      1,
+      7,
+      8,
+      4,
+      4
+    ],
+    "encoder2": [
+      1,
+      7,
+      8,
+      2,
+      2
+    ],
+    "decoder0": [
+      1,
+      7,
+      8,
+      4,
+      4
+    ],
+    "decoder1": [
+      1,
+      7,
+      8,
+      8,
+      8
+    ],
+    "late_pair0": [
+      1,
+      4,
+      8,
+      8,
+      8
+    ],
+    "late_pair1": [
+      1,
+      2,
+      8,
+      8,
+      8
+    ],
+    "late_pair2": [
+      1,
+      1,
+      8,
+      8,
+      8
+    ],
+    "shared_phase_latent": [
+      1,
+      8,
+      32,
+      32
+    ]
+  },
+  "output_shape_hwc": [
+    32,
+    32,
+    3
+  ],
+  "encoding": {
+    "radiance_white": 4.0,
+    "decode_formula": "linear_radiance = uint16 / 65535 * radiance_white",
+    "clipped_fraction": 0.0,
+    "tiff": "linear_rgb16.tiff",
+    "linear_float": "linear_rgb.npy",
+    "preview": "sRGB diagnostic at radiance_white, no camera color/WB correction",
+    "precision": "16-bit storage is not proof of 16 effective image bits"
+  },
+  "all_saturated_or_invalid_packed_fraction": 0.08203125
+}

@@ -1,0 +1,29 @@
+{
+  "source": "stepped_response.csv",
+  "fixture": "Independent fixed geometry; author coordinates unknown",
+  "source_sha256": "fe8729a33f8fe703983a98653ac3243341326bc02763d8bf84cb9ce9ba86961a",
+  "plot_library": "Matplotlib 3.11.2",
+  "dn_white": 16383,
+  "dark_max_dn": 127,
+  "dark_cases": 14,
+  "models": {
+    "Initial legacy": {
+      "slope": 0.9999255305566029,
+      "intercept_dn": 0.7414717896503206,
+      "affine_response_residual_rmse_dn": 1.3514852383025084e-06,
+      "identity_response_rmse_dn": 0.7397937494056144
+    },
+    "Corrected legacy": {
+      "slope": 0.9999254991184301,
+      "intercept_dn": 0.7414720522199559,
+      "affine_response_residual_rmse_dn": 9.188137764356363e-07,
+      "identity_response_rmse_dn": 0.739793304771462
+    },
+    "Random v1 final": {
+      "slope": 0.9629762908165773,
+      "intercept_dn": 40.957846411998396,
+      "affine_response_residual_rmse_dn": 0.870679910022994,
+      "identity_response_rmse_dn": 40.1445594470363
+    }
+  }
+}

@@ -1,0 +1,41 @@
+# Inferred recipe. Procedural fixtures verify execution, not restoration quality.
+seed: 1234
+threads: 2
+device: cpu
+output: runs/smoke
+model:
+  scale: 2
+  controller_width: 4
+  refine_width: 8
+  refine_blocks: 2
+  normalization: true
+  refinement: true
+data:
+  manifest: data/smoke/manifest.jsonl
+  samples_per_scene: 2
+  options:
+    native_size: 16
+    scale: 2
+    frames: 4
+    max_shift: 1.5
+    blur_sigma: [0.2, 0.8]
+    exposure_ev: [-2.0, 0.0]
+    color_gain: [1.0, 2.0]
+    shot_noise: [0.0001, 0.002]
+    read_noise: [0.0001, 0.001]
+    quantization_bits: 14
+    clip_sensor: true
+    augment: true
+train:
+  stage: joint
+  steps: 32
+  batch_size: 1
+  lr: 0.001
+  min_lr: 0.00001
+  weight_decay: 0.0
+  validate_every: 8
+  crop_border: 4
+  chroma_weight: 0.1
+  gradient_weight: 0.05
+  learned_weight: 0.1
+  clip_grad: 1.0

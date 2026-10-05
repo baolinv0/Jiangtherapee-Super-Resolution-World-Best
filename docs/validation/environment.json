@@ -1,0 +1,9 @@
+{
+  "python": "3.11.15",
+  "torch": "2.14.1+cpu",
+  "numpy": "2.4.6",
+  "device": "cpu",
+  "platform": "Windows-10-10.0.19045-SP0",
+  "deterministic_algorithms": true,
+  "manifest_sha256": "5c44d42d9879f7801727941b716648d47c2105739d3a17bb82d9f79b3e4f8a84"
+}

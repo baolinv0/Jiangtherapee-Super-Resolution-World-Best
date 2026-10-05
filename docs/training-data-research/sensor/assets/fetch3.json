@@ -1,0 +1,29 @@
+[
+  {
+    "name": "sidd_cvpr_pdf",
+    "url": "https://openaccess.thecvf.com/content_cvpr_2018/papers/Abdelhamed_A_High-Quality_Denoising_CVPR_2018_paper.pdf",
+    "error": "<urlopen error Tunnel connection failed: 403 Forbidden>"
+  },
+  {
+    "name": "sidd_cvpr_supp",
+    "url": "https://openaccess.thecvf.com/content_cvpr_2018/Supplemental/2987-supp.pdf",
+    "error": "<urlopen error Tunnel connection failed: 403 Forbidden>"
+  },
+  {
+    "name": "sidd_domain_alternate",
+    "url": "https://sidd-benchmark.net/",
+    "error": "<urlopen error Tunnel connection failed: 403 Forbidden>"
+  },
+  {
+    "name": "sidd_author_github",
+    "url": "https://github.com/AbdelrahmanAbdelhamed",
+    "status": 200,
+    "size": 189296,
+    "local_cache_name": "sensor/assets/sidd_author_github.txt"
+  },
+  {
+    "name": "lrid_readme",
+    "url": "https://raw.githubusercontent.com/cao-qi/PMRID/master/README.md",
+    "error": "HTTP Error 404: Not Found"
+  }
+]

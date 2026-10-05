@@ -1,0 +1,237 @@
+{
+  "implementation": "speech-inspired-transformer-v1",
+  "scope": "held-out synthetic data, NOT official JSR/BurstSR score",
+  "data_protocol": "spectral-camera-v3",
+  "target_stage": "post_pixel",
+  "count": 1,
+  "split": "test",
+  "alignment": "estimated",
+  "data_range": 1.0,
+  "gain_fit": false,
+  "crop_border_hr": 4,
+  "checkpoint_sha256": "0c1c0d9f01453393045e1c7bce5fba7110bc4b4084fea87d3c68e99b9b43ca7c",
+  "manifest_sha256": "47fe60d2d9b8f382acfadc7a79361efcc7e6374a39a3ac8d36534c5ad85ebdb6",
+  "mean_per_image_metrics": {
+    "corrected_merge": {
+      "psnr_linear_db": 20.09946010560612,
+      "rmse_linear": 0.09886145426931964,
+      "chroma_rmse": 0.1140019554553096,
+      "shadow_rmse": null,
+      "mean_bias": -0.008289222191605303,
+      "highlight_rmse": 0.12842721802987833,
+      "highlight_fraction": 0.4079861111111111
+    },
+    "speech_transformer": {
+      "psnr_linear_db": 20.11143694615074,
+      "rmse_linear": 0.09872522966074018,
+      "chroma_rmse": 0.11395549989960271,
+      "shadow_rmse": null,
+      "mean_bias": -0.007685717022805302,
+      "highlight_rmse": 0.12790907038369317,
+      "highlight_fraction": 0.4079861111111111
+    }
+  },
+  "samples": [
+    {
+      "index": 0,
+      "metadata": {
+        "aberrations_nm": {
+          "astigmatism": 46.50681138038635,
+          "coma": 58.95578384399414,
+          "defocus": -1.9727563858032227
+        },
+        "area_quadrature": 4,
+        "asset_identity": {
+          "basis.json": "b7fb40806dc43524234546dbb6dcc6a17074429028b59fc288232b905febdaea",
+          "cameras.json": "fa8027f4a9d2dd77cb8ce7f1f8eaf6eca2739d3ad367e04ef2c8a201b51c0992"
+        },
+        "camera": {
+          "black_dn": 512.0,
+          "full_well_e": 60000.0,
+          "gain_e_per_dn": 0.5,
+          "read_noise_e": 3.0,
+          "white_dn": 16383.0
+        },
+        "camera_response_id": "Canon 5DMarkII",
+        "cfa": "RGGB",
+        "channel_transmission": [
+          0.699999988079071,
+          1.0,
+          0.550000011920929
+        ],
+        "crop_xy": [
+          73,
+          24
+        ],
+        "electrons_per_reference_unit": 7935.5,
+        "exposure_convention": "reference-white-normalized per ISO; not fixed absolute photons across ISO",
+        "exposure_ratios": [
+          1.0,
+          0.28424781560897827,
+          0.4323127865791321,
+          0.6575049757957458,
+          1.520901083946228,
+          2.3131399154663086,
+          3.518056869506836
+        ],
+        "f_number": 6.495173811912537,
+        "fft_size": 128,
+        "field_center": [
+          -0.5761334300041199,
+          -0.20297300815582275
+        ],
+        "field_extent": 0.1,
+        "field_extent_region": "half-width of full simulated support including scene margin",
+        "fill_factor": 0.9475286841392517,
+        "interval_ev": 0.6049262881278992,
+        "iso": 800,
+        "lca_native": 0.477693110704422,
+        "noise_prior": "observed plug-in variance; no clean signal or true saturation fed to model",
+        "observed_saturation_fraction": 0.41796875,
+        "output_sample_pitch_native": 0.5,
+        "pitch_um": 3.43358503818512,
+        "pixel_aperture": "retained",
+        "profile_provenance": {
+          "kind": "analytic_inferred",
+          "note": "Not the author's PTC library or a measured camera."
+        },
+        "profile_sha256": "55ac12938d7f1a4b7e00f937606a14cc3e1bfa6da4f16864c9f0f4fbc2e99a1a",
+        "protocol": "spectral-camera-v3",
+        "psf": "assumed circular-pupil scalar diffraction with parametric OPD; not measured prime-lens library",
+        "psf_radius_hr": 8,
+        "pupil_samples": 32,
+        "replicated_boundary_context": false,
+        "sample_seed": 3273856880180739343,
+        "sampling_phase": "dense center=(j+0.5)*2/2-0.5+margin; native center=(i+0.5)*2-0.5+margin; shifts in native pixels",
+        "scale_native": 2,
+        "scene_gain": 2.6021500593135087,
+        "scene_id": "scene_0003.npy",
+        "shifts_xy_native": [
+          [
+            0.0,
+            0.0
+          ],
+          [
+            0.8458303213119507,
+            -0.0698232650756836
+          ],
+          [
+            -0.39748919010162354,
+            0.4782510995864868
+          ],
+          [
+            0.3538696765899658,
+            0.2753945589065552
+          ],
+          [
+            -0.24925851821899414,
+            -0.7373316287994385
+          ],
+          [
+            -0.058284878730773926,
+            0.46644651889801025
+          ],
+          [
+            -0.8778162002563477,
+            -0.18074047565460205
+          ]
+        ],
+        "signal_saturation_fraction": 0.4185267984867096,
+        "source_resized": false,
+        "source_sha256": "3523fce91e147cdd50635415f7a14ef8155ad4f31e045742208061c5f5133538",
+        "spectral_curve_provenance": "published_measured_relative_response",
+        "spectral_input": false,
+        "spectral_prior": "Mallett2019 public primary basis; cropped 400..700nm",
+        "split": "test",
+        "target_above_reference_white_fraction": 0.4361979067325592,
+        "target_space": "D65-normalized camera RGB, reference exposure, after reference optics and native pixel aperture, sampled on a dense 2x grid",
+        "target_stage": "post_pixel",
+        "wavelengths_nm": [
+          400.0,
+          405.0,
+          410.0,
+          415.0,
+          420.0,
+          425.0,
+          430.0,
+          435.0,
+          440.0,
+          445.0,
+          450.0,
+          455.0,
+          460.0,
+          465.0,
+          470.0,
+          475.0,
+          480.0,
+          485.0,
+          490.0,
+          495.0,
+          500.0,
+          505.0,
+          510.0,
+          515.0,
+          520.0,
+          525.0,
+          530.0,
+          535.0,
+          540.0,
+          545.0,
+          550.0,
+          555.0,
+          560.0,
+          565.0,
+          570.0,
+          575.0,
+          580.0,
+          585.0,
+          590.0,
+          595.0,
+          600.0,
+          605.0,
+          610.0,
+          615.0,
+          620.0,
+          625.0,
+          630.0,
+          635.0,
+          640.0,
+          645.0,
+          650.0,
+          655.0,
+          660.0,
+          665.0,
+          670.0,
+          675.0,
+          680.0,
+          685.0,
+          690.0,
+          695.0,
+          700.0
+        ]
+      },
+      "alignment_rmse_native": 2.897505283355713,
+      "all_saturated_or_invalid_packed_fraction": 0.0625,
+      "methods": {
+        "corrected_merge": {
+          "psnr_linear_db": 20.09946010560612,
+          "rmse_linear": 0.09886145426931964,
+          "chroma_rmse": 0.1140019554553096,
+          "shadow_rmse": null,
+          "mean_bias": -0.008289222191605303,
+          "highlight_rmse": 0.12842721802987833,
+          "highlight_fraction": 0.4079861111111111
+        },
+        "speech_transformer": {
+          "psnr_linear_db": 20.11143694615074,
+          "rmse_linear": 0.09872522966074018,
+          "chroma_rmse": 0.11395549989960271,
+          "shadow_rmse": null,
+          "mean_bias": -0.007685717022805302,
+          "highlight_rmse": 0.12790907038369317,
+          "highlight_fraction": 0.4079861111111111
+        }
+      }
+    }
+  ]
+}

@@ -1,0 +1,70 @@
+{
+  "schema": "jsr-camera-v1",
+  "name": "fitted-input-profile",
+  "provenance": {
+    "kind": "fitted_input",
+    "csv_sha256": "03b74fdadeffb313e71beb1b9baccb35aa235b89a84652053c1176541920fbc1",
+    "note": "Input provenance is user supplied, not independently verified measured camera data."
+  },
+  "channel_transmission": [
+    0.7,
+    1.0,
+    0.55
+  ],
+  "iso": {
+    "100": {
+      "gain_e_per_dn": 4.0,
+      "read_noise_e": 3.000000000000059,
+      "black_dn": 512.0,
+      "white_dn": 16383.0,
+      "full_well_e": 60000.0
+    },
+    "200": {
+      "gain_e_per_dn": 2.0000000000000004,
+      "read_noise_e": 3.000000000000066,
+      "black_dn": 512.0,
+      "white_dn": 16383.0,
+      "full_well_e": 60000.0
+    },
+    "400": {
+      "gain_e_per_dn": 1.0,
+      "read_noise_e": 3.000000000000013,
+      "black_dn": 512.0,
+      "white_dn": 16383.0,
+      "full_well_e": 60000.0
+    },
+    "800": {
+      "gain_e_per_dn": 0.5,
+      "read_noise_e": 3.000000000000012,
+      "black_dn": 512.0,
+      "white_dn": 16383.0,
+      "full_well_e": 60000.0
+    }
+  },
+  "fit_diagnostics": {
+    "100": {
+      "samples": 4,
+      "slope_dn_per_e": 0.25,
+      "intercept_dn2": 0.6458333333333555,
+      "rmse_dn2": 2.1793200057578177e-14
+    },
+    "200": {
+      "samples": 4,
+      "slope_dn_per_e": 0.4999999999999999,
+      "intercept_dn2": 2.3333333333334316,
+      "rmse_dn2": 6.415206421104483e-14
+    },
+    "400": {
+      "samples": 4,
+      "slope_dn_per_e": 1.0,
+      "intercept_dn2": 9.08333333333341,
+      "rmse_dn2": 8.10921975650084e-14
+    },
+    "800": {
+      "samples": 4,
+      "slope_dn_per_e": 2.0,
+      "intercept_dn2": 36.08333333333363,
+      "rmse_dn2": 3.805385902239229e-13
+    }
+  }
+}

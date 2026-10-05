@@ -1,0 +1,524 @@
+[
+  {
+    "name": "emva",
+    "url": "https://www.emva.org/standards-technology/emva-1288/",
+    "retrieved_utc": "2026-10-05T10:00:45Z",
+    "error": "<urlopen error Tunnel connection failed: 403 Forbidden>"
+  },
+  {
+    "name": "emva-standard",
+    "url": "https://www.emva.org/wp-content/uploads/EMVA1288-4.0Linear.pdf",
+    "retrieved_utc": "2026-10-05T10:00:45Z",
+    "error": "<urlopen error Tunnel connection failed: 403 Forbidden>"
+  },
+  {
+    "name": "ptp-pdr",
+    "url": "https://www.photonstophotos.net/Charts/PDR.htm",
+    "retrieved_utc": "2026-10-05T10:00:45Z",
+    "error": "<urlopen error Tunnel connection failed: 403 Forbidden>"
+  },
+  {
+    "name": "ptp-rn",
+    "url": "https://www.photonstophotos.net/Charts/RN_e.htm",
+    "retrieved_utc": "2026-10-05T10:00:45Z",
+    "error": "<urlopen error Tunnel connection failed: 403 Forbidden>"
+  },
+  {
+    "name": "ptp-input",
+    "url": "https://www.photonstophotos.net/Charts/ReadNoise.htm",
+    "retrieved_utc": "2026-10-05T10:00:45Z",
+    "error": "<urlopen error Tunnel connection failed: 403 Forbidden>"
+  },
+  {
+    "name": "ptp-unity",
+    "url": "https://www.photonstophotos.net/Charts/Sensor_Characteristics.htm",
+    "retrieved_utc": "2026-10-05T10:00:45Z",
+    "error": "<urlopen error Tunnel connection failed: 403 Forbidden>"
+  },
+  {
+    "name": "eld-github",
+    "url": "https://raw.githubusercontent.com/Vandermode/ELD/master/README.md",
+    "retrieved_utc": "2026-10-05T10:00:45Z",
+    "status": 200,
+    "final_url": "https://raw.githubusercontent.com/Vandermode/ELD/master/README.md",
+    "content_type": "text/plain; charset=utf-8",
+    "bytes": 6486,
+    "sha256": "eae50afddb40d8574ba01e763d4c03765d059ed5860578bc378eabb137fe34d3",
+    "local_cache_name": "sensor/eld-github.txt"
+  },
+  {
+    "name": "eld-cvpr",
+    "url": "https://openaccess.thecvf.com/content_CVPR_2020/html/Wei_A_Physics-Based_Noise_Model_for_Extreme_Low-Light_Photography_CVPR_2020_paper.html",
+    "retrieved_utc": "2026-10-05T10:00:45Z",
+    "error": "<urlopen error Tunnel connection failed: 403 Forbidden>"
+  },
+  {
+    "name": "eld-site",
+    "url": "https://vanderbiltliu.github.io/projects/ELD/",
+    "retrieved_utc": "2026-10-05T10:00:45Z",
+    "error": "<urlopen error Tunnel connection failed: 403 Forbidden>"
+  },
+  {
+    "name": "eld-tree",
+    "url": "https://api.github.com/repos/Vandermode/ELD/git/trees/master?recursive=1",
+    "retrieved_utc": "2026-10-05T10:01:17Z",
+    "error": "<urlopen error Tunnel connection failed: 403 Forbidden>"
+  },
+  {
+    "name": "eld-noise",
+    "url": "https://raw.githubusercontent.com/Vandermode/ELD/master/noise.py",
+    "retrieved_utc": "2026-10-05T10:01:17Z",
+    "status": 200,
+    "final_url": "https://raw.githubusercontent.com/Vandermode/ELD/master/noise.py",
+    "content_type": "text/plain; charset=utf-8",
+    "bytes": 7517,
+    "sha256": "5eee6ff5ffc52107479559b91bb32b118be03ccd1a211971b8976dfb992e9bfd",
+    "local_cache_name": "sensor/eld-noise.txt"
+  },
+  {
+    "name": "eld-train",
+    "url": "https://raw.githubusercontent.com/Vandermode/ELD/master/train_syn.py",
+    "retrieved_utc": "2026-10-05T10:01:17Z",
+    "status": 200,
+    "final_url": "https://raw.githubusercontent.com/Vandermode/ELD/master/train_syn.py",
+    "content_type": "text/plain; charset=utf-8",
+    "bytes": 4089,
+    "sha256": "7a94a32c6de344506a4b93792cbe778967d8c76516616476064a13e87494caa1",
+    "local_cache_name": "sensor/eld-train.txt"
+  },
+  {
+    "name": "eld-license",
+    "url": "https://raw.githubusercontent.com/Vandermode/ELD/master/LICENSE",
+    "retrieved_utc": "2026-10-05T10:01:17Z",
+    "status": 200,
+    "final_url": "https://raw.githubusercontent.com/Vandermode/ELD/master/LICENSE",
+    "content_type": "text/plain; charset=utf-8",
+    "bytes": 1067,
+    "sha256": "8f4e9f126cd9be5b721a76dd418ae4e841da100754ec4f952fb9f13095de0396",
+    "local_cache_name": "sensor/eld-license.txt"
+  },
+  {
+    "name": "emva-python",
+    "url": "https://raw.githubusercontent.com/EMVA1288/emva1288/master/README.rst",
+    "retrieved_utc": "2026-10-05T10:01:17Z",
+    "status": 200,
+    "final_url": "https://raw.githubusercontent.com/EMVA1288/emva1288/master/README.rst",
+    "content_type": "text/plain; charset=utf-8",
+    "bytes": 1007,
+    "sha256": "3106ce2207f540e5e94ff87c1e2072f871695080de7fb6f5bb7d5683570c8494",
+    "local_cache_name": "sensor/emva-python.txt"
+  },
+  {
+    "name": "emva-python-md",
+    "url": "https://raw.githubusercontent.com/EMVA1288/emva1288/master/README.md",
+    "retrieved_utc": "2026-10-05T10:01:17Z",
+    "error": "HTTP Error 404: Not Found"
+  },
+  {
+    "name": "emva-doc",
+    "url": "https://raw.githubusercontent.com/EMVA1288/emva1288/master/doc/source/index.rst",
+    "retrieved_utc": "2026-10-05T10:01:17Z",
+    "error": "HTTP Error 404: Not Found"
+  },
+  {
+    "name": "emva-results",
+    "url": "https://raw.githubusercontent.com/EMVA1288/emva1288/master/emva1288/process/results.py",
+    "retrieved_utc": "2026-10-05T10:01:17Z",
+    "error": "HTTP Error 404: Not Found"
+  },
+  {
+    "name": "ptp-github",
+    "url": "https://api.github.com/users/PhotonsToPhotos/repos",
+    "retrieved_utc": "2026-10-05T10:01:17Z",
+    "error": "<urlopen error Tunnel connection failed: 403 Forbidden>"
+  },
+  {
+    "name": "ptp-william",
+    "url": "https://api.github.com/users/BillClaff/repos",
+    "retrieved_utc": "2026-10-05T10:01:17Z",
+    "error": "<urlopen error Tunnel connection failed: 403 Forbidden>"
+  },
+  {
+    "name": "eld-cvpr-correct",
+    "url": "https://openaccess.thecvf.com/content_CVPR_2020/papers/Wei_A_Physics-Based_Noise_Formation_Model_for_Extreme_Low-Light_Raw_Denoising_CVPR_2020_paper.pdf",
+    "retrieved_utc": "2026-10-05T10:01:17Z",
+    "error": "<urlopen error Tunnel connection failed: 403 Forbidden>"
+  },
+  {
+    "name": "eld-journal",
+    "url": "https://arxiv.org/abs/2108.02158",
+    "retrieved_utc": "2026-10-05T10:01:17Z",
+    "error": "<urlopen error Tunnel connection failed: 403 Forbidden>"
+  },
+  {
+    "name": "eld-5d4-params",
+    "url": "https://raw.githubusercontent.com/Vandermode/ELD/master/camera_params/release/CanonEOS5D4_params.npy",
+    "retrieved_utc": "2026-10-05T10:02:06Z",
+    "status": 200,
+    "final_url": "https://raw.githubusercontent.com/Vandermode/ELD/master/camera_params/release/CanonEOS5D4_params.npy",
+    "content_type": "application/octet-stream",
+    "bytes": 1758,
+    "sha256": "3f74dd0f60a44b889b8055a172517fe55ea47c14fdec9df671f39a0c32c833a8",
+    "local_cache_name": "sensor/eld-5d4-params.npy"
+  },
+  {
+    "name": "eld-d850-params",
+    "url": "https://raw.githubusercontent.com/Vandermode/ELD/master/camera_params/release/NikonD850_params.npy",
+    "retrieved_utc": "2026-10-05T10:02:06Z",
+    "status": 200,
+    "final_url": "https://raw.githubusercontent.com/Vandermode/ELD/master/camera_params/release/NikonD850_params.npy",
+    "content_type": "application/octet-stream",
+    "bytes": 2156,
+    "sha256": "446e722e442793ecd02c6c267d435b171e19b2d07d1a366d2cc7da23c60aa7f4",
+    "local_cache_name": "sensor/eld-d850-params.npy"
+  },
+  {
+    "name": "eld-a7s2-params",
+    "url": "https://raw.githubusercontent.com/Vandermode/ELD/master/camera_params/release/SonyA7S2_params.npy",
+    "retrieved_utc": "2026-10-05T10:02:06Z",
+    "status": 200,
+    "final_url": "https://raw.githubusercontent.com/Vandermode/ELD/master/camera_params/release/SonyA7S2_params.npy",
+    "content_type": "application/octet-stream",
+    "bytes": 1807,
+    "sha256": "7119ed31e08f6585b57ea9c3c2d30d65a97da2ed2cab796aa71152be5336b117",
+    "local_cache_name": "sensor/eld-a7s2-params.npy"
+  },
+  {
+    "name": "eld-70d-params",
+    "url": "https://raw.githubusercontent.com/Vandermode/ELD/master/camera_params/release/CanonEOS70D_params.npy",
+    "retrieved_utc": "2026-10-05T10:02:06Z",
+    "status": 200,
+    "final_url": "https://raw.githubusercontent.com/Vandermode/ELD/master/camera_params/release/CanonEOS70D_params.npy",
+    "content_type": "application/octet-stream",
+    "bytes": 1696,
+    "sha256": "baa50f3dfa96a98cf8e9e1c6e010a41f9e8a131af423340b408bbdeac4de586f",
+    "local_cache_name": "sensor/eld-70d-params.npy"
+  },
+  {
+    "name": "eld-700d-params",
+    "url": "https://raw.githubusercontent.com/Vandermode/ELD/master/camera_params/release/CanonEOS700D_params.npy",
+    "retrieved_utc": "2026-10-05T10:02:06Z",
+    "status": 200,
+    "final_url": "https://raw.githubusercontent.com/Vandermode/ELD/master/camera_params/release/CanonEOS700D_params.npy",
+    "content_type": "application/octet-stream",
+    "bytes": 1703,
+    "sha256": "c8eea7b245b3471165f3806e065847c49ebb58a3175718b742580ba5464105ee",
+    "local_cache_name": "sensor/eld-700d-params.npy"
+  },
+  {
+    "name": "eld-data",
+    "url": "https://raw.githubusercontent.com/Vandermode/ELD/master/data/sid_dataset.py",
+    "retrieved_utc": "2026-10-05T10:02:06Z",
+    "error": "HTTP Error 404: Not Found"
+  },
+  {
+    "name": "emva-results1288",
+    "url": "https://raw.githubusercontent.com/EMVA1288/emva1288/master/emva1288/process/results1288.py",
+    "retrieved_utc": "2026-10-05T10:02:06Z",
+    "error": "HTTP Error 404: Not Found"
+  },
+  {
+    "name": "emva-setup",
+    "url": "https://raw.githubusercontent.com/EMVA1288/emva1288/master/setup.py",
+    "retrieved_utc": "2026-10-05T10:02:06Z",
+    "error": "HTTP Error 404: Not Found"
+  },
+  {
+    "name": "emva-docs",
+    "url": "https://raw.githubusercontent.com/EMVA1288/emva1288/master/doc/index.rst",
+    "retrieved_utc": "2026-10-05T10:02:07Z",
+    "status": 200,
+    "final_url": "https://raw.githubusercontent.com/EMVA1288/emva1288/master/doc/index.rst",
+    "content_type": "text/plain; charset=utf-8",
+    "bytes": 523,
+    "sha256": "3bfbd4d8e224b059ff7d962e39b5cec1a544acc3bfd9844c5259ca88fe633175",
+    "local_cache_name": "sensor/emva-docs.txt"
+  },
+  {
+    "name": "emva-data",
+    "url": "https://raw.githubusercontent.com/EMVA1288/emva1288/master/emva1288/camera/camera.py",
+    "retrieved_utc": "2026-10-05T10:02:07Z",
+    "error": "HTTP Error 404: Not Found"
+  },
+  {
+    "name": "emva-results",
+    "url": "https://raw.githubusercontent.com/EMVA1288/emva1288/master/src/emva1288/process/results.py",
+    "retrieved_utc": "2026-10-05T10:03:24Z",
+    "status": 200,
+    "final_url": "https://raw.githubusercontent.com/EMVA1288/emva1288/master/src/emva1288/process/results.py",
+    "content_type": "text/plain; charset=utf-8",
+    "bytes": 37909,
+    "sha256": "35c54dd42df2fba715c521c0ead6133931787033caec981875e1690033590068",
+    "local_cache_name": "sensor/emva-results.txt"
+  },
+  {
+    "name": "emva-camera",
+    "url": "https://raw.githubusercontent.com/EMVA1288/emva1288/master/src/emva1288/camera/camera.py",
+    "retrieved_utc": "2026-10-05T10:03:24Z",
+    "status": 200,
+    "final_url": "https://raw.githubusercontent.com/EMVA1288/emva1288/master/src/emva1288/camera/camera.py",
+    "content_type": "text/plain; charset=utf-8",
+    "bytes": 15682,
+    "sha256": "1050fb3321898329f23a3c5489736375b9860d3c0925e8cfa425cdc6ad856077",
+    "local_cache_name": "sensor/emva-camera.txt"
+  },
+  {
+    "name": "emva-data",
+    "url": "https://raw.githubusercontent.com/EMVA1288/emva1288/master/src/emva1288/process/data.py",
+    "retrieved_utc": "2026-10-05T10:03:24Z",
+    "status": 200,
+    "final_url": "https://raw.githubusercontent.com/EMVA1288/emva1288/master/src/emva1288/process/data.py",
+    "content_type": "text/plain; charset=utf-8",
+    "bytes": 12115,
+    "sha256": "55087bf8b58a598e12137874d175296f08a4328a3d2058ba58653ddf591fb199",
+    "local_cache_name": "sensor/emva-data.txt"
+  },
+  {
+    "name": "emva-capture-doc",
+    "url": "https://raw.githubusercontent.com/EMVA1288/emva1288/master/doc/emva1288/process.rst",
+    "retrieved_utc": "2026-10-05T10:03:24Z",
+    "error": "HTTP Error 404: Not Found"
+  },
+  {
+    "name": "emva-start-doc",
+    "url": "https://raw.githubusercontent.com/EMVA1288/emva1288/master/doc/quickstart.rst",
+    "retrieved_utc": "2026-10-05T10:03:24Z",
+    "error": "HTTP Error 404: Not Found"
+  },
+  {
+    "name": "emva-license",
+    "url": "https://raw.githubusercontent.com/EMVA1288/emva1288/master/LICENSE",
+    "retrieved_utc": "2026-10-05T10:03:24Z",
+    "status": 200,
+    "final_url": "https://raw.githubusercontent.com/EMVA1288/emva1288/master/LICENSE",
+    "content_type": "text/plain; charset=utf-8",
+    "bytes": 7652,
+    "sha256": "e3a994d82e644b03a792a930f574002658412f62407f5fee083f2555c5f23118",
+    "local_cache_name": "sensor/emva-license.txt"
+  },
+  {
+    "name": "emva-pyproject",
+    "url": "https://raw.githubusercontent.com/EMVA1288/emva1288/master/pyproject.toml",
+    "retrieved_utc": "2026-10-05T10:03:24Z",
+    "status": 200,
+    "final_url": "https://raw.githubusercontent.com/EMVA1288/emva1288/master/pyproject.toml",
+    "content_type": "text/plain; charset=utf-8",
+    "bytes": 1203,
+    "sha256": "97f0f8265826738c3bf2030502e94f50e8ac83adcb87fe91e4fa17f8a5d73cb9",
+    "local_cache_name": "sensor/emva-pyproject.txt"
+  },
+  {
+    "name": "emva-quickstart",
+    "url": "https://github.com/EMVA1288/emva1288/tree/master/doc",
+    "retrieved_utc": "2026-10-05T10:03:24Z",
+    "status": 200,
+    "final_url": "https://github.com/EMVA1288/emva1288/tree/master/doc",
+    "content_type": "text/html; charset=utf-8",
+    "bytes": 251191,
+    "sha256": "0494fcf4d879b9f3d5f074b8e4856529c632ade195a49309cea40ca7f3f372fb",
+    "local_cache_name": "sensor/emva-quickstart.txt"
+  },
+  {
+    "name": "eld-data2",
+    "url": "https://raw.githubusercontent.com/Vandermode/ELD/master/dataset.py",
+    "retrieved_utc": "2026-10-05T10:03:24Z",
+    "error": "HTTP Error 404: Not Found"
+  },
+  {
+    "name": "eld-github-page",
+    "url": "https://github.com/Vandermode/ELD",
+    "retrieved_utc": "2026-10-05T10:03:24Z",
+    "status": 200,
+    "final_url": "https://github.com/Vandermode/ELD",
+    "content_type": "text/html; charset=utf-8",
+    "bytes": 315909,
+    "sha256": "bfd421b44bda1273edb19182cb96247439aa58a30ae37644635fe3800131e985",
+    "local_cache_name": "sensor/eld-github-page.txt"
+  },
+  {
+    "name": "ptp-github-account",
+    "url": "https://github.com/PhotonsToPhotos",
+    "retrieved_utc": "2026-10-05T10:03:24Z",
+    "error": "HTTP Error 404: Not Found"
+  },
+  {
+    "name": "ptp-github-bill",
+    "url": "https://github.com/BillClaff",
+    "retrieved_utc": "2026-10-05T10:03:24Z",
+    "error": "HTTP Error 404: Not Found"
+  },
+  {
+    "name": "emva-tutorial",
+    "url": "https://raw.githubusercontent.com/EMVA1288/emva1288/2ed0b403e299b1a56c4a0a392f99d1ac2f2c1b8e/doc/tutorial.rst",
+    "retrieved_utc": "2026-10-05T10:05:10Z",
+    "status": 200,
+    "bytes": 6698,
+    "sha256": "d4ed6b4edd890a15196951ec10b21bcb22e65a8a184569422c5f1bfe092ab867",
+    "local_cache_name": "sensor/emva-tutorial.txt"
+  },
+  {
+    "name": "emva-readme-pinned",
+    "url": "https://raw.githubusercontent.com/EMVA1288/emva1288/2ed0b403e299b1a56c4a0a392f99d1ac2f2c1b8e/README.rst",
+    "retrieved_utc": "2026-10-05T10:05:10Z",
+    "status": 200,
+    "bytes": 1007,
+    "sha256": "3106ce2207f540e5e94ff87c1e2072f871695080de7fb6f5bb7d5683570c8494",
+    "local_cache_name": "sensor/emva-readme-pinned.txt"
+  },
+  {
+    "name": "emva-results-pinned",
+    "url": "https://raw.githubusercontent.com/EMVA1288/emva1288/2ed0b403e299b1a56c4a0a392f99d1ac2f2c1b8e/src/emva1288/process/results.py",
+    "retrieved_utc": "2026-10-05T10:05:10Z",
+    "status": 200,
+    "bytes": 37909,
+    "sha256": "35c54dd42df2fba715c521c0ead6133931787033caec981875e1690033590068",
+    "local_cache_name": "sensor/emva-results-pinned.txt"
+  },
+  {
+    "name": "eld-readme-pinned",
+    "url": "https://raw.githubusercontent.com/Vandermode/ELD/53d5408dec3a33e5ca304bb49682d7b6b6dc79c2/README.md",
+    "retrieved_utc": "2026-10-05T10:05:10Z",
+    "status": 200,
+    "bytes": 6486,
+    "sha256": "eae50afddb40d8574ba01e763d4c03765d059ed5860578bc378eabb137fe34d3",
+    "local_cache_name": "sensor/eld-readme-pinned.txt"
+  },
+  {
+    "name": "eld-noise-pinned",
+    "url": "https://raw.githubusercontent.com/Vandermode/ELD/53d5408dec3a33e5ca304bb49682d7b6b6dc79c2/noise.py",
+    "retrieved_utc": "2026-10-05T10:05:10Z",
+    "status": 200,
+    "bytes": 7517,
+    "sha256": "5eee6ff5ffc52107479559b91bb32b118be03ccd1a211971b8976dfb992e9bfd",
+    "local_cache_name": "sensor/eld-noise-pinned.txt"
+  },
+  {
+    "name": "eld-data-pinned",
+    "url": "https://raw.githubusercontent.com/Vandermode/ELD/53d5408dec3a33e5ca304bb49682d7b6b6dc79c2/dataset/sid_dataset.py",
+    "retrieved_utc": "2026-10-05T10:05:10Z",
+    "status": 200,
+    "bytes": 14043,
+    "sha256": "6071c5a5413fe50f82fe1730970ec5d6b5e7b70af9dc4c82b9cb196b0ee1771b",
+    "local_cache_name": "sensor/eld-data-pinned.txt"
+  },
+  {
+    "name": "emva-datasets",
+    "url": "https://github.com/EMVA1288/datasets",
+    "retrieved_utc": "2026-10-05T10:05:46Z",
+    "status": 200,
+    "bytes": 238286,
+    "sha256": "304ed445c1f6595a5444a90199ac135a5e32153febc45c2d9329fba21dd3a7f0",
+    "local_cache_name": "sensor/emva-datasets.txt"
+  },
+  {
+    "name": "emva-datasets-readme",
+    "url": "https://raw.githubusercontent.com/EMVA1288/datasets/master/README.md",
+    "retrieved_utc": "2026-10-05T10:05:46Z",
+    "status": 200,
+    "bytes": 56,
+    "sha256": "9d5989867a05f37accc539c82b76026a22cf283cfc07e9e7ea1b4466fa239585",
+    "local_cache_name": "sensor/emva-datasets-readme.txt"
+  },
+  {
+    "name": "emva-datasets-rst",
+    "url": "https://raw.githubusercontent.com/EMVA1288/datasets/master/README.rst",
+    "retrieved_utc": "2026-10-05T10:05:46Z",
+    "error": "HTTP Error 404: Not Found"
+  },
+  {
+    "name": "emva-simulation-descriptor",
+    "url": "https://raw.githubusercontent.com/EMVA1288/datasets/master/EMVA1288_ReferenceSet_003_Simulation_12Bit/EMVA1288_Data.txt",
+    "retrieved_utc": "2026-10-05T10:05:46Z",
+    "status": 200,
+    "bytes": 12680,
+    "sha256": "0e7b262f634cf68103676290249eb686ec69f800bd2b3162fe1af65faedf972f",
+    "local_cache_name": "sensor/emva-simulation-descriptor.txt"
+  },
+  {
+    "name": "emva-ccd-descriptor",
+    "url": "https://raw.githubusercontent.com/EMVA1288/datasets/master/EMVA1288_ReferenceSet_001_CCD_12Bit/EMVA1288_Data.txt",
+    "retrieved_utc": "2026-10-05T10:06:06Z",
+    "status": 200,
+    "bytes": 11308,
+    "sha256": "d1b1de0f845fe197d059b30254020715b85490ce14f155547bb11ed447f8b1a2",
+    "local_cache_name": "sensor/emva-ccd-descriptor.txt"
+  },
+  {
+    "name": "emva-cmos-descriptor",
+    "url": "https://raw.githubusercontent.com/EMVA1288/datasets/master/EMVA1288_ReferenceSet_002_CMOS_08Bit/EMVA1288_Data.txt",
+    "retrieved_utc": "2026-10-05T10:06:06Z",
+    "status": 200,
+    "bytes": 20659,
+    "sha256": "e29294e136294adc484a081dcb5c4e939c2e4f172e67dc0ec05307e66c7a6064",
+    "local_cache_name": "sensor/emva-cmos-descriptor.txt"
+  },
+  {
+    "name": "emva-cmos-index",
+    "url": "https://github.com/EMVA1288/datasets/tree/master/EMVA1288_ReferenceSet_002_CMOS_08Bit",
+    "retrieved_utc": "2026-10-05T10:06:06Z",
+    "status": 200,
+    "bytes": 225070,
+    "sha256": "ac82d7bb31552210cbdf0f3385a7de7235cdf624331c65d8b1d3e3e190b2686d",
+    "local_cache_name": "sensor/emva-cmos-index.txt"
+  },
+  {
+    "url": "https://raw.githubusercontent.com/EMVA1288/datasets/master/EMVA1288_ReferenceSet_002_CMOS_08Bit/images/b_010_snap_001.png",
+    "method": "HEAD",
+    "retrieved_utc": "2026-10-05T10:06:34Z",
+    "status": 200,
+    "content_type": "image/png",
+    "content_length": "332198"
+  },
+  {
+    "url": "https://raw.githubusercontent.com/EMVA1288/datasets/master/EMVA1288_ReferenceSet_002_CMOS_08Bit/images/b_010_snap_002.png",
+    "method": "HEAD",
+    "retrieved_utc": "2026-10-05T10:06:35Z",
+    "status": 200,
+    "content_type": "image/png",
+    "content_length": "332241"
+  },
+  {
+    "url": "https://raw.githubusercontent.com/EMVA1288/datasets/master/EMVA1288_ReferenceSet_001_CCD_12Bit/images/b_000_snap_001.png",
+    "method": "HEAD",
+    "retrieved_utc": "2026-10-05T10:06:35Z",
+    "status": 200,
+    "content_type": "image/png",
+    "content_length": "205249"
+  },
+  {
+    "name": "pmn-readme-pinned",
+    "url": "https://raw.githubusercontent.com/megvii-research/PMN/d207d3eb62e3a5106861992c0562054adf9a9c70/README.md",
+    "retrieved_utc": "2026-10-05T10:11:24Z",
+    "status": 200,
+    "bytes": 7750,
+    "sha256": "8ed9474bb7c1e0a25255d4e7c11b0fe49850d4b5098a7300292667867f415e65",
+    "local_cache_name": "sensor/pmn-readme-pinned.txt"
+  },
+  {
+    "name": "pmn-process-pinned",
+    "url": "https://raw.githubusercontent.com/megvii-research/PMN/d207d3eb62e3a5106861992c0562054adf9a9c70/data_process/process.py",
+    "retrieved_utc": "2026-10-05T10:11:24Z",
+    "status": 200,
+    "bytes": 44747,
+    "sha256": "b45c537224f414896d8ed3a19b2b4bbaf7bd3e9a502adaa4e37d66ad7731359c",
+    "local_cache_name": "sensor/pmn-process-pinned.txt"
+  },
+  {
+    "name": "pmn-license-pinned",
+    "url": "https://raw.githubusercontent.com/megvii-research/PMN/d207d3eb62e3a5106861992c0562054adf9a9c70/LICENSE",
+    "retrieved_utc": "2026-10-05T10:11:24Z",
+    "status": 200,
+    "bytes": 10271,
+    "sha256": "9769a242dd98f5b070d0a515adf858020bc1f3bc84a6d17a7a9c49c623b036f9",
+    "local_cache_name": "sensor/pmn-license-pinned.txt"
+  },
+  {
+    "name": "noiseflow-nlf-pinned",
+    "url": "https://raw.githubusercontent.com/BorealisAI/noise_flow/48d1e077a07ca702a03f292df2e23dbf95e07b4b/cam_iso_nlf_all.txt",
+    "retrieved_utc": "2026-10-05T10:11:24Z",
+    "status": 200,
+    "bytes": 614,
+    "sha256": "8a1aa01792d82b593e692dea0beccd12dda33a29f1890a737c6a5c49384328a0",
+    "local_cache_name": "sensor/noiseflow-nlf-pinned.txt"
+  }
+]

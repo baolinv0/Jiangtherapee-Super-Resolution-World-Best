@@ -1,0 +1,193 @@
+{
+  "tier": "B",
+  "status": "RUN",
+  "source_sha256": "eff282282de3337575e15c9d1a8f43c625c7023bf7fe965617a8c637891b01fc",
+  "provenance": "Locally installed Windows flower photograph; source is OS wallpaper img9.jpg, author/capture parameters unverified. No original photograph redistributed. Assume sRGB decoding; this is a natural-scene computational fixture, not measured RAW/HDR.",
+  "units": "linear display RGB after inverse sRGB, white1; hypothetical spectral lift; not measured physical radiance",
+  "encoding": "srgb",
+  "checkpoint": "random seed214",
+  "construction": {
+    "protocol": "spectral-camera-v2",
+    "sample_seed": 214,
+    "spectral_input": false,
+    "asset_identity": {
+      "basis.json": "b7fb40806dc43524234546dbb6dcc6a17074429028b59fc288232b905febdaea",
+      "cameras.json": "fa8027f4a9d2dd77cb8ce7f1f8eaf6eca2739d3ad367e04ef2c8a201b51c0992"
+    },
+    "camera_response_id": "Nikon D700",
+    "profile_sha256": "55ac12938d7f1a4b7e00f937606a14cc3e1bfa6da4f16864c9f0f4fbc2e99a1a",
+    "profile_provenance": {
+      "kind": "analytic_inferred",
+      "note": "Not the author's PTC library or a measured camera."
+    },
+    "spectral_curve_provenance": "published_measured_relative_response",
+    "target_space": "D65-normalized camera RGB, reference exposure, before added optics",
+    "spectral_prior": "Mallett2019 public primary basis; cropped 400..700nm",
+    "wavelengths_nm": [
+      400.0,
+      405.0,
+      410.0,
+      415.0,
+      420.0,
+      425.0,
+      430.0,
+      435.0,
+      440.0,
+      445.0,
+      450.0,
+      455.0,
+      460.0,
+      465.0,
+      470.0,
+      475.0,
+      480.0,
+      485.0,
+      490.0,
+      495.0,
+      500.0,
+      505.0,
+      510.0,
+      515.0,
+      520.0,
+      525.0,
+      530.0,
+      535.0,
+      540.0,
+      545.0,
+      550.0,
+      555.0,
+      560.0,
+      565.0,
+      570.0,
+      575.0,
+      580.0,
+      585.0,
+      590.0,
+      595.0,
+      600.0,
+      605.0,
+      610.0,
+      615.0,
+      620.0,
+      625.0,
+      630.0,
+      635.0,
+      640.0,
+      645.0,
+      650.0,
+      655.0,
+      660.0,
+      665.0,
+      670.0,
+      675.0,
+      680.0,
+      685.0,
+      690.0,
+      695.0,
+      700.0
+    ],
+    "scene_gain": 0.12938370152738551,
+    "crop_xy": [
+      2313,
+      974
+    ],
+    "source_resized": false,
+    "replicated_boundary_context": false,
+    "iso": 200,
+    "camera": {
+      "gain_e_per_dn": 2.0,
+      "read_noise_e": 3.0,
+      "black_dn": 512.0,
+      "white_dn": 16383.0,
+      "full_well_e": 60000.0
+    },
+    "interval_ev": 0.21071171760559082,
+    "exposure_ratios": [
+      1.0,
+      0.6452208161354065,
+      0.7466875314712524,
+      0.8641108274459839,
+      1.1572589874267578,
+      1.3392482995986938,
+      1.5498570203781128
+    ],
+    "channel_transmission": [
+      0.699999988079071,
+      1.0,
+      0.550000011920929
+    ],
+    "f_number": 7.742573022842407,
+    "pitch_um": 4.178910505771637,
+    "fill_factor": 0.9230844080448151,
+    "psf": "assumed circular-pupil scalar diffraction with parametric OPD; not measured prime-lens library",
+    "exposure_convention": "reference-white-normalized per ISO; not fixed absolute photons across ISO",
+    "electrons_per_reference_unit": 31742.0,
+    "aberrations_nm": {
+      "defocus": 1.855783462524414,
+      "astigmatism": 15.68238615989685,
+      "coma": 56.98722839355469
+    },
+    "lca_native": 0.17482802271842957,
+    "field_center": [
+      -0.02637302875518799,
+      -0.28569096326828003
+    ],
+    "field_extent": 0.1,
+    "field_extent_region": "half-width of full simulated support including scene margin",
+    "psf_radius_hr": 12,
+    "pupil_samples": 64,
+    "fft_size": 256,
+    "signal_saturation_fraction": 0.0,
+    "observed_saturation_fraction": 0.0,
+    "target_above_reference_white_fraction": 0.0,
+    "noise_prior": "observed plug-in variance; no clean signal or true saturation fed to model",
+    "cfa": "RGGB",
+    "scale_native": 2,
+    "shifts_xy_native": [
+      [
+        0.0,
+        0.0
+      ],
+      [
+        -1.562743902206421,
+        -1.6997931003570557
+      ],
+      [
+        -0.28261685371398926,
+        -1.5349798202514648
+      ],
+      [
+        1.5455389022827148,
+        0.10308146476745605
+      ],
+      [
+        -1.8355686664581299,
+        1.4978814125061035
+      ],
+      [
+        -1.7519340515136719,
+        -1.7757506370544434
+      ],
+      [
+        -0.0973672866821289,
+        0.35050415992736816
+      ]
+    ]
+  },
+  "metrics": {
+    "baseline": {
+      "psnr_linear_db": 78.83823113199144,
+      "rmse_linear": 0.0001143111103898093,
+      "chroma_rmse": 0.00019494143641004332,
+      "shadow_rmse": null,
+      "mean_bias": 1.1723885243689572e-07
+    },
+    "rgb": {
+      "psnr_linear_db": 78.48934173993199,
+      "rmse_linear": 0.00011899615069650269,
+      "chroma_rmse": 0.0002031105274733651,
+      "shadow_rmse": null,
+      "mean_bias": -6.370522357799389e-06
+    }
+  }
+}

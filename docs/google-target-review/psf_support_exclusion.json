@@ -1,0 +1,29 @@
+[
+  {
+    "wavelength_nm": 400.0,
+    "energy_in_radius2_rel_radius16": 0.00217985431663692,
+    "small_centroid_x": -0.7414520978927612,
+    "small_centroid_y": -0.7414520978927612,
+    "large_centroid_x": -4.0,
+    "large_centroid_y": -4.0,
+    "normalized_crop_parity_max": 7.450580596923828e-09
+  },
+  {
+    "wavelength_nm": 550.0,
+    "energy_in_radius2_rel_radius16": 0.9726223349571228,
+    "small_centroid_x": 7.799826562404633e-09,
+    "small_centroid_y": 7.450580596923828e-09,
+    "large_centroid_x": 2.9802322387695312e-08,
+    "large_centroid_y": 2.421438694000244e-08,
+    "normalized_crop_parity_max": 5.960464477539063e-08
+  },
+  {
+    "wavelength_nm": 700.0,
+    "energy_in_radius2_rel_radius16": 0.0032901207450777292,
+    "small_centroid_x": 0.8768656253814697,
+    "small_centroid_y": 0.8768656253814697,
+    "large_centroid_x": 3.9872236251831055,
+    "large_centroid_y": 3.9872238636016846,
+    "normalized_crop_parity_max": 1.4901161193847656e-08
+  }
+]
