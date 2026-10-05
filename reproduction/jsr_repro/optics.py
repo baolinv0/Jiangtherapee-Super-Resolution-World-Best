@@ -24,20 +24,25 @@ def optical_blur(scene, f_number, pitch_um, radius=12):
     return F.conv2d(F.pad(scene[None], (radius,) * 4, mode="reflect"), kernels, groups=3)[0]
 
 
-def sensor_integrate(scene, shifts, native_size, margin, fill_factor=.95, quadrature=4):
+def sensor_integrate(scene, shifts, native_size, margin, fill_factor=.95, quadrature=4, output_scale=1):
     """4x4 quadrature of square active area (sqrt(fill_factor)*pitch).
 
-    Native center (x+.5)*2-.5; frame(x,y) sees ref(x+dx,y+dy).
+    Center (x+.5)*2/output_scale-.5; frame sees ref shifted by (dx,dy)
+    in native pixels. output_scale changes sampling density, never the area
+    of the native pixel aperture, whose width is sqrt(fill_factor)*2.
     Flat radiance remains flat: fill factor controls spatial footprint, while
     effective sensitivity is already represented by the camera profile.
     """
     if not .8 <= fill_factor <= 1 or quadrature < 2:
         raise ValueError("fill factor must be0.8..1; quadrature>=2")
-    n = int(native_size)
+    if output_scale not in (1, 2):
+        raise ValueError("output_scale must be 1 or 2")
+    n = int(native_size) * int(output_scale)
     yy, xx = torch.meshgrid(torch.arange(n, dtype=scene.dtype), torch.arange(n, dtype=scene.dtype), indexing="ij")
     offsets = ((torch.arange(quadrature, dtype=scene.dtype) + .5) / quadrature - .5) * math.sqrt(fill_factor) * 2
     oy, ox = torch.meshgrid(offsets, offsets, indexing="ij")
-    centers = torch.stack(((xx + .5) * 2 - .5 + margin, (yy + .5) * 2 - .5 + margin), -1)
+    centers = torch.stack(((xx + .5) * 2 / output_scale - .5 + margin,
+                          (yy + .5) * 2 / output_scale - .5 + margin), -1)
     grid = centers[None, :, :, None, :] + shifts[:, None, None, None, :] * 2 + torch.stack((ox.flatten(), oy.flatten()), -1)[None, None, None]
     extent_y, extent_x = scene.shape[-2:]
     grid = 2 * (grid + .5) / torch.tensor([extent_x, extent_y], dtype=scene.dtype) - 1

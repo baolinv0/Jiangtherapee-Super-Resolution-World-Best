@@ -1,8 +1,10 @@
 """Complete, explicitly assumed spectral-camera RAW burst construction.
 
 Clean GT and every input share camera spectral coordinates and reference
-exposure. GT never passes through optics, motion, native pixel integration,
-noise or clipping. Scene/optics/noise use independent deterministic RNGs.
+exposure. v3 defaults to reference optics and native pixel-area integration
+sampled on a dense 2x grid. GT never includes capture noise or clipping.
+The legacy v2 target remains before optics. Scene/optics/noise use independent
+deterministic RNGs, with the v2 namespace retained for paired interventions.
 """
 from __future__ import annotations
 
@@ -26,12 +28,27 @@ from .physical_sensor import capture_sensor
 from .spectral import SpectralAssets, load_spectral_scene
 from .utils import save_json, sha256, load_config
 
-PROTOCOL = 'spectral-camera-v2'
+PROTOCOL = 'spectral-camera-v3'
+LEGACY_PROTOCOL = 'spectral-camera-v2'
 DEFAULT_CAMERAS = ['Canon 5DMarkII','Nikon D3X','Nikon D3','Nikon D700']
 
 
+def resolve_target_stage(options):
+    """Validate the protocol and resolve its default reconstruction target."""
+    protocol = options.get('protocol', PROTOCOL)
+    if protocol not in (PROTOCOL, LEGACY_PROTOCOL):
+        raise ValueError(f'unknown spectral data protocol: {protocol}')
+    stage = options.get('target_stage', 'pre_optics' if protocol == LEGACY_PROTOCOL else 'post_pixel')
+    if stage not in ('pre_optics', 'post_optics', 'post_pixel'):
+        raise ValueError('target_stage must be pre_optics, post_optics or post_pixel')
+    if protocol == LEGACY_PROTOCOL and stage != 'pre_optics':
+        raise ValueError('spectral-camera-v2 requires target_stage=pre_optics')
+    return stage
+
+
 def _rng(seed, name):
-    digest = hashlib.sha256(f'{PROTOCOL}/{seed}/{name}'.encode()).digest()
+    # Protocol/target comparisons must share the original scene and RAW burst.
+    digest = hashlib.sha256(f'{LEGACY_PROTOCOL}/{seed}/{name}'.encode()).digest()
     return torch.Generator().manual_seed(int.from_bytes(digest[:8],'little') % (2**63-1))
 
 
@@ -51,6 +68,8 @@ def _warp(spectrum,shift,scale):
 
 
 def synthesize_spectral(source,options,seed,profile=None,assets=None):
+    target_stage = resolve_target_stage(options)
+    protocol = options.get('protocol', PROTOCOL)
     assets = SpectralAssets() if assets is None else assets
     profile = load_profile() if profile is None else profile
     size = int(options.get('native_size',16))
@@ -64,7 +83,7 @@ def synthesize_spectral(source,options,seed,profile=None,assets=None):
     if not 2<=radius<=48 or not math.isfinite(max_shift) or not 0<=max_shift<=4:
         raise ValueError('PSF radius2..48 and max_shift0..4 required')
     # Fixed source margin independent of the sampled PSF and its radius.
-    # This makes GT invariant under every optics intervention with fixed seed.
+    # This makes the source crop invariant under optics interventions.
     margin = int(options.get('scene_margin_hr',56))
     if margin < radius+math.ceil(2*max_shift)+2:
         raise ValueError('scene_margin_hr must cover PSF and motion')
@@ -92,8 +111,9 @@ def synthesize_spectral(source,options,seed,profile=None,assets=None):
     camera_id = camera_ids[int(torch.randint(len(camera_ids),(),generator=scene_rng))]
     spectrum = assets.lift(scene) if scene.shape[0]==3 else scene
     spectrum = spectrum*gain
-    clear_rgb = assets.camera_rgb(spectrum,camera_id)
-    target = clear_rgb[:,margin:margin+hr,margin:margin+hr].clone()
+    if target_stage == 'pre_optics':
+        clear_rgb = assets.camera_rgb(spectrum,camera_id)
+        target = clear_rgb[:,margin:margin+hr,margin:margin+hr].clone()
     shifts = (torch.rand(7,2,generator=scene_rng)*2-1)*max_shift
     shifts[0] = 0
     interval = _uniform(scene_rng,*_range(options,'bracket_interval_ev',[0.,1.],0.,1.))
@@ -129,11 +149,19 @@ def synthesize_spectral(source,options,seed,profile=None,assets=None):
                       field_center=field,field_extent=extent,aberrations_nm=aberrations,lca_native=lca,
                       pupil_samples=pupil_samples,fft_size=fft_size)
     native_frames = []
-    for shift in shifts:
+    for frame, shift in enumerate(shifts):
         moved = _warp(spectrum,shift,2)
         blurred = apply_spectral_kernels(moved,kernels)
         sensor_rgb = assets.camera_rgb(blurred,camera_id)
         native_frames.append(sensor_integrate(sensor_rgb,torch.zeros(1,2),size,margin,fill)[0])
+        # Frame zero is the unshifted reference. Reuse its actual spectral PSF
+        # and SRF result; target construction must not redraw or reblur optics.
+        if frame == 0:
+            if target_stage == 'post_optics':
+                target = sensor_rgb[:,margin:margin+hr,margin:margin+hr].clone()
+            elif target_stage == 'post_pixel':
+                target = sensor_integrate(sensor_rgb,torch.zeros(1,2),size,margin,fill,
+                                          output_scale=2)[0]
     native = torch.stack(native_frames)
     choices = [str(int(x)) for x in options.get('iso',[100,200,400,800])]
     if not choices or any(x not in profile['iso'] for x in choices):
@@ -155,11 +183,20 @@ def synthesize_spectral(source,options,seed,profile=None,assets=None):
     captured = capture_sensor(native,exposure,transmission,profile['iso'][iso],noise_rng,
                      noise=bool(options.get('noise',True)),quantize=bool(options.get('quantize',True)),read_noise_bank=bank)
     captured.update(shifts=shifts,exposure=exposure,transmission=transmission,target=target)
-    captured['metadata'] = {'protocol':PROTOCOL,'sample_seed':int(seed),'spectral_input':source.shape[0]==61,
+    target_descriptions = {
+        'pre_optics': 'before added optics',
+        'post_optics': 'after reference optics, before pixel aperture',
+        'post_pixel': 'after reference optics and native pixel aperture, sampled on a dense 2x grid',
+    }
+    captured['metadata'] = {'protocol':protocol,'sample_seed':int(seed),'spectral_input':source.shape[0]==61,
         'asset_identity':assets.identity,'camera_response_id':camera_id,
         'profile_sha256':profile_identity(profile),'profile_provenance':profile['provenance'],
         'spectral_curve_provenance':assets.provenance['cameras']['kind'],
-        'target_space':'D65-normalized camera RGB, reference exposure, before added optics',
+        'target_stage':target_stage,
+        'target_space':'D65-normalized camera RGB, reference exposure, '+target_descriptions[target_stage],
+        'pixel_aperture':'retained' if target_stage == 'post_pixel' else 'excluded',
+        'area_quadrature':4,'output_sample_pitch_native':.5,
+        'sampling_phase':'dense center=(j+0.5)*2/2-0.5+margin; native center=(i+0.5)*2-0.5+margin; shifts in native pixels',
         'spectral_prior':'provided spectral radiance; provenance user-supplied' if source.shape[0]==61 else 'Mallett2019 public primary basis; cropped 400..700nm',
         'wavelengths_nm':assets.wavelengths.tolist(),'scene_gain':gain,'crop_xy':[ox,oy],
         'source_resized':resized,'replicated_boundary_context':padded_context,
@@ -181,6 +218,8 @@ def synthesize_spectral(source,options,seed,profile=None,assets=None):
 
 class SpectralBurstDataset(Dataset):
     def __init__(self,manifest,split,options,seed=1234,profile=None):
+        target_stage = resolve_target_stage(options)
+        protocol = options.get('protocol', PROTOCOL)
         self.rows = read_manifest(manifest,split)
         self.options,self.seed,self.epoch = dict(options),int(seed),0
         self.profile = load_profile(profile)
@@ -188,7 +227,10 @@ class SpectralBurstDataset(Dataset):
         self.samples_per_scene = int(options.get('samples_per_scene',1))
         if self.samples_per_scene<1:
             raise ValueError('samples_per_scene must be positive')
-        self.identity = {'spectral_assets':self.assets.identity,'protocol':PROTOCOL}
+        # v2 identity must remain field-for-field compatible with checkpoints.
+        self.identity = {'spectral_assets':self.assets.identity,'protocol':protocol}
+        if protocol == PROTOCOL:
+            self.identity['target_stage'] = target_stage
         if options.get('read_noise_bank'):
             self.identity['read_noise_bank_sha256'] = sha256(options['read_noise_bank'])
         if options.get('psf_library'):
@@ -241,7 +283,7 @@ def main():
         arrays = {k:v.numpy() for k,v in sample.items() if isinstance(v,torch.Tensor)}
         np.savez_compressed(output/name,**arrays,metadata=np.asarray(sample['metadata']))
         records.append({'file':name,'sha256':sha256(output/name),'metadata':json.loads(sample['metadata'])})
-    save_json(output/'manifest.json',{'protocol':PROTOCOL,'identity':dataset.identity,'samples':records})
+    save_json(output/'manifest.json',{'protocol':dataset.identity['protocol'],'identity':dataset.identity,'samples':records})
     print(json.dumps({'samples':len(records),'output':str(output)}))
 
 

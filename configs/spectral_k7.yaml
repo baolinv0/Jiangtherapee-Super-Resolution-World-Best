@@ -1,4 +1,5 @@
 # Independent public-data/physics reconstruction, NOT author training settings.
+# Bracketed HDR extension; not a replication of the Google 2019 full pipeline.
 seed: 1234
 threads: 4
 device: cuda
@@ -13,7 +14,8 @@ data:
   manifest: data/train/manifest.jsonl
   profile: null  # Replace with measured PTC fit JSON when available.
   options:
-    protocol: spectral-camera-v2
+    protocol: spectral-camera-v3
+    target_stage: post_pixel
     native_size: 64
     frames: 7
     scale: 2

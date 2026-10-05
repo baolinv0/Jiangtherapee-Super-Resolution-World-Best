@@ -97,7 +97,16 @@ def infer(checkpoint,burst,output,alignment="estimated",device="cpu",max_native_
     result=model(sample,trace=True)
     rgb=result["rgb"][0].permute(1,2,0).cpu().numpy()
     export=export_linear(output,rgb,radiance_white)
+    # Describe the checkpoint's output, not an optional GT in the input burst.
+    options = state['config']['data']['options']
+    protocol = options.get('protocol', 'speech-camera-proxy-v1')
+    if protocol.startswith('spectral-camera-'):
+        from .spectral_data import resolve_target_stage
+        target_stage = resolve_target_stage(options)
+    else:
+        target_stage = 'post_optics'
     report={"implementation":state["implementation"],"checkpoint_sha256":sha256(checkpoint),"burst_sha256":sha256(burst),
+            "training_data_protocol":protocol,"training_target_stage":target_stage,
             "geometry_reports":sample["geometry"].reports if "geometry" in sample else None,"capture_order_mode":model.capture_order_mode,"capture_order_ranks":sample["capture_order"].cpu().tolist() if "capture_order" in sample else None,"capture_order_provenance":metadata["capture_order_provenance"],"alignment":alignment,"shifts_xy_native":sample["shifts"][0].cpu().tolist(),"input_profile_sha256":metadata["profile_sha256"],
             "training_profile_sha256":state["data_identity"]["profile_sha256"],"calibration_domain_match":metadata["profile_sha256"]==state["data_identity"]["profile_sha256"],
             "trace":result["trace"],"output_shape_hwc":list(rgb.shape),"encoding":export,

@@ -1,3 +1,4 @@
+# v3 reconstruction target; bracketed saturation is an independent HDR extension.
 seed: 1234
 threads: 2
 device: cpu
@@ -12,7 +13,8 @@ data:
   manifest: data/smoke/manifest.jsonl
   profile: null  # Explicit analytic PTC; public CMF curves are a separate asset.
   options:
-    protocol: spectral-camera-v2
+    protocol: spectral-camera-v3
+    target_stage: post_pixel
     native_size: 16
     frames: 7
     scale: 2

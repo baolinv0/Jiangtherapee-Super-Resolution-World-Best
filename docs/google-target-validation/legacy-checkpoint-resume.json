@@ -1,0 +1,15 @@
+{
+  "checkpoint_created_by_commit": "0e764de8bb026b1e08da3655d8d741e299018108",
+  "old_step": 1,
+  "resumed_step": 2,
+  "old_construction_identity": {
+    "spectral_assets": {
+      "basis.json": "b7fb40806dc43524234546dbb6dcc6a17074429028b59fc288232b905febdaea",
+      "cameras.json": "fa8027f4a9d2dd77cb8ce7f1f8eaf6eca2739d3ad367e04ef2c8a201b51c0992"
+    },
+    "protocol": "spectral-camera-v2"
+  },
+  "evaluation_protocol": "spectral-camera-v2",
+  "evaluation_target_stage": "pre_optics",
+  "result": "PASS: actual pre-change checkpoint resumed and evaluated by changed code"
+}

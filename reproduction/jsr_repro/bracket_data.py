@@ -146,7 +146,7 @@ def save_burst(path, sample):
 def make_burst_dataset(manifest, split, options, seed=1234, profile=None):
     """Select a versioned data protocol; old checkpoints retain their recipe."""
     protocol = options.get('protocol', 'speech-camera-proxy-v1')
-    if protocol == 'spectral-camera-v2':
+    if protocol in ('spectral-camera-v2', 'spectral-camera-v3'):
         from .spectral_data import SpectralBurstDataset
         return SpectralBurstDataset(manifest, split, options, seed, profile)
     if protocol == 'speech-camera-proxy-v1':

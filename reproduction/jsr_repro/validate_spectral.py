@@ -14,7 +14,7 @@ from .data import linear_to_srgb
 from .evaluate_transformer import evaluate
 from .infer_transformer import infer
 from .prepare import build_manifest, procedural_image
-from .spectral_data import SpectralBurstDataset, synthesize_spectral, PROTOCOL
+from .spectral_data import SpectralBurstDataset, synthesize_spectral, PROTOCOL, resolve_target_stage
 from .train_transformer import run_training
 from .utils import load_config, save_json, seed_all
 
@@ -51,14 +51,30 @@ def validate(output,config='configs/spectral_smoke.yaml'):
         raise AssertionError('validation inference did not use the training calibration')
     source = torch.from_numpy(procedural_image(78,160)).permute(2,0,1)
     options = dict(cfg['data']['options'],augment=False)
+    target_stage = resolve_target_stage(options)
     base = synthesize_spectral(source,options,41,profile,assets)
     interventions = {}
     for name,value in [('f_number',[8.,8.]),('pitch_um',[3.,3.]),('fill_factor',[.8,.8]),('psf_radius',6),('field_center',[.6,.5])]:
         changed = synthesize_spectral(source,dict(options,**{name:value}),41,profile,assets)
         interventions[name] = {'gt_max_abs':(base['target']-changed['target']).abs().max().item(),
                                'raw_mean_abs_change':(base['raw']-changed['raw']).abs().mean().item()}
-        if interventions[name]['gt_max_abs']>1e-6:
-            raise AssertionError(f'GT changed under {name}')
+        invariant = target_stage == 'pre_optics' or (target_stage == 'post_optics' and name == 'fill_factor')
+        interventions[name]['expected_gt_invariant'] = invariant
+        if invariant and interventions[name]['gt_max_abs']>1e-6:
+            raise AssertionError(f'{target_stage} GT unexpectedly changed under {name}')
+    # Paired labels isolate the reconstruction objective from input changes.
+    # Use v3 even when validating a legacy recipe: v2 itself stays pre-optics.
+    stage_samples = {stage:synthesize_spectral(source,dict(options,protocol=PROTOCOL,target_stage=stage),41,profile,assets)
+                     for stage in ('pre_optics','post_optics','post_pixel')}
+    stage_comparison = {}
+    for stage, probe in stage_samples.items():
+        raw_change = (probe['raw']-base['raw']).abs().max().item()
+        if raw_change != 0:
+            raise AssertionError('changing target stage changed RAW observations')
+        stage_comparison[stage] = {
+            'raw_max_abs_change':raw_change,
+            'target_mean_abs_from_pre_optics':(probe['target']-stage_samples['pre_optics']['target']).abs().mean().item(),
+            'target_mean_abs_from_post_optics':(probe['target']-stage_samples['post_optics']['target']).abs().mean().item()}
     assets_report = assets.roundtrip_report()
     if assets_report['max_abs_linear_srgb']>.005:
         raise AssertionError('spectral round-trip error exceeded documented truncation tolerance')
@@ -75,7 +91,7 @@ def validate(output,config='configs/spectral_smoke.yaml'):
         coverage.append({k:metadata[k] for k in ('iso','camera_response_id','f_number','pitch_um','signal_saturation_fraction')})
     # The same scene is evaluated independently of its target; observed masks
     # are visualized, and no display gain is fitted per model.
-    tiles = [('CLEAR GT / white=4',_preview(sample['target'])),
+    tiles = [(f'{target_stage} GT / white=4',_preview(sample['target'])),
              ('Reference RAW / white=1',_preview(sample['raw'][0].expand(3,-1,-1),1.)),
              ('Longest RAW / white=1',_preview(sample['raw'][-1].expand(3,-1,-1),1.)),
              ('Observed saturation',_preview(sample['saturation'][-1].expand(3,-1,-1),1.)),
@@ -88,7 +104,8 @@ def validate(output,config='configs/spectral_smoke.yaml'):
         draw.text((x+8,y+6),label,fill='black')
         sheet.paste(img.resize((244,244),Image.Resampling.NEAREST),(x+8,y+28))
     sheet.save(root/'construction.png')
-    report = {'protocol':PROTOCOL,'training':training,'asset_identity':assets.identity,
+    report = {'protocol':base['metadata']['protocol'],'target_stage':target_stage,
+              'target_stage_comparison':stage_comparison,'training':training,'asset_identity':assets.identity,
               'bundled_camera_shapes':len(assets.cameras),'wavelength_count':len(assets.wavelengths),
               'spectral_roundtrip':assets_report,'gt_optical_interventions':interventions,
               'explicit_endpoint_coverage':coverage,'inference':inference,

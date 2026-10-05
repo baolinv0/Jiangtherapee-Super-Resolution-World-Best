@@ -47,15 +47,15 @@ def options(**changes):
 
 def test_clear_gt_is_invariant_to_optical_interventions(assets):
     source = torch.rand((3, 64, 64), generator=torch.Generator().manual_seed(5))
-    base = synthesize_spectral(source, options(), 341, assets=assets)
+    base = synthesize_spectral(source, options(target_stage='pre_optics'), 341, assets=assets)
     interventions = {"f_number": [8., 8.], "pitch_um": [3., 3.],
                      "fill_factor": [.8, .8], "psf_radius": 6,
                      "field_center": [.8, .6]}
     for name, setting in interventions.items():
-        changed = synthesize_spectral(source, options(**{name: setting}), 341, assets=assets)
+        changed = synthesize_spectral(source, options(target_stage='pre_optics', **{name: setting}), 341, assets=assets)
         assert torch.equal(base["target"], changed["target"]), name
         assert (base["raw"] - changed["raw"]).abs().max() > 1e-6, name
-    margin = synthesize_spectral(source, options(scene_margin_hr=18), 341, assets=assets)
+    margin = synthesize_spectral(source, options(target_stage='pre_optics', scene_margin_hr=18), 341, assets=assets)
     torch.testing.assert_close(base["target"], margin["target"], atol=1e-6, rtol=0)
 
 
@@ -148,6 +148,7 @@ def test_training_resume_generation_inference_and_asset_identity_guards(tmp_path
     assert all(np.isfinite(row["loss"]) and row["grad_norm"] > 0 for row in records)
     evaluation = evaluate(checkpoint, manifest, tmp_path / "evaluation.json", limit=1)
     assert evaluation["data_protocol"] == PROTOCOL and evaluation["count"] == 1
+    assert evaluation['target_stage'] == 'post_pixel'
 
     cfg_path = tmp_path / "config.json"
     cfg_path.write_text(json.dumps(cfg), encoding="utf-8")
@@ -161,6 +162,7 @@ def test_training_resume_generation_inference_and_asset_identity_guards(tmp_path
     assert metadata["protocol"] == PROTOCOL
     report = infer(checkpoint, burst, tmp_path / "inference", alignment="provided")
     assert report["calibration_domain_match"]
+    assert report['training_target_stage'] == 'post_pixel'
     assert report["output_shape_hwc"] == [32, 32, 3]
     assert (tmp_path / "inference" / "linear_rgb16.tiff").is_file()
 
@@ -214,3 +216,6 @@ def test_validation_uses_custom_calibration_and_assets(tmp_path):
     assert report['sample_metadata']['profile_sha256'] == profile_identity(profile)
     assert report['inference']['calibration_domain_match']
     assert {x['iso'] for x in report['explicit_endpoint_coverage']} == {800}
+    assert report['target_stage'] == 'post_pixel'
+    assert report['gt_optical_interventions']['fill_factor']['gt_max_abs'] > 1e-6
+    assert all(row['raw_max_abs_change'] == 0 for row in report['target_stage_comparison'].values())

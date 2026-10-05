@@ -24,6 +24,7 @@ jobs:
       - run: python -m jsr_repro.validate --output runs/ci
       - run: python -m jsr_repro.validate_transformer --output runs/ci-transformer
       - run: python -m jsr_repro.validate_spectral --output runs/ci-spectral
+      - run: python -m jsr_repro.validate_spectral --config configs/google_equal_exposure_smoke.yaml --output runs/ci-google-equal
       - uses: actions/upload-artifact@v4
         if: always()
         with:
@@ -43,3 +44,8 @@ jobs:
             runs/ci-spectral/training/*.json
             runs/ci-spectral/training/*.jsonl
             runs/ci-spectral/inference/*.json
+            runs/ci-google-equal/*.json
+            runs/ci-google-equal/*.png
+            runs/ci-google-equal/training/*.json
+            runs/ci-google-equal/training/*.jsonl
+            runs/ci-google-equal/inference/*.json

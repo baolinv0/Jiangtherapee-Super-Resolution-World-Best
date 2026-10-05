@@ -68,6 +68,7 @@ def evaluate(checkpoint,manifest,output,alignment="oracle",device="cpu",limit=No
             summary[name][key] = sum(vals)/len(vals) if vals else None
     report = {"implementation":state["implementation"],"scope":"held-out synthetic data, NOT official JSR/BurstSR score",
               "data_protocol":cfg['data']['options'].get('protocol','speech-camera-proxy-v1'),
+              "target_stage":records[0]['metadata'].get('target_stage', 'post_optics'),
               "count":len(records),"split":split,"alignment":alignment,"data_range":1.,"gain_fit":False,"crop_border_hr":border,
               "checkpoint_sha256":sha256(checkpoint),"manifest_sha256":sha256(manifest),"mean_per_image_metrics":summary,"samples":records}
     save_json(output,report)
