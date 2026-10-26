@@ -1,5 +1,7 @@
 # Jiangtherapee Super Resolution
 
+> **发布程序逆向补全：[模块证据、原 shader 数值对照与运行入口](docs/REA_RECOVERY.md)**。新增 `RecoveredJSR`：恢复 v9.8 的 phase 统计、连续核融合、导引协方差和固定系数径向 LCA。原权重和 K 路由已接通；配准、自动 LCA 估计与 v17 各模式仍有明确缺口。旧独立 checkpoint 路径保持其原定义。
+
 > **本 fork 的独立工程复现 / Independent engineering reproduction**
 >
 > 新增可训练 PyTorch 模块、公开数据代理RAW构造、训练/恢复训练、测试/推理、配置与验证脚本。可确认的公开网络与推断补全的Tap/训练流程有明确区分；不宣称恢复未公开训练配方、达到原论文指标或复现完整手机HDR。

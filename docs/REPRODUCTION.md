@@ -1,5 +1,7 @@
 # JSR 独立工程复现
 
+**新增入口：** [发布程序逆向补全](REA_RECOVERY.md) 记录已从 v9.8 发布程序恢复并做原 shader / 扩展对照的统计、融合、协方差与固定系数 LCA。下文仍描述历史 `inferred-jsr-v1` 路径，其推断状态不再代表新 `RecoveredJSR` 入口。
+
 本文记录公开v9.8模块及推断Tap的`inferred-jsr-v1`路径。新增的七帧多曝光`speech-inspired-transformer-v1`是独立入口，见[讲稿机制与Transformer说明](TRANSFORMER.md)，checkpoint不可互换。
 
 2026-10-05 更新了[训练数据构造方案](TRAINING_DATA_IMPLEMENTATION_PROPOSAL.md)与[等曝光 JSR 光谱接入实施计划](superpowers/plans/2026-10-05-spectral-jsr-phase1.md)。它们记录待实施的掩码/透光率适配、masked fallback、输出策略及资产身份检查；本文的现有命令、默认配置和权重行为仍按当前实现解释。

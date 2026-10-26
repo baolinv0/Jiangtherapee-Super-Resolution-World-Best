@@ -1,0 +1,209 @@
+{
+  "status": "passed_with_intermediate_deviation",
+  "release": "v9.8",
+  "scope": "registration/covariance boundary; LCA disabled",
+  "release_sha256": "e4fbe9a44ba508e368a7802bb5b28be1e8a49fc666d28f8306f41d34cf3576c3",
+  "torch": "2.14.1+cpu",
+  "numpy": "2.4.6",
+  "seed": 2917,
+  "cases": [
+    {
+      "k": 1,
+      "output_shape": [
+        9,
+        11
+      ],
+      "checks": {
+        "counts": {
+          "max_abs": 5.7220458984375e-06,
+          "rmse": 4.0220590202590614e-07,
+          "atol": 2e-05,
+          "rtol": 0.0002,
+          "passed": true
+        },
+        "means": {
+          "max_abs": 1.1920928955078125e-07,
+          "rmse": 8.835497971574852e-09,
+          "atol": 2e-05,
+          "rtol": 0.0002,
+          "passed": true
+        },
+        "standard_deviations": {
+          "max_abs": 0.0001305972400587052,
+          "rmse": 3.283698489938799e-06,
+          "atol": 0.0004,
+          "rtol": 0.0002,
+          "passed": true
+        },
+        "legacy": {
+          "max_abs": 1.1920928955078125e-07,
+          "rmse": 2.7367499019777117e-08,
+          "atol": 2e-05,
+          "rtol": 0.0002,
+          "passed": true
+        },
+        "learned_same_qmap": {
+          "max_abs": 5.662441253662109e-07,
+          "rmse": 5.809564390286093e-08,
+          "atol": 2e-05,
+          "rtol": 0.0002,
+          "passed": true
+        }
+      }
+    },
+    {
+      "k": 4,
+      "output_shape": [
+        16,
+        24
+      ],
+      "checks": {
+        "counts": {
+          "max_abs": 3.814697265625e-06,
+          "rmse": 2.709118583034043e-07,
+          "atol": 2e-05,
+          "rtol": 0.0002,
+          "passed": true
+        },
+        "means": {
+          "max_abs": 1.7881393432617188e-07,
+          "rmse": 1.630256037929081e-08,
+          "atol": 2e-05,
+          "rtol": 0.0002,
+          "passed": true
+        },
+        "standard_deviations": {
+          "max_abs": 8.040908141992986e-05,
+          "rmse": 8.633902825487617e-07,
+          "atol": 0.0004,
+          "rtol": 0.0002,
+          "passed": true
+        },
+        "legacy": {
+          "max_abs": 1.1920928955078125e-07,
+          "rmse": 3.271875810189892e-08,
+          "atol": 2e-05,
+          "rtol": 0.0002,
+          "passed": true
+        },
+        "learned_same_qmap": {
+          "max_abs": 1.6987323760986328e-06,
+          "rmse": 2.622054867508118e-07,
+          "atol": 2e-05,
+          "rtol": 0.0002,
+          "passed": true
+        }
+      }
+    },
+    {
+      "k": 14,
+      "output_shape": [
+        17,
+        19
+      ],
+      "checks": {
+        "counts": {
+          "max_abs": 7.62939453125e-06,
+          "rmse": 3.655388528203297e-07,
+          "atol": 2e-05,
+          "rtol": 0.0002,
+          "passed": true
+        },
+        "means": {
+          "max_abs": 1.4901161193847656e-07,
+          "rmse": 1.3019359005052073e-08,
+          "atol": 2e-05,
+          "rtol": 0.0002,
+          "passed": true
+        },
+        "standard_deviations": {
+          "max_abs": 4.360917955636978e-06,
+          "rmse": 5.3049184446599895e-08,
+          "atol": 0.0004,
+          "rtol": 0.0002,
+          "passed": true
+        },
+        "legacy": {
+          "max_abs": 1.4901161193847656e-07,
+          "rmse": 3.4980728739953246e-08,
+          "atol": 2e-05,
+          "rtol": 0.0002,
+          "passed": true
+        },
+        "learned_same_qmap": {
+          "max_abs": 9.834766387939453e-07,
+          "rmse": 1.8245788421719956e-07,
+          "atol": 2e-05,
+          "rtol": 0.0002,
+          "passed": true
+        }
+      }
+    }
+  ],
+  "reference_components": {
+    "fusion": "original packaged WGSL",
+    "networks": "published WGPU core and released NPZ weights",
+    "frontend": "published Python frontend in the host runtime",
+    "host_opencv": "4.14.0",
+    "note": "Separate frozen frontend/covariance/LCA fixtures use the original PYD with bundled NumPy 2.2.6 and OpenCV 5.0.0.93. This comparison does not launch the complete EXE."
+  },
+  "tolerance_note": "FP32 standard deviation subtracts nearly equal moments; its absolute tolerance is 4e-4 for unit-range data, fixed before running. Other tap fields use 2e-5.",
+  "shader_sha256": {
+    "phase_accumulate": "0cf47a859208e783ea4bdb9f57dff2342ae682e19cfae7bf716df2ec146843ec",
+    "phase_finalize": "b3122eee80d366d382b1801d644004ac347d6d82c9058ffaaaf24307a1cd55d3",
+    "learned_accumulate": "f830993f71c007589fcf0869a907267ae1ff3af0400b3ca3758516c1c91be2f9",
+    "learned_finalize": "9e97d0787c54682526c60440e08d1740ea92c744881f8fd6dd24732c3b321c0c"
+  },
+  "adapter": {
+    "vendor": "Intel Corporation",
+    "architecture": "",
+    "device": "Intel(R) HD Graphics 620",
+    "description": "Intel driver",
+    "stackgroup_min_size": 4,
+    "stackgroup_max_size": 128,
+    "vendor_id": 32902,
+    "device_id": 22806,
+    "adapter_type": "IntegratedGPU",
+    "backend_type": "Vulkan"
+  },
+  "assembled_core": {
+    "controller_input_same_phase": {
+      "max_abs": 3.814697265625e-06,
+      "rmse": 1.8810972697727995e-07,
+      "atol": 0.0003,
+      "rtol": 0.0002,
+      "passed": true
+    },
+    "qmap": {
+      "max_abs": 0.00014400482177734375,
+      "rmse": 1.2494274968862174e-05,
+      "atol": 0.0003,
+      "rtol": 0.0002,
+      "passed": true
+    },
+    "learned": {
+      "max_abs": 1.1354684829711914e-05,
+      "rmse": 1.0717253928355589e-06,
+      "atol": 5e-05,
+      "rtol": 0.0002,
+      "passed": true
+    },
+    "refined_rgb": {
+      "max_abs": 3.3974647521972656e-06,
+      "rmse": 6.174714712793496e-07,
+      "atol": 5e-05,
+      "rtol": 0.0002,
+      "passed": true
+    }
+  },
+  "diagnostics": {
+    "propagated_controller_input_strict": {
+      "max_abs": 0.003806889057159424,
+      "rmse": 1.7974620983262944e-05,
+      "atol": 0.0003,
+      "rtol": 0.0002,
+      "passed": false
+    },
+    "explanation": "The separate phase producers differ in FP32 sqrt(max(E[x^2]-mu^2,0)) near zero variance. Frozen normalization amplifies this dispersion error. The first run failed the strict propagated feature check; it is retained here. A subsequent same-phase check isolates frontend correctness. Component and final RGB tolerances are unchanged. This is not bitwise or strict intermediate-feature equivalence."
+  }
+}
