@@ -1,0 +1,7 @@
+{
+  "catalog_links_exist_and_match": {
+    "architecture.json": true,
+    "weight_catalog.csv": true,
+    "model_repr.txt": true
+  }
+}

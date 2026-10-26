@@ -1,5 +1,7 @@
 # Jiangtherapee Super Resolution
 
+> **网络结构与可微调权重包：[完整计算图、逐层参数、K=1–14 原权重路由与微调入口](docs/NETWORK_KIT.md)**。提供去重的 PyTorch 原权重组件、完整 K4 checkpoint、严格保存重载与 controller/refine/joint 微调示例。
+
 > **发布程序逆向补全：[模块证据、原 shader 数值对照与运行入口](docs/REA_RECOVERY.md)**。新增 `RecoveredJSR`：恢复 v9.8 的 phase 统计、连续核融合、导引协方差和固定系数径向 LCA。原权重和 K 路由已接通；配准、自动 LCA 估计与 v17 各模式仍有明确缺口。旧独立 checkpoint 路径保持其原定义。
 
 > **本 fork 的独立工程复现 / Independent engineering reproduction**

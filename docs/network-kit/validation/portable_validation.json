@@ -1,0 +1,79 @@
+{
+  "file_checksums_verified": 94,
+  "routes": {
+    "1": {
+      "all_states_equal": true,
+      "state_tensors": 102,
+      "requested_k": 1
+    },
+    "2": {
+      "all_states_equal": true,
+      "state_tensors": 102,
+      "requested_k": 2
+    },
+    "3": {
+      "all_states_equal": true,
+      "state_tensors": 102,
+      "requested_k": 3
+    },
+    "4": {
+      "all_states_equal": true,
+      "state_tensors": 102,
+      "requested_k": 4
+    },
+    "5": {
+      "all_states_equal": true,
+      "state_tensors": 102,
+      "requested_k": 5
+    },
+    "6": {
+      "all_states_equal": true,
+      "state_tensors": 102,
+      "requested_k": 6
+    },
+    "7": {
+      "all_states_equal": true,
+      "state_tensors": 102,
+      "requested_k": 7
+    },
+    "8": {
+      "all_states_equal": true,
+      "state_tensors": 102,
+      "requested_k": 8
+    },
+    "9": {
+      "all_states_equal": true,
+      "state_tensors": 102,
+      "requested_k": 9
+    },
+    "10": {
+      "all_states_equal": true,
+      "state_tensors": 102,
+      "requested_k": 10
+    },
+    "11": {
+      "all_states_equal": true,
+      "state_tensors": 102,
+      "requested_k": 11
+    },
+    "12": {
+      "all_states_equal": true,
+      "state_tensors": 102,
+      "requested_k": 12
+    },
+    "13": {
+      "all_states_equal": true,
+      "state_tensors": 102,
+      "requested_k": 13
+    },
+    "14": {
+      "all_states_equal": true,
+      "state_tensors": 102,
+      "requested_k": 14
+    }
+  },
+  "checkpoint_equals_bundle_k4": true,
+  "status": "passed",
+  "module_origin_within_kit": true,
+  "module_relative_path": "source/reproduction/jsr_repro/network_bundle.py"
+}

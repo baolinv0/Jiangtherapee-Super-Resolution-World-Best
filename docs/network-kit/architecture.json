@@ -1,0 +1,3643 @@
+{
+  "format": "jsr-v98-architecture-catalog-v1",
+  "release": "v9.8",
+  "frontend_version": "release-v98-continuous-taps-v1",
+  "reference_amplitude": 0.34523068818006963,
+  "input_contract": {
+    "frames": "[B,K,Hframe,Wframe] black-subtracted linear CFA values",
+    "flow": "[B,K,Hreference,Wreference,2] reference-to-frame native (dx,dy)",
+    "covariance": "[B,3,Hout,Wout] inverse covariance (xx,xy,yy), native coordinate units"
+  },
+  "output_contract": {
+    "rgb": "[B,3,Hout,Wout] final linear RGB",
+    "learned": "[B,3,Hout,Wout]",
+    "legacy": "[B,3,Hout,Wout]"
+  },
+  "components": {
+    "controller": {
+      "class": "Controller",
+      "input_channels": 151,
+      "output_channels": 36,
+      "width": 32,
+      "depth": 3,
+      "parameter_count": 1990660,
+      "parameter_layers": [
+        {
+          "name": "controller.enc.0.0",
+          "type": "Conv2d",
+          "parameters": 43520,
+          "tensors": {
+            "weight": [
+              32,
+              151,
+              3,
+              3
+            ],
+            "bias": [
+              32
+            ]
+          },
+          "in_channels": 151,
+          "out_channels": 32,
+          "kernel": [
+            3,
+            3
+          ],
+          "stride": [
+            1,
+            1
+          ],
+          "padding": [
+            1,
+            1
+          ],
+          "groups": 1,
+          "full_tensor_keys": [
+            "controller.enc.0.0.weight",
+            "controller.enc.0.0.bias"
+          ]
+        },
+        {
+          "name": "controller.enc.0.2",
+          "type": "Conv2d",
+          "parameters": 9248,
+          "tensors": {
+            "weight": [
+              32,
+              32,
+              3,
+              3
+            ],
+            "bias": [
+              32
+            ]
+          },
+          "in_channels": 32,
+          "out_channels": 32,
+          "kernel": [
+            3,
+            3
+          ],
+          "stride": [
+            1,
+            1
+          ],
+          "padding": [
+            1,
+            1
+          ],
+          "groups": 1,
+          "full_tensor_keys": [
+            "controller.enc.0.2.weight",
+            "controller.enc.0.2.bias"
+          ]
+        },
+        {
+          "name": "controller.enc.1.0",
+          "type": "Conv2d",
+          "parameters": 18496,
+          "tensors": {
+            "weight": [
+              64,
+              32,
+              3,
+              3
+            ],
+            "bias": [
+              64
+            ]
+          },
+          "in_channels": 32,
+          "out_channels": 64,
+          "kernel": [
+            3,
+            3
+          ],
+          "stride": [
+            1,
+            1
+          ],
+          "padding": [
+            1,
+            1
+          ],
+          "groups": 1,
+          "full_tensor_keys": [
+            "controller.enc.1.0.weight",
+            "controller.enc.1.0.bias"
+          ]
+        },
+        {
+          "name": "controller.enc.1.2",
+          "type": "Conv2d",
+          "parameters": 36928,
+          "tensors": {
+            "weight": [
+              64,
+              64,
+              3,
+              3
+            ],
+            "bias": [
+              64
+            ]
+          },
+          "in_channels": 64,
+          "out_channels": 64,
+          "kernel": [
+            3,
+            3
+          ],
+          "stride": [
+            1,
+            1
+          ],
+          "padding": [
+            1,
+            1
+          ],
+          "groups": 1,
+          "full_tensor_keys": [
+            "controller.enc.1.2.weight",
+            "controller.enc.1.2.bias"
+          ]
+        },
+        {
+          "name": "controller.enc.2.0",
+          "type": "Conv2d",
+          "parameters": 73856,
+          "tensors": {
+            "weight": [
+              128,
+              64,
+              3,
+              3
+            ],
+            "bias": [
+              128
+            ]
+          },
+          "in_channels": 64,
+          "out_channels": 128,
+          "kernel": [
+            3,
+            3
+          ],
+          "stride": [
+            1,
+            1
+          ],
+          "padding": [
+            1,
+            1
+          ],
+          "groups": 1,
+          "full_tensor_keys": [
+            "controller.enc.2.0.weight",
+            "controller.enc.2.0.bias"
+          ]
+        },
+        {
+          "name": "controller.enc.2.2",
+          "type": "Conv2d",
+          "parameters": 147584,
+          "tensors": {
+            "weight": [
+              128,
+              128,
+              3,
+              3
+            ],
+            "bias": [
+              128
+            ]
+          },
+          "in_channels": 128,
+          "out_channels": 128,
+          "kernel": [
+            3,
+            3
+          ],
+          "stride": [
+            1,
+            1
+          ],
+          "padding": [
+            1,
+            1
+          ],
+          "groups": 1,
+          "full_tensor_keys": [
+            "controller.enc.2.2.weight",
+            "controller.enc.2.2.bias"
+          ]
+        },
+        {
+          "name": "controller.mid.0",
+          "type": "Conv2d",
+          "parameters": 295168,
+          "tensors": {
+            "weight": [
+              256,
+              128,
+              3,
+              3
+            ],
+            "bias": [
+              256
+            ]
+          },
+          "in_channels": 128,
+          "out_channels": 256,
+          "kernel": [
+            3,
+            3
+          ],
+          "stride": [
+            1,
+            1
+          ],
+          "padding": [
+            1,
+            1
+          ],
+          "groups": 1,
+          "full_tensor_keys": [
+            "controller.mid.0.weight",
+            "controller.mid.0.bias"
+          ]
+        },
+        {
+          "name": "controller.mid.2",
+          "type": "Conv2d",
+          "parameters": 590080,
+          "tensors": {
+            "weight": [
+              256,
+              256,
+              3,
+              3
+            ],
+            "bias": [
+              256
+            ]
+          },
+          "in_channels": 256,
+          "out_channels": 256,
+          "kernel": [
+            3,
+            3
+          ],
+          "stride": [
+            1,
+            1
+          ],
+          "padding": [
+            1,
+            1
+          ],
+          "groups": 1,
+          "full_tensor_keys": [
+            "controller.mid.2.weight",
+            "controller.mid.2.bias"
+          ]
+        },
+        {
+          "name": "controller.dec.0.0",
+          "type": "Conv2d",
+          "parameters": 442496,
+          "tensors": {
+            "weight": [
+              128,
+              384,
+              3,
+              3
+            ],
+            "bias": [
+              128
+            ]
+          },
+          "in_channels": 384,
+          "out_channels": 128,
+          "kernel": [
+            3,
+            3
+          ],
+          "stride": [
+            1,
+            1
+          ],
+          "padding": [
+            1,
+            1
+          ],
+          "groups": 1,
+          "full_tensor_keys": [
+            "controller.dec.0.0.weight",
+            "controller.dec.0.0.bias"
+          ]
+        },
+        {
+          "name": "controller.dec.0.2",
+          "type": "Conv2d",
+          "parameters": 147584,
+          "tensors": {
+            "weight": [
+              128,
+              128,
+              3,
+              3
+            ],
+            "bias": [
+              128
+            ]
+          },
+          "in_channels": 128,
+          "out_channels": 128,
+          "kernel": [
+            3,
+            3
+          ],
+          "stride": [
+            1,
+            1
+          ],
+          "padding": [
+            1,
+            1
+          ],
+          "groups": 1,
+          "full_tensor_keys": [
+            "controller.dec.0.2.weight",
+            "controller.dec.0.2.bias"
+          ]
+        },
+        {
+          "name": "controller.dec.1.0",
+          "type": "Conv2d",
+          "parameters": 110656,
+          "tensors": {
+            "weight": [
+              64,
+              192,
+              3,
+              3
+            ],
+            "bias": [
+              64
+            ]
+          },
+          "in_channels": 192,
+          "out_channels": 64,
+          "kernel": [
+            3,
+            3
+          ],
+          "stride": [
+            1,
+            1
+          ],
+          "padding": [
+            1,
+            1
+          ],
+          "groups": 1,
+          "full_tensor_keys": [
+            "controller.dec.1.0.weight",
+            "controller.dec.1.0.bias"
+          ]
+        },
+        {
+          "name": "controller.dec.1.2",
+          "type": "Conv2d",
+          "parameters": 36928,
+          "tensors": {
+            "weight": [
+              64,
+              64,
+              3,
+              3
+            ],
+            "bias": [
+              64
+            ]
+          },
+          "in_channels": 64,
+          "out_channels": 64,
+          "kernel": [
+            3,
+            3
+          ],
+          "stride": [
+            1,
+            1
+          ],
+          "padding": [
+            1,
+            1
+          ],
+          "groups": 1,
+          "full_tensor_keys": [
+            "controller.dec.1.2.weight",
+            "controller.dec.1.2.bias"
+          ]
+        },
+        {
+          "name": "controller.dec.2.0",
+          "type": "Conv2d",
+          "parameters": 27680,
+          "tensors": {
+            "weight": [
+              32,
+              96,
+              3,
+              3
+            ],
+            "bias": [
+              32
+            ]
+          },
+          "in_channels": 96,
+          "out_channels": 32,
+          "kernel": [
+            3,
+            3
+          ],
+          "stride": [
+            1,
+            1
+          ],
+          "padding": [
+            1,
+            1
+          ],
+          "groups": 1,
+          "full_tensor_keys": [
+            "controller.dec.2.0.weight",
+            "controller.dec.2.0.bias"
+          ]
+        },
+        {
+          "name": "controller.dec.2.2",
+          "type": "Conv2d",
+          "parameters": 9248,
+          "tensors": {
+            "weight": [
+              32,
+              32,
+              3,
+              3
+            ],
+            "bias": [
+              32
+            ]
+          },
+          "in_channels": 32,
+          "out_channels": 32,
+          "kernel": [
+            3,
+            3
+          ],
+          "stride": [
+            1,
+            1
+          ],
+          "padding": [
+            1,
+            1
+          ],
+          "groups": 1,
+          "full_tensor_keys": [
+            "controller.dec.2.2.weight",
+            "controller.dec.2.2.bias"
+          ]
+        },
+        {
+          "name": "controller.out",
+          "type": "Conv2d",
+          "parameters": 1188,
+          "tensors": {
+            "weight": [
+              36,
+              32,
+              1,
+              1
+            ],
+            "bias": [
+              36
+            ]
+          },
+          "in_channels": 32,
+          "out_channels": 36,
+          "kernel": [
+            1,
+            1
+          ],
+          "stride": [
+            1,
+            1
+          ],
+          "padding": [
+            0,
+            0
+          ],
+          "groups": 1,
+          "full_tensor_keys": [
+            "controller.out.weight",
+            "controller.out.bias"
+          ]
+        }
+      ],
+      "functional_operations": [
+        "Each encoder/bottleneck/decoder block has two zero-padded 3x3 Conv2d layers, each followed by exact-erf GELU.",
+        "Three floor AvgPool2d(kernel=2,stride=2) reductions.",
+        "Decoder resize is bilinear to the corresponding skip size, align_corners=False.",
+        "Concatenation order is [upsampled decoder, encoder skip].",
+        "Final 1x1 convolution produces 12 continuous kernel coefficients per RGB channel."
+      ]
+    },
+    "refinenet": {
+      "class": "RefineNet",
+      "input_channels": 6,
+      "output_channels": 3,
+      "width": 116,
+      "residual_blocks": 8,
+      "parameter_count": 2165607,
+      "input_order": "[learned R,G,B, legacy R,G,B]",
+      "guide_channels": [
+        1,
+        4
+      ],
+      "residual_order": [
+        "dG",
+        "d(R-G)",
+        "d(B-G)"
+      ],
+      "parameter_layers": [
+        {
+          "name": "refinenet.inp",
+          "type": "Conv2d",
+          "parameters": 6380,
+          "tensors": {
+            "weight": [
+              116,
+              6,
+              3,
+              3
+            ],
+            "bias": [
+              116
+            ]
+          },
+          "in_channels": 6,
+          "out_channels": 116,
+          "kernel": [
+            3,
+            3
+          ],
+          "stride": [
+            1,
+            1
+          ],
+          "padding": [
+            1,
+            1
+          ],
+          "groups": 1,
+          "full_tensor_keys": [
+            "refinenet.inp.weight",
+            "refinenet.inp.bias"
+          ]
+        },
+        {
+          "name": "refinenet.guide",
+          "type": "Conv2d",
+          "parameters": 2204,
+          "tensors": {
+            "weight": [
+              116,
+              2,
+              3,
+              3
+            ],
+            "bias": [
+              116
+            ]
+          },
+          "in_channels": 2,
+          "out_channels": 116,
+          "kernel": [
+            3,
+            3
+          ],
+          "stride": [
+            1,
+            1
+          ],
+          "padding": [
+            1,
+            1
+          ],
+          "groups": 1,
+          "full_tensor_keys": [
+            "refinenet.guide.weight",
+            "refinenet.guide.bias"
+          ]
+        },
+        {
+          "name": "refinenet.body.0.c1",
+          "type": "Conv2d",
+          "parameters": 121220,
+          "tensors": {
+            "weight": [
+              116,
+              116,
+              3,
+              3
+            ],
+            "bias": [
+              116
+            ]
+          },
+          "in_channels": 116,
+          "out_channels": 116,
+          "kernel": [
+            3,
+            3
+          ],
+          "stride": [
+            1,
+            1
+          ],
+          "padding": [
+            1,
+            1
+          ],
+          "groups": 1,
+          "full_tensor_keys": [
+            "refinenet.body.0.c1.weight",
+            "refinenet.body.0.c1.bias"
+          ]
+        },
+        {
+          "name": "refinenet.body.0.c2",
+          "type": "Conv2d",
+          "parameters": 121220,
+          "tensors": {
+            "weight": [
+              116,
+              116,
+              3,
+              3
+            ],
+            "bias": [
+              116
+            ]
+          },
+          "in_channels": 116,
+          "out_channels": 116,
+          "kernel": [
+            3,
+            3
+          ],
+          "stride": [
+            1,
+            1
+          ],
+          "padding": [
+            1,
+            1
+          ],
+          "groups": 1,
+          "full_tensor_keys": [
+            "refinenet.body.0.c2.weight",
+            "refinenet.body.0.c2.bias"
+          ]
+        },
+        {
+          "name": "refinenet.body.1.c1",
+          "type": "Conv2d",
+          "parameters": 121220,
+          "tensors": {
+            "weight": [
+              116,
+              116,
+              3,
+              3
+            ],
+            "bias": [
+              116
+            ]
+          },
+          "in_channels": 116,
+          "out_channels": 116,
+          "kernel": [
+            3,
+            3
+          ],
+          "stride": [
+            1,
+            1
+          ],
+          "padding": [
+            1,
+            1
+          ],
+          "groups": 1,
+          "full_tensor_keys": [
+            "refinenet.body.1.c1.weight",
+            "refinenet.body.1.c1.bias"
+          ]
+        },
+        {
+          "name": "refinenet.body.1.c2",
+          "type": "Conv2d",
+          "parameters": 121220,
+          "tensors": {
+            "weight": [
+              116,
+              116,
+              3,
+              3
+            ],
+            "bias": [
+              116
+            ]
+          },
+          "in_channels": 116,
+          "out_channels": 116,
+          "kernel": [
+            3,
+            3
+          ],
+          "stride": [
+            1,
+            1
+          ],
+          "padding": [
+            1,
+            1
+          ],
+          "groups": 1,
+          "full_tensor_keys": [
+            "refinenet.body.1.c2.weight",
+            "refinenet.body.1.c2.bias"
+          ]
+        },
+        {
+          "name": "refinenet.body.2.c1",
+          "type": "Conv2d",
+          "parameters": 121220,
+          "tensors": {
+            "weight": [
+              116,
+              116,
+              3,
+              3
+            ],
+            "bias": [
+              116
+            ]
+          },
+          "in_channels": 116,
+          "out_channels": 116,
+          "kernel": [
+            3,
+            3
+          ],
+          "stride": [
+            1,
+            1
+          ],
+          "padding": [
+            1,
+            1
+          ],
+          "groups": 1,
+          "full_tensor_keys": [
+            "refinenet.body.2.c1.weight",
+            "refinenet.body.2.c1.bias"
+          ]
+        },
+        {
+          "name": "refinenet.body.2.c2",
+          "type": "Conv2d",
+          "parameters": 121220,
+          "tensors": {
+            "weight": [
+              116,
+              116,
+              3,
+              3
+            ],
+            "bias": [
+              116
+            ]
+          },
+          "in_channels": 116,
+          "out_channels": 116,
+          "kernel": [
+            3,
+            3
+          ],
+          "stride": [
+            1,
+            1
+          ],
+          "padding": [
+            1,
+            1
+          ],
+          "groups": 1,
+          "full_tensor_keys": [
+            "refinenet.body.2.c2.weight",
+            "refinenet.body.2.c2.bias"
+          ]
+        },
+        {
+          "name": "refinenet.body.3.c1",
+          "type": "Conv2d",
+          "parameters": 121220,
+          "tensors": {
+            "weight": [
+              116,
+              116,
+              3,
+              3
+            ],
+            "bias": [
+              116
+            ]
+          },
+          "in_channels": 116,
+          "out_channels": 116,
+          "kernel": [
+            3,
+            3
+          ],
+          "stride": [
+            1,
+            1
+          ],
+          "padding": [
+            1,
+            1
+          ],
+          "groups": 1,
+          "full_tensor_keys": [
+            "refinenet.body.3.c1.weight",
+            "refinenet.body.3.c1.bias"
+          ]
+        },
+        {
+          "name": "refinenet.body.3.c2",
+          "type": "Conv2d",
+          "parameters": 121220,
+          "tensors": {
+            "weight": [
+              116,
+              116,
+              3,
+              3
+            ],
+            "bias": [
+              116
+            ]
+          },
+          "in_channels": 116,
+          "out_channels": 116,
+          "kernel": [
+            3,
+            3
+          ],
+          "stride": [
+            1,
+            1
+          ],
+          "padding": [
+            1,
+            1
+          ],
+          "groups": 1,
+          "full_tensor_keys": [
+            "refinenet.body.3.c2.weight",
+            "refinenet.body.3.c2.bias"
+          ]
+        },
+        {
+          "name": "refinenet.body.4.c1",
+          "type": "Conv2d",
+          "parameters": 121220,
+          "tensors": {
+            "weight": [
+              116,
+              116,
+              3,
+              3
+            ],
+            "bias": [
+              116
+            ]
+          },
+          "in_channels": 116,
+          "out_channels": 116,
+          "kernel": [
+            3,
+            3
+          ],
+          "stride": [
+            1,
+            1
+          ],
+          "padding": [
+            1,
+            1
+          ],
+          "groups": 1,
+          "full_tensor_keys": [
+            "refinenet.body.4.c1.weight",
+            "refinenet.body.4.c1.bias"
+          ]
+        },
+        {
+          "name": "refinenet.body.4.c2",
+          "type": "Conv2d",
+          "parameters": 121220,
+          "tensors": {
+            "weight": [
+              116,
+              116,
+              3,
+              3
+            ],
+            "bias": [
+              116
+            ]
+          },
+          "in_channels": 116,
+          "out_channels": 116,
+          "kernel": [
+            3,
+            3
+          ],
+          "stride": [
+            1,
+            1
+          ],
+          "padding": [
+            1,
+            1
+          ],
+          "groups": 1,
+          "full_tensor_keys": [
+            "refinenet.body.4.c2.weight",
+            "refinenet.body.4.c2.bias"
+          ]
+        },
+        {
+          "name": "refinenet.body.5.c1",
+          "type": "Conv2d",
+          "parameters": 121220,
+          "tensors": {
+            "weight": [
+              116,
+              116,
+              3,
+              3
+            ],
+            "bias": [
+              116
+            ]
+          },
+          "in_channels": 116,
+          "out_channels": 116,
+          "kernel": [
+            3,
+            3
+          ],
+          "stride": [
+            1,
+            1
+          ],
+          "padding": [
+            1,
+            1
+          ],
+          "groups": 1,
+          "full_tensor_keys": [
+            "refinenet.body.5.c1.weight",
+            "refinenet.body.5.c1.bias"
+          ]
+        },
+        {
+          "name": "refinenet.body.5.c2",
+          "type": "Conv2d",
+          "parameters": 121220,
+          "tensors": {
+            "weight": [
+              116,
+              116,
+              3,
+              3
+            ],
+            "bias": [
+              116
+            ]
+          },
+          "in_channels": 116,
+          "out_channels": 116,
+          "kernel": [
+            3,
+            3
+          ],
+          "stride": [
+            1,
+            1
+          ],
+          "padding": [
+            1,
+            1
+          ],
+          "groups": 1,
+          "full_tensor_keys": [
+            "refinenet.body.5.c2.weight",
+            "refinenet.body.5.c2.bias"
+          ]
+        },
+        {
+          "name": "refinenet.body.6.c1",
+          "type": "Conv2d",
+          "parameters": 121220,
+          "tensors": {
+            "weight": [
+              116,
+              116,
+              3,
+              3
+            ],
+            "bias": [
+              116
+            ]
+          },
+          "in_channels": 116,
+          "out_channels": 116,
+          "kernel": [
+            3,
+            3
+          ],
+          "stride": [
+            1,
+            1
+          ],
+          "padding": [
+            1,
+            1
+          ],
+          "groups": 1,
+          "full_tensor_keys": [
+            "refinenet.body.6.c1.weight",
+            "refinenet.body.6.c1.bias"
+          ]
+        },
+        {
+          "name": "refinenet.body.6.c2",
+          "type": "Conv2d",
+          "parameters": 121220,
+          "tensors": {
+            "weight": [
+              116,
+              116,
+              3,
+              3
+            ],
+            "bias": [
+              116
+            ]
+          },
+          "in_channels": 116,
+          "out_channels": 116,
+          "kernel": [
+            3,
+            3
+          ],
+          "stride": [
+            1,
+            1
+          ],
+          "padding": [
+            1,
+            1
+          ],
+          "groups": 1,
+          "full_tensor_keys": [
+            "refinenet.body.6.c2.weight",
+            "refinenet.body.6.c2.bias"
+          ]
+        },
+        {
+          "name": "refinenet.body.7.c1",
+          "type": "Conv2d",
+          "parameters": 121220,
+          "tensors": {
+            "weight": [
+              116,
+              116,
+              3,
+              3
+            ],
+            "bias": [
+              116
+            ]
+          },
+          "in_channels": 116,
+          "out_channels": 116,
+          "kernel": [
+            3,
+            3
+          ],
+          "stride": [
+            1,
+            1
+          ],
+          "padding": [
+            1,
+            1
+          ],
+          "groups": 1,
+          "full_tensor_keys": [
+            "refinenet.body.7.c1.weight",
+            "refinenet.body.7.c1.bias"
+          ]
+        },
+        {
+          "name": "refinenet.body.7.c2",
+          "type": "Conv2d",
+          "parameters": 121220,
+          "tensors": {
+            "weight": [
+              116,
+              116,
+              3,
+              3
+            ],
+            "bias": [
+              116
+            ]
+          },
+          "in_channels": 116,
+          "out_channels": 116,
+          "kernel": [
+            3,
+            3
+          ],
+          "stride": [
+            1,
+            1
+          ],
+          "padding": [
+            1,
+            1
+          ],
+          "groups": 1,
+          "full_tensor_keys": [
+            "refinenet.body.7.c2.weight",
+            "refinenet.body.7.c2.bias"
+          ]
+        },
+        {
+          "name": "refinenet.gammas.0",
+          "type": "Conv2d",
+          "parameters": 13572,
+          "tensors": {
+            "weight": [
+              116,
+              116,
+              1,
+              1
+            ],
+            "bias": [
+              116
+            ]
+          },
+          "in_channels": 116,
+          "out_channels": 116,
+          "kernel": [
+            1,
+            1
+          ],
+          "stride": [
+            1,
+            1
+          ],
+          "padding": [
+            0,
+            0
+          ],
+          "groups": 1,
+          "full_tensor_keys": [
+            "refinenet.gammas.0.weight",
+            "refinenet.gammas.0.bias"
+          ]
+        },
+        {
+          "name": "refinenet.gammas.1",
+          "type": "Conv2d",
+          "parameters": 13572,
+          "tensors": {
+            "weight": [
+              116,
+              116,
+              1,
+              1
+            ],
+            "bias": [
+              116
+            ]
+          },
+          "in_channels": 116,
+          "out_channels": 116,
+          "kernel": [
+            1,
+            1
+          ],
+          "stride": [
+            1,
+            1
+          ],
+          "padding": [
+            0,
+            0
+          ],
+          "groups": 1,
+          "full_tensor_keys": [
+            "refinenet.gammas.1.weight",
+            "refinenet.gammas.1.bias"
+          ]
+        },
+        {
+          "name": "refinenet.gammas.2",
+          "type": "Conv2d",
+          "parameters": 13572,
+          "tensors": {
+            "weight": [
+              116,
+              116,
+              1,
+              1
+            ],
+            "bias": [
+              116
+            ]
+          },
+          "in_channels": 116,
+          "out_channels": 116,
+          "kernel": [
+            1,
+            1
+          ],
+          "stride": [
+            1,
+            1
+          ],
+          "padding": [
+            0,
+            0
+          ],
+          "groups": 1,
+          "full_tensor_keys": [
+            "refinenet.gammas.2.weight",
+            "refinenet.gammas.2.bias"
+          ]
+        },
+        {
+          "name": "refinenet.gammas.3",
+          "type": "Conv2d",
+          "parameters": 13572,
+          "tensors": {
+            "weight": [
+              116,
+              116,
+              1,
+              1
+            ],
+            "bias": [
+              116
+            ]
+          },
+          "in_channels": 116,
+          "out_channels": 116,
+          "kernel": [
+            1,
+            1
+          ],
+          "stride": [
+            1,
+            1
+          ],
+          "padding": [
+            0,
+            0
+          ],
+          "groups": 1,
+          "full_tensor_keys": [
+            "refinenet.gammas.3.weight",
+            "refinenet.gammas.3.bias"
+          ]
+        },
+        {
+          "name": "refinenet.gammas.4",
+          "type": "Conv2d",
+          "parameters": 13572,
+          "tensors": {
+            "weight": [
+              116,
+              116,
+              1,
+              1
+            ],
+            "bias": [
+              116
+            ]
+          },
+          "in_channels": 116,
+          "out_channels": 116,
+          "kernel": [
+            1,
+            1
+          ],
+          "stride": [
+            1,
+            1
+          ],
+          "padding": [
+            0,
+            0
+          ],
+          "groups": 1,
+          "full_tensor_keys": [
+            "refinenet.gammas.4.weight",
+            "refinenet.gammas.4.bias"
+          ]
+        },
+        {
+          "name": "refinenet.gammas.5",
+          "type": "Conv2d",
+          "parameters": 13572,
+          "tensors": {
+            "weight": [
+              116,
+              116,
+              1,
+              1
+            ],
+            "bias": [
+              116
+            ]
+          },
+          "in_channels": 116,
+          "out_channels": 116,
+          "kernel": [
+            1,
+            1
+          ],
+          "stride": [
+            1,
+            1
+          ],
+          "padding": [
+            0,
+            0
+          ],
+          "groups": 1,
+          "full_tensor_keys": [
+            "refinenet.gammas.5.weight",
+            "refinenet.gammas.5.bias"
+          ]
+        },
+        {
+          "name": "refinenet.gammas.6",
+          "type": "Conv2d",
+          "parameters": 13572,
+          "tensors": {
+            "weight": [
+              116,
+              116,
+              1,
+              1
+            ],
+            "bias": [
+              116
+            ]
+          },
+          "in_channels": 116,
+          "out_channels": 116,
+          "kernel": [
+            1,
+            1
+          ],
+          "stride": [
+            1,
+            1
+          ],
+          "padding": [
+            0,
+            0
+          ],
+          "groups": 1,
+          "full_tensor_keys": [
+            "refinenet.gammas.6.weight",
+            "refinenet.gammas.6.bias"
+          ]
+        },
+        {
+          "name": "refinenet.gammas.7",
+          "type": "Conv2d",
+          "parameters": 13572,
+          "tensors": {
+            "weight": [
+              116,
+              116,
+              1,
+              1
+            ],
+            "bias": [
+              116
+            ]
+          },
+          "in_channels": 116,
+          "out_channels": 116,
+          "kernel": [
+            1,
+            1
+          ],
+          "stride": [
+            1,
+            1
+          ],
+          "padding": [
+            0,
+            0
+          ],
+          "groups": 1,
+          "full_tensor_keys": [
+            "refinenet.gammas.7.weight",
+            "refinenet.gammas.7.bias"
+          ]
+        },
+        {
+          "name": "refinenet.betas.0",
+          "type": "Conv2d",
+          "parameters": 13572,
+          "tensors": {
+            "weight": [
+              116,
+              116,
+              1,
+              1
+            ],
+            "bias": [
+              116
+            ]
+          },
+          "in_channels": 116,
+          "out_channels": 116,
+          "kernel": [
+            1,
+            1
+          ],
+          "stride": [
+            1,
+            1
+          ],
+          "padding": [
+            0,
+            0
+          ],
+          "groups": 1,
+          "full_tensor_keys": [
+            "refinenet.betas.0.weight",
+            "refinenet.betas.0.bias"
+          ]
+        },
+        {
+          "name": "refinenet.betas.1",
+          "type": "Conv2d",
+          "parameters": 13572,
+          "tensors": {
+            "weight": [
+              116,
+              116,
+              1,
+              1
+            ],
+            "bias": [
+              116
+            ]
+          },
+          "in_channels": 116,
+          "out_channels": 116,
+          "kernel": [
+            1,
+            1
+          ],
+          "stride": [
+            1,
+            1
+          ],
+          "padding": [
+            0,
+            0
+          ],
+          "groups": 1,
+          "full_tensor_keys": [
+            "refinenet.betas.1.weight",
+            "refinenet.betas.1.bias"
+          ]
+        },
+        {
+          "name": "refinenet.betas.2",
+          "type": "Conv2d",
+          "parameters": 13572,
+          "tensors": {
+            "weight": [
+              116,
+              116,
+              1,
+              1
+            ],
+            "bias": [
+              116
+            ]
+          },
+          "in_channels": 116,
+          "out_channels": 116,
+          "kernel": [
+            1,
+            1
+          ],
+          "stride": [
+            1,
+            1
+          ],
+          "padding": [
+            0,
+            0
+          ],
+          "groups": 1,
+          "full_tensor_keys": [
+            "refinenet.betas.2.weight",
+            "refinenet.betas.2.bias"
+          ]
+        },
+        {
+          "name": "refinenet.betas.3",
+          "type": "Conv2d",
+          "parameters": 13572,
+          "tensors": {
+            "weight": [
+              116,
+              116,
+              1,
+              1
+            ],
+            "bias": [
+              116
+            ]
+          },
+          "in_channels": 116,
+          "out_channels": 116,
+          "kernel": [
+            1,
+            1
+          ],
+          "stride": [
+            1,
+            1
+          ],
+          "padding": [
+            0,
+            0
+          ],
+          "groups": 1,
+          "full_tensor_keys": [
+            "refinenet.betas.3.weight",
+            "refinenet.betas.3.bias"
+          ]
+        },
+        {
+          "name": "refinenet.betas.4",
+          "type": "Conv2d",
+          "parameters": 13572,
+          "tensors": {
+            "weight": [
+              116,
+              116,
+              1,
+              1
+            ],
+            "bias": [
+              116
+            ]
+          },
+          "in_channels": 116,
+          "out_channels": 116,
+          "kernel": [
+            1,
+            1
+          ],
+          "stride": [
+            1,
+            1
+          ],
+          "padding": [
+            0,
+            0
+          ],
+          "groups": 1,
+          "full_tensor_keys": [
+            "refinenet.betas.4.weight",
+            "refinenet.betas.4.bias"
+          ]
+        },
+        {
+          "name": "refinenet.betas.5",
+          "type": "Conv2d",
+          "parameters": 13572,
+          "tensors": {
+            "weight": [
+              116,
+              116,
+              1,
+              1
+            ],
+            "bias": [
+              116
+            ]
+          },
+          "in_channels": 116,
+          "out_channels": 116,
+          "kernel": [
+            1,
+            1
+          ],
+          "stride": [
+            1,
+            1
+          ],
+          "padding": [
+            0,
+            0
+          ],
+          "groups": 1,
+          "full_tensor_keys": [
+            "refinenet.betas.5.weight",
+            "refinenet.betas.5.bias"
+          ]
+        },
+        {
+          "name": "refinenet.betas.6",
+          "type": "Conv2d",
+          "parameters": 13572,
+          "tensors": {
+            "weight": [
+              116,
+              116,
+              1,
+              1
+            ],
+            "bias": [
+              116
+            ]
+          },
+          "in_channels": 116,
+          "out_channels": 116,
+          "kernel": [
+            1,
+            1
+          ],
+          "stride": [
+            1,
+            1
+          ],
+          "padding": [
+            0,
+            0
+          ],
+          "groups": 1,
+          "full_tensor_keys": [
+            "refinenet.betas.6.weight",
+            "refinenet.betas.6.bias"
+          ]
+        },
+        {
+          "name": "refinenet.betas.7",
+          "type": "Conv2d",
+          "parameters": 13572,
+          "tensors": {
+            "weight": [
+              116,
+              116,
+              1,
+              1
+            ],
+            "bias": [
+              116
+            ]
+          },
+          "in_channels": 116,
+          "out_channels": 116,
+          "kernel": [
+            1,
+            1
+          ],
+          "stride": [
+            1,
+            1
+          ],
+          "padding": [
+            0,
+            0
+          ],
+          "groups": 1,
+          "full_tensor_keys": [
+            "refinenet.betas.7.weight",
+            "refinenet.betas.7.bias"
+          ]
+        },
+        {
+          "name": "refinenet.out",
+          "type": "Conv2d",
+          "parameters": 351,
+          "tensors": {
+            "weight": [
+              3,
+              116,
+              1,
+              1
+            ],
+            "bias": [
+              3
+            ]
+          },
+          "in_channels": 116,
+          "out_channels": 3,
+          "kernel": [
+            1,
+            1
+          ],
+          "stride": [
+            1,
+            1
+          ],
+          "padding": [
+            0,
+            0
+          ],
+          "groups": 1,
+          "full_tensor_keys": [
+            "refinenet.out.weight",
+            "refinenet.out.bias"
+          ]
+        }
+      ],
+      "functional_operations": [
+        "h = Conv3x3(input6); guide = Conv3x3(input[:,[1,4]])",
+        "For each block: h = h + Conv3x3(GELU(Conv3x3(GELU(h))))",
+        "Then h = h*(1+0.1*tanh(gamma_i(guide))) + beta_i(guide)",
+        "gamma_i and beta_i are separate 1x1 convolutions for each block.",
+        "A final 1x1 convolution returns color-difference residuals.",
+        "Before the network, both RGB branches are divided by amplitude/reference_amplitude.",
+        "Green and color-difference residuals anchor to the first RGB branch; normalized RGB is clamped to [0,1], then amplitude scale is restored."
+      ]
+    }
+  },
+  "nonparameterized_steps": [
+    "4x4 RAW gather and weighted count/mean/population-standard-deviation statistics in 3 colors x 16 bins x 3 fields.",
+    "151 features = 144 phase statistics + 3 legacy RGB + 3 smoothed structure-tensor fields + 1 zero-noise field.",
+    "Local amplitude: sqrt(Gaussian(radius16,sigma4)(mean_RGB(legacy^2))).",
+    "Feature channels divided by amplitude to their released degree (0,1,2), then frozen mean/std affine.",
+    "RAW continuous kernel correction with 12 basis coefficients per color and cap*tanh(dot/cap), default cap5.",
+    "Optional fixed-coefficient global radial LCA applies to both RGB branches before RefineNet and recomputes amplitude."
+  ],
+  "routes": {
+    "1": {
+      "controller": "weights/modules/v97_k01_controller_wgpu.pt",
+      "refinenet": "weights/modules/v97_k01_rarm_wgpu.pt",
+      "controller_parameters": 1990660,
+      "refinenet_parameters": 2165607,
+      "trainable_parameters": 4156267,
+      "affine_buffers": 302
+    },
+    "2": {
+      "controller": "weights/modules/v97_k02_controller_wgpu.pt",
+      "refinenet": "weights/modules/v97_k02_rarm_wgpu.pt",
+      "controller_parameters": 1990660,
+      "refinenet_parameters": 2165607,
+      "trainable_parameters": 4156267,
+      "affine_buffers": 302
+    },
+    "3": {
+      "controller": "weights/modules/v97_k03_controller_wgpu.pt",
+      "refinenet": "weights/modules/v97_k03_rarm_wgpu.pt",
+      "controller_parameters": 1990660,
+      "refinenet_parameters": 2165607,
+      "trainable_parameters": 4156267,
+      "affine_buffers": 302
+    },
+    "4": {
+      "controller": "weights/modules/v97_k04_controller_wgpu.pt",
+      "refinenet": "weights/modules/v97_k04_rarm_wgpu.pt",
+      "controller_parameters": 1990660,
+      "refinenet_parameters": 2165607,
+      "trainable_parameters": 4156267,
+      "affine_buffers": 302
+    },
+    "5": {
+      "controller": "weights/modules/v97_k05_controller_wgpu.pt",
+      "refinenet": "weights/modules/v97_k05_rarm_wgpu.pt",
+      "controller_parameters": 1990660,
+      "refinenet_parameters": 2165607,
+      "trainable_parameters": 4156267,
+      "affine_buffers": 302
+    },
+    "6": {
+      "controller": "weights/modules/v97_k06_controller_wgpu.pt",
+      "refinenet": "weights/modules/v97_k06_rarm_wgpu.pt",
+      "controller_parameters": 1990660,
+      "refinenet_parameters": 2165607,
+      "trainable_parameters": 4156267,
+      "affine_buffers": 302
+    },
+    "7": {
+      "controller": "weights/modules/v97_k07_controller_wgpu.pt",
+      "refinenet": "weights/modules/v97_k07_rarm_wgpu.pt",
+      "controller_parameters": 1990660,
+      "refinenet_parameters": 2165607,
+      "trainable_parameters": 4156267,
+      "affine_buffers": 302
+    },
+    "8": {
+      "controller": "weights/modules/v97_k08_controller_wgpu.pt",
+      "refinenet": "weights/modules/v97_k14_rarm_wgpu.pt",
+      "controller_parameters": 1990660,
+      "refinenet_parameters": 2165607,
+      "trainable_parameters": 4156267,
+      "affine_buffers": 302
+    },
+    "9": {
+      "controller": "weights/modules/v97_k09_controller_wgpu.pt",
+      "refinenet": "weights/modules/v97_k14_rarm_wgpu.pt",
+      "controller_parameters": 1990660,
+      "refinenet_parameters": 2165607,
+      "trainable_parameters": 4156267,
+      "affine_buffers": 302
+    },
+    "10": {
+      "controller": "weights/modules/v97_k10_controller_wgpu.pt",
+      "refinenet": "weights/modules/v97_k14_rarm_wgpu.pt",
+      "controller_parameters": 1990660,
+      "refinenet_parameters": 2165607,
+      "trainable_parameters": 4156267,
+      "affine_buffers": 302
+    },
+    "11": {
+      "controller": "weights/modules/v97_k11_controller_wgpu.pt",
+      "refinenet": "weights/modules/v97_k14_rarm_wgpu.pt",
+      "controller_parameters": 1990660,
+      "refinenet_parameters": 2165607,
+      "trainable_parameters": 4156267,
+      "affine_buffers": 302
+    },
+    "12": {
+      "controller": "weights/modules/v97_k12_controller_wgpu.pt",
+      "refinenet": "weights/modules/v97_k14_rarm_wgpu.pt",
+      "controller_parameters": 1990660,
+      "refinenet_parameters": 2165607,
+      "trainable_parameters": 4156267,
+      "affine_buffers": 302
+    },
+    "13": {
+      "controller": "weights/modules/v97_k14_controller_wgpu.pt",
+      "refinenet": "weights/modules/v97_k14_rarm_wgpu.pt",
+      "controller_parameters": 1990660,
+      "refinenet_parameters": 2165607,
+      "trainable_parameters": 4156267,
+      "affine_buffers": 302
+    },
+    "14": {
+      "controller": "weights/modules/v97_k14_controller_wgpu.pt",
+      "refinenet": "weights/modules/v97_k14_rarm_wgpu.pt",
+      "controller_parameters": 1990660,
+      "refinenet_parameters": 2165607,
+      "trainable_parameters": 4156267,
+      "affine_buffers": 302
+    }
+  },
+  "forward_trace": {
+    "scope": "One complete K4 core invocation, supplied registration/covariance, LCA disabled; constant numerical shape probe, not a quality experiment.",
+    "input_shapes": {
+      "frames": [
+        1,
+        4,
+        32,
+        32
+      ],
+      "flow": [
+        1,
+        4,
+        32,
+        32,
+        2
+      ],
+      "covariance": [
+        1,
+        3,
+        64,
+        64
+      ]
+    },
+    "outputs": {
+      "rgb": {
+        "shape": [
+          1,
+          3,
+          64,
+          64
+        ],
+        "dtype": "torch.float32"
+      },
+      "learned": {
+        "shape": [
+          1,
+          3,
+          64,
+          64
+        ],
+        "dtype": "torch.float32"
+      },
+      "legacy": {
+        "shape": [
+          1,
+          3,
+          64,
+          64
+        ],
+        "dtype": "torch.float32"
+      },
+      "phase": {
+        "shape": [
+          1,
+          144,
+          64,
+          64
+        ],
+        "dtype": "torch.float32"
+      },
+      "controller_input": {
+        "shape": [
+          1,
+          151,
+          64,
+          64
+        ],
+        "dtype": "torch.float32"
+      },
+      "qmap": {
+        "shape": [
+          1,
+          36,
+          64,
+          64
+        ],
+        "dtype": "torch.float32"
+      },
+      "amplitude": {
+        "shape": [
+          1,
+          1,
+          64,
+          64
+        ],
+        "dtype": "torch.float32"
+      },
+      "controller_amplitude": {
+        "shape": [
+          1,
+          1,
+          64,
+          64
+        ],
+        "dtype": "torch.float32"
+      }
+    },
+    "leaf_modules": [
+      {
+        "index": 0,
+        "name": "controller.enc.0.0",
+        "type": "Conv2d",
+        "input": [
+          {
+            "shape": [
+              1,
+              151,
+              64,
+              64
+            ],
+            "dtype": "torch.float32"
+          }
+        ],
+        "output": {
+          "shape": [
+            1,
+            32,
+            64,
+            64
+          ],
+          "dtype": "torch.float32"
+        }
+      },
+      {
+        "index": 1,
+        "name": "controller.enc.0.1",
+        "type": "GELU",
+        "input": [
+          {
+            "shape": [
+              1,
+              32,
+              64,
+              64
+            ],
+            "dtype": "torch.float32"
+          }
+        ],
+        "output": {
+          "shape": [
+            1,
+            32,
+            64,
+            64
+          ],
+          "dtype": "torch.float32"
+        }
+      },
+      {
+        "index": 2,
+        "name": "controller.enc.0.2",
+        "type": "Conv2d",
+        "input": [
+          {
+            "shape": [
+              1,
+              32,
+              64,
+              64
+            ],
+            "dtype": "torch.float32"
+          }
+        ],
+        "output": {
+          "shape": [
+            1,
+            32,
+            64,
+            64
+          ],
+          "dtype": "torch.float32"
+        }
+      },
+      {
+        "index": 3,
+        "name": "controller.enc.0.3",
+        "type": "GELU",
+        "input": [
+          {
+            "shape": [
+              1,
+              32,
+              64,
+              64
+            ],
+            "dtype": "torch.float32"
+          }
+        ],
+        "output": {
+          "shape": [
+            1,
+            32,
+            64,
+            64
+          ],
+          "dtype": "torch.float32"
+        }
+      },
+      {
+        "index": 4,
+        "name": "controller.enc.1.0",
+        "type": "Conv2d",
+        "input": [
+          {
+            "shape": [
+              1,
+              32,
+              32,
+              32
+            ],
+            "dtype": "torch.float32"
+          }
+        ],
+        "output": {
+          "shape": [
+            1,
+            64,
+            32,
+            32
+          ],
+          "dtype": "torch.float32"
+        }
+      },
+      {
+        "index": 5,
+        "name": "controller.enc.1.1",
+        "type": "GELU",
+        "input": [
+          {
+            "shape": [
+              1,
+              64,
+              32,
+              32
+            ],
+            "dtype": "torch.float32"
+          }
+        ],
+        "output": {
+          "shape": [
+            1,
+            64,
+            32,
+            32
+          ],
+          "dtype": "torch.float32"
+        }
+      },
+      {
+        "index": 6,
+        "name": "controller.enc.1.2",
+        "type": "Conv2d",
+        "input": [
+          {
+            "shape": [
+              1,
+              64,
+              32,
+              32
+            ],
+            "dtype": "torch.float32"
+          }
+        ],
+        "output": {
+          "shape": [
+            1,
+            64,
+            32,
+            32
+          ],
+          "dtype": "torch.float32"
+        }
+      },
+      {
+        "index": 7,
+        "name": "controller.enc.1.3",
+        "type": "GELU",
+        "input": [
+          {
+            "shape": [
+              1,
+              64,
+              32,
+              32
+            ],
+            "dtype": "torch.float32"
+          }
+        ],
+        "output": {
+          "shape": [
+            1,
+            64,
+            32,
+            32
+          ],
+          "dtype": "torch.float32"
+        }
+      },
+      {
+        "index": 8,
+        "name": "controller.enc.2.0",
+        "type": "Conv2d",
+        "input": [
+          {
+            "shape": [
+              1,
+              64,
+              16,
+              16
+            ],
+            "dtype": "torch.float32"
+          }
+        ],
+        "output": {
+          "shape": [
+            1,
+            128,
+            16,
+            16
+          ],
+          "dtype": "torch.float32"
+        }
+      },
+      {
+        "index": 9,
+        "name": "controller.enc.2.1",
+        "type": "GELU",
+        "input": [
+          {
+            "shape": [
+              1,
+              128,
+              16,
+              16
+            ],
+            "dtype": "torch.float32"
+          }
+        ],
+        "output": {
+          "shape": [
+            1,
+            128,
+            16,
+            16
+          ],
+          "dtype": "torch.float32"
+        }
+      },
+      {
+        "index": 10,
+        "name": "controller.enc.2.2",
+        "type": "Conv2d",
+        "input": [
+          {
+            "shape": [
+              1,
+              128,
+              16,
+              16
+            ],
+            "dtype": "torch.float32"
+          }
+        ],
+        "output": {
+          "shape": [
+            1,
+            128,
+            16,
+            16
+          ],
+          "dtype": "torch.float32"
+        }
+      },
+      {
+        "index": 11,
+        "name": "controller.enc.2.3",
+        "type": "GELU",
+        "input": [
+          {
+            "shape": [
+              1,
+              128,
+              16,
+              16
+            ],
+            "dtype": "torch.float32"
+          }
+        ],
+        "output": {
+          "shape": [
+            1,
+            128,
+            16,
+            16
+          ],
+          "dtype": "torch.float32"
+        }
+      },
+      {
+        "index": 12,
+        "name": "controller.mid.0",
+        "type": "Conv2d",
+        "input": [
+          {
+            "shape": [
+              1,
+              128,
+              8,
+              8
+            ],
+            "dtype": "torch.float32"
+          }
+        ],
+        "output": {
+          "shape": [
+            1,
+            256,
+            8,
+            8
+          ],
+          "dtype": "torch.float32"
+        }
+      },
+      {
+        "index": 13,
+        "name": "controller.mid.1",
+        "type": "GELU",
+        "input": [
+          {
+            "shape": [
+              1,
+              256,
+              8,
+              8
+            ],
+            "dtype": "torch.float32"
+          }
+        ],
+        "output": {
+          "shape": [
+            1,
+            256,
+            8,
+            8
+          ],
+          "dtype": "torch.float32"
+        }
+      },
+      {
+        "index": 14,
+        "name": "controller.mid.2",
+        "type": "Conv2d",
+        "input": [
+          {
+            "shape": [
+              1,
+              256,
+              8,
+              8
+            ],
+            "dtype": "torch.float32"
+          }
+        ],
+        "output": {
+          "shape": [
+            1,
+            256,
+            8,
+            8
+          ],
+          "dtype": "torch.float32"
+        }
+      },
+      {
+        "index": 15,
+        "name": "controller.mid.3",
+        "type": "GELU",
+        "input": [
+          {
+            "shape": [
+              1,
+              256,
+              8,
+              8
+            ],
+            "dtype": "torch.float32"
+          }
+        ],
+        "output": {
+          "shape": [
+            1,
+            256,
+            8,
+            8
+          ],
+          "dtype": "torch.float32"
+        }
+      },
+      {
+        "index": 16,
+        "name": "controller.dec.0.0",
+        "type": "Conv2d",
+        "input": [
+          {
+            "shape": [
+              1,
+              384,
+              16,
+              16
+            ],
+            "dtype": "torch.float32"
+          }
+        ],
+        "output": {
+          "shape": [
+            1,
+            128,
+            16,
+            16
+          ],
+          "dtype": "torch.float32"
+        }
+      },
+      {
+        "index": 17,
+        "name": "controller.dec.0.1",
+        "type": "GELU",
+        "input": [
+          {
+            "shape": [
+              1,
+              128,
+              16,
+              16
+            ],
+            "dtype": "torch.float32"
+          }
+        ],
+        "output": {
+          "shape": [
+            1,
+            128,
+            16,
+            16
+          ],
+          "dtype": "torch.float32"
+        }
+      },
+      {
+        "index": 18,
+        "name": "controller.dec.0.2",
+        "type": "Conv2d",
+        "input": [
+          {
+            "shape": [
+              1,
+              128,
+              16,
+              16
+            ],
+            "dtype": "torch.float32"
+          }
+        ],
+        "output": {
+          "shape": [
+            1,
+            128,
+            16,
+            16
+          ],
+          "dtype": "torch.float32"
+        }
+      },
+      {
+        "index": 19,
+        "name": "controller.dec.0.3",
+        "type": "GELU",
+        "input": [
+          {
+            "shape": [
+              1,
+              128,
+              16,
+              16
+            ],
+            "dtype": "torch.float32"
+          }
+        ],
+        "output": {
+          "shape": [
+            1,
+            128,
+            16,
+            16
+          ],
+          "dtype": "torch.float32"
+        }
+      },
+      {
+        "index": 20,
+        "name": "controller.dec.1.0",
+        "type": "Conv2d",
+        "input": [
+          {
+            "shape": [
+              1,
+              192,
+              32,
+              32
+            ],
+            "dtype": "torch.float32"
+          }
+        ],
+        "output": {
+          "shape": [
+            1,
+            64,
+            32,
+            32
+          ],
+          "dtype": "torch.float32"
+        }
+      },
+      {
+        "index": 21,
+        "name": "controller.dec.1.1",
+        "type": "GELU",
+        "input": [
+          {
+            "shape": [
+              1,
+              64,
+              32,
+              32
+            ],
+            "dtype": "torch.float32"
+          }
+        ],
+        "output": {
+          "shape": [
+            1,
+            64,
+            32,
+            32
+          ],
+          "dtype": "torch.float32"
+        }
+      },
+      {
+        "index": 22,
+        "name": "controller.dec.1.2",
+        "type": "Conv2d",
+        "input": [
+          {
+            "shape": [
+              1,
+              64,
+              32,
+              32
+            ],
+            "dtype": "torch.float32"
+          }
+        ],
+        "output": {
+          "shape": [
+            1,
+            64,
+            32,
+            32
+          ],
+          "dtype": "torch.float32"
+        }
+      },
+      {
+        "index": 23,
+        "name": "controller.dec.1.3",
+        "type": "GELU",
+        "input": [
+          {
+            "shape": [
+              1,
+              64,
+              32,
+              32
+            ],
+            "dtype": "torch.float32"
+          }
+        ],
+        "output": {
+          "shape": [
+            1,
+            64,
+            32,
+            32
+          ],
+          "dtype": "torch.float32"
+        }
+      },
+      {
+        "index": 24,
+        "name": "controller.dec.2.0",
+        "type": "Conv2d",
+        "input": [
+          {
+            "shape": [
+              1,
+              96,
+              64,
+              64
+            ],
+            "dtype": "torch.float32"
+          }
+        ],
+        "output": {
+          "shape": [
+            1,
+            32,
+            64,
+            64
+          ],
+          "dtype": "torch.float32"
+        }
+      },
+      {
+        "index": 25,
+        "name": "controller.dec.2.1",
+        "type": "GELU",
+        "input": [
+          {
+            "shape": [
+              1,
+              32,
+              64,
+              64
+            ],
+            "dtype": "torch.float32"
+          }
+        ],
+        "output": {
+          "shape": [
+            1,
+            32,
+            64,
+            64
+          ],
+          "dtype": "torch.float32"
+        }
+      },
+      {
+        "index": 26,
+        "name": "controller.dec.2.2",
+        "type": "Conv2d",
+        "input": [
+          {
+            "shape": [
+              1,
+              32,
+              64,
+              64
+            ],
+            "dtype": "torch.float32"
+          }
+        ],
+        "output": {
+          "shape": [
+            1,
+            32,
+            64,
+            64
+          ],
+          "dtype": "torch.float32"
+        }
+      },
+      {
+        "index": 27,
+        "name": "controller.dec.2.3",
+        "type": "GELU",
+        "input": [
+          {
+            "shape": [
+              1,
+              32,
+              64,
+              64
+            ],
+            "dtype": "torch.float32"
+          }
+        ],
+        "output": {
+          "shape": [
+            1,
+            32,
+            64,
+            64
+          ],
+          "dtype": "torch.float32"
+        }
+      },
+      {
+        "index": 28,
+        "name": "controller.out",
+        "type": "Conv2d",
+        "input": [
+          {
+            "shape": [
+              1,
+              32,
+              64,
+              64
+            ],
+            "dtype": "torch.float32"
+          }
+        ],
+        "output": {
+          "shape": [
+            1,
+            36,
+            64,
+            64
+          ],
+          "dtype": "torch.float32"
+        }
+      },
+      {
+        "index": 29,
+        "name": "refinenet.inp",
+        "type": "Conv2d",
+        "input": [
+          {
+            "shape": [
+              1,
+              6,
+              64,
+              64
+            ],
+            "dtype": "torch.float32"
+          }
+        ],
+        "output": {
+          "shape": [
+            1,
+            116,
+            64,
+            64
+          ],
+          "dtype": "torch.float32"
+        }
+      },
+      {
+        "index": 30,
+        "name": "refinenet.guide",
+        "type": "Conv2d",
+        "input": [
+          {
+            "shape": [
+              1,
+              2,
+              64,
+              64
+            ],
+            "dtype": "torch.float32"
+          }
+        ],
+        "output": {
+          "shape": [
+            1,
+            116,
+            64,
+            64
+          ],
+          "dtype": "torch.float32"
+        }
+      },
+      {
+        "index": 31,
+        "name": "refinenet.body.0.c1",
+        "type": "Conv2d",
+        "input": [
+          {
+            "shape": [
+              1,
+              116,
+              64,
+              64
+            ],
+            "dtype": "torch.float32"
+          }
+        ],
+        "output": {
+          "shape": [
+            1,
+            116,
+            64,
+            64
+          ],
+          "dtype": "torch.float32"
+        }
+      },
+      {
+        "index": 32,
+        "name": "refinenet.body.0.c2",
+        "type": "Conv2d",
+        "input": [
+          {
+            "shape": [
+              1,
+              116,
+              64,
+              64
+            ],
+            "dtype": "torch.float32"
+          }
+        ],
+        "output": {
+          "shape": [
+            1,
+            116,
+            64,
+            64
+          ],
+          "dtype": "torch.float32"
+        }
+      },
+      {
+        "index": 33,
+        "name": "refinenet.gammas.0",
+        "type": "Conv2d",
+        "input": [
+          {
+            "shape": [
+              1,
+              116,
+              64,
+              64
+            ],
+            "dtype": "torch.float32"
+          }
+        ],
+        "output": {
+          "shape": [
+            1,
+            116,
+            64,
+            64
+          ],
+          "dtype": "torch.float32"
+        }
+      },
+      {
+        "index": 34,
+        "name": "refinenet.betas.0",
+        "type": "Conv2d",
+        "input": [
+          {
+            "shape": [
+              1,
+              116,
+              64,
+              64
+            ],
+            "dtype": "torch.float32"
+          }
+        ],
+        "output": {
+          "shape": [
+            1,
+            116,
+            64,
+            64
+          ],
+          "dtype": "torch.float32"
+        }
+      },
+      {
+        "index": 35,
+        "name": "refinenet.body.1.c1",
+        "type": "Conv2d",
+        "input": [
+          {
+            "shape": [
+              1,
+              116,
+              64,
+              64
+            ],
+            "dtype": "torch.float32"
+          }
+        ],
+        "output": {
+          "shape": [
+            1,
+            116,
+            64,
+            64
+          ],
+          "dtype": "torch.float32"
+        }
+      },
+      {
+        "index": 36,
+        "name": "refinenet.body.1.c2",
+        "type": "Conv2d",
+        "input": [
+          {
+            "shape": [
+              1,
+              116,
+              64,
+              64
+            ],
+            "dtype": "torch.float32"
+          }
+        ],
+        "output": {
+          "shape": [
+            1,
+            116,
+            64,
+            64
+          ],
+          "dtype": "torch.float32"
+        }
+      },
+      {
+        "index": 37,
+        "name": "refinenet.gammas.1",
+        "type": "Conv2d",
+        "input": [
+          {
+            "shape": [
+              1,
+              116,
+              64,
+              64
+            ],
+            "dtype": "torch.float32"
+          }
+        ],
+        "output": {
+          "shape": [
+            1,
+            116,
+            64,
+            64
+          ],
+          "dtype": "torch.float32"
+        }
+      },
+      {
+        "index": 38,
+        "name": "refinenet.betas.1",
+        "type": "Conv2d",
+        "input": [
+          {
+            "shape": [
+              1,
+              116,
+              64,
+              64
+            ],
+            "dtype": "torch.float32"
+          }
+        ],
+        "output": {
+          "shape": [
+            1,
+            116,
+            64,
+            64
+          ],
+          "dtype": "torch.float32"
+        }
+      },
+      {
+        "index": 39,
+        "name": "refinenet.body.2.c1",
+        "type": "Conv2d",
+        "input": [
+          {
+            "shape": [
+              1,
+              116,
+              64,
+              64
+            ],
+            "dtype": "torch.float32"
+          }
+        ],
+        "output": {
+          "shape": [
+            1,
+            116,
+            64,
+            64
+          ],
+          "dtype": "torch.float32"
+        }
+      },
+      {
+        "index": 40,
+        "name": "refinenet.body.2.c2",
+        "type": "Conv2d",
+        "input": [
+          {
+            "shape": [
+              1,
+              116,
+              64,
+              64
+            ],
+            "dtype": "torch.float32"
+          }
+        ],
+        "output": {
+          "shape": [
+            1,
+            116,
+            64,
+            64
+          ],
+          "dtype": "torch.float32"
+        }
+      },
+      {
+        "index": 41,
+        "name": "refinenet.gammas.2",
+        "type": "Conv2d",
+        "input": [
+          {
+            "shape": [
+              1,
+              116,
+              64,
+              64
+            ],
+            "dtype": "torch.float32"
+          }
+        ],
+        "output": {
+          "shape": [
+            1,
+            116,
+            64,
+            64
+          ],
+          "dtype": "torch.float32"
+        }
+      },
+      {
+        "index": 42,
+        "name": "refinenet.betas.2",
+        "type": "Conv2d",
+        "input": [
+          {
+            "shape": [
+              1,
+              116,
+              64,
+              64
+            ],
+            "dtype": "torch.float32"
+          }
+        ],
+        "output": {
+          "shape": [
+            1,
+            116,
+            64,
+            64
+          ],
+          "dtype": "torch.float32"
+        }
+      },
+      {
+        "index": 43,
+        "name": "refinenet.body.3.c1",
+        "type": "Conv2d",
+        "input": [
+          {
+            "shape": [
+              1,
+              116,
+              64,
+              64
+            ],
+            "dtype": "torch.float32"
+          }
+        ],
+        "output": {
+          "shape": [
+            1,
+            116,
+            64,
+            64
+          ],
+          "dtype": "torch.float32"
+        }
+      },
+      {
+        "index": 44,
+        "name": "refinenet.body.3.c2",
+        "type": "Conv2d",
+        "input": [
+          {
+            "shape": [
+              1,
+              116,
+              64,
+              64
+            ],
+            "dtype": "torch.float32"
+          }
+        ],
+        "output": {
+          "shape": [
+            1,
+            116,
+            64,
+            64
+          ],
+          "dtype": "torch.float32"
+        }
+      },
+      {
+        "index": 45,
+        "name": "refinenet.gammas.3",
+        "type": "Conv2d",
+        "input": [
+          {
+            "shape": [
+              1,
+              116,
+              64,
+              64
+            ],
+            "dtype": "torch.float32"
+          }
+        ],
+        "output": {
+          "shape": [
+            1,
+            116,
+            64,
+            64
+          ],
+          "dtype": "torch.float32"
+        }
+      },
+      {
+        "index": 46,
+        "name": "refinenet.betas.3",
+        "type": "Conv2d",
+        "input": [
+          {
+            "shape": [
+              1,
+              116,
+              64,
+              64
+            ],
+            "dtype": "torch.float32"
+          }
+        ],
+        "output": {
+          "shape": [
+            1,
+            116,
+            64,
+            64
+          ],
+          "dtype": "torch.float32"
+        }
+      },
+      {
+        "index": 47,
+        "name": "refinenet.body.4.c1",
+        "type": "Conv2d",
+        "input": [
+          {
+            "shape": [
+              1,
+              116,
+              64,
+              64
+            ],
+            "dtype": "torch.float32"
+          }
+        ],
+        "output": {
+          "shape": [
+            1,
+            116,
+            64,
+            64
+          ],
+          "dtype": "torch.float32"
+        }
+      },
+      {
+        "index": 48,
+        "name": "refinenet.body.4.c2",
+        "type": "Conv2d",
+        "input": [
+          {
+            "shape": [
+              1,
+              116,
+              64,
+              64
+            ],
+            "dtype": "torch.float32"
+          }
+        ],
+        "output": {
+          "shape": [
+            1,
+            116,
+            64,
+            64
+          ],
+          "dtype": "torch.float32"
+        }
+      },
+      {
+        "index": 49,
+        "name": "refinenet.gammas.4",
+        "type": "Conv2d",
+        "input": [
+          {
+            "shape": [
+              1,
+              116,
+              64,
+              64
+            ],
+            "dtype": "torch.float32"
+          }
+        ],
+        "output": {
+          "shape": [
+            1,
+            116,
+            64,
+            64
+          ],
+          "dtype": "torch.float32"
+        }
+      },
+      {
+        "index": 50,
+        "name": "refinenet.betas.4",
+        "type": "Conv2d",
+        "input": [
+          {
+            "shape": [
+              1,
+              116,
+              64,
+              64
+            ],
+            "dtype": "torch.float32"
+          }
+        ],
+        "output": {
+          "shape": [
+            1,
+            116,
+            64,
+            64
+          ],
+          "dtype": "torch.float32"
+        }
+      },
+      {
+        "index": 51,
+        "name": "refinenet.body.5.c1",
+        "type": "Conv2d",
+        "input": [
+          {
+            "shape": [
+              1,
+              116,
+              64,
+              64
+            ],
+            "dtype": "torch.float32"
+          }
+        ],
+        "output": {
+          "shape": [
+            1,
+            116,
+            64,
+            64
+          ],
+          "dtype": "torch.float32"
+        }
+      },
+      {
+        "index": 52,
+        "name": "refinenet.body.5.c2",
+        "type": "Conv2d",
+        "input": [
+          {
+            "shape": [
+              1,
+              116,
+              64,
+              64
+            ],
+            "dtype": "torch.float32"
+          }
+        ],
+        "output": {
+          "shape": [
+            1,
+            116,
+            64,
+            64
+          ],
+          "dtype": "torch.float32"
+        }
+      },
+      {
+        "index": 53,
+        "name": "refinenet.gammas.5",
+        "type": "Conv2d",
+        "input": [
+          {
+            "shape": [
+              1,
+              116,
+              64,
+              64
+            ],
+            "dtype": "torch.float32"
+          }
+        ],
+        "output": {
+          "shape": [
+            1,
+            116,
+            64,
+            64
+          ],
+          "dtype": "torch.float32"
+        }
+      },
+      {
+        "index": 54,
+        "name": "refinenet.betas.5",
+        "type": "Conv2d",
+        "input": [
+          {
+            "shape": [
+              1,
+              116,
+              64,
+              64
+            ],
+            "dtype": "torch.float32"
+          }
+        ],
+        "output": {
+          "shape": [
+            1,
+            116,
+            64,
+            64
+          ],
+          "dtype": "torch.float32"
+        }
+      },
+      {
+        "index": 55,
+        "name": "refinenet.body.6.c1",
+        "type": "Conv2d",
+        "input": [
+          {
+            "shape": [
+              1,
+              116,
+              64,
+              64
+            ],
+            "dtype": "torch.float32"
+          }
+        ],
+        "output": {
+          "shape": [
+            1,
+            116,
+            64,
+            64
+          ],
+          "dtype": "torch.float32"
+        }
+      },
+      {
+        "index": 56,
+        "name": "refinenet.body.6.c2",
+        "type": "Conv2d",
+        "input": [
+          {
+            "shape": [
+              1,
+              116,
+              64,
+              64
+            ],
+            "dtype": "torch.float32"
+          }
+        ],
+        "output": {
+          "shape": [
+            1,
+            116,
+            64,
+            64
+          ],
+          "dtype": "torch.float32"
+        }
+      },
+      {
+        "index": 57,
+        "name": "refinenet.gammas.6",
+        "type": "Conv2d",
+        "input": [
+          {
+            "shape": [
+              1,
+              116,
+              64,
+              64
+            ],
+            "dtype": "torch.float32"
+          }
+        ],
+        "output": {
+          "shape": [
+            1,
+            116,
+            64,
+            64
+          ],
+          "dtype": "torch.float32"
+        }
+      },
+      {
+        "index": 58,
+        "name": "refinenet.betas.6",
+        "type": "Conv2d",
+        "input": [
+          {
+            "shape": [
+              1,
+              116,
+              64,
+              64
+            ],
+            "dtype": "torch.float32"
+          }
+        ],
+        "output": {
+          "shape": [
+            1,
+            116,
+            64,
+            64
+          ],
+          "dtype": "torch.float32"
+        }
+      },
+      {
+        "index": 59,
+        "name": "refinenet.body.7.c1",
+        "type": "Conv2d",
+        "input": [
+          {
+            "shape": [
+              1,
+              116,
+              64,
+              64
+            ],
+            "dtype": "torch.float32"
+          }
+        ],
+        "output": {
+          "shape": [
+            1,
+            116,
+            64,
+            64
+          ],
+          "dtype": "torch.float32"
+        }
+      },
+      {
+        "index": 60,
+        "name": "refinenet.body.7.c2",
+        "type": "Conv2d",
+        "input": [
+          {
+            "shape": [
+              1,
+              116,
+              64,
+              64
+            ],
+            "dtype": "torch.float32"
+          }
+        ],
+        "output": {
+          "shape": [
+            1,
+            116,
+            64,
+            64
+          ],
+          "dtype": "torch.float32"
+        }
+      },
+      {
+        "index": 61,
+        "name": "refinenet.gammas.7",
+        "type": "Conv2d",
+        "input": [
+          {
+            "shape": [
+              1,
+              116,
+              64,
+              64
+            ],
+            "dtype": "torch.float32"
+          }
+        ],
+        "output": {
+          "shape": [
+            1,
+            116,
+            64,
+            64
+          ],
+          "dtype": "torch.float32"
+        }
+      },
+      {
+        "index": 62,
+        "name": "refinenet.betas.7",
+        "type": "Conv2d",
+        "input": [
+          {
+            "shape": [
+              1,
+              116,
+              64,
+              64
+            ],
+            "dtype": "torch.float32"
+          }
+        ],
+        "output": {
+          "shape": [
+            1,
+            116,
+            64,
+            64
+          ],
+          "dtype": "torch.float32"
+        }
+      },
+      {
+        "index": 63,
+        "name": "refinenet.out",
+        "type": "Conv2d",
+        "input": [
+          {
+            "shape": [
+              1,
+              116,
+              64,
+              64
+            ],
+            "dtype": "torch.float32"
+          }
+        ],
+        "output": {
+          "shape": [
+            1,
+            3,
+            64,
+            64
+          ],
+          "dtype": "torch.float32"
+        }
+      }
+    ]
+  },
+  "remaining_external_inputs": [
+    "registration",
+    "RAW-to-guide construction",
+    "covariance output-grid scheduling",
+    "automatic LCA estimation"
+  ],
+  "version_boundary": "These original weights belong to v9.8/v9.7 core. They are not author weights for the independent speech-inspired Transformer or v17 Stormer/Fast paths."
+}

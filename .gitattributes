@@ -5,3 +5,4 @@ docs/revision-validation/* -text whitespace=-blank-at-eol,-blank-at-eof
 docs/tasks/review-revision/* -text whitespace=-blank-at-eol,-blank-at-eof
 docs/rea-validation/* -text whitespace=-blank-at-eol,-blank-at-eof
 tests/data/recovered_*_oracle.npz -text
+docs/network-kit/* -text whitespace=-blank-at-eol,-blank-at-eof

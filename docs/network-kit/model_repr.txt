@@ -1,0 +1,68 @@
+RecoveredJSR(
+  (controller): Controller(
+    (enc): ModuleList(
+      (0): Sequential(
+        (0): Conv2d(151, 32, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+        (1): GELU(approximate='none')
+        (2): Conv2d(32, 32, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+        (3): GELU(approximate='none')
+      )
+      (1): Sequential(
+        (0): Conv2d(32, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+        (1): GELU(approximate='none')
+        (2): Conv2d(64, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+        (3): GELU(approximate='none')
+      )
+      (2): Sequential(
+        (0): Conv2d(64, 128, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+        (1): GELU(approximate='none')
+        (2): Conv2d(128, 128, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+        (3): GELU(approximate='none')
+      )
+    )
+    (mid): Sequential(
+      (0): Conv2d(128, 256, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+      (1): GELU(approximate='none')
+      (2): Conv2d(256, 256, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+      (3): GELU(approximate='none')
+    )
+    (dec): ModuleList(
+      (0): Sequential(
+        (0): Conv2d(384, 128, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+        (1): GELU(approximate='none')
+        (2): Conv2d(128, 128, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+        (3): GELU(approximate='none')
+      )
+      (1): Sequential(
+        (0): Conv2d(192, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+        (1): GELU(approximate='none')
+        (2): Conv2d(64, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+        (3): GELU(approximate='none')
+      )
+      (2): Sequential(
+        (0): Conv2d(96, 32, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+        (1): GELU(approximate='none')
+        (2): Conv2d(32, 32, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+        (3): GELU(approximate='none')
+      )
+    )
+    (out): Conv2d(32, 36, kernel_size=(1, 1), stride=(1, 1))
+  )
+  (refinenet): RefineNet(
+    (inp): Conv2d(6, 116, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+    (guide): Conv2d(2, 116, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+    (body): ModuleList(
+      (0-7): 8 x PreActResidual(
+        (c1): Conv2d(116, 116, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+        (c2): Conv2d(116, 116, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+      )
+    )
+    (gammas): ModuleList(
+      (0-7): 8 x Conv2d(116, 116, kernel_size=(1, 1), stride=(1, 1))
+    )
+    (betas): ModuleList(
+      (0-7): 8 x Conv2d(116, 116, kernel_size=(1, 1), stride=(1, 1))
+    )
+    (out): Conv2d(116, 3, kernel_size=(1, 1), stride=(1, 1))
+  )
+)
