@@ -8,3 +8,4 @@ runs/
 build/
 *.pt
 *.pth
+!tests/data/

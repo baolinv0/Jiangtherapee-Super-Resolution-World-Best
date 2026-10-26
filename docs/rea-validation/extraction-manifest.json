@@ -1,0 +1,55 @@
+{
+  "release": "v9.8",
+  "release_url": "https://github.com/y-g-jiang/Jiangtherapee-Super-Resolution-World-Best/releases/download/v9.8/JSR_V9_8.exe",
+  "executable_bytes": 318034141,
+  "executable_sha256": "e4fbe9a44ba508e368a7802bb5b28be1e8a49fc666d28f8306f41d34cf3576c3",
+  "static_only": true,
+  "backend_resource": {
+    "resource": [
+      10,
+      101,
+      1033
+    ],
+    "offset": 1921816,
+    "bytes": 312162740
+  },
+  "archive": {
+    "offset": 2269464,
+    "bytes": 311815092,
+    "python_version": 310,
+    "python_library": "python310.dll",
+    "table_offset": 314067044,
+    "table_bytes": 17424
+  },
+  "module": {
+    "name": "wgpu_multik_stream_v1.cp310-win_amd64.pyd",
+    "archive_offset": 146831573,
+    "compressed_bytes": 301922,
+    "bytes": 903680,
+    "compressed_sha256": "570c507fa2595c62ce5e503bd7eebd2f630a2b95635f95614e8050b878096e57",
+    "sha256": "6724796493551c05ef53f8b40196fcd55924c78963bdc24bd9d401b90d344150"
+  },
+  "text_normalization": "Start at struct Params, LF newlines, strip surrounding whitespace, append one LF",
+  "shaders": {
+    "learned_accumulate": {
+      "file": "learned_accumulate.wgsl",
+      "bytes": 3611,
+      "sha256": "f830993f71c007589fcf0869a907267ae1ff3af0400b3ca3758516c1c91be2f9"
+    },
+    "learned_finalize": {
+      "file": "learned_finalize.wgsl",
+      "bytes": 587,
+      "sha256": "9e97d0787c54682526c60440e08d1740ea92c744881f8fd6dd24732c3b321c0c"
+    },
+    "phase_accumulate": {
+      "file": "phase_accumulate.wgsl",
+      "bytes": 3541,
+      "sha256": "0cf47a859208e783ea4bdb9f57dff2342ae682e19cfae7bf716df2ec146843ec"
+    },
+    "phase_finalize": {
+      "file": "phase_finalize.wgsl",
+      "bytes": 1389,
+      "sha256": "b3122eee80d366d382b1801d644004ac347d6d82c9058ffaaaf24307a1cd55d3"
+    }
+  }
+}

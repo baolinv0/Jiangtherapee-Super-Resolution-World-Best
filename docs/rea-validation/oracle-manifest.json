@@ -1,0 +1,947 @@
+{
+  "status": "passed",
+  "release": "v9.8",
+  "release_sha256": "e4fbe9a44ba508e368a7802bb5b28be1e8a49fc666d28f8306f41d34cf3576c3",
+  "runtime": {
+    "python": "3.10.20 (main, Mar 10 2026, 18:12:03) [MSC v.1944 64 bit (AMD64)]",
+    "platform": "Windows-10-10.0.19045-SP0",
+    "numpy": "2.2.6",
+    "opencv-python-headless": "5.0.0.93"
+  },
+  "cv2_version_attribute": "5.0.0",
+  "bundled_dependencies": {
+    "numpy": {
+      "archive_name": "numpy-2.2.6.dist-info\\METADATA",
+      "archive_offset": 126667537,
+      "compressed_bytes": 18011,
+      "bytes": 60844,
+      "sha256": "229f3544b02805e0f6a12030e155d8a45fd3a4100b3291574175e6a76f20e1e1",
+      "version": "2.2.6"
+    },
+    "opencv-python-headless": {
+      "archive_name": "cv2\\version.py",
+      "archive_offset": 73918528,
+      "compressed_bytes": 85,
+      "bytes": 95,
+      "sha256": "35ef3f10a64d3f848953eeb74082e59255e2c8fc035b6df02690bc8e678bf125",
+      "version": "5.0.0.93"
+    }
+  },
+  "modules": {
+    "bsr_steer": {
+      "archive_name": "bsr_steer.cp310-win_amd64.pyd",
+      "archive_offset": 11769647,
+      "compressed_bytes": 295820,
+      "bytes": 903680,
+      "sha256": "20acf56aa47dd483759bf43b2d948a8bf1459936050b65f3fcd96737bafedbe4",
+      "local_file": "_modules/bsr_steer.cp310-win_amd64.pyd"
+    },
+    "v82_lca": {
+      "archive_name": "v82_lca.cp310-win_amd64.pyd",
+      "archive_offset": 140797577,
+      "compressed_bytes": 306457,
+      "bytes": 953344,
+      "sha256": "5def15dc2da130048718dfa4cf3d385d40ff337f1541c3d4b8c1276cbb2bccc8",
+      "local_file": "_modules/v82_lca.cp310-win_amd64.pyd"
+    },
+    "local_v7_frontend": {
+      "archive_name": "local_v7_frontend.cp310-win_amd64.pyd",
+      "archive_offset": 120989828,
+      "compressed_bytes": 301575,
+      "bytes": 904192,
+      "sha256": "55a86032a7f040eb24f605fea2d64773d926c34a629e5ba1de00579913eef284",
+      "local_file": "_modules/local_v7_frontend.cp310-win_amd64.pyd"
+    }
+  },
+  "affine_sha256": "606f16a60a7738a5193de765d8408e4de810c684cddb2286aadd7cb7556854f3",
+  "fixtures": {
+    "recovered_covariance_oracle.npz": {
+      "seed": 20261026,
+      "tensor_cases": [
+        "random_psd_1",
+        "random_psd_0.001",
+        "random_psd_1e-06",
+        "random_psd_1e-09",
+        "random_psd_1e-12",
+        "random_psd_1e-15",
+        "flat",
+        "isotropic",
+        "rank_one_x",
+        "rank_one_y",
+        "rank_one_rotated",
+        "diagonal",
+        "rotating_axes"
+      ],
+      "parameter_pairs": [
+        [
+          0.12,
+          2.0
+        ],
+        [
+          1.0,
+          2.0
+        ],
+        [
+          1.0,
+          1.0
+        ],
+        [
+          1.0,
+          4.0
+        ],
+        [
+          0.45,
+          3.0
+        ]
+      ],
+      "tensor_count": 1664,
+      "original_covariance_evaluations": 8320,
+      "bytes": 60795,
+      "sha256": "8f941fbd1e1848a02d2544c5207994d6942ddd0841886d3943d749d4e3a6da63",
+      "expected_sha256": "8f941fbd1e1848a02d2544c5207994d6942ddd0841886d3943d749d4e3a6da63",
+      "byte_identical": true
+    },
+    "recovered_lca_warp_oracle.npz": {
+      "seed": 1349,
+      "cases": [
+        {
+          "shape": [
+            13,
+            16
+          ],
+          "rb": [
+            0.0,
+            0.0
+          ],
+          "applied": false,
+          "tile": [
+            0,
+            0,
+            13,
+            16
+          ]
+        },
+        {
+          "shape": [
+            13,
+            16
+          ],
+          "rb": [
+            0.0,
+            0.0
+          ],
+          "applied": false,
+          "tile": [
+            4,
+            5,
+            6,
+            8
+          ]
+        },
+        {
+          "shape": [
+            13,
+            16
+          ],
+          "rb": [
+            0.0,
+            0.0
+          ],
+          "applied": true,
+          "tile": [
+            0,
+            0,
+            13,
+            16
+          ]
+        },
+        {
+          "shape": [
+            13,
+            16
+          ],
+          "rb": [
+            0.0,
+            0.0
+          ],
+          "applied": true,
+          "tile": [
+            4,
+            5,
+            6,
+            8
+          ]
+        },
+        {
+          "shape": [
+            13,
+            16
+          ],
+          "rb": [
+            0.017,
+            -0.023
+          ],
+          "applied": false,
+          "tile": [
+            0,
+            0,
+            13,
+            16
+          ]
+        },
+        {
+          "shape": [
+            13,
+            16
+          ],
+          "rb": [
+            0.017,
+            -0.023
+          ],
+          "applied": false,
+          "tile": [
+            4,
+            5,
+            6,
+            8
+          ]
+        },
+        {
+          "shape": [
+            13,
+            16
+          ],
+          "rb": [
+            0.017,
+            -0.023
+          ],
+          "applied": true,
+          "tile": [
+            0,
+            0,
+            13,
+            16
+          ]
+        },
+        {
+          "shape": [
+            13,
+            16
+          ],
+          "rb": [
+            0.017,
+            -0.023
+          ],
+          "applied": true,
+          "tile": [
+            4,
+            5,
+            6,
+            8
+          ]
+        },
+        {
+          "shape": [
+            13,
+            16
+          ],
+          "rb": [
+            0.137,
+            -0.091
+          ],
+          "applied": false,
+          "tile": [
+            0,
+            0,
+            13,
+            16
+          ]
+        },
+        {
+          "shape": [
+            13,
+            16
+          ],
+          "rb": [
+            0.137,
+            -0.091
+          ],
+          "applied": false,
+          "tile": [
+            4,
+            5,
+            6,
+            8
+          ]
+        },
+        {
+          "shape": [
+            13,
+            16
+          ],
+          "rb": [
+            0.137,
+            -0.091
+          ],
+          "applied": true,
+          "tile": [
+            0,
+            0,
+            13,
+            16
+          ]
+        },
+        {
+          "shape": [
+            13,
+            16
+          ],
+          "rb": [
+            0.137,
+            -0.091
+          ],
+          "applied": true,
+          "tile": [
+            4,
+            5,
+            6,
+            8
+          ]
+        },
+        {
+          "shape": [
+            9,
+            11
+          ],
+          "rb": [
+            0.0,
+            0.0
+          ],
+          "applied": false,
+          "tile": [
+            0,
+            0,
+            9,
+            11
+          ]
+        },
+        {
+          "shape": [
+            9,
+            11
+          ],
+          "rb": [
+            0.0,
+            0.0
+          ],
+          "applied": false,
+          "tile": [
+            3,
+            3,
+            4,
+            5
+          ]
+        },
+        {
+          "shape": [
+            9,
+            11
+          ],
+          "rb": [
+            0.0,
+            0.0
+          ],
+          "applied": true,
+          "tile": [
+            0,
+            0,
+            9,
+            11
+          ]
+        },
+        {
+          "shape": [
+            9,
+            11
+          ],
+          "rb": [
+            0.0,
+            0.0
+          ],
+          "applied": true,
+          "tile": [
+            3,
+            3,
+            4,
+            5
+          ]
+        },
+        {
+          "shape": [
+            9,
+            11
+          ],
+          "rb": [
+            0.017,
+            -0.023
+          ],
+          "applied": false,
+          "tile": [
+            0,
+            0,
+            9,
+            11
+          ]
+        },
+        {
+          "shape": [
+            9,
+            11
+          ],
+          "rb": [
+            0.017,
+            -0.023
+          ],
+          "applied": false,
+          "tile": [
+            3,
+            3,
+            4,
+            5
+          ]
+        },
+        {
+          "shape": [
+            9,
+            11
+          ],
+          "rb": [
+            0.017,
+            -0.023
+          ],
+          "applied": true,
+          "tile": [
+            0,
+            0,
+            9,
+            11
+          ]
+        },
+        {
+          "shape": [
+            9,
+            11
+          ],
+          "rb": [
+            0.017,
+            -0.023
+          ],
+          "applied": true,
+          "tile": [
+            3,
+            3,
+            4,
+            5
+          ]
+        },
+        {
+          "shape": [
+            9,
+            11
+          ],
+          "rb": [
+            0.137,
+            -0.091
+          ],
+          "applied": false,
+          "tile": [
+            0,
+            0,
+            9,
+            11
+          ]
+        },
+        {
+          "shape": [
+            9,
+            11
+          ],
+          "rb": [
+            0.137,
+            -0.091
+          ],
+          "applied": false,
+          "tile": [
+            3,
+            3,
+            4,
+            5
+          ]
+        },
+        {
+          "shape": [
+            9,
+            11
+          ],
+          "rb": [
+            0.137,
+            -0.091
+          ],
+          "applied": true,
+          "tile": [
+            0,
+            0,
+            9,
+            11
+          ]
+        },
+        {
+          "shape": [
+            9,
+            11
+          ],
+          "rb": [
+            0.137,
+            -0.091
+          ],
+          "applied": true,
+          "tile": [
+            3,
+            3,
+            4,
+            5
+          ]
+        },
+        {
+          "shape": [
+            1,
+            5
+          ],
+          "rb": [
+            0.0,
+            0.0
+          ],
+          "applied": false,
+          "tile": [
+            0,
+            0,
+            1,
+            5
+          ]
+        },
+        {
+          "shape": [
+            1,
+            5
+          ],
+          "rb": [
+            0.0,
+            0.0
+          ],
+          "applied": false,
+          "tile": [
+            0,
+            1,
+            1,
+            2
+          ]
+        },
+        {
+          "shape": [
+            1,
+            5
+          ],
+          "rb": [
+            0.0,
+            0.0
+          ],
+          "applied": true,
+          "tile": [
+            0,
+            0,
+            1,
+            5
+          ]
+        },
+        {
+          "shape": [
+            1,
+            5
+          ],
+          "rb": [
+            0.0,
+            0.0
+          ],
+          "applied": true,
+          "tile": [
+            0,
+            1,
+            1,
+            2
+          ]
+        },
+        {
+          "shape": [
+            1,
+            5
+          ],
+          "rb": [
+            0.017,
+            -0.023
+          ],
+          "applied": false,
+          "tile": [
+            0,
+            0,
+            1,
+            5
+          ]
+        },
+        {
+          "shape": [
+            1,
+            5
+          ],
+          "rb": [
+            0.017,
+            -0.023
+          ],
+          "applied": false,
+          "tile": [
+            0,
+            1,
+            1,
+            2
+          ]
+        },
+        {
+          "shape": [
+            1,
+            5
+          ],
+          "rb": [
+            0.017,
+            -0.023
+          ],
+          "applied": true,
+          "tile": [
+            0,
+            0,
+            1,
+            5
+          ]
+        },
+        {
+          "shape": [
+            1,
+            5
+          ],
+          "rb": [
+            0.017,
+            -0.023
+          ],
+          "applied": true,
+          "tile": [
+            0,
+            1,
+            1,
+            2
+          ]
+        },
+        {
+          "shape": [
+            1,
+            5
+          ],
+          "rb": [
+            0.137,
+            -0.091
+          ],
+          "applied": false,
+          "tile": [
+            0,
+            0,
+            1,
+            5
+          ]
+        },
+        {
+          "shape": [
+            1,
+            5
+          ],
+          "rb": [
+            0.137,
+            -0.091
+          ],
+          "applied": false,
+          "tile": [
+            0,
+            1,
+            1,
+            2
+          ]
+        },
+        {
+          "shape": [
+            1,
+            5
+          ],
+          "rb": [
+            0.137,
+            -0.091
+          ],
+          "applied": true,
+          "tile": [
+            0,
+            0,
+            1,
+            5
+          ]
+        },
+        {
+          "shape": [
+            1,
+            5
+          ],
+          "rb": [
+            0.137,
+            -0.091
+          ],
+          "applied": true,
+          "tile": [
+            0,
+            1,
+            1,
+            2
+          ]
+        },
+        {
+          "shape": [
+            5,
+            1
+          ],
+          "rb": [
+            0.0,
+            0.0
+          ],
+          "applied": false,
+          "tile": [
+            0,
+            0,
+            5,
+            1
+          ]
+        },
+        {
+          "shape": [
+            5,
+            1
+          ],
+          "rb": [
+            0.0,
+            0.0
+          ],
+          "applied": false,
+          "tile": [
+            1,
+            0,
+            2,
+            1
+          ]
+        },
+        {
+          "shape": [
+            5,
+            1
+          ],
+          "rb": [
+            0.0,
+            0.0
+          ],
+          "applied": true,
+          "tile": [
+            0,
+            0,
+            5,
+            1
+          ]
+        },
+        {
+          "shape": [
+            5,
+            1
+          ],
+          "rb": [
+            0.0,
+            0.0
+          ],
+          "applied": true,
+          "tile": [
+            1,
+            0,
+            2,
+            1
+          ]
+        },
+        {
+          "shape": [
+            5,
+            1
+          ],
+          "rb": [
+            0.017,
+            -0.023
+          ],
+          "applied": false,
+          "tile": [
+            0,
+            0,
+            5,
+            1
+          ]
+        },
+        {
+          "shape": [
+            5,
+            1
+          ],
+          "rb": [
+            0.017,
+            -0.023
+          ],
+          "applied": false,
+          "tile": [
+            1,
+            0,
+            2,
+            1
+          ]
+        },
+        {
+          "shape": [
+            5,
+            1
+          ],
+          "rb": [
+            0.017,
+            -0.023
+          ],
+          "applied": true,
+          "tile": [
+            0,
+            0,
+            5,
+            1
+          ]
+        },
+        {
+          "shape": [
+            5,
+            1
+          ],
+          "rb": [
+            0.017,
+            -0.023
+          ],
+          "applied": true,
+          "tile": [
+            1,
+            0,
+            2,
+            1
+          ]
+        },
+        {
+          "shape": [
+            5,
+            1
+          ],
+          "rb": [
+            0.137,
+            -0.091
+          ],
+          "applied": false,
+          "tile": [
+            0,
+            0,
+            5,
+            1
+          ]
+        },
+        {
+          "shape": [
+            5,
+            1
+          ],
+          "rb": [
+            0.137,
+            -0.091
+          ],
+          "applied": false,
+          "tile": [
+            1,
+            0,
+            2,
+            1
+          ]
+        },
+        {
+          "shape": [
+            5,
+            1
+          ],
+          "rb": [
+            0.137,
+            -0.091
+          ],
+          "applied": true,
+          "tile": [
+            0,
+            0,
+            5,
+            1
+          ]
+        },
+        {
+          "shape": [
+            5,
+            1
+          ],
+          "rb": [
+            0.137,
+            -0.091
+          ],
+          "applied": true,
+          "tile": [
+            1,
+            0,
+            2,
+            1
+          ]
+        }
+      ],
+      "bytes": 115508,
+      "sha256": "64fd3636609ed273c988ca3e0cad9f56bef72d040652016b6a9faba1d96079c6",
+      "expected_sha256": "64fd3636609ed273c988ca3e0cad9f56bef72d040652016b6a9faba1d96079c6",
+      "byte_identical": true
+    },
+    "recovered_frontend_oracle.npz": {
+      "seed": 825,
+      "gains": [
+        0.0,
+        0.0001,
+        0.2,
+        1.0,
+        7.0
+      ],
+      "cases": 5,
+      "bytes": 472571,
+      "sha256": "16fb10b6a3e966b3d3ac8e3af19007b7871fbeee3cd8f99bf534ab933048c35a",
+      "expected_sha256": "16fb10b6a3e966b3d3ac8e3af19007b7871fbeee3cd8f99bf534ab933048c35a",
+      "byte_identical": true
+    }
+  },
+  "execution": "Imported hash-verified native modules; did not launch the EXE or GUI.",
+  "distribution": "Only numeric NPZ fixtures are intended for redistribution; _modules contains original native binaries."
+}

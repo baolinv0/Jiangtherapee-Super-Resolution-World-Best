@@ -1,0 +1,21 @@
+{
+  "scope": "engineering only; procedural target perturbation, no scene-quality result",
+  "supervision": "target = original K4 output * .98 + .001",
+  "original_k": 4,
+  "stage": "joint",
+  "steps": 1,
+  "lr": 1e-06,
+  "before_l1": 0.006685558706521988,
+  "after_l1": 0.006033978890627623,
+  "changed_parameter_elements": {
+    "controller": 1374199,
+    "refinenet": 1948106
+  },
+  "output_max_absolute_change": 0.014144182205200195,
+  "reloaded_output_max_abs": 0.0,
+  "checkpoint_sha256": "842fe5d52ebc5a156b084be01b0b24cec1f9bd3feab844250ce275044347075f",
+  "provenance_kind": "fine_tuned",
+  "source_manifest_sha256": "e341f144430b25ec6c105f9deb302e8a46e06c7ab0ca829cff17d7c555d0107a",
+  "numpy": "2.4.6",
+  "torch": "2.14.1+cpu"
+}

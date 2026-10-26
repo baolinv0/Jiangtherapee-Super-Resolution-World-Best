@@ -1,0 +1,22 @@
+{
+  "stage": "joint",
+  "steps": 1,
+  "history": [
+    {
+      "step": 1,
+      "sample": 0,
+      "loss": 0.006685558706521988,
+      "gradient_norm": 5.521947097809162
+    }
+  ],
+  "reloaded_output_max_abs": 0.0,
+  "source": {
+    "kind": "original_release_bundle",
+    "k": 4,
+    "manifest_sha256": "1962d716aa447f450791cfcc5759722a964bad0bbcdd39f6d062dc255fb79ff9"
+  },
+  "optimizer_resume": false,
+  "scope": "Isolated portable-source/bundle fine-tuning smoke test; procedural target, not image-quality evidence",
+  "module_origin_within_kit": true,
+  "module_relative_path": "source/reproduction/jsr_repro/finetune_recovered.py"
+}

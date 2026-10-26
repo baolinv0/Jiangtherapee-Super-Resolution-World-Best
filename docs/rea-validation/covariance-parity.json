@@ -1,0 +1,42 @@
+{
+  "parameter_cases": [
+    {
+      "k_detail": 0.12,
+      "k_shrink": 2.0,
+      "max_abs": 0.0,
+      "rmse": 0.0
+    },
+    {
+      "k_detail": 1.0,
+      "k_shrink": 2.0,
+      "max_abs": 0.0,
+      "rmse": 0.0
+    },
+    {
+      "k_detail": 1.0,
+      "k_shrink": 1.0,
+      "max_abs": 0.0,
+      "rmse": 0.0
+    },
+    {
+      "k_detail": 1.0,
+      "k_shrink": 4.0,
+      "max_abs": 0.0,
+      "rmse": 0.0
+    },
+    {
+      "k_detail": 0.45,
+      "k_shrink": 3.0,
+      "max_abs": 0.0,
+      "rmse": 0.0
+    }
+  ],
+  "structure": {
+    "max_abs": 2.384185791015625e-07,
+    "rmse": 4.107368242161165e-08
+  },
+  "guide_covariance": {
+    "max_abs": 5.340576171875e-05,
+    "rmse": 4.945975279056522e-06
+  }
+}
